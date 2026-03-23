@@ -1,0 +1,109 @@
+############################
+# Vivado auto-generated
+############################
+
+# Project cache / build
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
+*.xpr
+*.str
+*.jou
+*.log
+
+# WebTalk / usage stats
+.webtalk/
+*.wdb
+*.wcfg
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.zip
+
+############################
+# Vivado output products
+############################
+
+# Bitstream / binary outputs
+*.bit
+*.bin
+*.mcs
+*.prm
+
+# Reports
+*.rpt
+*.dcp
+*.ltx
+
+############################
+# IP and BD (block design)
+############################
+
+# Generated IP files (very important)
+*.ip_user_files/
+*.cache/ip/
+
+# Block design auto files
+*.bd.bak
+*.bd.tcl.old
+
+############################
+# Simulation
+############################
+*.pb
+*.wlf
+*.vcd
+*.vpd
+*.log
+
+############################
+# SDK / Vitis (if used)
+############################
+.sdk/
+.vitis/
+*.sdk/
+
+############################
+# ScopeFun specific
+############################
+
+# Build artifacts
+build/
+dist/
+*.elf
+*.map
+
+# Python cache (ScopeFun scripts)
+__pycache__/
+*.pyc
+
+# Exported images / measurements
+*.png
+*.jpg
+*.csv
+
+############################
+# OS / Editor
+############################
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+############################
+# User-specific configs
+############################
+*.local
+*.settings/
