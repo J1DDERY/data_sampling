@@ -7,11 +7,11 @@
         "apply_defaults_to_fp_shapes": false,
         "apply_defaults_to_fp_text": false,
         "board_outline_line_width": 0.2,
-        "copper_line_width": 0.2,
+        "copper_line_width": 0.15,
         "copper_text_italic": false,
         "copper_text_size_h": 0.9,
         "copper_text_size_v": 0.9,
-        "copper_text_thickness": 0.3,
+        "copper_text_thickness": 0.225,
         "copper_text_upright": false,
         "courtyard_line_width": 0.05,
         "dimension_precision": 4,
@@ -48,10 +48,21 @@
         "silk_text_thickness": 0.127,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.3
+          "min_clearance": 0.165
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        },
+        {
+          "gap": 0.141,
+          "via_gap": 0.3,
+          "width": 0.127
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -491,7 +502,7 @@
         "microvia_drill": 0.2,
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": -1,
+        "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
         "via_diameter": 0.5,
@@ -502,14 +513,13 @@
         "bus_width": 12,
         "clearance": 0.12699,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.4,
         "microvia_drill": 0.2,
         "name": "Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": -1,
+        "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.5,
         "via_diameter": 0.5,
@@ -520,14 +530,13 @@
         "bus_width": 12,
         "clearance": 0.12699,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.4,
         "microvia_drill": 0.2,
         "name": "Small_VIA",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": -1,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.127,
         "via_diameter": 0.45,
@@ -2695,83 +2704,7 @@
       },
       {
         "netclass": "Small_VIA",
-        "pattern": "dataA0_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA0_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA1_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA1_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA2_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA2_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA3_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA3_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA4_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataA4_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB0_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB0_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB1_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB1_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB2_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB2_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB3_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB3_P"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB4_N"
-      },
-      {
-        "netclass": "Small_VIA",
-        "pattern": "dataB4_P"
+        "pattern": "^data.*"
       }
     ]
   },
@@ -2853,14 +2786,74 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Arrow Price/Stock",
+          "name": "Arrow Price/Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Height",
+          "name": "Height",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MFG Part#",
+          "name": "MFG Part#",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Name",
+          "name": "Manufacturer_Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Part_Number",
+          "name": "Manufacturer_Part_Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Part Number",
+          "name": "Mouser Part Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Price/Stock",
+          "name": "Mouser Price/Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Arrow Part Number",
+          "name": "Arrow Part Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "描述",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
-      "sort_field": "位号"
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {

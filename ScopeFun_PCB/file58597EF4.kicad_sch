@@ -12872,7 +12872,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.issi.com/WW/pdf/43-46TR16256A-85120AL.pdf"
+		(property "Datasheet" "http://www.issi.com/WW/pdf/43-46TR16640B-81280BL.pdf"
 			(at 138.43 134.62 0)
 			(effects
 				(font
@@ -12890,7 +12890,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFG Part#" "IS43TR16256A-125KBL"
+		(property "MFG Part#" "IS43TR16640B-125JBL"
 			(at 138.43 138.43 0)
 			(effects
 				(font
