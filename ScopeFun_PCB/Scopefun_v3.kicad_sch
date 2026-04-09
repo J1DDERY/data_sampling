@@ -1,0 +1,620 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "29c98cb5-ff01-42d3-b159-4c21611d999f")
+	(paper "A4")
+	(title_block
+		(title "Scopefun Oscilloscope")
+		(rev "v2")
+		(comment 1 "Copyright Dejan Priversek 2019")
+		(comment 2 "Licensed under CERN OHL v.1.2")
+	)
+	(lib_symbols)
+	(wire
+		(pts
+			(xy 147.32 30.48) (xy 132.08 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "043caebe-b2e6-41f2-9f4d-1b0e82b85088")
+	)
+	(wire
+		(pts
+			(xy 132.08 34.29) (xy 147.32 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a782bc6-048e-4575-9445-7e385d81b0f4")
+	)
+	(wire
+		(pts
+			(xy 71.12 29.21) (xy 85.09 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bf8e59e-755e-4303-a339-6c0682fb35b1")
+	)
+	(wire
+		(pts
+			(xy 132.08 27.94) (xy 147.32 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7b0a058-0133-450f-9f10-8d91b22a2c54")
+	)
+	(wire
+		(pts
+			(xy 71.12 35.56) (xy 85.09 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea91c7bb-2117-412f-98a1-cdc9be66a728")
+	)
+	(wire
+		(pts
+			(xy 147.32 36.83) (xy 132.08 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3db0b01-d22b-4ea6-af94-6bad42e7b2ad")
+	)
+	(sheet
+		(at 24.13 24.13)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056770a0b")
+		(property "Sheetname" "ANALOG INPUTS"
+			(at 24.13 22.7834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56770A0B.kicad_sch"
+			(at 24.13 41.2246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "CH1_VGA" output
+			(at 71.12 29.21 0)
+			(uuid "d2858824-ae13-46f2-b30a-2abff3d12b5a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CH2_VGA" output
+			(at 71.12 35.56 0)
+			(uuid "5b5f213d-ccff-4bf7-bbc1-f7f9dab9387a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.09 24.13)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056785ef9")
+		(property "Sheetname" "GAIN, OFFSET"
+			(at 85.09 22.7834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56785EF9.kicad_sch"
+			(at 85.09 41.2246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "CH1_VGA" input
+			(at 85.09 29.21 180)
+			(uuid "164d3af5-0416-45e1-a285-8df3c11258da")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CH2_VGA" input
+			(at 85.09 35.56 180)
+			(uuid "8a5941dc-3adb-46a4-85f8-233a1e54b2cf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CH1+" output
+			(at 132.08 27.94 0)
+			(uuid "f4463672-0894-4435-ad41-29eb86e25df8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CH1-" output
+			(at 132.08 30.48 0)
+			(uuid "ec0657e8-e40f-4baa-a868-b5f4a3eee4a2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CH2+" output
+			(at 132.08 34.29 0)
+			(uuid "96888747-3a63-427c-ae74-b60f2f18fca2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CH2-" output
+			(at 132.08 36.83 0)
+			(uuid "ca7a5fa0-da23-4947-8b76-8baf3833b500")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 147.32 24.13)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056921513")
+		(property "Sheetname" "ADC"
+			(at 147.32 22.7834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56921512.kicad_sch"
+			(at 147.32 41.2246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "CH1+" input
+			(at 147.32 27.94 180)
+			(uuid "84a13d6f-6de8-473d-95a6-9c052dd51bc0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CH1-" input
+			(at 147.32 30.48 180)
+			(uuid "488c295e-4213-44d4-a768-f1ef484414d0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CH2+" input
+			(at 147.32 34.29 180)
+			(uuid "7b46e9f0-7e8d-4efd-90e5-bbd99a470761")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CH2-" input
+			(at 147.32 36.83 180)
+			(uuid "9bd3d649-f2ba-45f5-8056-a4d9782667d7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "12")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 86.36 55.88)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056948068")
+		(property "Sheetname" "FPGA BANKS"
+			(at 86.36 54.5334 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56948067.kicad_sch"
+			(at 86.36 72.9746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 24.13 87.63)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056954a3d")
+		(property "Sheetname" "USB Port"
+			(at 24.13 86.2834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56954A3C.kicad_sch"
+			(at 24.13 104.7246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 24.13 119.38)
+		(size 46.99 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000056a5a071")
+		(property "Sheetname" "POWER SUPPLY"
+			(at 24.13 118.0334 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file56A5A070.kicad_sch"
+			(at 24.13 136.4746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 86.36 87.63)
+		(size 45.72 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-0000584ba873")
+		(property "Sheetname" "USB FX3"
+			(at 86.36 86.2834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file584BA872.kicad_sch"
+			(at 86.36 104.7246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 146.05 55.88)
+		(size 48.26 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-0000584efeb2")
+		(property "Sheetname" "FPGA CFG, POWER"
+			(at 146.05 54.5334 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file584EFEB1.kicad_sch"
+			(at 146.05 72.9746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "10")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 86.36 119.38)
+		(size 45.72 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000058589f32")
+		(property "Sheetname" "REF SUPPLY"
+			(at 86.36 118.0334 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file58589F31.kicad_sch"
+			(at 86.36 136.4746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 146.05 87.63)
+		(size 48.26 16.51)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "00000000-0000-0000-0000-000058597ef5")
+		(property "Sheetname" "DDR3 SDRAM"
+			(at 146.05 86.2834 0)
+			(effects
+				(font
+					(size 2.54 2.54)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "file58597EF4.kicad_sch"
+			(at 146.05 104.7246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Scopefun_v2"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f"
+					(page "11")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
