@@ -2998,104 +2998,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "GND_31"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Field5" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_31_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_31_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "GND_32"
 			(power)
 			(pin_names
@@ -6389,155 +6291,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "ScopefunParts:C_22u"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_22u"
-				(at 0.254 -2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "ScopefunPackagesLibrary:C_0805"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "MLCC - SMD/SMT 0805 10V X5R 20%"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFG Part#" "LMK212BBJ226MG-T"
-				(at 2.794 4.318 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description_1" "MLCC - SMD/SMT 0805 10V X5R 20%"
-				(at 1.27 6.35 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "0603"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_22u_0_1"
-				(polyline
-					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
-					)
-					(stroke
-						(width 0.3048)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
-					)
-					(stroke
-						(width 0.3302)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_22u_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 1.905)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "ScopefunParts:LTC6957-2"
 			(pin_names
 				(offset 0.762)
@@ -8293,17 +8046,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "HI = NAP\nLO = NORMAL\nFT = SLEEP"
-		(exclude_from_sim no)
-		(at 64.77 93.98 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "28bb0ced-59ce-4b33-adeb-fa071d3facd3")
-	)
 	(junction
 		(at 53.34 46.99)
 		(diameter 0)
@@ -8311,7 +8053,7 @@
 		(uuid "068923a0-0704-47cc-b9b9-17fdc1a3fb44")
 	)
 	(junction
-		(at 52.07 179.07)
+		(at 50.8 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0827200a-cf25-4459-8154-577a95051216")
@@ -8335,16 +8077,10 @@
 		(uuid "128c2c90-9427-4b29-b9ca-85f186ac513b")
 	)
 	(junction
-		(at 100.33 186.69)
+		(at 99.06 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1839d630-9e84-4cbd-a060-295c4641a80e")
-	)
-	(junction
-		(at 29.21 186.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1a5539be-edb5-4548-af13-eedbd346f99b")
 	)
 	(junction
 		(at 163.83 86.36)
@@ -8353,7 +8089,7 @@
 		(uuid "249700f3-045c-4f72-97b2-3929d9b9af6f")
 	)
 	(junction
-		(at 74.93 186.69)
+		(at 73.66 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3467d9dd-bc54-4fb0-a616-c00f9c6ee9af")
@@ -8389,7 +8125,7 @@
 		(uuid "485c85c6-488f-4d73-9164-fc0bf5df2b98")
 	)
 	(junction
-		(at 44.45 186.69)
+		(at 43.18 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4898ed65-4a9b-46eb-a228-b485a1cb77ee")
@@ -8437,7 +8173,7 @@
 		(uuid "5f5ae6c8-51c1-4621-8a90-09a65a591e5a")
 	)
 	(junction
-		(at 100.33 179.07)
+		(at 99.06 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5fa98f7e-17e3-4de5-9df9-c044485c8818")
@@ -8449,7 +8185,7 @@
 		(uuid "6ab27109-e56d-4447-904b-40a564ed8109")
 	)
 	(junction
-		(at 109.22 179.07)
+		(at 107.95 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6d6b5a46-ee7a-4da1-bb2b-2b564e9fae9c")
@@ -8467,13 +8203,13 @@
 		(uuid "72e3b05e-846c-4017-9091-0b9e7df496da")
 	)
 	(junction
-		(at 36.83 179.07)
+		(at 35.56 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7d399e94-9b80-4aee-9deb-712d711864a7")
 	)
 	(junction
-		(at 92.71 179.07)
+		(at 91.44 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7d650041-580e-4af1-9876-b0ad8d48973b")
@@ -8491,13 +8227,7 @@
 		(uuid "8d07d81d-7a91-460b-abd5-f665f201eb16")
 	)
 	(junction
-		(at 29.21 179.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8ff9426e-96ba-4788-baed-666f8bb2953e")
-	)
-	(junction
-		(at 44.45 179.07)
+		(at 43.18 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9cfecf25-b440-4625-97ab-b3567c2bdb7e")
@@ -8509,7 +8239,7 @@
 		(uuid "9ece0cbc-aae0-4f76-9633-5212344ccbf6")
 	)
 	(junction
-		(at 109.22 186.69)
+		(at 107.95 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a22ab4ef-d4f7-4088-88f7-9f749dfd13b9")
@@ -8521,7 +8251,7 @@
 		(uuid "a4d1a23f-5bd0-4a8d-a0d5-50a9d390cd50")
 	)
 	(junction
-		(at 67.31 179.07)
+		(at 66.04 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b2d89bc6-4fa0-4cb5-bc08-fc36d3f3041b")
@@ -8551,7 +8281,7 @@
 		(uuid "bbbcd966-d789-4e97-bfea-95fed95f54ba")
 	)
 	(junction
-		(at 36.83 186.69)
+		(at 35.56 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "be306aa9-16e5-4ecd-b41a-3407bc37fa61")
@@ -8569,13 +8299,13 @@
 		(uuid "cc234e3b-4305-4aa6-ad2a-f08b7bde5791")
 	)
 	(junction
-		(at 67.31 186.69)
+		(at 66.04 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cd650675-d8c3-45ac-afb2-a754e55cc6cd")
 	)
 	(junction
-		(at 82.55 186.69)
+		(at 81.28 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ce023962-eb3d-4339-b4c9-a020cf195ef2")
@@ -8587,13 +8317,13 @@
 		(uuid "dc6f8c54-48f7-4cc6-86fc-079e31061a39")
 	)
 	(junction
-		(at 74.93 179.07)
+		(at 73.66 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dd744636-47c4-4dec-81ec-fb13621e7533")
 	)
 	(junction
-		(at 59.69 179.07)
+		(at 58.42 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e2f5a5f7-7923-431c-9d88-9707e7ea7db7")
@@ -8605,7 +8335,7 @@
 		(uuid "e3ccab74-33fa-40a7-a2e4-23987d42f641")
 	)
 	(junction
-		(at 59.69 186.69)
+		(at 58.42 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e44cf40b-601b-40cb-9ca9-52f146925790")
@@ -8617,7 +8347,7 @@
 		(uuid "ef97bd46-b5fc-41ac-b2f7-5e195d086223")
 	)
 	(junction
-		(at 52.07 186.69)
+		(at 50.8 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f10b41b2-499b-4d5b-8827-a08297742dbc")
@@ -8669,6 +8399,10 @@
 		(uuid "414e6a4a-024c-4a19-886e-f7199aeeaab5")
 	)
 	(no_connect
+		(at 127 105.41)
+		(uuid "45873b1e-81aa-4ec0-8f71-33c05b1e6f50")
+	)
+	(no_connect
 		(at 199.39 60.96)
 		(uuid "5e7cde0f-c0fd-4fc7-910f-3d706e6271d1")
 	)
@@ -8679,6 +8413,10 @@
 	(no_connect
 		(at 140.97 185.42)
 		(uuid "7c7eac00-6a7d-433d-a3ba-a39d650da310")
+	)
+	(no_connect
+		(at 127 107.95)
+		(uuid "868511f4-7e67-4094-9bc1-153c617e4e73")
 	)
 	(no_connect
 		(at 199.39 55.88)
@@ -8698,7 +8436,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 186.69) (xy 29.21 185.42)
+			(xy 27.94 149.86) (xy 27.94 148.59)
 		)
 		(stroke
 			(width 0)
@@ -8798,7 +8536,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 179.07) (xy 36.83 180.34)
+			(xy 35.56 142.24) (xy 35.56 143.51)
 		)
 		(stroke
 			(width 0)
@@ -8828,7 +8566,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 179.07) (xy 52.07 179.07)
+			(xy 43.18 142.24) (xy 50.8 142.24)
 		)
 		(stroke
 			(width 0)
@@ -8858,7 +8596,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 186.69) (xy 118.11 186.69)
+			(xy 107.95 149.86) (xy 116.84 149.86)
 		)
 		(stroke
 			(width 0)
@@ -8908,7 +8646,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 179.07) (xy 82.55 179.07)
+			(xy 73.66 142.24) (xy 81.28 142.24)
 		)
 		(stroke
 			(width 0)
@@ -8918,7 +8656,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 186.69) (xy 67.31 186.69)
+			(xy 58.42 149.86) (xy 66.04 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9028,7 +8766,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 179.07) (xy 29.21 180.34)
+			(xy 27.94 142.24) (xy 27.94 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9128,23 +8866,13 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 165.1) (xy 57.15 165.1)
+			(xy 64.77 128.27) (xy 55.88 128.27)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "33b7aef0-06f7-4d15-9d20-d495740ea1da")
-	)
-	(wire
-		(pts
-			(xy 64.77 97.79) (xy 64.77 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "35d9f1e0-cab6-4a8c-bc42-0f2858d38ff6")
 	)
 	(wire
 		(pts
@@ -9178,7 +8906,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 179.07) (xy 118.11 180.34)
+			(xy 116.84 142.24) (xy 116.84 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9268,7 +8996,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 185.42) (xy 52.07 186.69)
+			(xy 50.8 148.59) (xy 50.8 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9318,7 +9046,17 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 185.42) (xy 109.22 186.69)
+			(xy 27.94 142.24) (xy 35.56 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "468b9922-f756-4472-a3ae-6856a6b1c211")
+	)
+	(wire
+		(pts
+			(xy 107.95 148.59) (xy 107.95 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9328,7 +9066,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 185.42) (xy 82.55 186.69)
+			(xy 81.28 148.59) (xy 81.28 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9378,7 +9116,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 179.07) (xy 92.71 180.34)
+			(xy 91.44 142.24) (xy 91.44 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9388,7 +9126,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 186.69) (xy 67.31 185.42)
+			(xy 66.04 149.86) (xy 66.04 148.59)
 		)
 		(stroke
 			(width 0)
@@ -9438,7 +9176,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 177.8) (xy 92.71 179.07)
+			(xy 91.44 140.97) (xy 91.44 142.24)
 		)
 		(stroke
 			(width 0)
@@ -9448,7 +9186,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 185.42) (xy 36.83 186.69)
+			(xy 35.56 148.59) (xy 35.56 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9468,7 +9206,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 179.07) (xy 59.69 180.34)
+			(xy 58.42 142.24) (xy 58.42 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9538,16 +9276,6 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 179.07) (xy 36.83 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c2d2239-7e9f-46d5-a69f-841250f3c87a")
-	)
-	(wire
-		(pts
 			(xy 222.25 143.51) (xy 224.79 143.51)
 		)
 		(stroke
@@ -9568,7 +9296,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 179.07) (xy 74.93 180.34)
+			(xy 73.66 142.24) (xy 73.66 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9578,7 +9306,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 179.07) (xy 59.69 179.07)
+			(xy 50.8 142.24) (xy 58.42 142.24)
 		)
 		(stroke
 			(width 0)
@@ -9628,7 +9356,7 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 162.56) (xy 34.29 165.1)
+			(xy 33.02 125.73) (xy 33.02 128.27)
 		)
 		(stroke
 			(width 0)
@@ -9668,7 +9396,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 179.07) (xy 100.33 180.34)
+			(xy 99.06 142.24) (xy 99.06 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9688,17 +9416,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 105.41) (xy 64.77 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "698eb5be-9926-4333-911e-8c690bc50ef6")
-	)
-	(wire
-		(pts
-			(xy 82.55 179.07) (xy 82.55 180.34)
+			(xy 81.28 142.24) (xy 81.28 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9708,7 +9426,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 186.69) (xy 74.93 186.69)
+			(xy 66.04 149.86) (xy 73.66 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9728,7 +9446,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 186.69) (xy 44.45 186.69)
+			(xy 35.56 149.86) (xy 43.18 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9768,7 +9486,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 186.69) (xy 109.22 186.69)
+			(xy 99.06 149.86) (xy 107.95 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9808,7 +9526,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 186.69) (xy 100.33 187.96)
+			(xy 99.06 149.86) (xy 99.06 151.13)
 		)
 		(stroke
 			(width 0)
@@ -9878,16 +9596,6 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 97.79) (xy 64.77 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "819d0e34-121b-4823-9e96-06be89922fa2")
-	)
-	(wire
-		(pts
 			(xy 254 140.97) (xy 256.54 140.97)
 		)
 		(stroke
@@ -9898,7 +9606,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 186.69) (xy 59.69 186.69)
+			(xy 50.8 149.86) (xy 58.42 149.86)
 		)
 		(stroke
 			(width 0)
@@ -9928,7 +9636,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 179.07) (xy 109.22 180.34)
+			(xy 107.95 142.24) (xy 107.95 143.51)
 		)
 		(stroke
 			(width 0)
@@ -9938,7 +9646,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 186.69) (xy 74.93 185.42)
+			(xy 73.66 149.86) (xy 73.66 148.59)
 		)
 		(stroke
 			(width 0)
@@ -9948,7 +9656,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 180.34) (xy 52.07 179.07)
+			(xy 50.8 143.51) (xy 50.8 142.24)
 		)
 		(stroke
 			(width 0)
@@ -9978,16 +9686,6 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 179.07) (xy 29.21 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8df23edb-307d-4dfa-b968-22d18c9dd506")
-	)
-	(wire
-		(pts
 			(xy 210.82 118.11) (xy 207.01 118.11)
 		)
 		(stroke
@@ -10008,7 +9706,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 185.42) (xy 100.33 186.69)
+			(xy 99.06 148.59) (xy 99.06 149.86)
 		)
 		(stroke
 			(width 0)
@@ -10108,7 +9806,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 179.07) (xy 109.22 179.07)
+			(xy 99.06 142.24) (xy 107.95 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10118,7 +9816,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 179.07) (xy 44.45 180.34)
+			(xy 43.18 142.24) (xy 43.18 143.51)
 		)
 		(stroke
 			(width 0)
@@ -10158,7 +9856,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 177.8) (xy 44.45 179.07)
+			(xy 43.18 140.97) (xy 43.18 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10168,7 +9866,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 179.07) (xy 67.31 179.07)
+			(xy 58.42 142.24) (xy 66.04 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10198,7 +9896,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 179.07) (xy 74.93 179.07)
+			(xy 66.04 142.24) (xy 73.66 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10248,7 +9946,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 185.42) (xy 118.11 186.69)
+			(xy 116.84 148.59) (xy 116.84 149.86)
 		)
 		(stroke
 			(width 0)
@@ -10348,16 +10046,6 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 186.69) (xy 29.21 186.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b51c44dc-0a01-4fbe-b4e0-88990afed699")
-	)
-	(wire
-		(pts
 			(xy 163.83 71.12) (xy 163.83 73.66)
 		)
 		(stroke
@@ -10438,7 +10126,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 179.07) (xy 67.31 180.34)
+			(xy 66.04 142.24) (xy 66.04 143.51)
 		)
 		(stroke
 			(width 0)
@@ -10508,16 +10196,6 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 179.07) (xy 21.59 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c519d8e5-3bc0-4083-8e94-270179599363")
-	)
-	(wire
-		(pts
 			(xy 185.42 134.62) (xy 198.12 134.62)
 		)
 		(stroke
@@ -10528,7 +10206,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 186.69) (xy 92.71 185.42)
+			(xy 91.44 149.86) (xy 91.44 148.59)
 		)
 		(stroke
 			(width 0)
@@ -10538,7 +10216,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 186.69) (xy 82.55 187.96)
+			(xy 81.28 149.86) (xy 81.28 151.13)
 		)
 		(stroke
 			(width 0)
@@ -10578,7 +10256,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 186.69) (xy 52.07 186.69)
+			(xy 43.18 149.86) (xy 50.8 149.86)
 		)
 		(stroke
 			(width 0)
@@ -10608,7 +10286,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 186.69) (xy 92.71 186.69)
+			(xy 99.06 149.86) (xy 91.44 149.86)
 		)
 		(stroke
 			(width 0)
@@ -10658,7 +10336,7 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 165.1) (xy 44.45 165.1)
+			(xy 33.02 128.27) (xy 43.18 128.27)
 		)
 		(stroke
 			(width 0)
@@ -10728,7 +10406,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 162.56) (xy 66.04 165.1)
+			(xy 64.77 125.73) (xy 64.77 128.27)
 		)
 		(stroke
 			(width 0)
@@ -10798,13 +10476,23 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 186.69) (xy 59.69 185.42)
+			(xy 58.42 149.86) (xy 58.42 148.59)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e2193de6-d776-4a32-b98d-59b0095d7bef")
+	)
+	(wire
+		(pts
+			(xy 27.94 149.86) (xy 35.56 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e250978f-3dbe-422d-86a4-b5bc25d17983")
 	)
 	(wire
 		(pts
@@ -10818,16 +10506,6 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 186.69) (xy 21.59 185.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e6ffba72-90c1-445b-bde8-c735cc9f5a14")
-	)
-	(wire
-		(pts
 			(xy 140.97 170.18) (xy 138.43 170.18)
 		)
 		(stroke
@@ -10838,7 +10516,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 186.69) (xy 44.45 185.42)
+			(xy 43.18 149.86) (xy 43.18 148.59)
 		)
 		(stroke
 			(width 0)
@@ -10948,7 +10626,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 179.07) (xy 118.11 179.07)
+			(xy 107.95 142.24) (xy 116.84 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10958,7 +10636,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 179.07) (xy 92.71 179.07)
+			(xy 99.06 142.24) (xy 91.44 142.24)
 		)
 		(stroke
 			(width 0)
@@ -10995,16 +10673,6 @@
 			(type default)
 		)
 		(uuid "f77262fd-a178-4c44-b58c-cf4744ac9001")
-	)
-	(wire
-		(pts
-			(xy 29.21 186.69) (xy 36.83 186.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7dafcab-dc3d-4298-b577-b8121581989c")
 	)
 	(wire
 		(pts
@@ -11058,7 +10726,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 186.69) (xy 82.55 186.69)
+			(xy 73.66 149.86) (xy 81.28 149.86)
 		)
 		(stroke
 			(width 0)
@@ -11068,7 +10736,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 179.07) (xy 44.45 179.07)
+			(xy 35.56 142.24) (xy 43.18 142.24)
 		)
 		(stroke
 			(width 0)
@@ -11155,16 +10823,6 @@
 			(justify left bottom)
 		)
 		(uuid "62080ebf-a3b3-4b77-b2e2-f013e23db445")
-	)
-	(label "NAPSLP"
-		(at 73.66 97.79 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9497b05d-a723-46bd-9e62-9a30939102fe")
 	)
 	(label "CLK_OUT+"
 		(at 186.69 175.26 180)
@@ -12392,7 +12050,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:+1.8V_VA")
-		(at 44.45 177.8 0)
+		(at 43.18 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12400,7 +12058,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857c176")
 		(property "Reference" "#PWR078"
-			(at 44.45 181.61 0)
+			(at 43.18 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12409,7 +12067,7 @@
 			)
 		)
 		(property "Value" "+1V8_VA"
-			(at 44.45 174.244 0)
+			(at 43.18 137.414 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12417,7 +12075,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 177.8 0)
+			(at 43.18 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12425,7 +12083,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 177.8 0)
+			(at 43.18 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12433,7 +12091,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 44.45 177.8 0)
+			(at 43.18 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12454,7 +12112,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 100.33 182.88 0)
+		(at 99.06 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12462,7 +12120,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857c52a")
 		(property "Reference" "C43"
-			(at 100.584 181.102 0)
+			(at 99.314 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12471,7 +12129,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 100.584 184.912 0)
+			(at 99.314 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12480,7 +12138,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 100.33 187.96 0)
+			(at 99.06 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12489,7 +12147,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.584 181.102 0)
+			(at 99.314 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12498,7 +12156,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 101.6 176.53 0)
+			(at 100.33 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12507,7 +12165,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 103.124 178.562 0)
+			(at 101.854 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12532,7 +12190,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 67.31 182.88 0)
+		(at 66.04 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12540,7 +12198,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857c532")
 		(property "Reference" "C46"
-			(at 67.564 181.102 0)
+			(at 66.294 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12549,7 +12207,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 67.564 184.912 0)
+			(at 66.294 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12558,7 +12216,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 67.31 187.96 0)
+			(at 66.04 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12567,7 +12225,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 67.564 181.102 0)
+			(at 66.294 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12576,7 +12234,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 68.58 176.53 0)
+			(at 67.31 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12585,7 +12243,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 70.104 178.562 0)
+			(at 68.834 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12610,7 +12268,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 82.55 182.88 0)
+		(at 81.28 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12618,7 +12276,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857c6ab")
 		(property "Reference" "C49"
-			(at 82.804 181.102 0)
+			(at 81.534 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12627,7 +12285,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 82.804 184.912 0)
+			(at 81.534 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12636,7 +12294,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 82.55 187.96 0)
+			(at 81.28 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12645,7 +12303,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.804 181.102 0)
+			(at 81.534 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12654,7 +12312,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 83.82 176.53 0)
+			(at 82.55 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12663,7 +12321,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 85.344 178.562 0)
+			(at 84.074 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12688,85 +12346,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 59.69 182.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005857c6b3")
-		(property "Reference" "C44"
-			(at 59.944 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "C_0.1u"
-			(at 59.944 184.912 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 59.69 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.944 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 60.96 176.53 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 62.484 178.562 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c4cd2ce5-9059-4754-9712-926d7312e935")
-		)
-		(pin "1"
-			(uuid "a4d52485-cf5a-45b5-b047-1afb76d0860e")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C44")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "ScopefunParts:C_0.1u")
-		(at 74.93 182.88 0)
+		(at 73.66 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12774,7 +12354,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857c6c3")
 		(property "Reference" "C50"
-			(at 75.184 181.102 0)
+			(at 73.914 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12783,7 +12363,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 75.184 184.912 0)
+			(at 73.914 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12792,7 +12372,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 74.93 187.96 0)
+			(at 73.66 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12801,7 +12381,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 75.184 181.102 0)
+			(at 73.914 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12810,7 +12390,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 76.2 176.53 0)
+			(at 74.93 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12819,7 +12399,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 77.724 178.562 0)
+			(at 76.454 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12845,7 +12425,7 @@
 	(symbol
 		(lib_name "GND_32")
 		(lib_id "Scopefun_v2-rescue:GND")
-		(at 82.55 187.96 0)
+		(at 81.28 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12853,7 +12433,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857e2c0")
 		(property "Reference" "#PWR079"
-			(at 82.55 194.31 0)
+			(at 81.28 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12862,7 +12442,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 82.55 191.77 0)
+			(at 81.28 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12870,7 +12450,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 82.55 187.96 0)
+			(at 81.28 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12878,7 +12458,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.55 187.96 0)
+			(at 81.28 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12886,7 +12466,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 82.55 187.96 0)
+			(at 81.28 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12908,7 +12488,7 @@
 	(symbol
 		(lib_name "GND_35")
 		(lib_id "Scopefun_v2-rescue:GND")
-		(at 100.33 187.96 0)
+		(at 99.06 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12916,7 +12496,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857f2f0")
 		(property "Reference" "#PWR084"
-			(at 100.33 194.31 0)
+			(at 99.06 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12925,7 +12505,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 100.33 191.77 0)
+			(at 99.06 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12933,7 +12513,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 187.96 0)
+			(at 99.06 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12941,7 +12521,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 187.96 0)
+			(at 99.06 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12949,7 +12529,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.33 187.96 0)
+			(at 99.06 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12970,7 +12550,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:+1.8V")
-		(at 92.71 177.8 0)
+		(at 91.44 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12978,7 +12558,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005857f2f6")
 		(property "Reference" "#PWR085"
-			(at 92.71 181.61 0)
+			(at 91.44 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12987,7 +12567,7 @@
 			)
 		)
 		(property "Value" "+1V8"
-			(at 92.71 174.244 0)
+			(at 91.44 137.414 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12995,7 +12575,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 92.71 177.8 0)
+			(at 91.44 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13003,7 +12583,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 92.71 177.8 0)
+			(at 91.44 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13011,7 +12591,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 92.71 177.8 0)
+			(at 91.44 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13469,7 +13049,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:+1.8V")
-		(at 66.04 162.56 0)
+		(at 64.77 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13477,7 +13057,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005869b4b9")
 		(property "Reference" "#PWR089"
-			(at 66.04 166.37 0)
+			(at 64.77 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13486,7 +13066,7 @@
 			)
 		)
 		(property "Value" "+1V8"
-			(at 66.04 159.004 0)
+			(at 64.77 122.174 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13494,7 +13074,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 66.04 162.56 0)
+			(at 64.77 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13502,7 +13082,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 66.04 162.56 0)
+			(at 64.77 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13510,7 +13090,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 66.04 162.56 0)
+			(at 64.77 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13531,7 +13111,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:+1.8V_VA")
-		(at 34.29 162.56 0)
+		(at 33.02 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13539,7 +13119,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005869b6ea")
 		(property "Reference" "#PWR090"
-			(at 34.29 166.37 0)
+			(at 33.02 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13548,7 +13128,7 @@
 			)
 		)
 		(property "Value" "+1V8_VA"
-			(at 34.29 159.004 0)
+			(at 33.02 122.174 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13556,7 +13136,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 34.29 162.56 0)
+			(at 33.02 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13564,7 +13144,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 34.29 162.56 0)
+			(at 33.02 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13572,7 +13152,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 34.29 162.56 0)
+			(at 33.02 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13586,84 +13166,6 @@
 			(project "Scopefun_v2"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
 					(reference "#PWR090")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "ScopefunParts:C_22u")
-		(at 44.45 182.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-0000586c4fc3")
-		(property "Reference" "C38"
-			(at 44.704 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "C_22u"
-			(at 44.704 184.912 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ScopefunPackagesLibrary:C_0805"
-			(at 44.45 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 44.704 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "MLCC - SMD/SMT 0805 10V X5R 20%"
-			(at 45.72 176.53 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG Part#" "LMK212BBJ226MG-T"
-			(at 47.244 178.562 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8853389e-a61a-42e0-ae2f-e99d9f088b79")
-		)
-		(pin "2"
-			(uuid "ed9584f3-4603-40d3-85c0-ef71935ab8a9")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -14579,7 +14081,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:Z_68")
-		(at 50.8 165.1 0)
+		(at 49.53 128.27 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14588,7 +14090,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b37f87")
 		(property "Reference" "L1"
-			(at 50.8 162.56 0)
+			(at 49.53 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14596,7 +14098,7 @@
 			)
 		)
 		(property "Value" "Z_68"
-			(at 50.8 166.37 0)
+			(at 49.53 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14604,7 +14106,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:L_0805"
-			(at 50.8 173.99 0)
+			(at 49.53 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14613,7 +14115,7 @@
 			)
 		)
 		(property "Datasheet" "https://katalog.we-online.com/pbs/datasheet/782853680.pdf"
-			(at 50.8 171.45 0)
+			(at 49.53 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14622,7 +14124,7 @@
 			)
 		)
 		(property "Description" "FERRITE BEAD 68 OHM 0805 R=25m I=3A"
-			(at 50.8 152.4 0)
+			(at 49.53 115.57 0)
 			(effects
 				(font
 					(size 1.905 1.905)
@@ -14631,7 +14133,7 @@
 			)
 		)
 		(property "MFG Part#" "782853680"
-			(at 50.8 156.21 0)
+			(at 49.53 119.38 0)
 			(effects
 				(font
 					(size 1.905 1.905)
@@ -14978,149 +14480,8 @@
 		)
 	)
 	(symbol
-		(lib_name "GND_31")
-		(lib_id "Scopefun_v2-rescue:GND")
-		(at 64.77 107.95 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a147712")
-		(property "Reference" "#PWR0103"
-			(at 64.77 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 64.77 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 64.77 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 64.77 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 64.77 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5ee5ac5a-a5a5-4ce8-b380-e9055ef84739")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "#PWR0103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 52.07 182.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a14d422")
-		(property "Reference" "C41"
-			(at 52.324 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "C_0.1u"
-			(at 52.324 184.912 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 52.07 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 52.324 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 53.34 176.53 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 54.864 178.562 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "2a80aeb6-261f-4fbb-9cde-a68ae2d57797")
-		)
-		(pin "1"
-			(uuid "fb2df0d5-312b-42be-8895-7fb1c1a5a2ed")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C41")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "ScopefunParts:C_0.1u")
-		(at 92.71 182.88 0)
+		(at 91.44 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15128,7 +14489,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a14db57")
 		(property "Reference" "C40"
-			(at 92.964 181.102 0)
+			(at 91.694 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15136,8 +14497,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C_0.1u"
-			(at 92.964 184.912 0)
+		(property "Value" "C_10u"
+			(at 91.694 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15146,7 +14507,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 92.71 187.96 0)
+			(at 91.44 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15155,7 +14516,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 92.964 181.102 0)
+			(at 91.694 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15164,7 +14525,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 93.98 176.53 0)
+			(at 92.71 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15173,7 +14534,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 95.504 178.562 0)
+			(at 94.234 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15197,94 +14558,16 @@
 		)
 	)
 	(symbol
-		(lib_id "ScopefunParts:R_2.2k")
-		(at 64.77 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a156ab6")
-		(property "Reference" "R68"
-			(at 66.04 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "R_2.2k"
-			(at 66.04 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ScopefunPackagesLibrary:R_0603"
-			(at 64.77 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
-			(at 64.77 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES SMD 1% 1/10W 0603"
-			(at 64.77 96.52 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG Part#" "ERJ-3EKF2201V"
-			(at 64.77 99.06 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f945c581-0c96-4d5c-823f-b6a39f940902")
-		)
-		(pin "2"
-			(uuid "4abdfdb0-5609-490c-8351-86d082fe9ee3")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "R68")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 29.21 182.88 0)
+		(at 58.42 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1ce63429-7454-4675-9351-997f9a9141bd")
-		(property "Reference" "C51"
-			(at 29.464 181.102 0)
+		(uuid "1cdd2cd8-3c75-4ce1-9bc6-ae968006dbe6")
+		(property "Reference" "C44"
+			(at 58.674 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15293,7 +14576,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 29.464 184.912 0)
+			(at 58.674 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15302,7 +14585,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 29.21 187.96 0)
+			(at 58.42 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15311,7 +14594,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 29.464 181.102 0)
+			(at 58.674 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15320,7 +14603,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 30.48 176.53 0)
+			(at 59.69 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15329,7 +14612,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 32.004 178.562 0)
+			(at 61.214 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15337,16 +14620,16 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
-			(uuid "78f06778-04e2-47ac-995c-1ad359e7cfd7")
-		)
 		(pin "2"
-			(uuid "6592e76f-d8d7-4316-8be0-250240a4f8c1")
+			(uuid "fd80d449-a412-4147-865c-098999090c69")
+		)
+		(pin "1"
+			(uuid "bf97e5e8-83ac-41fe-abe5-0dda4b41bac1")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C51")
+					(reference "C44")
 					(unit 1)
 				)
 			)
@@ -15753,7 +15036,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 118.11 182.88 0)
+		(at 116.84 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15761,7 +15044,7 @@
 		(dnp no)
 		(uuid "28ed04d4-3d70-478b-a1c8-cf685a96fc46")
 		(property "Reference" "C42"
-			(at 118.364 181.102 0)
+			(at 117.094 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15770,7 +15053,7 @@
 			)
 		)
 		(property "Value" "C_0.1u"
-			(at 118.364 184.912 0)
+			(at 117.094 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15779,7 +15062,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 118.11 187.96 0)
+			(at 116.84 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15788,7 +15071,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.364 181.102 0)
+			(at 117.094 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15797,7 +15080,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 119.38 176.53 0)
+			(at 118.11 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15806,7 +15089,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 120.904 178.562 0)
+			(at 119.634 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15831,7 +15114,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 109.22 182.88 0)
+		(at 107.95 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15839,7 +15122,7 @@
 		(dnp no)
 		(uuid "2a942875-8cd6-402b-87a1-786f1d0630dc")
 		(property "Reference" "C39"
-			(at 109.474 181.102 0)
+			(at 108.204 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15847,8 +15130,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C_0.1u"
-			(at 109.474 184.912 0)
+		(property "Value" "C_10u"
+			(at 108.204 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15857,7 +15140,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 109.22 187.96 0)
+			(at 107.95 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15866,7 +15149,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 109.474 181.102 0)
+			(at 108.204 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15875,7 +15158,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 110.49 176.53 0)
+			(at 109.22 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15884,7 +15167,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 112.014 178.562 0)
+			(at 110.744 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -15965,6 +15248,84 @@
 			(project "Scopefun_v2"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
 					(reference "#PWR091")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ScopefunParts:C_0.1u")
+		(at 43.18 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "460bc50b-c8f2-4dd5-b59d-9cb6a71010a3")
+		(property "Reference" "C45"
+			(at 43.434 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_10u"
+			(at 43.434 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
+			(at 43.18 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.434 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
+			(at 44.45 139.7 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG Part#" "C0603C104K4RACTU"
+			(at 45.974 141.732 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4ae0d69-966b-4914-96ce-b1a737c7a659")
+		)
+		(pin "2"
+			(uuid "c0da3025-60cd-4456-bf3f-5dff5b0d16eb")
+		)
+		(instances
+			(project "Scopefun_v3"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
+					(reference "C45")
 					(unit 1)
 				)
 			)
@@ -16119,84 +15480,6 @@
 		)
 	)
 	(symbol
-		(lib_id "ScopefunParts:C_0.1u")
-		(at 36.83 182.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "68c25185-9983-4afb-8a23-41e799f935c7")
-		(property "Reference" "C53"
-			(at 37.084 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "C_0.1u"
-			(at 37.084 184.912 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 36.83 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 37.084 181.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 38.1 176.53 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 39.624 178.562 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "6768b34c-8513-414f-a95d-1571965d06b8")
-		)
-		(pin "1"
-			(uuid "cf321957-f280-48c0-866f-a64b9586f736")
-		)
-		(instances
-			(project "Scopefun_v2"
-				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C53")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "ScopefunParts:RB851YT2R")
 		(at 50.8 62.23 0)
 		(mirror x)
@@ -16276,6 +15559,84 @@
 			(project "Scopefun_v2"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
 					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ScopefunParts:C_0.1u")
+		(at 35.56 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6dbe4d50-bbf6-4d7a-8915-bee48812caf4")
+		(property "Reference" "C41"
+			(at 35.814 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_10u"
+			(at 35.814 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
+			(at 35.56 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.814 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
+			(at 36.83 139.7 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG Part#" "C0603C104K4RACTU"
+			(at 38.354 141.732 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "69f50c73-169a-40fc-a3fc-f6095c8f0183")
+		)
+		(pin "2"
+			(uuid "17290dc4-7032-4f78-a82f-644bcee546d7")
+		)
+		(instances
+			(project "Scopefun_v3"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
+					(reference "C41")
 					(unit 1)
 				)
 			)
@@ -16819,6 +16180,84 @@
 		)
 	)
 	(symbol
+		(lib_id "ScopefunParts:C_0.1u")
+		(at 50.8 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d0fcc754-ce10-4242-b288-22926212440a")
+		(property "Reference" "C51"
+			(at 51.054 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_10u"
+			(at 51.054 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
+			(at 50.8 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 51.054 144.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
+			(at 52.07 139.7 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG Part#" "C0603C104K4RACTU"
+			(at 53.594 141.732 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bad2deaa-855b-4963-a3b8-8b198cc37e93")
+		)
+		(pin "2"
+			(uuid "bcb23000-9bc3-493a-9849-1751f3f749c9")
+		)
+		(instances
+			(project "Scopefun_v3"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
+					(reference "C51")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "ScopefunParts:+1.8V")
 		(at 163.83 55.88 0)
 		(unit 1)
@@ -16882,15 +16321,15 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_0.1u")
-		(at 21.59 182.88 0)
+		(at 27.94 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "de7bb496-cca0-4e05-9ff5-f125e4cba6e8")
-		(property "Reference" "C45"
-			(at 21.844 181.102 0)
+		(uuid "e916bbf8-c6d6-4b01-a541-9d6305c123ed")
+		(property "Reference" "C38"
+			(at 28.194 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16898,8 +16337,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C_0.1u"
-			(at 21.844 184.912 0)
+		(property "Value" "C_10u"
+			(at 28.194 148.082 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16908,7 +16347,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 21.59 187.96 0)
+			(at 27.94 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16917,7 +16356,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 21.844 181.102 0)
+			(at 28.194 144.272 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16926,7 +16365,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
-			(at 22.86 176.53 0)
+			(at 29.21 139.7 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -16935,7 +16374,7 @@
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
-			(at 24.384 178.562 0)
+			(at 30.734 141.732 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -16943,16 +16382,80 @@
 				(hide yes)
 			)
 		)
-		(pin "2"
-			(uuid "6e76a098-00ab-4f38-b7c9-78d54cbca5c0")
-		)
 		(pin "1"
-			(uuid "2ae8104e-f966-4a04-8823-37c9198deb8f")
+			(uuid "2d20cc4b-648b-4784-8fec-15b6f3c4d862")
+		)
+		(pin "2"
+			(uuid "8eceeeca-d41f-4a3a-a83f-e4edbb773aff")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
-					(reference "C45")
+					(reference "C38")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "GND_40")
+		(lib_id "Scopefun_v2-rescue:GND")
+		(at 91.44 77.47 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f301b7a2-396d-4948-828c-0a46c3779b35")
+		(property "Reference" "#PWR072"
+			(at 91.44 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 91.44 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 91.44 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 91.44 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4904cf74-0f6a-4a64-bac8-b7d95cd496e1")
+		)
+		(instances
+			(project "Scopefun_v3"
+				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056921513"
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)
