@@ -10633,7 +10633,7 @@
 		)
 		(uuid "fdae32fc-f21a-4e78-a4a1-df298d735a99")
 	)
-	(global_label "CH2_CM"
+	(global_label "CH_CM"
 		(shape input)
 		(at 147.32 151.13 180)
 		(effects
@@ -10773,7 +10773,7 @@
 			)
 		)
 	)
-	(global_label "CH1_CM"
+	(global_label "CH_CM"
 		(shape input)
 		(at 147.32 63.5 180)
 		(effects
