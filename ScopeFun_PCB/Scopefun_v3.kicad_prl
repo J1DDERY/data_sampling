@@ -33,6 +33,7 @@
       "footprint_text",
       "footprint_anchors",
       "ratsnest",
+      "grid",
       "footprints_front",
       "footprints_back",
       "footprint_values",
@@ -49,7 +50,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "ffffffff_ffffffff_ffffffff_57ff5b75",
+    "visible_layers": "ffffffff_ffffffff_ffffffff_57ff5a75",
     "zone_display_mode": 0
   },
   "git": {
