@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "88f51e49-e7b3-498f-8d5d-b516058ba4f8")
 	(paper "A4")
 	(title_block
@@ -12,24 +12,30 @@
 	)
 	(lib_symbols
 		(symbol "GND_1"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -38,38 +44,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_1_0_1"
@@ -110,24 +124,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_10"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -136,38 +156,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_10_0_1"
@@ -208,24 +236,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_11"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -234,38 +268,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_11_0_1"
@@ -306,24 +348,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_12"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -332,38 +380,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_12_0_1"
@@ -404,24 +460,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_13"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -430,38 +492,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_13_0_1"
@@ -502,24 +572,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_14"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -528,38 +604,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_14_0_1"
@@ -600,24 +684,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_2"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -626,38 +716,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_2_0_1"
@@ -698,24 +796,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_3"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -724,38 +828,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_3_0_1"
@@ -796,24 +908,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_4"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -822,38 +940,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_4_0_1"
@@ -894,24 +1020,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_5"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -920,38 +1052,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_5_0_1"
@@ -992,24 +1132,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_6"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1018,38 +1164,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_6_0_1"
@@ -1090,24 +1244,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_7"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1116,38 +1276,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_7_0_1"
@@ -1188,24 +1356,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_8"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1214,38 +1388,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_8_0_1"
@@ -1286,24 +1468,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_9"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1312,38 +1500,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_9_0_1"
@@ -1384,7 +1580,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_1"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1395,17 +1591,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1414,38 +1616,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_1_0_0"
@@ -1485,7 +1695,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_2"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1496,17 +1706,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1515,38 +1731,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_2_0_0"
@@ -1586,7 +1810,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_3"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1597,17 +1821,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1616,38 +1846,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_3_0_0"
@@ -1687,7 +1925,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_4"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1698,17 +1936,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1717,38 +1961,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_4_0_0"
@@ -1788,7 +2040,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_5"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1799,17 +2051,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1818,38 +2076,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_5_0_0"
@@ -1889,7 +2155,7 @@
 			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_6"
-			(power)
+			(power global)
 			(pin_numbers
 				(hide yes)
 			)
@@ -1900,17 +2166,23 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#FLG"
 				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "PWR_FLAG"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1919,38 +2191,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "PWR_FLAG_6_0_0"
@@ -1990,24 +2270,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "ScopefunParts:+VCC_USB"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "+VCC_USB"
 				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2016,6 +2302,8 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2024,6 +2312,8 @@
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2032,20 +2322,24 @@
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "POWER, PWR"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "+VCC_USB_0_1"
@@ -2110,24 +2404,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "ScopefunParts:+VCC_USB_P"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "+VCC_USB_P"
 				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2136,6 +2436,8 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2144,6 +2446,8 @@
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2152,20 +2456,24 @@
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "POWER, PWR"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "+VCC_USB_P_0_1"
@@ -2240,8 +2548,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "F"
 				(at -1.27 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2251,6 +2563,8 @@
 			)
 			(property "Value" "1206L150"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2260,56 +2574,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:1206"
 				(at 0 -8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://www.bourns.com/pdfs/mfnsmf.pdf"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "Resettable Fuses - PPTC PTC 6V 1206 1.5A POLYFUSE SMD THIN"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "MF-NSMF150-2"
 				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.905 1.905)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "Resettable Fuses - PPTC PTC 6V 1206 1.5A POLYFUSE SMD THIN"
 				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "Resistor_* R_*"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "1206L150_0_1"
@@ -2341,7 +2667,7 @@
 				(pin passive line
 					(at -2.54 0 0)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2359,7 +2685,7 @@
 				(pin passive line
 					(at 2.54 0 180)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2388,8 +2714,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "D"
 				(at 10.16 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2399,6 +2729,8 @@
 			)
 			(property "Value" "82400102"
 				(at 10.16 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2408,56 +2740,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:SOT23-6"
 				(at -1.016 -13.208 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://katalog.we-online.de/pbs/datasheet/82400102.pdf"
 				(at -1.016 -15.748 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "TVS Diode Array WE-TVS SOT23-6L"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "82400102"
 				(at 0 13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "TVS Diode Array WE-TVS SOT23-6L"
 				(at 0 16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "82400102_0_0"
@@ -2829,24 +3173,6 @@
 			)
 			(symbol "82400102_1_1"
 				(pin passive line
-					(at -6.35 8.89 270)
-					(length 1.905)
-					(name "IO1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at -6.35 -8.89 90)
 					(length 1.905)
 					(name "IO1"
@@ -2857,24 +3183,6 @@
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 8.89 270)
-					(length 1.905)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "5"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2901,6 +3209,24 @@
 					)
 				)
 				(pin passive line
+					(at 6.35 -8.89 90)
+					(length 1.905)
+					(name "IO2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at 6.35 8.89 270)
 					(length 1.905)
 					(name "IO2"
@@ -2919,16 +3245,34 @@
 					)
 				)
 				(pin passive line
-					(at 6.35 -8.89 90)
+					(at 0 8.89 270)
 					(length 1.905)
-					(name "IO2"
+					(name "VDD"
 						(effects
 							(font
 								(size 1.016 1.016)
 							)
 						)
 					)
-					(number "3"
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 8.89 270)
+					(length 1.905)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2950,8 +3294,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "C"
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2961,6 +3309,8 @@
 			)
 			(property "Value" "C_10u"
 				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2970,56 +3320,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://psearch.en.murata.com/capacitor/product/GRM188R60J106KE47%23.pdf"
 				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "MLCC - SMD/SMT 0603 6.3V X5R 20%"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "GRM188R60J106KE47D"
 				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "MLCC - SMD/SMT 0603 6.3V X5R 10%"
 				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "C_10u_0_1"
@@ -3052,7 +3414,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 1.905)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -3070,7 +3432,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 2.032)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -3096,8 +3458,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "Q"
 				(at -7.62 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3107,6 +3473,8 @@
 			)
 			(property "Value" "DMN6040SSD"
 				(at -7.62 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3116,56 +3484,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:SOIC8"
 				(at 0 -8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://www.diodes.com/_files/datasheets/DMN6040SSDQ.pdf"
 				(at 0 -11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "60 V, 4.4 A dual N-channel Trench MOSFET"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "60 V, 4.4 A dual N-channel Trench MOSFET"
 				(at 0 12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "DMN6040SSD-13"
 				(at 0 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "nmos n-mos n-mosfet transistor"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "DMN6040SSD_0_1"
@@ -3604,34 +3984,16 @@
 			)
 			(symbol "DMN6040SSD_1_1"
 				(pin passive line
-					(at -12.7 3.81 0)
+					(at -1.27 2.54 180)
 					(length 2.54)
-					(name "D1"
+					(name "S1"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 1.27 0)
-					(length 2.54)
-					(name "D1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3650,24 +4012,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -1.27 2.54 180)
-					(length 2.54)
-					(name "S1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3712,6 +4056,24 @@
 					)
 				)
 				(pin passive line
+					(at 12.7 1.27 180)
+					(length 2.54)
+					(name "D2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at 12.7 3.81 180)
 					(length 2.54)
 					(name "D2"
@@ -3730,16 +4092,34 @@
 					)
 				)
 				(pin passive line
-					(at 12.7 1.27 180)
+					(at -12.7 3.81 0)
 					(length 2.54)
-					(name "D2"
+					(name "D1"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "5"
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 1.27 0)
+					(length 2.54)
+					(name "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3757,8 +4137,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "U"
 				(at 0 8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3767,6 +4151,8 @@
 			)
 			(property "Value" "LTC4360-1"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3775,56 +4161,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:SC70"
 				(at 0 -13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://cds.linear.com/docs/en/datasheet/436012fa.pdf"
 				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "Overvoltage Protection Controller"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "LTC4360CSC8-1"
 				(at 0 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "Overvoltage Protection Controller"
 				(at 0 13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "Overvoltage Protection"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "LTC4360-1_0_1"
@@ -3914,34 +4312,16 @@
 					)
 				)
 				(pin output line
-					(at 12.7 2.54 180)
+					(at 12.7 -5.08 180)
 					(length 5.08)
-					(name "GATE"
+					(name "~{PWRGD}"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at 12.7 0 180)
-					(length 5.08)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3967,17 +4347,35 @@
 						)
 					)
 				)
-				(pin output line
-					(at 12.7 -5.08 180)
+				(pin power_out line
+					(at 12.7 0 180)
 					(length 5.08)
-					(name "~{PWRGD}"
+					(name "OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "5"
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 2.54 180)
+					(length 5.08)
+					(name "GATE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3999,8 +4397,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4010,6 +4412,8 @@
 			)
 			(property "Value" "R_0R"
 				(at 1.27 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4019,56 +4423,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_0805"
 				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 -7.112 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "Resistor"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "ERJ-6GEY0R00V"
 				(at 0 -4.572 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES SMD ZERO OHM JUMPER 0805"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "Resistor_* R_*"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "R_0R_0_1"
@@ -4088,7 +4504,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4106,7 +4522,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4132,8 +4548,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "D"
 				(at 12.7 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4143,6 +4563,8 @@
 			)
 			(property "Value" "SP3010-04UTG"
 				(at 12.7 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4152,56 +4574,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:uDFN-10"
 				(at -1.016 -11.938 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://www.littelfuse.com/~{/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp3010_datasheet.pdf.pdf}"
 				(at -1.016 -14.478 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "SP3010 Series 0.45pF Diode Array"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "SP3010-04UTG"
 				(at 0 13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "SP3010 Series 0.45pF Diode Array"
 				(at 0 16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "SP3010-04UTG_0_0"
@@ -5539,6 +5973,24 @@
 					)
 				)
 				(pin passive line
+					(at 13.97 1.27 180)
+					(length 1.905)
+					(name "IO2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at -13.97 -1.27 0)
 					(length 1.905)
 					(name "IO2"
@@ -5575,7 +6027,7 @@
 					)
 				)
 				(pin passive line
-					(at -7.62 11.43 270)
+					(at 3.81 11.43 270)
 					(length 1.905)
 					(name "IO1"
 						(effects
@@ -5584,25 +6036,7 @@
 							)
 						)
 					)
-					(number "10"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 11.43 270)
-					(length 1.905)
-					(name "IO1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "9"
+					(number "6"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -5629,42 +6063,6 @@
 					)
 				)
 				(pin passive line
-					(at 3.81 11.43 270)
-					(length 1.905)
-					(name "IO1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 1.27 180)
-					(length 1.905)
-					(name "IO2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 13.97 -1.27 180)
 					(length 1.905)
 					(name "IO1"
@@ -5675,6 +6073,42 @@
 						)
 					)
 					(number "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 11.43 270)
+					(length 1.905)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 11.43 270)
+					(length 1.905)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "10"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -5696,8 +6130,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "P"
 				(at -1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5706,6 +6144,8 @@
 			)
 			(property "Value" "TERM-PCB-55-M3"
 				(at -2.54 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5715,47 +6155,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:TERM-PCB-55-M3"
 				(at -1.27 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "https://www.tme.eu/Document/0c814e212532c91d0fc3fbdcf27c7505/PCB-55%28M3%29.pdf"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "TERMINAL PCB-55-M3"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "TERMINAL PCB-55(M3)"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "PCB-55(M3)"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "TERM-PCB-55-M3_0_0"
@@ -5798,8 +6248,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "P"
 				(at -5.08 16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5808,6 +6262,8 @@
 			)
 			(property "Value" "USB3_TypeB"
 				(at 5.08 16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5816,65 +6272,79 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:USB3_TypeB"
 				(at 0 -20.32 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://katalog.we-online.de/em/datasheet/692221030100.pdf"
 				(at 0 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "USB-B1H Interconnect USB Type B"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "USB 3.0 Type B"
 				(at 0 22.86 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "692221030100"
 				(at 0 20.32 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "USB"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "USB*"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "USB3_TypeB_0_1"
@@ -5891,24 +6361,6 @@
 				)
 			)
 			(symbol "USB3_TypeB_1_1"
-				(pin passive line
-					(at -10.16 -12.7 0)
-					(length 5.08)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SHLD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin power_out line
 					(at -8.89 12.7 0)
 					(length 3.81)
@@ -6064,6 +6516,24 @@
 						)
 					)
 					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 -12.7 0)
+					(length 5.08)
+					(name "SHIELD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "SHLD"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7297,11 +7767,13 @@
 		(uuid "23ef3be2-0662-4d08-8e0b-92896f8223d2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 109.22 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7317,11 +7789,13 @@
 		(uuid "57410141-0fd0-4999-9041-f50a50ad635e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 168.91 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7337,11 +7811,13 @@
 		(uuid "5a743632-516c-45cb-9a11-4ab80c09f05d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 168.91 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7357,11 +7833,13 @@
 		(uuid "72b6f03e-c6f4-4489-a358-851b3afcab1e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 168.91 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7377,11 +7855,13 @@
 		(uuid "7955393c-f78e-4ec0-b595-262445250cf5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 168.91 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7397,11 +7877,13 @@
 		(uuid "e520d09b-d319-41fb-af9b-b8f743cd181f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 109.22 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -7410,22 +7892,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 63.5 121.92 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005695fb9e")
 		(property "Reference" "#PWR0111"
 			(at 63.5 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 63.5 125.73 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7434,6 +7922,8 @@
 		)
 		(property "Footprint" ""
 			(at 63.5 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7442,6 +7932,8 @@
 		)
 		(property "Datasheet" ""
 			(at 63.5 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7450,6 +7942,8 @@
 		)
 		(property "Description" ""
 			(at 63.5 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7460,7 +7954,7 @@
 			(uuid "e70ad93a-1f00-4a68-ae82-ecf9cec7b889")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0111")
 					(unit 1)
@@ -7472,13 +7966,17 @@
 		(lib_id "ScopefunParts:1206L150")
 		(at 86.36 66.04 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005696b88f")
 		(property "Reference" "F1"
 			(at 85.09 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7488,6 +7986,8 @@
 		)
 		(property "Value" "1206L150"
 			(at 86.36 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7497,38 +7997,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_1206"
 			(at 86.36 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_1206l_datasheet.pdf.pdf"
 			(at 86.36 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Resettable Fuses - PPTC PTC 6V 1206 1.5A POLYFUSE SMD THIN"
 			(at 86.36 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "1206L150THWR"
 			(at 86.36 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.905 1.905)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -7538,7 +8046,7 @@
 			(uuid "cbaf1da0-e0dc-4b0b-8520-79175b12cca6")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "F1")
 					(unit 1)
@@ -7550,22 +8058,28 @@
 		(lib_id "ScopefunParts:+VCC_USB_P")
 		(at 200.66 62.23 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005696efb3")
 		(property "Reference" "#PWR0112"
 			(at 200.66 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+VCC_USB_P"
 			(at 200.66 58.42 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7574,6 +8088,8 @@
 		)
 		(property "Footprint" ""
 			(at 200.66 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7582,6 +8098,8 @@
 		)
 		(property "Datasheet" ""
 			(at 200.66 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7590,6 +8108,8 @@
 		)
 		(property "Description" ""
 			(at 200.66 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7600,7 +8120,7 @@
 			(uuid "d2cc026b-eb2a-400d-bc1e-35ab324b19fa")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0112")
 					(unit 1)
@@ -7613,22 +8133,28 @@
 		(lib_id "Scopefun_v2-rescue:PWR_FLAG")
 		(at 259.08 21.59 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000056b0e4f5")
 		(property "Reference" "#FLG0113"
 			(at 259.08 19.177 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "PWR_FLAG"
 			(at 259.08 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7637,6 +8163,8 @@
 		)
 		(property "Footprint" ""
 			(at 259.08 21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7645,6 +8173,8 @@
 		)
 		(property "Datasheet" ""
 			(at 259.08 21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7653,6 +8183,8 @@
 		)
 		(property "Description" ""
 			(at 259.08 21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7663,7 +8195,7 @@
 			(uuid "247ae5a5-1ce3-4742-b62d-67e95a94e3d5")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#FLG0113")
 					(unit 1)
@@ -7676,22 +8208,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 259.08 26.67 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000056b0ea13")
 		(property "Reference" "#PWR0114"
 			(at 259.08 33.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 259.08 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7700,6 +8238,8 @@
 		)
 		(property "Footprint" ""
 			(at 259.08 26.67 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7708,6 +8248,8 @@
 		)
 		(property "Datasheet" ""
 			(at 259.08 26.67 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7716,6 +8258,8 @@
 		)
 		(property "Description" ""
 			(at 259.08 26.67 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7726,7 +8270,7 @@
 			(uuid "56825a03-718b-4bfe-937a-8150dfaeee5b")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0114")
 					(unit 1)
@@ -7738,13 +8282,17 @@
 		(lib_id "ScopefunParts:LTC4360-1")
 		(at 152.4 68.58 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b8303")
 		(property "Reference" "U13"
 			(at 152.4 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7753,6 +8301,8 @@
 		)
 		(property "Value" "LTC4360-1"
 			(at 152.4 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7761,38 +8311,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:SC70"
 			(at 152.4 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://cds.linear.com/docs/en/datasheet/436012fa.pdf"
 			(at 152.4 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Overvoltage Protection Controller"
 			(at 152.4 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "LTC4360CSC8-1"
 			(at 152.4 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "3"
@@ -7820,7 +8378,7 @@
 			(uuid "3ff47c17-97a6-4fe0-b474-dc28cae1dd97")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "U13")
 					(unit 1)
@@ -7833,22 +8391,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 173.99 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584c023e")
 		(property "Reference" "#PWR0115"
 			(at 173.99 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 173.99 80.01 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7857,6 +8421,8 @@
 		)
 		(property "Footprint" ""
 			(at 173.99 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7865,6 +8431,8 @@
 		)
 		(property "Datasheet" ""
 			(at 173.99 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7873,6 +8441,8 @@
 		)
 		(property "Description" ""
 			(at 173.99 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7883,7 +8453,7 @@
 			(uuid "2eaae121-6544-4039-bfe2-1c67de66e8d0")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0115")
 					(unit 1)
@@ -7896,22 +8466,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 39.37 121.92 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584f6cf9")
 		(property "Reference" "#PWR0116"
 			(at 39.37 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 39.37 125.73 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7920,6 +8496,8 @@
 		)
 		(property "Footprint" ""
 			(at 39.37 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7928,6 +8506,8 @@
 		)
 		(property "Datasheet" ""
 			(at 39.37 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7936,6 +8516,8 @@
 		)
 		(property "Description" ""
 			(at 39.37 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7946,7 +8528,7 @@
 			(uuid "5a7c6d73-7a09-4a39-b43e-ae9da428d0a9")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0116")
 					(unit 1)
@@ -7958,22 +8540,28 @@
 		(lib_id "ScopefunParts:+VCC_USB")
 		(at 46.99 62.23 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586c1b0b")
 		(property "Reference" "#PWR0117"
 			(at 46.99 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+VCC_USB"
 			(at 46.99 58.674 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7982,6 +8570,8 @@
 		)
 		(property "Footprint" ""
 			(at 46.99 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7990,6 +8580,8 @@
 		)
 		(property "Datasheet" ""
 			(at 46.99 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7998,6 +8590,8 @@
 		)
 		(property "Description" ""
 			(at 46.99 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8008,7 +8602,7 @@
 			(uuid "308dabde-ffc8-43c9-8343-17e83476515d")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0117")
 					(unit 1)
@@ -8022,22 +8616,28 @@
 		(at 242.57 25.4 0)
 		(mirror x)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586c1c92")
 		(property "Reference" "#FLG0118"
 			(at 242.57 27.813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "PWR_FLAG"
 			(at 242.57 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8046,6 +8646,8 @@
 		)
 		(property "Footprint" ""
 			(at 242.57 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8054,6 +8656,8 @@
 		)
 		(property "Datasheet" ""
 			(at 242.57 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8062,6 +8666,8 @@
 		)
 		(property "Description" ""
 			(at 242.57 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8072,7 +8678,7 @@
 			(uuid "51636d5d-b09d-4212-966b-a6b76afa52fe")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#FLG0118")
 					(unit 1)
@@ -8084,22 +8690,28 @@
 		(lib_id "ScopefunParts:+VCC_USB")
 		(at 242.57 20.32 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586c1de0")
 		(property "Reference" "#PWR0119"
 			(at 242.57 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+VCC_USB"
 			(at 242.57 16.764 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8108,6 +8720,8 @@
 		)
 		(property "Footprint" ""
 			(at 242.57 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8116,6 +8730,8 @@
 		)
 		(property "Datasheet" ""
 			(at 242.57 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8124,6 +8740,8 @@
 		)
 		(property "Description" ""
 			(at 242.57 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8134,7 +8752,7 @@
 			(uuid "9d75c20b-2a17-4dab-9107-c63459e9a70f")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0119")
 					(unit 1)
@@ -8148,22 +8766,28 @@
 		(at 229.87 25.4 0)
 		(mirror x)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000588d03aa")
 		(property "Reference" "#FLG0120"
 			(at 229.87 27.813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "PWR_FLAG"
 			(at 229.87 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8172,6 +8796,8 @@
 		)
 		(property "Footprint" ""
 			(at 229.87 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8180,6 +8806,8 @@
 		)
 		(property "Datasheet" ""
 			(at 229.87 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8188,6 +8816,8 @@
 		)
 		(property "Description" ""
 			(at 229.87 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8198,7 +8828,7 @@
 			(uuid "ae42f0c3-82fc-4d72-bec0-12e85bd49b4d")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#FLG0120")
 					(unit 1)
@@ -8210,22 +8840,28 @@
 		(lib_id "ScopefunParts:+VCC_USB_P")
 		(at 229.87 20.32 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000588d0400")
 		(property "Reference" "#PWR0121"
 			(at 229.87 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+VCC_USB_P"
 			(at 229.87 16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8234,6 +8870,8 @@
 		)
 		(property "Footprint" ""
 			(at 229.87 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8242,6 +8880,8 @@
 		)
 		(property "Datasheet" ""
 			(at 229.87 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8250,6 +8890,8 @@
 		)
 		(property "Description" ""
 			(at 229.87 20.32 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8260,7 +8902,7 @@
 			(uuid "0c92bff6-3a6c-43b0-af74-35b52e94f3b9")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0121")
 					(unit 1)
@@ -8272,13 +8914,17 @@
 		(lib_id "ScopefunParts:DMN6040SSD")
 		(at 166.37 48.26 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058bc0760")
 		(property "Reference" "Q4"
 			(at 158.75 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8288,6 +8934,8 @@
 		)
 		(property "Value" "DMN6040SSD"
 			(at 158.75 43.18 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8297,38 +8945,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:SOIC8"
 			(at 166.37 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMN6040SSD.pdf"
 			(at 166.37 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "60 V, 4.4 A dual N-channel Trench MOSFET"
 			(at 166.37 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "DMN6040SSD-13"
 			(at 166.37 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -8356,7 +9012,7 @@
 			(uuid "236ddca2-a1c9-471a-8965-e172ee2e9fed")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "Q4")
 					(unit 1)
@@ -8369,22 +9025,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 200.66 78.74 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058bc8ef4")
 		(property "Reference" "#PWR0122"
 			(at 200.66 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 200.66 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8393,6 +9055,8 @@
 		)
 		(property "Footprint" ""
 			(at 200.66 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8401,6 +9065,8 @@
 		)
 		(property "Datasheet" ""
 			(at 200.66 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8409,6 +9075,8 @@
 		)
 		(property "Description" ""
 			(at 200.66 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8419,7 +9087,7 @@
 			(uuid "fae9d9d6-fa4a-4fa1-9e93-bd2871980c85")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0122")
 					(unit 1)
@@ -8432,22 +9100,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 135.89 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058bc926b")
 		(property "Reference" "#PWR0123"
 			(at 135.89 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 135.89 80.01 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8456,6 +9130,8 @@
 		)
 		(property "Footprint" ""
 			(at 135.89 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8464,6 +9140,8 @@
 		)
 		(property "Datasheet" ""
 			(at 135.89 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8472,6 +9150,8 @@
 		)
 		(property "Description" ""
 			(at 135.89 76.2 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8482,7 +9162,7 @@
 			(uuid "9ee8d640-5665-4e3f-8a8a-c7179a4d9f2c")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0123")
 					(unit 1)
@@ -8494,13 +9174,17 @@
 		(lib_id "ScopefunParts:R_0R")
 		(at 63.5 116.84 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058c3946a")
 		(property "Reference" "R63"
 			(at 64.77 115.57 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8510,6 +9194,8 @@
 		)
 		(property "Value" "R_0R"
 			(at 64.77 118.11 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8519,38 +9205,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0805"
 			(at 63.5 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 63.5 123.952 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD ZERO OHM JUMPER 0805"
 			(at 63.5 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-6GEY0R00V"
 			(at 63.5 121.412 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -8560,7 +9254,7 @@
 			(uuid "340a8b23-8f4c-4566-85fa-0bb35b711eea")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "R63")
 					(unit 1)
@@ -8573,13 +9267,17 @@
 		(at 59.69 116.84 0)
 		(mirror y)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058c3b93f")
 		(property "Reference" "R62"
 			(at 58.42 115.57 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8589,6 +9287,8 @@
 		)
 		(property "Value" "R_0R"
 			(at 58.42 118.11 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8598,38 +9298,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0805"
 			(at 59.69 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 59.69 123.952 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD ZERO OHM JUMPER 0805"
 			(at 59.69 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-6GEY0R00V"
 			(at 59.69 121.412 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -8639,7 +9347,7 @@
 			(uuid "fe3a27da-7760-4418-9112-aae444dbedac")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "R62")
 					(unit 1)
@@ -8651,13 +9359,17 @@
 		(lib_id "ScopefunParts:USB3_TypeB")
 		(at 63.5 91.44 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000059fd051f")
 		(property "Reference" "P1"
 			(at 58.42 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8666,6 +9378,8 @@
 		)
 		(property "Value" "USB3_TypeB"
 			(at 68.58 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8674,38 +9388,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:USB3_TypeB"
 			(at 63.5 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://katalog.we-online.de/em/datasheet/692221030100.pdf"
 			(at 63.5 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "USB 3.0 Type B"
 			(at 63.5 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "692221030100"
 			(at 63.5 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -8739,7 +9461,7 @@
 			(uuid "d7631862-c869-4931-aac3-2f888b2bcee2")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "P1")
 					(unit 1)
@@ -8751,13 +9473,17 @@
 		(lib_id "ScopefunParts:82400102")
 		(at 97.79 91.44 270)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000059fe24dc")
 		(property "Reference" "D16"
 			(at 92.71 77.47 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8767,6 +9493,8 @@
 		)
 		(property "Value" "82400102"
 			(at 92.71 80.01 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8776,38 +9504,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:SOT23-6"
 			(at 84.582 90.424 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://katalog.we-online.de/pbs/datasheet/82400102.pdf"
 			(at 82.042 90.424 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "TVS Diode Array WE-TVS SOT23-6L"
 			(at 114.3 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "82400102"
 			(at 111.76 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "4"
@@ -8829,7 +9565,7 @@
 			(uuid "01298919-585f-4ee0-8863-f65369dd6e2a")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "D16")
 					(unit 1)
@@ -8841,13 +9577,17 @@
 		(lib_id "ScopefunParts:SP3010-04UTG")
 		(at 153.67 115.57 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000059fe3dc7")
 		(property "Reference" "D17"
 			(at 167.64 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8857,6 +9597,8 @@
 		)
 		(property "Value" "SP3010-04UTG"
 			(at 167.64 107.95 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8866,38 +9608,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:uDFN-10"
 			(at 152.654 127.508 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp3010_datasheet.pdf.pdf"
 			(at 152.654 130.048 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "SP3010 Series 0.45pF Diode Array"
 			(at 153.67 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "SP3010-04UTG"
 			(at 153.67 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "7"
@@ -8931,7 +9681,7 @@
 			(uuid "842b1c42-69fb-4d5c-91b2-2cab89755c70")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "D17")
 					(unit 1)
@@ -8944,22 +9694,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 172.72 120.65 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000059fe617a")
 		(property "Reference" "#PWR0124"
 			(at 172.72 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 172.72 124.46 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8968,6 +9724,8 @@
 		)
 		(property "Footprint" ""
 			(at 172.72 120.65 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8976,6 +9734,8 @@
 		)
 		(property "Datasheet" ""
 			(at 172.72 120.65 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8984,6 +9744,8 @@
 		)
 		(property "Description" ""
 			(at 172.72 120.65 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8994,7 +9756,7 @@
 			(uuid "1d0bf750-9efa-429b-90f2-fb847f411bc4")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "#PWR0124")
 					(unit 1)
@@ -9006,13 +9768,17 @@
 		(lib_id "ScopefunParts:C_10u")
 		(at 200.66 72.39 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a68ec37")
 		(property "Reference" "C70"
 			(at 200.914 70.612 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9022,6 +9788,8 @@
 		)
 		(property "Value" "C_10u"
 			(at 200.914 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9031,38 +9799,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 200.66 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://psearch.en.murata.com/capacitor/product/GRM188R60J106KE47%23.pdf"
 			(at 200.66 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 6.3V X5R 10%"
 			(at 200.66 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "GRM188R60J106KE47D"
 			(at 200.66 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -9072,7 +9848,7 @@
 			(uuid "fadf8f8a-a529-42a2-ba1a-d545cce503c5")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "C70")
 					(unit 1)
@@ -9084,13 +9860,17 @@
 		(lib_id "ScopefunParts:TERM-PCB-55-M3")
 		(at 72.39 120.65 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005d954e45")
 		(property "Reference" "GND_P2"
 			(at 78.74 118.11 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9100,6 +9880,8 @@
 		)
 		(property "Value" "TERM-PCB-55-M3"
 			(at 78.74 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9109,45 +9891,53 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:TERM-PCB-55-M3"
 			(at 71.12 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://www.tme.eu/Document/0c814e212532c91d0fc3fbdcf27c7505/PCB-55%28M3%29.pdf"
 			(at 72.39 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "TERMINAL PCB-55(M3)"
 			(at 72.39 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "PCB-55(M3)"
 			(at 72.39 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
 			(uuid "e2a04593-a2bd-4dca-913f-bbb0284270bb")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000056954a3d"
 					(reference "GND_P2")
 					(unit 1)

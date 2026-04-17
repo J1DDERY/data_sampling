@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "dd51c49b-8908-47db-9e93-afbe744aa7d3")
 	(paper "A4")
 	(title_block
@@ -10,24 +10,30 @@
 	)
 	(lib_symbols
 		(symbol "GND_1"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -36,38 +42,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_1_0_1"
@@ -108,24 +122,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_10"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -134,38 +154,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_10_0_1"
@@ -206,24 +234,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_11"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -232,38 +266,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_11_0_1"
@@ -304,24 +346,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_12"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -330,38 +378,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_12_0_1"
@@ -402,24 +458,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_13"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -428,38 +490,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_13_0_1"
@@ -500,24 +570,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_14"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -526,38 +602,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_14_0_1"
@@ -598,24 +682,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_15"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -624,38 +714,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_15_0_1"
@@ -696,24 +794,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_16"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -722,38 +826,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_16_0_1"
@@ -794,24 +906,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_2"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -820,38 +938,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_2_0_1"
@@ -892,24 +1018,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_3"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -918,38 +1050,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_3_0_1"
@@ -990,24 +1130,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_4"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1016,38 +1162,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_4_0_1"
@@ -1088,24 +1242,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_5"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1114,38 +1274,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_5_0_1"
@@ -1186,24 +1354,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_6"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1212,38 +1386,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_6_0_1"
@@ -1284,24 +1466,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_7"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1310,38 +1498,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_7_0_1"
@@ -1382,24 +1578,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_8"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1408,38 +1610,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_8_0_1"
@@ -1480,24 +1690,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "GND_9"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "GND"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1506,38 +1722,46 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Field5" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "GND_9_0_1"
@@ -1578,24 +1802,30 @@
 			(embedded_fonts no)
 		)
 		(symbol "ScopefunParts:+1.5V"
-			(power)
+			(power global)
 			(pin_names
 				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Value" "+1.5V"
 				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1604,6 +1834,8 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1612,6 +1844,8 @@
 			)
 			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1620,20 +1854,24 @@
 			)
 			(property "Description" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "POWER, PWR"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "+1.5V_0_1"
@@ -1708,8 +1946,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "C"
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1719,6 +1961,8 @@
 			)
 			(property "Value" "C_0.1u"
 				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1728,56 +1972,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "C0603C104K4RACTU"
 				(at 2.794 4.318 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "MLCC - SMD/SMT 0603 16V X7R 10%"
 				(at 1.27 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "C_0.1u_0_1"
@@ -1810,7 +2066,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 1.905)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -1828,7 +2084,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 2.032)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -1857,8 +2113,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "C"
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1868,6 +2128,8 @@
 			)
 			(property "Value" "C_10n"
 				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1877,56 +2139,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "MLCC - SMD/SMT 0603 50V C0G 5%"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "GRM1885C1H103JA01D"
 				(at 2.794 4.318 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "MLCC - SMD/SMT 0603 50V C0G 5%"
 				(at 1.27 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "C_10n_0_1"
@@ -1959,7 +2233,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 1.905)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -1977,7 +2251,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 2.032)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2006,8 +2280,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "C"
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2017,6 +2295,8 @@
 			)
 			(property "Value" "C_1u"
 				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2026,56 +2306,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "MLCC - SMD/SMT 0603 10V X7R 10%"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "C0603C105K9PACTU"
 				(at 2.794 4.318 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "MLCC - SMD/SMT 0603 6.3V X5R 10%"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "C_1u_0_1"
@@ -2108,7 +2400,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 1.905)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2126,7 +2418,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 2.032)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2155,8 +2447,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "C"
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2166,6 +2462,8 @@
 			)
 			(property "Value" "C_22u"
 				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2175,56 +2473,68 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:C_0805"
 				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" ""
 				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "MLCC - SMD/SMT 0805 10V X5R 20%"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "LMK212BBJ226MG-T"
 				(at 2.794 4.318 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "MLCC - SMD/SMT 0805 10V X5R 20%"
 				(at 1.27 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "C_22u_0_1"
@@ -2257,7 +2567,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 1.905)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2275,7 +2585,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 2.032)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -2300,8 +2610,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "U"
 				(at 0 41.91 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2310,6 +2624,8 @@
 			)
 			(property "Value" "IS43TR16256A-125KBL"
 				(at 0 39.37 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2318,51 +2634,63 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:TW-BGA-96"
 				(at 0 -54.61 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://www.issi.com/WW/pdf/43-46TR16640B-81280BL.pdf"
 				(at 0 -46.99 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "64M X 16 BIT DDR3 SRAM"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "256M X 16 BIT DDR3 SRAM 1.5V"
 				(at -1.27 44.45 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "IS43TR16640B-125JBL"
 				(at 0 -50.8 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_locked" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2371,11 +2699,13 @@
 			)
 			(property "ki_keywords" "IS43TR16640B-125JBL"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "IS43TR16256A-125KBL_1_1"
@@ -2391,16 +2721,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 34.29 0)
+					(at 12.7 0 180)
 					(length 2.54)
-					(name "ZQ"
+					(name "DQU5"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "L8"
+					(number "A2"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2409,16 +2739,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 29.21 0)
+					(at 12.7 -5.08 180)
 					(length 2.54)
-					(name "A0"
+					(name "DQU7"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "N3"
+					(number "A3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2427,16 +2757,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 26.67 0)
+					(at 12.7 2.54 180)
 					(length 2.54)
-					(name "A1"
+					(name "DQU4"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "P7"
+					(number "A7"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2445,16 +2775,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 24.13 0)
+					(at 12.7 -33.02 180)
 					(length 2.54)
-					(name "A2"
+					(name "~{DQSU}"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "P3"
+					(number "B7"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2463,16 +2793,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 21.59 0)
+					(at 12.7 -2.54 180)
 					(length 2.54)
-					(name "A3"
+					(name "DQU6"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "N2"
+					(number "B8"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2481,16 +2811,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 19.05 0)
+					(at 12.7 5.08 180)
 					(length 2.54)
-					(name "A4"
+					(name "DQU3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "P8"
+					(number "C2"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2499,16 +2829,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 16.51 0)
+					(at 12.7 10.16 180)
 					(length 2.54)
-					(name "A5"
+					(name "DQU1"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "P2"
+					(number "C3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2517,16 +2847,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 13.97 0)
+					(at 12.7 -30.48 180)
 					(length 2.54)
-					(name "A6"
+					(name "DQSU"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "R8"
+					(number "C7"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2535,16 +2865,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 11.43 0)
+					(at 12.7 7.62 180)
 					(length 2.54)
-					(name "A7"
+					(name "DQU2"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "R2"
+					(number "C8"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2553,16 +2883,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 8.89 0)
+					(at 12.7 -17.78 180)
 					(length 2.54)
-					(name "A8"
+					(name "DMU"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "T8"
+					(number "D3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2571,16 +2901,358 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 6.35 0)
+					(at 12.7 12.7 180)
 					(length 2.54)
-					(name "A9"
+					(name "DQU0"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "R3"
+					(number "D7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 34.29 180)
+					(length 2.54)
+					(name "DQL0"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -15.24 180)
+					(length 2.54)
+					(name "DML"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 29.21 180)
+					(length 2.54)
+					(name "DQL2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -22.86 180)
+					(length 2.54)
+					(name "DQSL"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 31.75 180)
+					(length 2.54)
+					(name "DQL1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 26.67 180)
+					(length 2.54)
+					(name "DQL3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 19.05 180)
+					(length 2.54)
+					(name "DQL6"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -25.4 180)
+					(length 2.54)
+					(name "~{DQSL}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 24.13 180)
+					(length 2.54)
+					(name "DQL4"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 16.51 180)
+					(length 2.54)
+					(name "DQL7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 21.59 180)
+					(length 2.54)
+					(name "DQL5"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -21.59 0)
+					(length 2.54)
+					(name "~{RAS}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "J3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -31.75 0)
+					(length 2.54)
+					(name "CK"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "J7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -10.16 180)
+					(length 2.54)
+					(name "ODT"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -24.13 0)
+					(length 2.54)
+					(name "~{CAS}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -34.29 0)
+					(length 2.54)
+					(name "~{CK}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -26.67 0)
+					(length 2.54)
+					(name "CKE"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -39.37 180)
+					(length 2.54)
+					(name "~{CS}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "L2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -19.05 0)
+					(length 2.54)
+					(name "~{WE}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "L3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2607,16 +3279,106 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 1.27 0)
+					(at -12.7 34.29 0)
 					(length 2.54)
-					(name "A11"
+					(name "ZQ"
 						(effects
 							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "R7"
+					(number "L8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -11.43 0)
+					(length 2.54)
+					(name "BA0"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "M2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -16.51 0)
+					(length 2.54)
+					(name "BA2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "M3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -8.89 0)
+					(length 2.54)
+					(name "NC(A15)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "M7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 21.59 0)
+					(length 2.54)
+					(name "A3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "N2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 29.21 0)
+					(length 2.54)
+					(name "A0"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "N3"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2635,6 +3397,186 @@
 						)
 					)
 					(number "N7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -13.97 0)
+					(length 2.54)
+					(name "BA1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "N8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 16.51 0)
+					(length 2.54)
+					(name "A5"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 24.13 0)
+					(length 2.54)
+					(name "A2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 26.67 0)
+					(length 2.54)
+					(name "A1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 19.05 0)
+					(length 2.54)
+					(name "A4"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 11.43 0)
+					(length 2.54)
+					(name "A7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 6.35 0)
+					(length 2.54)
+					(name "A9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 1.27 0)
+					(length 2.54)
+					(name "A11"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 13.97 0)
+					(length 2.54)
+					(name "A6"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -39.37 0)
+					(length 2.54)
+					(name "~{RESET}"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "T2"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -2679,628 +3621,16 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 -8.89 0)
+					(at -12.7 8.89 0)
 					(length 2.54)
-					(name "NC(A15)"
+					(name "A8"
 						(effects
 							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "M7"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -11.43 0)
-					(length 2.54)
-					(name "BA0"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "M2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -13.97 0)
-					(length 2.54)
-					(name "BA1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "N8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -16.51 0)
-					(length 2.54)
-					(name "BA2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "M3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -19.05 0)
-					(length 2.54)
-					(name "~{WE}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "L3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -21.59 0)
-					(length 2.54)
-					(name "~{RAS}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "J3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -24.13 0)
-					(length 2.54)
-					(name "~{CAS}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -26.67 0)
-					(length 2.54)
-					(name "CKE"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -31.75 0)
-					(length 2.54)
-					(name "CK"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "J7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -34.29 0)
-					(length 2.54)
-					(name "~{CK}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -39.37 0)
-					(length 2.54)
-					(name "~{RESET}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "T2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 34.29 180)
-					(length 2.54)
-					(name "DQL0"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 31.75 180)
-					(length 2.54)
-					(name "DQL1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 29.21 180)
-					(length 2.54)
-					(name "DQL2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 26.67 180)
-					(length 2.54)
-					(name "DQL3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 24.13 180)
-					(length 2.54)
-					(name "DQL4"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "H3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 21.59 180)
-					(length 2.54)
-					(name "DQL5"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "H8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 19.05 180)
-					(length 2.54)
-					(name "DQL6"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 16.51 180)
-					(length 2.54)
-					(name "DQL7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "H7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 12.7 180)
-					(length 2.54)
-					(name "DQU0"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 10.16 180)
-					(length 2.54)
-					(name "DQU1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 7.62 180)
-					(length 2.54)
-					(name "DQU2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 5.08 180)
-					(length 2.54)
-					(name "DQU3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 2.54 180)
-					(length 2.54)
-					(name "DQU4"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "A7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 0 180)
-					(length 2.54)
-					(name "DQU5"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "A2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -2.54 180)
-					(length 2.54)
-					(name "DQU6"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "B8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -5.08 180)
-					(length 2.54)
-					(name "DQU7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "A3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -10.16 180)
-					(length 2.54)
-					(name "ODT"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -15.24 180)
-					(length 2.54)
-					(name "DML"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -17.78 180)
-					(length 2.54)
-					(name "DMU"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -22.86 180)
-					(length 2.54)
-					(name "DQSL"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -25.4 180)
-					(length 2.54)
-					(name "~{DQSL}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -30.48 180)
-					(length 2.54)
-					(name "DQSU"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -33.02 180)
-					(length 2.54)
-					(name "~{DQSU}"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "B7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -39.37 180)
-					(length 2.54)
-					(name "~{CS}"
-						(effects
-							(font
 								(size 0.9906 0.9906)
 							)
 						)
 					)
-					(number "L2"
+					(number "T8"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -3322,169 +3652,7 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 34.29 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "R9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 31.75 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "R1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 29.21 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "N9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 26.67 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "N1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 24.13 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 21.59 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "K2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 19.05 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G7"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 16.51 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 13.97 0)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "B2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 8.89 0)
+					(at -12.7 -11.43 0)
 					(length 2.54)
 					(name "VDDQ"
 						(effects
@@ -3493,115 +3661,7 @@
 							)
 						)
 					)
-					(number "H9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 6.35 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "H2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 3.81 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 1.27 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -1.27 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -3.81 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -6.35 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "C1"
+					(number "A1"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -3628,294 +3688,6 @@
 					)
 				)
 				(pin passive line
-					(at -12.7 -11.43 0)
-					(length 2.54)
-					(name "VDDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "A1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -16.51 0)
-					(length 2.54)
-					(name "VREFDQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "H1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -19.05 0)
-					(length 2.54)
-					(name "VREFCA"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "M8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -24.13 0)
-					(length 2.54)
-					(name "NC"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "J9"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -26.67 0)
-					(length 2.54)
-					(name "NC"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "L9"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 34.29 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "T9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 31.75 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "T1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 29.21 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "P9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 26.67 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "P1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 24.13 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "M9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 21.59 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "M1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 19.05 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "J8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 16.51 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "J2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 13.97 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 11.43 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 8.89 180)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "B3"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 12.7 6.35 180)
 					(length 2.54)
 					(name "VSS"
@@ -3926,150 +3698,6 @@
 						)
 					)
 					(number "A9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 1.27 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -1.27 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "G1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -3.81 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "F9"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -6.35 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -8.89 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "E2"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -11.43 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D8"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -13.97 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "D1"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -16.51 180)
-					(length 2.54)
-					(name "VSSQ"
-						(effects
-							(font
-								(size 0.9906 0.9906)
-							)
-						)
-					)
-					(number "B9"
 						(effects
 							(font
 								(size 0.9906 0.9906)
@@ -4096,6 +3724,402 @@
 					)
 				)
 				(pin passive line
+					(at -12.7 13.97 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "B2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 8.89 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "B3"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -16.51 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "B9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -6.35 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "C1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -3.81 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "C9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -13.97 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "D1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -1.27 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "D2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -11.43 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "D8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 16.51 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "D9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 11.43 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -8.89 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -6.35 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 1.27 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "E9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 3.81 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -3.81 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "F9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -1.27 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 19.05 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G7"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 13.97 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 1.27 180)
+					(length 2.54)
+					(name "VSSQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "G9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -16.51 0)
+					(length 2.54)
+					(name "VREFDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 6.35 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 8.89 0)
+					(length 2.54)
+					(name "VDDQ"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "H9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at 12.7 -24.13 180)
 					(length 2.54)
 					(name "NC"
@@ -4109,6 +4133,96 @@
 						(effects
 							(font
 								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 16.51 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "J2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 19.05 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "J8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -24.13 0)
+					(length 2.54)
+					(name "NC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "J9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 21.59 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K2"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 24.13 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "K8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
 							)
 						)
 					)
@@ -4131,6 +4245,222 @@
 						)
 					)
 				)
+				(pin passive line
+					(at -12.7 -26.67 0)
+					(length 2.54)
+					(name "NC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "L9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 21.59 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "M1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -19.05 0)
+					(length 2.54)
+					(name "VREFCA"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "M8"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 24.13 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "M9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 26.67 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "N1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 29.21 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "N9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 26.67 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 29.21 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "P9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 31.75 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 34.29 0)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "R9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 31.75 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "T1"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 34.29 180)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+					(number "T9"
+						(effects
+							(font
+								(size 0.9906 0.9906)
+							)
+						)
+					)
+				)
 			)
 			(embedded_fonts no)
 		)
@@ -4145,8 +4475,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 3.175 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4156,6 +4490,8 @@
 			)
 			(property "Value" "RA_27R"
 				(at 3.175 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4165,47 +4501,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "YC164-JR-0727RL"
 				(at 0 8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 				(at 0 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "RA_27R_0_1"
@@ -4363,81 +4709,9 @@
 			)
 			(symbol "RA_27R_1_1"
 				(pin passive line
-					(at -3.81 3.81 0)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 1.27 0)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 -1.27 0)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 -3.81 0)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 3.81 3.81 180)
 					(length 1.27)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4455,7 +4729,7 @@
 				(pin passive line
 					(at 3.81 1.27 180)
 					(length 1.27)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4473,7 +4747,7 @@
 				(pin passive line
 					(at 3.81 -1.27 180)
 					(length 1.27)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4491,7 +4765,7 @@
 				(pin passive line
 					(at 3.81 -3.81 180)
 					(length 1.27)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4499,6 +4773,78 @@
 						)
 					)
 					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -3.81 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -1.27 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 1.27 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 3.81 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4520,8 +4866,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4531,6 +4881,8 @@
 			)
 			(property "Value" "R_1.02k"
 				(at 1.27 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4540,47 +4892,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "RES SMD 1% 1/10W 0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "ERJ-3EKF1021V"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES SMD 1% 1/10W 0603"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "R_1.02k_0_1"
@@ -4600,7 +4962,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4618,7 +4980,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4647,8 +5009,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4658,6 +5024,8 @@
 			)
 			(property "Value" "R_100"
 				(at 1.27 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4667,47 +5035,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_0402"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "https://industrial.panasonic.com/ww/products/resistors/chip-resistors/chip-resistors/precision-thick-film-chip-resistors/ERJ3EKF1000V"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "RES SMD 1% 1/10W 0402"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "ERJ-2RKF1000X"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES SMD 1% 1/10W 0402"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "R_100_0_1"
@@ -4727,7 +5105,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4745,7 +5123,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4774,8 +5152,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4785,6 +5167,8 @@
 			)
 			(property "Value" "R_240R"
 				(at 1.27 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4794,47 +5178,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "RES SMD 1% 1/10W 0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "ERJ-3EKF2400V"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES SMD 1% 1/10W 0603"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "R_240R_0_1"
@@ -4854,7 +5248,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4872,7 +5266,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4901,8 +5295,12 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
 				(at 1.27 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4912,6 +5310,8 @@
 			)
 			(property "Value" "R_4k7"
 				(at 1.27 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4921,47 +5321,57 @@
 			)
 			(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "RES SMD 1% 1/10W 0603"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "MFG Part#" "ERJ-3EKF4701V"
 				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description_1" "RES SMD 1% 1/10W 0603"
 				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "R_4k7_0_1"
@@ -4981,7 +5391,7 @@
 				(pin passive line
 					(at 0 2.54 270)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -4999,7 +5409,7 @@
 				(pin passive line
 					(at 0 -2.54 90)
 					(length 0.762)
-					(name "~"
+					(name ""
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -9555,11 +9965,13 @@
 		(uuid "073321e4-3102-4431-a51c-34b3bb166927")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9575,11 +9987,13 @@
 		(uuid "0bbc9b78-58b7-4d75-9864-f5b71b101ab1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 104.14 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9595,11 +10009,13 @@
 		(uuid "17b39acb-572c-42ce-9d82-31eb15a4a95e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9615,11 +10031,13 @@
 		(uuid "1805c3e8-f645-4226-8843-03556319a071")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9635,11 +10053,13 @@
 		(uuid "19a478f5-1232-4cc6-b20b-cb67cf680725")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9655,11 +10075,13 @@
 		(uuid "1d5d28bd-49eb-4587-b2c1-82288bf82d33")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9675,11 +10097,13 @@
 		(uuid "26c30a8f-f889-4530-a689-caf554c6336a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9695,11 +10119,13 @@
 		(uuid "292ac118-01b2-43f0-9251-906496510ab6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9715,11 +10141,13 @@
 		(uuid "2beb68e0-b3dc-4a89-b54f-7d874cfc4ea7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9735,11 +10163,13 @@
 		(uuid "39dfa2f9-7e66-4a53-a22c-0bc6464afa2b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9755,11 +10185,13 @@
 		(uuid "3f130ac7-2ff4-48cd-98eb-56b92402bf5a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 171.45 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9775,11 +10207,13 @@
 		(uuid "419a56b8-d2dd-40c9-819d-bea8fbece248")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9795,11 +10229,13 @@
 		(uuid "462c298d-7046-4947-96b9-977365c009bc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9815,11 +10251,13 @@
 		(uuid "4da563de-3268-4902-9edd-ae09a3aa06b8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9835,11 +10273,13 @@
 		(uuid "4f61b090-1c99-4de6-84d0-ff4a060e45ff")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9855,11 +10295,13 @@
 		(uuid "550e8a8c-fddb-46cd-9f0f-a2e82c3fdf52")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9875,11 +10317,13 @@
 		(uuid "692292c8-f5f3-41c5-98c6-5a3beb9bdaeb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 104.14 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9895,11 +10339,13 @@
 		(uuid "6ebfe2db-468a-4314-9c4b-e3cf6860b35b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9915,11 +10361,13 @@
 		(uuid "7c45cc01-7f7c-4e21-b13e-d6d9cfbf7812")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9935,11 +10383,13 @@
 		(uuid "7dfea9a9-74b1-4ef9-839a-8b99bb1b6bd6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9955,11 +10405,13 @@
 		(uuid "7fc6cb32-d631-40fd-8a66-04d8fed51b95")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 104.14 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9975,11 +10427,13 @@
 		(uuid "823c21a9-fb19-483e-9894-281ca5962c7e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -9995,11 +10449,13 @@
 		(uuid "85b60425-739a-4b58-b967-b6a072268e52")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10015,11 +10471,13 @@
 		(uuid "962dfb82-07df-4bc3-9c61-0f6faaea5d48")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10035,11 +10493,13 @@
 		(uuid "963a9ebf-411f-4bbd-9dbf-0e4174a6f330")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10055,11 +10515,13 @@
 		(uuid "9729f4a1-5ef3-48a8-8e5a-7352374ca3f8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 171.45 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10075,11 +10537,13 @@
 		(uuid "97be2a4d-7d1f-419d-8b73-7e50607577df")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10095,11 +10559,13 @@
 		(uuid "a36d590e-fdcf-4027-8e19-6fbcd25dde96")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10115,11 +10581,13 @@
 		(uuid "a39c5cbe-a4e5-4b8a-8eef-2c05b0632163")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10135,11 +10603,13 @@
 		(uuid "aa207eb3-b5b0-4faa-abea-1e2fec5edc2a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10155,11 +10625,13 @@
 		(uuid "aa862263-2f10-45ed-b868-f3cb38b4d3cc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 171.45 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10175,11 +10647,13 @@
 		(uuid "afa20ee5-cc3f-4047-80a6-672d94ebc4dd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10195,11 +10669,13 @@
 		(uuid "b12f1e6b-37de-4bdd-8b9d-60a57042eddc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10215,11 +10691,13 @@
 		(uuid "b388193c-5e23-467b-883a-1239295d2188")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10235,11 +10713,13 @@
 		(uuid "bbc951aa-1d1c-4377-b84a-fe34dea0ff79")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10255,11 +10735,13 @@
 		(uuid "c2736d17-2732-452b-b344-9c540c2d521a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10275,11 +10757,13 @@
 		(uuid "c8645cc6-43bd-473b-ae2b-6c5906279b4a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 171.45 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10295,11 +10779,13 @@
 		(uuid "cc81bca2-6b17-45dd-a411-da1c9d66f4b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10315,11 +10801,13 @@
 		(uuid "d1928641-0330-49d0-9f53-532218efd59c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10335,11 +10823,13 @@
 		(uuid "d8e3d123-a16b-4d04-a736-8a5bbfcc370b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10355,11 +10845,13 @@
 		(uuid "dff80464-0cad-4b0f-8fa2-c0d574f04ec6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10375,11 +10867,13 @@
 		(uuid "e61ad2bd-3216-4f4c-b889-98678ff20b76")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10395,11 +10889,13 @@
 		(uuid "ec291d66-e560-4a65-b838-edc5c2d245e5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.21 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10415,11 +10911,13 @@
 		(uuid "ed35d651-a3b3-4448-8302-a46cf5e33e35")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10435,11 +10933,13 @@
 		(uuid "f28b9764-e20d-4e54-8e07-34f1473d9d64")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10455,11 +10955,13 @@
 		(uuid "f47d9ce5-ce48-4b26-8a07-776c3ecee2ed")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 	)
@@ -10467,22 +10969,28 @@
 		(lib_id "ScopefunParts:+1.5V")
 		(at 237.49 50.8 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005859819d")
 		(property "Reference" "#PWR0407"
 			(at 237.49 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+1V5"
 			(at 237.49 47.244 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10491,6 +10999,8 @@
 		)
 		(property "Footprint" ""
 			(at 237.49 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10499,6 +11009,8 @@
 		)
 		(property "Datasheet" ""
 			(at 237.49 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10507,6 +11019,8 @@
 		)
 		(property "Description" ""
 			(at 237.49 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10517,7 +11031,7 @@
 			(uuid "2eae25a1-1d00-449a-a943-b58c6dee59a3")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0407")
 					(unit 1)
@@ -10530,22 +11044,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 198.12 116.84 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005859adca")
 		(property "Reference" "#PWR0408"
 			(at 198.12 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 198.12 120.65 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10554,6 +11074,8 @@
 		)
 		(property "Footprint" ""
 			(at 198.12 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10562,6 +11084,8 @@
 		)
 		(property "Datasheet" ""
 			(at 198.12 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10570,6 +11094,8 @@
 		)
 		(property "Description" ""
 			(at 198.12 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10580,7 +11106,7 @@
 			(uuid "431e6ca8-2f62-450b-ab77-668d53c89c5c")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0408")
 					(unit 1)
@@ -10593,22 +11119,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 273.05 111.76 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005859cf1f")
 		(property "Reference" "#PWR0409"
 			(at 273.05 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 273.05 115.57 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10617,6 +11149,8 @@
 		)
 		(property "Footprint" ""
 			(at 273.05 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10625,6 +11159,8 @@
 		)
 		(property "Datasheet" ""
 			(at 273.05 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10633,6 +11169,8 @@
 		)
 		(property "Description" ""
 			(at 273.05 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10643,7 +11181,7 @@
 			(uuid "9e63c891-0524-4daa-a51e-8d7fa55ddf6d")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0409")
 					(unit 1)
@@ -10656,22 +11194,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 110.49 44.45 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005859f47e")
 		(property "Reference" "#PWR0410"
 			(at 110.49 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 110.49 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10680,6 +11224,8 @@
 		)
 		(property "Footprint" ""
 			(at 110.49 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10688,6 +11234,8 @@
 		)
 		(property "Datasheet" ""
 			(at 110.49 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10696,6 +11244,8 @@
 		)
 		(property "Description" ""
 			(at 110.49 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10706,7 +11256,7 @@
 			(uuid "d053cb56-15fe-47f4-a9f4-2c5075b52b12")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0410")
 					(unit 1)
@@ -10718,13 +11268,17 @@
 		(lib_id "ScopefunParts:R_4k7")
 		(at 118.11 130.81 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000585a4326")
 		(property "Reference" "R182"
 			(at 119.38 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10734,6 +11288,8 @@
 		)
 		(property "Value" "R_4k7"
 			(at 119.38 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10743,38 +11299,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 			(at 118.11 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 			(at 118.11 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0603"
 			(at 118.11 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-3EKF4701V"
 			(at 118.11 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -10784,7 +11348,7 @@
 			(uuid "83d71f3a-c7cd-40c7-9d0e-07efeb6d8d52")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R182")
 					(unit 1)
@@ -10797,22 +11361,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 154.94 130.81 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000585a8a09")
 		(property "Reference" "#PWR0411"
 			(at 154.94 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 154.94 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10821,6 +11391,8 @@
 		)
 		(property "Footprint" ""
 			(at 154.94 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10829,6 +11401,8 @@
 		)
 		(property "Datasheet" ""
 			(at 154.94 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10837,6 +11411,8 @@
 		)
 		(property "Description" ""
 			(at 154.94 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10847,7 +11423,7 @@
 			(uuid "97ffcb06-a7ec-46b1-a1f0-da73eaf6ebb1")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0411")
 					(unit 1)
@@ -10860,22 +11436,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 162.56 102.87 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000585ab03d")
 		(property "Reference" "#PWR0412"
 			(at 162.56 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 162.56 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10884,6 +11466,8 @@
 		)
 		(property "Footprint" ""
 			(at 162.56 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10892,6 +11476,8 @@
 		)
 		(property "Datasheet" ""
 			(at 162.56 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10900,6 +11486,8 @@
 		)
 		(property "Description" ""
 			(at 162.56 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10910,7 +11498,7 @@
 			(uuid "2b02be92-63b0-4f97-a70a-6cccc4528fca")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0412")
 					(unit 1)
@@ -10923,22 +11511,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 118.11 134.62 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000585b2a30")
 		(property "Reference" "#PWR0413"
 			(at 118.11 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 118.11 138.43 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10947,6 +11541,8 @@
 		)
 		(property "Footprint" ""
 			(at 118.11 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10955,6 +11551,8 @@
 		)
 		(property "Datasheet" ""
 			(at 118.11 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10963,6 +11561,8 @@
 		)
 		(property "Description" ""
 			(at 118.11 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10973,7 +11573,7 @@
 			(uuid "272a3c9b-131d-44d9-aa93-12b94a70750b")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0413")
 					(unit 1)
@@ -10985,13 +11585,17 @@
 		(lib_id "ScopefunParts:R_240R")
 		(at 116.84 43.18 270)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005861340f")
 		(property "Reference" "R180"
 			(at 109.22 41.91 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11001,6 +11605,8 @@
 		)
 		(property "Value" "R_240R"
 			(at 119.38 41.91 90)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11010,38 +11616,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 			(at 110.49 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 			(at 113.03 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0603"
 			(at 123.19 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-3EKF2400V"
 			(at 120.65 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11051,7 +11665,7 @@
 			(uuid "b29be8dd-567d-4620-be23-a5d33ad5f31f")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R180")
 					(unit 1)
@@ -11063,22 +11677,28 @@
 		(lib_id "ScopefunParts:+1.5V")
 		(at 198.12 100.33 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586157b0")
 		(property "Reference" "#PWR0414"
 			(at 198.12 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+1V5"
 			(at 198.12 96.774 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11087,6 +11707,8 @@
 		)
 		(property "Footprint" ""
 			(at 198.12 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11095,6 +11717,8 @@
 		)
 		(property "Datasheet" ""
 			(at 198.12 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11103,6 +11727,8 @@
 		)
 		(property "Description" ""
 			(at 198.12 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11113,7 +11739,7 @@
 			(uuid "0c9b1786-f593-401e-96fa-cb5a769b3adf")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0414")
 					(unit 1)
@@ -11125,13 +11751,17 @@
 		(lib_id "ScopefunParts:C_10n")
 		(at 219.71 111.76 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058615a31")
 		(property "Reference" "C254"
 			(at 219.964 109.982 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11141,6 +11771,8 @@
 		)
 		(property "Value" "C_10n"
 			(at 219.964 113.792 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11150,38 +11782,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 219.71 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 219.964 109.982 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 50V C0G 5%"
 			(at 220.98 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "GRM1885C1H103JA01D"
 			(at 222.504 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -11191,7 +11831,7 @@
 			(uuid "1f81dd54-4516-4e5c-9026-5416dfa87eab")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C254")
 					(unit 1)
@@ -11203,13 +11843,17 @@
 		(lib_id "ScopefunParts:C_10n")
 		(at 219.71 104.14 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058615ae3")
 		(property "Reference" "C253"
 			(at 219.964 102.362 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11219,6 +11863,8 @@
 		)
 		(property "Value" "C_10n"
 			(at 219.964 106.172 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11228,38 +11874,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 219.71 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 219.964 102.362 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 50V C0G 5%"
 			(at 220.98 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "GRM1885C1H103JA01D"
 			(at 222.504 99.822 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11269,7 +11923,7 @@
 			(uuid "054bd1f5-2f84-4448-9425-b3d2457db01e")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C253")
 					(unit 1)
@@ -11281,22 +11935,28 @@
 		(lib_id "ScopefunParts:+1.5V")
 		(at 219.71 100.33 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058615c4d")
 		(property "Reference" "#PWR0415"
 			(at 219.71 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+1V5"
 			(at 219.71 96.774 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11305,6 +11965,8 @@
 		)
 		(property "Footprint" ""
 			(at 219.71 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11313,6 +11975,8 @@
 		)
 		(property "Datasheet" ""
 			(at 219.71 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11321,6 +11985,8 @@
 		)
 		(property "Description" ""
 			(at 219.71 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11331,7 +11997,7 @@
 			(uuid "9f6cbc67-c39d-4c82-98be-2dd79e7ed71d")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0415")
 					(unit 1)
@@ -11343,13 +12009,17 @@
 		(lib_id "ScopefunParts:C_1u")
 		(at 210.82 111.76 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005861606c")
 		(property "Reference" "C250"
 			(at 211.074 109.982 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11359,6 +12029,8 @@
 		)
 		(property "Value" "C_1u"
 			(at 211.074 113.792 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11368,38 +12040,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 210.82 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 211.074 109.982 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 6.3V X5R 10%"
 			(at 212.09 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C105K9PACTU"
 			(at 213.614 107.442 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11409,7 +12089,7 @@
 			(uuid "3f95d9be-eaa1-494d-8b14-ec75ab9cf968")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C250")
 					(unit 1)
@@ -11421,13 +12101,17 @@
 		(lib_id "ScopefunParts:R_1.02k")
 		(at 198.12 111.76 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586162bb")
 		(property "Reference" "R186"
 			(at 199.39 110.49 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11437,6 +12121,8 @@
 		)
 		(property "Value" "R_1.02k"
 			(at 199.39 113.03 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11446,38 +12132,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 			(at 198.12 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 			(at 198.12 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0603"
 			(at 198.12 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-3EKF1021V"
 			(at 198.12 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11487,7 +12181,7 @@
 			(uuid "e81345ff-665b-4687-b622-3b914415ad89")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R186")
 					(unit 1)
@@ -11499,13 +12193,17 @@
 		(lib_id "ScopefunParts:R_1.02k")
 		(at 198.12 104.14 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005861645a")
 		(property "Reference" "R185"
 			(at 199.39 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11515,6 +12213,8 @@
 		)
 		(property "Value" "R_1.02k"
 			(at 199.39 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11524,38 +12224,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0603"
 			(at 198.12 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://industrial.panasonic.com/cdbs/www-data/pdf/AOA0000/AOA0000CE2.pdf"
 			(at 198.12 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0603"
 			(at 198.12 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-3EKF1021V"
 			(at 198.12 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11565,7 +12273,7 @@
 			(uuid "b36e212e-e13a-4ab0-8c8c-2bd8cc71682b")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R185")
 					(unit 1)
@@ -11577,13 +12285,17 @@
 		(lib_id "ScopefunParts:C_22u")
 		(at 194.31 58.42 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d72a3")
 		(property "Reference" "C244"
 			(at 194.564 56.642 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11593,6 +12305,8 @@
 		)
 		(property "Value" "C_22u"
 			(at 194.564 60.452 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11602,38 +12316,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0805"
 			(at 194.31 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 194.564 56.642 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0805 10V X5R 20%"
 			(at 195.58 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "LMK212BBJ226MG-T"
 			(at 197.104 54.102 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -11643,7 +12365,7 @@
 			(uuid "182e30bd-f230-4c10-b6ed-769c80871a80")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C244")
 					(unit 1)
@@ -11655,22 +12377,28 @@
 		(lib_id "ScopefunParts:+1.5V")
 		(at 194.31 53.34 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d745a")
 		(property "Reference" "#PWR0416"
 			(at 194.31 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+1V5"
 			(at 194.31 49.784 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11679,6 +12407,8 @@
 		)
 		(property "Footprint" ""
 			(at 194.31 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11687,6 +12417,8 @@
 		)
 		(property "Datasheet" ""
 			(at 194.31 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11695,6 +12427,8 @@
 		)
 		(property "Description" ""
 			(at 194.31 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11705,7 +12439,7 @@
 			(uuid "f97e5a8a-bcf7-4b69-ae29-5076799f6ddb")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0416")
 					(unit 1)
@@ -11717,13 +12451,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 203.2 58.42 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d7a79")
 		(property "Reference" "C246"
 			(at 203.454 56.642 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11733,6 +12471,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 203.454 60.452 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11742,38 +12482,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 203.2 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 203.454 56.642 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 204.47 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 205.994 54.102 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -11783,7 +12531,7 @@
 			(uuid "64bd5665-a00b-40eb-8cab-6bfcc48a1290")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C246")
 					(unit 1)
@@ -11795,13 +12543,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 210.82 58.42 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d7c39")
 		(property "Reference" "C248"
 			(at 211.074 56.642 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11811,6 +12563,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 211.074 60.452 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11820,38 +12574,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 210.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 211.074 56.642 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 212.09 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 213.614 54.102 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -11861,7 +12623,7 @@
 			(uuid "0a0fc72f-d13b-443b-b478-5f73e9bd20c5")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C248")
 					(unit 1)
@@ -11873,13 +12635,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 218.44 58.42 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d7cc7")
 		(property "Reference" "C251"
 			(at 218.694 56.642 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11889,6 +12655,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 218.694 60.452 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11898,38 +12666,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 218.44 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 218.694 56.642 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 219.71 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 221.234 54.102 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -11939,7 +12715,7 @@
 			(uuid "b3a77864-43bf-4cc6-82c1-3df3f66e4123")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C251")
 					(unit 1)
@@ -11951,13 +12727,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 226.06 58.42 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d7d58")
 		(property "Reference" "C255"
 			(at 226.314 56.642 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11967,6 +12747,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 226.314 60.452 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11976,38 +12758,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 226.06 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 226.314 56.642 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 227.33 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 228.854 54.102 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12017,7 +12807,7 @@
 			(uuid "4c744e6b-6e30-4b04-b304-64479c464d58")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C255")
 					(unit 1)
@@ -12030,22 +12820,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 226.06 63.5 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586d8b5b")
 		(property "Reference" "#PWR0417"
 			(at 226.06 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 226.06 67.31 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12054,6 +12850,8 @@
 		)
 		(property "Footprint" ""
 			(at 226.06 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12062,6 +12860,8 @@
 		)
 		(property "Datasheet" ""
 			(at 226.06 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12070,6 +12870,8 @@
 		)
 		(property "Description" ""
 			(at 226.06 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12080,7 +12882,7 @@
 			(uuid "a0de8e97-042f-42db-a6c0-021a01b7acd1")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0417")
 					(unit 1)
@@ -12092,13 +12894,17 @@
 		(lib_id "ScopefunParts:C_22u")
 		(at 194.31 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db672")
 		(property "Reference" "C245"
 			(at 194.564 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12108,6 +12914,8 @@
 		)
 		(property "Value" "C_22u"
 			(at 194.564 78.232 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12117,38 +12925,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0805"
 			(at 194.31 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 194.564 74.422 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0805 10V X5R 20%"
 			(at 195.58 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "LMK212BBJ226MG-T"
 			(at 197.104 71.882 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12158,7 +12974,7 @@
 			(uuid "f0f8fa21-cb55-40d7-8a68-bc5f6688dd3e")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C245")
 					(unit 1)
@@ -12170,22 +12986,28 @@
 		(lib_id "ScopefunParts:+1.5V")
 		(at 194.31 71.12 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db678")
 		(property "Reference" "#PWR0418"
 			(at 194.31 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "+1V5"
 			(at 194.31 67.564 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12194,6 +13016,8 @@
 		)
 		(property "Footprint" ""
 			(at 194.31 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12202,6 +13026,8 @@
 		)
 		(property "Datasheet" ""
 			(at 194.31 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12210,6 +13036,8 @@
 		)
 		(property "Description" ""
 			(at 194.31 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12220,7 +13048,7 @@
 			(uuid "20b38932-8f7c-4359-aba9-0d582178e707")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0418")
 					(unit 1)
@@ -12232,13 +13060,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 203.2 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db680")
 		(property "Reference" "C247"
 			(at 203.454 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12248,6 +13080,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 203.454 78.232 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12257,38 +13091,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 203.2 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 203.454 74.422 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 204.47 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 205.994 71.882 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -12298,7 +13140,7 @@
 			(uuid "cdd25032-1b3d-4b1a-8e3c-19394300807a")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C247")
 					(unit 1)
@@ -12310,13 +13152,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 210.82 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db688")
 		(property "Reference" "C249"
 			(at 211.074 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12326,6 +13172,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 211.074 78.232 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12335,38 +13183,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 210.82 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 211.074 74.422 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 212.09 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 213.614 71.882 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12376,7 +13232,7 @@
 			(uuid "843fae70-2655-470c-ad5e-7396096f3eb8")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C249")
 					(unit 1)
@@ -12388,13 +13244,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 218.44 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db690")
 		(property "Reference" "C252"
 			(at 218.694 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12404,6 +13264,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 218.694 78.232 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12413,38 +13275,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 218.44 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 218.694 74.422 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 219.71 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 221.234 71.882 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12454,7 +13324,7 @@
 			(uuid "814fd9cf-8925-42c4-86f6-dbde2d257d1a")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C252")
 					(unit 1)
@@ -12466,13 +13336,17 @@
 		(lib_id "ScopefunParts:C_0.1u")
 		(at 226.06 76.2 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db698")
 		(property "Reference" "C256"
 			(at 226.314 74.422 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12482,6 +13356,8 @@
 		)
 		(property "Value" "C_0.1u"
 			(at 226.314 78.232 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12491,38 +13367,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
 			(at 226.06 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 226.314 74.422 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 16V X7R 10%"
 			(at 227.33 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "C0603C104K4RACTU"
 			(at 228.854 71.882 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -12532,7 +13416,7 @@
 			(uuid "08931a41-5113-48c7-bcfa-a5dea4b12aed")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "C256")
 					(unit 1)
@@ -12545,22 +13429,28 @@
 		(lib_id "Scopefun_v2-rescue:GND")
 		(at 226.06 81.28 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000586db6b1")
 		(property "Reference" "#PWR0419"
 			(at 226.06 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "GND"
 			(at 226.06 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12569,6 +13459,8 @@
 		)
 		(property "Footprint" ""
 			(at 226.06 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12577,6 +13469,8 @@
 		)
 		(property "Datasheet" ""
 			(at 226.06 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12585,6 +13479,8 @@
 		)
 		(property "Description" ""
 			(at 226.06 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12595,7 +13491,7 @@
 			(uuid "8eefdea9-9b96-445f-8e03-b958cfcda83a")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "#PWR0419")
 					(unit 1)
@@ -12607,13 +13503,17 @@
 		(lib_id "ScopefunParts:R_100")
 		(at 157.48 111.76 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058acb230")
 		(property "Reference" "R183"
 			(at 158.9786 110.5916 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12623,6 +13523,8 @@
 		)
 		(property "Value" "R_100"
 			(at 158.9786 112.903 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12632,38 +13534,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0402"
 			(at -7.62 250.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/ww/products/resistors/chip-resistors/chip-resistors/precision-thick-film-chip-resistors/ERJ3EKF1000V"
 			(at -7.62 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0402"
 			(at -7.62 237.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-2RKF1000X"
 			(at -7.62 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -12673,7 +13583,7 @@
 			(uuid "ca78024d-2fc1-456d-b37b-62ed3dc79690")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R183")
 					(unit 1)
@@ -12685,13 +13595,17 @@
 		(lib_id "ScopefunParts:R_100")
 		(at 157.48 119.38 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058acb723")
 		(property "Reference" "R184"
 			(at 158.9786 118.2116 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12701,6 +13615,8 @@
 		)
 		(property "Value" "R_100"
 			(at 158.9786 120.523 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12710,38 +13626,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0402"
 			(at -7.62 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/ww/products/resistors/chip-resistors/chip-resistors/precision-thick-film-chip-resistors/ERJ3EKF1000V"
 			(at -7.62 255.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0402"
 			(at -7.62 245.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-2RKF1000X"
 			(at -7.62 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12751,7 +13675,7 @@
 			(uuid "affe0f87-aa03-45b1-b374-e813c2ab8b40")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R184")
 					(unit 1)
@@ -12764,13 +13688,17 @@
 		(at 118.11 120.65 0)
 		(mirror y)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058acb783")
 		(property "Reference" "R181"
 			(at 116.6368 119.4816 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12780,6 +13708,8 @@
 		)
 		(property "Value" "R_100"
 			(at 116.6368 121.793 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12789,38 +13719,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_0402"
 			(at 283.21 259.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/ww/products/resistors/chip-resistors/chip-resistors/precision-thick-film-chip-resistors/ERJ3EKF1000V"
 			(at 283.21 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES SMD 1% 1/10W 0402"
 			(at 283.21 246.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "ERJ-2RKF1000X"
 			(at 283.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -12830,7 +13768,7 @@
 			(uuid "4a97660b-c650-413e-9208-657812998438")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R181")
 					(unit 1)
@@ -12842,13 +13780,17 @@
 		(lib_id "ScopefunParts:IS43TR16256A-125KBL")
 		(at 138.43 87.63 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058e31b2e")
 		(property "Reference" "U36"
 			(at 138.43 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12857,6 +13799,8 @@
 		)
 		(property "Value" "IS43TR16256A-125KBL"
 			(at 138.43 48.26 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12865,38 +13809,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:TW-BGA-96"
 			(at 138.43 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.issi.com/WW/pdf/43-46TR16640B-81280BL.pdf"
 			(at 138.43 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "256M X 16 BIT DDR3 SRAM 1.5V"
 			(at 137.16 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "IS43TR16640B-125JBL"
 			(at 138.43 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "P7"
@@ -13188,7 +14140,7 @@
 			(uuid "1f1647b7-ad4f-4b62-aaf9-fb3320eeef1c")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "U36")
 					(unit 1)
@@ -13200,13 +14152,17 @@
 		(lib_id "ScopefunParts:IS43TR16256A-125KBL")
 		(at 254 88.9 0)
 		(unit 2)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058e31c60")
 		(property "Reference" "U36"
 			(at 254 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13215,6 +14171,8 @@
 		)
 		(property "Value" "IS43TR16256A-125KBL"
 			(at 254 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13223,38 +14181,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:TW-BGA-96"
 			(at 254 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.issi.com/WW/pdf/43-46TR16640B-81280BL.pdf"
 			(at 254 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "256M X 16 BIT DDR3 SRAM 1.5V"
 			(at 252.73 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "IS43TR16640B-125JBL"
 			(at 254 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(pin "N3"
@@ -13546,7 +14512,7 @@
 			(uuid "fc0c454c-deb3-457b-b1c9-31b498d973fc")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "U36")
 					(unit 2)
@@ -13558,13 +14524,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 39.37 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa064c2")
 		(property "Reference" "R174"
 			(at 60.325 34.29 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13574,6 +14544,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13583,38 +14555,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "2"
@@ -13642,7 +14622,7 @@
 			(uuid "5366e8c6-d102-49cd-872a-fae4180dd64f")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R174")
 					(unit 1)
@@ -13654,13 +14634,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 52.07 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa065c3")
 		(property "Reference" "R175"
 			(at 60.325 46.99 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13670,6 +14654,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13679,38 +14665,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "8"
@@ -13738,7 +14732,7 @@
 			(uuid "d87b05e5-f304-44d1-88c4-f7bc14c4f20b")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R175")
 					(unit 1)
@@ -13750,13 +14744,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 64.77 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa06647")
 		(property "Reference" "R176"
 			(at 60.325 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13766,6 +14764,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 62.23 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13775,38 +14775,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "8"
@@ -13834,7 +14842,7 @@
 			(uuid "a7d3fc05-cfe4-43ca-b888-7555d37bcdba")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R176")
 					(unit 1)
@@ -13846,13 +14854,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 77.47 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa066cc")
 		(property "Reference" "R177"
 			(at 60.325 72.39 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13862,6 +14874,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13871,38 +14885,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "3"
@@ -13930,7 +14952,7 @@
 			(uuid "8ff114ee-9f6c-4e32-83ab-2218d1db3de0")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R177")
 					(unit 1)
@@ -13942,13 +14964,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 90.17 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa06754")
 		(property "Reference" "R178"
 			(at 60.325 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13958,6 +14984,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 87.63 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13967,38 +14995,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "3"
@@ -14026,7 +15062,7 @@
 			(uuid "6742a6b6-a291-46b9-add4-807085f37215")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R178")
 					(unit 1)
@@ -14038,13 +15074,17 @@
 		(lib_id "ScopefunParts:RA_27R")
 		(at 57.15 102.87 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005aa067db")
 		(property "Reference" "R179"
 			(at 60.325 97.79 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14054,6 +15094,8 @@
 		)
 		(property "Value" "RA_27R"
 			(at 60.325 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14063,38 +15105,46 @@
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:R_CRA06E"
 			(at 57.15 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "http://www.yageo.com/documents/recent/PYu-YC_TC_group_51_RoHS_L_5.pdf"
 			(at 57.15 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "RES ARRAY SMD 5% 0.063W 3.2mm x 1.5mm"
 			(at 57.15 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(property "MFG Part#" "YC164-JR-0727RL"
 			(at 57.15 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
-				(hide yes)
 			)
 		)
 		(pin "7"
@@ -14122,7 +15172,7 @@
 			(uuid "125c5d6c-ca80-410b-9e19-889cb6c529ee")
 		)
 		(instances
-			(project "Scopefun_v2"
+			(project "Scopefun_v3"
 				(path "/29c98cb5-ff01-42d3-b159-4c21611d999f/00000000-0000-0000-0000-000058597ef5"
 					(reference "R179")
 					(unit 1)

@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "29c98cb5-ff01-42d3-b159-4c21611d999f")
 	(paper "A4")
 	(title_block
@@ -84,11 +84,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056770a0b")
 		(property "Sheetname" "ANALOG INPUTS"
 			(at 24.13 22.7834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -98,6 +100,8 @@
 		)
 		(property "Sheetfile" "file56770A0B.kicad_sch"
 			(at 24.13 41.2246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -146,11 +150,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056785ef9")
 		(property "Sheetname" "GAIN, OFFSET"
 			(at 85.09 22.7834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -160,6 +166,8 @@
 		)
 		(property "Sheetfile" "file56785EF9.kicad_sch"
 			(at 85.09 41.2246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -248,11 +256,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056921513")
 		(property "Sheetname" "ADC"
 			(at 147.32 22.7834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -262,6 +272,8 @@
 		)
 		(property "Sheetfile" "file56921512.kicad_sch"
 			(at 147.32 41.2246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -330,11 +342,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056948068")
 		(property "Sheetname" "FPGA BANKS"
 			(at 86.36 54.5334 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -344,6 +358,8 @@
 		)
 		(property "Sheetfile" "file56948067.kicad_sch"
 			(at 86.36 72.9746 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -372,11 +388,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056954a3d")
 		(property "Sheetname" "USB Port"
 			(at 24.13 86.2834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -386,6 +404,8 @@
 		)
 		(property "Sheetfile" "file56954A3C.kicad_sch"
 			(at 24.13 104.7246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -414,11 +434,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000056a5a071")
 		(property "Sheetname" "POWER SUPPLY"
 			(at 24.13 118.0334 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -428,6 +450,8 @@
 		)
 		(property "Sheetfile" "file56A5A070.kicad_sch"
 			(at 24.13 136.4746 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -456,11 +480,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-0000584ba873")
 		(property "Sheetname" "USB FX3"
 			(at 86.36 86.2834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -470,6 +496,8 @@
 		)
 		(property "Sheetfile" "file584BA872.kicad_sch"
 			(at 86.36 104.7246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -498,11 +526,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-0000584efeb2")
 		(property "Sheetname" "FPGA CFG, POWER"
 			(at 146.05 54.5334 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -512,6 +542,8 @@
 		)
 		(property "Sheetfile" "file584EFEB1.kicad_sch"
 			(at 146.05 72.9746 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -540,11 +572,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000058589f32")
 		(property "Sheetname" "REF SUPPLY"
 			(at 86.36 118.0334 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -554,6 +588,8 @@
 		)
 		(property "Sheetfile" "file58589F31.kicad_sch"
 			(at 86.36 136.4746 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -582,11 +618,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "00000000-0000-0000-0000-000058597ef5")
 		(property "Sheetname" "DDR3 SDRAM"
 			(at 146.05 86.2834 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 2.54 2.54)
@@ -596,6 +634,8 @@
 		)
 		(property "Sheetfile" "file58597EF4.kicad_sch"
 			(at 146.05 104.7246 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
