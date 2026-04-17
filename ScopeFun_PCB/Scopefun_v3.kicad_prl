@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 2,
+    "active_layer": 8,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -51,7 +51,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "ffffffff_ffffffff_ffffffff_57ff5a05",
+    "visible_layers": "ffffffff_ffffffff_ffffffff_57ff5ff5",
     "zone_display_mode": 0
   },
   "git": {
@@ -98,20 +98,20 @@
       13
     ],
     "col_widths": [
-      205,
-      193,
-      122,
-      87,
-      122,
-      122,
-      122,
-      87,
-      122,
-      122,
-      122,
-      122,
-      122,
-      336
+      246,
+      232,
+      146,
+      104,
+      146,
+      146,
+      146,
+      104,
+      146,
+      146,
+      146,
+      146,
+      146,
+      403
     ],
     "custom_group_rules": [],
     "expanded_rows": [],
@@ -126,7 +126,9 @@
     "sort_ascending": false,
     "sorting_column": 0
   },
-  "open_jobsets": [],
+  "open_jobsets": [
+    "bom\\bom.kicad_jobset"
+  ],
   "project": {
     "files": []
   },

@@ -1,5 +1,4 @@
 (sym_lib_table
-  (version 7)
-  (lib (name "Scopefun_v2-rescue")(type "Legacy")(uri "${KIPRJMOD}/Scopefun_v2-rescue.lib")(options "")(descr ""))
-  (lib (name "ScopefunParts")(type "Legacy")(uri "${KIPRJMOD}/ScopefunPartsLibrary/ScopefunParts.lib")(options "")(descr ""))
+	(version 7)
+	(lib (name "ScopefunParts") (type "KiCad") (uri "${KIPRJMOD}/ScopefunPartsLibrary/ScopefunParts.kicad_sym") (options "") (descr ""))
 )

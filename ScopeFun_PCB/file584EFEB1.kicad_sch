@@ -20039,6 +20039,17 @@
 				)
 			)
 		)
+		(property "jlc" "C6119831"
+			(at 68.58 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a1a7db04-f033-4e8d-b587-13a632895500")
 		)

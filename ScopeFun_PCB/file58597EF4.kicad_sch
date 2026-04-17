@@ -13797,7 +13797,7 @@
 				)
 			)
 		)
-		(property "Value" "IS43TR16256A-125KBL"
+		(property "Value" "IS43TR16256B-125KBL"
 			(at 138.43 48.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14169,7 +14169,7 @@
 				)
 			)
 		)
-		(property "Value" "IS43TR16256A-125KBL"
+		(property "Value" "IS43TR16256B-125KBL"
 			(at 254 49.53 0)
 			(show_name no)
 			(do_not_autoplace no)
