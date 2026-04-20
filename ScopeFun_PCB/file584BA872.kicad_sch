@@ -14805,7 +14805,7 @@
 		(uuid "4ae8bb70-5f81-4729-949c-a0413dff2e31")
 	)
 	(junction
-		(at 177.8 34.29)
+		(at 166.37 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4c051a1b-71a7-45af-a286-b1ae153c89f5")
@@ -14931,7 +14931,7 @@
 		(uuid "9e5a8f4c-c442-4150-b6ce-7ae3fb61a79a")
 	)
 	(junction
-		(at 195.58 34.29)
+		(at 184.15 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "acbe6490-ff4b-4264-b7c9-5574b453c7c6")
@@ -15057,7 +15057,7 @@
 		(uuid "dfc62944-4dd8-487a-9d00-d2cf914899a6")
 	)
 	(junction
-		(at 186.69 43.18)
+		(at 175.26 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e1c1bd57-65ce-45af-a6b1-73e0ab36d6db")
@@ -15174,7 +15174,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 44.45) (xy 177.8 41.91)
+			(xy 166.37 45.72) (xy 166.37 43.18)
 		)
 		(stroke
 			(width 0)
@@ -15404,7 +15404,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 39.37) (xy 190.5 39.37)
+			(xy 180.34 40.64) (xy 179.07 40.64)
 		)
 		(stroke
 			(width 0)
@@ -15594,7 +15594,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 43.18) (xy 191.77 43.18)
+			(xy 175.26 44.45) (xy 180.34 44.45)
 		)
 		(stroke
 			(width 0)
@@ -15714,7 +15714,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 43.18) (xy 191.77 39.37)
+			(xy 180.34 44.45) (xy 180.34 40.64)
 		)
 		(stroke
 			(width 0)
@@ -15754,7 +15754,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 34.29) (xy 177.8 34.29)
+			(xy 162.56 35.56) (xy 166.37 35.56)
 		)
 		(stroke
 			(width 0)
@@ -15994,7 +15994,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 34.29) (xy 199.39 34.29)
+			(xy 184.15 35.56) (xy 187.96 35.56)
 		)
 		(stroke
 			(width 0)
@@ -16494,7 +16494,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 34.29) (xy 195.58 34.29)
+			(xy 179.07 35.56) (xy 184.15 35.56)
 		)
 		(stroke
 			(width 0)
@@ -16734,7 +16734,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 39.37) (xy 181.61 39.37)
+			(xy 171.45 40.64) (xy 170.18 40.64)
 		)
 		(stroke
 			(width 0)
@@ -17024,7 +17024,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 44.45) (xy 195.58 41.91)
+			(xy 184.15 45.72) (xy 184.15 43.18)
 		)
 		(stroke
 			(width 0)
@@ -17104,7 +17104,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 39.37) (xy 181.61 43.18)
+			(xy 170.18 40.64) (xy 170.18 44.45)
 		)
 		(stroke
 			(width 0)
@@ -17394,7 +17394,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 43.18) (xy 186.69 43.18)
+			(xy 170.18 44.45) (xy 175.26 44.45)
 		)
 		(stroke
 			(width 0)
@@ -17724,7 +17724,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 34.29) (xy 195.58 36.83)
+			(xy 184.15 35.56) (xy 184.15 38.1)
 		)
 		(stroke
 			(width 0)
@@ -17784,7 +17784,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 34.29) (xy 177.8 36.83)
+			(xy 166.37 35.56) (xy 166.37 38.1)
 		)
 		(stroke
 			(width 0)
@@ -17954,7 +17954,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 34.29) (xy 182.88 34.29)
+			(xy 166.37 35.56) (xy 171.45 35.56)
 		)
 		(stroke
 			(width 0)
@@ -18334,7 +18334,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 44.45) (xy 186.69 43.18)
+			(xy 175.26 45.72) (xy 175.26 44.45)
 		)
 		(stroke
 			(width 0)
@@ -18554,7 +18554,7 @@
 	)
 	(global_label "XTALI"
 		(shape output)
-		(at 199.39 34.29 0)
+		(at 187.96 35.56 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18563,7 +18563,7 @@
 		)
 		(uuid "2077cea4-55f1-495d-b8d2-0530b8c659fb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 199.39 34.29 0)
+			(at 187.96 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18818,7 +18818,7 @@
 	)
 	(global_label "XTALO"
 		(shape input)
-		(at 173.99 34.29 180)
+		(at 162.56 35.56 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18827,7 +18827,7 @@
 		)
 		(uuid "4ecf783e-7e88-4b54-83cc-62e614a2d547")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.99 34.29 0)
+			(at 162.56 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19809,7 +19809,7 @@
 	(symbol
 		(lib_name "GND_47")
 		(lib_id "Scopefun_v2-rescue:GND")
-		(at 177.8 44.45 0)
+		(at 166.37 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19819,7 +19819,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b46a0")
 		(property "Reference" "#PWR0275"
-			(at 177.8 50.8 0)
+			(at 166.37 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19830,7 +19830,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 177.8 48.26 0)
+			(at 166.37 49.53 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19840,7 +19840,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 44.45 0)
+			(at 166.37 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19850,7 +19850,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 44.45 0)
+			(at 166.37 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19860,7 +19860,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 177.8 44.45 0)
+			(at 166.37 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19884,7 +19884,7 @@
 	(symbol
 		(lib_name "GND_45")
 		(lib_id "Scopefun_v2-rescue:GND")
-		(at 195.58 44.45 0)
+		(at 184.15 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19894,7 +19894,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b46d7")
 		(property "Reference" "#PWR0276"
-			(at 195.58 50.8 0)
+			(at 184.15 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19905,7 +19905,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 195.58 48.26 0)
+			(at 184.15 49.53 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19915,7 +19915,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 44.45 0)
+			(at 184.15 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19925,7 +19925,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 44.45 0)
+			(at 184.15 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19935,7 +19935,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 195.58 44.45 0)
+			(at 184.15 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19959,7 +19959,7 @@
 	(symbol
 		(lib_name "GND_46")
 		(lib_id "Scopefun_v2-rescue:GND")
-		(at 186.69 44.45 0)
+		(at 175.26 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19969,7 +19969,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b4981")
 		(property "Reference" "#PWR0277"
-			(at 186.69 50.8 0)
+			(at 175.26 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19980,7 +19980,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 186.69 48.26 0)
+			(at 175.26 49.53 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19990,7 +19990,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 186.69 44.45 0)
+			(at 175.26 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20000,7 +20000,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 186.69 44.45 0)
+			(at 175.26 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20010,7 +20010,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 186.69 44.45 0)
+			(at 175.26 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20033,7 +20033,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:X_Crystal_19.2Mhz")
-		(at 186.69 34.29 0)
+		(at 175.26 35.56 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20043,7 +20043,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b8703")
 		(property "Reference" "X1"
-			(at 186.944 26.924 0)
+			(at 175.514 28.194 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20053,7 +20053,7 @@
 			)
 		)
 		(property "Value" "X_Crystal_19.2Mhz"
-			(at 186.69 29.21 0)
+			(at 175.26 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20063,7 +20063,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:XTAL-4"
-			(at 186.69 44.958 0)
+			(at 175.26 46.228 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20074,7 +20074,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.pericom.com/assets/Datasheets/FL1920031.pdf"
-			(at 186.944 42.418 0)
+			(at 175.514 43.688 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20085,7 +20085,7 @@
 			)
 		)
 		(property "Description" "Quartz crystal 19.2 Mhz 10ppm"
-			(at 186.69 21.59 0)
+			(at 175.26 22.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20096,7 +20096,7 @@
 			)
 		)
 		(property "MFG Part#" "FL1920031"
-			(at 186.69 24.13 0)
+			(at 175.26 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20129,7 +20129,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_12p")
-		(at 177.8 39.37 0)
+		(at 166.37 40.64 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -20140,7 +20140,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b9a5e")
 		(property "Reference" "C160"
-			(at 177.546 37.592 0)
+			(at 166.116 38.862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20151,7 +20151,7 @@
 			)
 		)
 		(property "Value" "C_12p"
-			(at 177.546 41.402 0)
+			(at 166.116 42.672 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20162,7 +20162,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 177.8 44.45 0)
+			(at 166.37 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20173,7 +20173,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.546 37.592 0)
+			(at 166.116 38.862 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20184,7 +20184,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 50V C0G 5%"
-			(at 176.53 33.02 0)
+			(at 165.1 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20195,7 +20195,7 @@
 			)
 		)
 		(property "MFG Part#" "CGA3E2C0G1H120J080AA"
-			(at 175.006 35.052 0)
+			(at 163.576 36.322 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20222,7 +20222,7 @@
 	)
 	(symbol
 		(lib_id "ScopefunParts:C_12p")
-		(at 195.58 39.37 0)
+		(at 184.15 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20232,7 +20232,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-0000584b9a91")
 		(property "Reference" "C164"
-			(at 195.834 37.592 0)
+			(at 184.404 38.862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20243,7 +20243,7 @@
 			)
 		)
 		(property "Value" "C_12p"
-			(at 195.834 41.402 0)
+			(at 184.404 42.672 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20254,7 +20254,7 @@
 			)
 		)
 		(property "Footprint" "ScopefunPackagesLibrary:C_0603"
-			(at 195.58 44.45 0)
+			(at 184.15 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20265,7 +20265,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.834 37.592 0)
+			(at 184.404 38.862 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20276,7 +20276,7 @@
 			)
 		)
 		(property "Description" "MLCC - SMD/SMT 0603 50V C0G 5%"
-			(at 196.85 33.02 0)
+			(at 185.42 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20287,7 +20287,7 @@
 			)
 		)
 		(property "MFG Part#" "CGA3E2C0G1H120J080AA"
-			(at 198.374 35.052 0)
+			(at 186.944 36.322 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

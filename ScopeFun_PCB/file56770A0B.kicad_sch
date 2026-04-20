@@ -10752,7 +10752,7 @@
 	)
 	(text "Variable capacitors calibration procedure:\nSet generator to 1kHz square wave and connect probe from CHx to generator output.\n1. For CH1 adjust CV1 at 200 mV range (probe set to  1x)\n2. Switch probe to 10x and calibrate probe according to probe manual\n3. For CH1 adjust CV3 at 100 mV range (probe set to 10x gain)\n4. For CH2 adjust CV2 at 200 mV range (probe set to 10x gain)\n5. For CH2 adjust CV4 at 100 mV range (probe set to 10x gain)"
 		(exclude_from_sim no)
-		(at 185.42 88.9 0)
+		(at 30.734 81.026 0)
 		(effects
 			(font
 				(size 1.27 1.27)
