@@ -47,8 +47,6 @@ set_false_path -from [get_pins clearflags*/C] -to [get_pins RAM_DDR3_inst/RAM_WR
 #ignore timing error for distributed RAM (reads are performed after writes)
 set_max_delay -datapath_only -from [get_pins config_RAM/RAM_reg_0_63_*/DP/CLK] -to [get_pins {config_RAM/do2_reg[*]/D}] 2.000
 
-# (removed) Signal generator / AWG timing exceptions
-
 #clk_adc to clk_fx3 CDC
 set_max_delay -datapath_only -from [get_cells {timebase_d_reg[*]}] -to [get_cells {timebase_dd_reg[*]}] 2.000
 set_max_delay -datapath_only -from [get_pins triggered_reg/C] -to [get_pins triggered_d_reg/D] 2.000
@@ -109,8 +107,6 @@ set_false_path -from [get_ports {dataB_p[*]}] -to [get_pins {ADC_interface/data_
 #set_input_delay -clock [get_clocks clk_fx3] -add_delay 1.100 [get_ports {fdata[*]}]
 #set_input_delay -clock [get_clocks clk_adc_dclk] -add_delay 1.100 [get_ports {dataB[*]}]
 
-
-# (removed) Parallel DAC waveform output timing constraints
 
 #ignore timing for async signals
 set_max_delay -datapath_only -from [get_pins {DebugADCState_reg[*]/C}] -to [get_pins {DebugADCState_d_reg[*]/D}] 4.000

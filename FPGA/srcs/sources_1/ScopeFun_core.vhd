@@ -50,8 +50,7 @@ entity fpga is
 		data_n       : in std_logic_vector(13 downto 0);  -- ADC CHA data
 		adc_sclk      : out STD_LOGIC;        -- ADC serial-interface clock
 		adc_sdin      : out STD_LOGIC;        -- ADC serial-interface data
-		adcA_cs		  : out STD_LOGIC;        -- ADC CH1 serial-interface cs#
-		adcB_cs		  : out STD_LOGIC;        -- ADC CH2 serial-interface cs#
+		adcA_cs		  : out STD_LOGIC;        -- ADC serial-interface cs# (single dual-channel ADC)
 		-- DIGITAL channels inteface signals
 
 
@@ -241,15 +240,6 @@ architecture rtl of fpga is
 		);
 	END COMPONENT;
 
-	-- Create 200 Mhz clk_ref
-	component clk_gen_pll
-		Port (
-			clk_in : in STD_LOGIC;
-			clk_out_1 : out STD_LOGIC;
-			clk_out_2 : out STD_LOGIC;
-			pll_locked : out STD_LOGIC);
-	end component;
-
 	component clk_wiz_0
 		port (
 			-- Clock out ports
@@ -359,7 +349,6 @@ architecture rtl of fpga is
 	signal LED_i    : STD_LOGIC_VECTOR(3 downto 1):="000";
 	signal MasterState : STD_LOGIC_VECTOR(3 downto 0):="0000";	 -- Counter to sequence the fifo signals.
 	signal GetSampleState : STD_LOGIC_VECTOR(2 downto 0):="000"; -- Counter to sequence ADC samples save.
-	signal DAC_state	 : STD_LOGIC_VECTOR(2 downto 0):="000";	 -- Counter to control DAC output voltages.
 	signal ReturnToStreamingState : STD_LOGIC := '0';	 -- MasterState return flag
 	signal ReturnToFrameRequest : STD_LOGIC := '0';	 -- MasterState return flag
 	signal flagd_rdy_cnt : integer range 0 to 31;
@@ -409,7 +398,6 @@ architecture rtl of fpga is
 	--signal gl_reset_i : std_logic := '1';
 
 	signal ConfigureADC : std_logic :='0';
-	signal ConfigureVdac : std_logic :='0';
 	signal faddr_rdy : std_logic;
 
 	-- frame save/send sync flags
@@ -517,22 +505,6 @@ architecture rtl of fpga is
 	signal holdOff_d : UNSIGNED (31 downto 0);
 	signal t_start : std_logic; -- holdoff input: start timer
 	signal o_end : std_logic;   -- holdoff output: timer ended
-	signal VgainA : std_logic_vector(11 downto 0);
-	signal VgainA_d : std_logic_vector(11 downto 0);
-	signal VgainB : std_logic_vector(11 downto 0);
-	signal VgainB_d : std_logic_vector(11 downto 0);
-	signal OffsetA : std_logic_vector(11 downto 0);
-	signal OffsetA_d : std_logic_vector(11 downto 0);
-	signal OffsetA_2d : std_logic_vector(11 downto 0);
-	signal OffsetA_3d : std_logic_vector(11 downto 0);
-	signal OffsetA_4d : std_logic_vector(11 downto 0);
-	signal OffsetA_5d : std_logic_vector(11 downto 0);
-	signal OffsetA_6d : std_logic_vector(11 downto 0);
-	signal OffsetA_7d : std_logic_vector(11 downto 0);
-	signal OffsetA_8d : std_logic_vector(11 downto 0);
-	signal OffsetA_9d : std_logic_vector(11 downto 0);
-	signal OffsetB : std_logic_vector(11 downto 0);
-	signal OffsetB_d : std_logic_vector(11 downto 0);
 	signal analogTrigTresh : std_logic_vector(9 downto 0);
 	signal fdata_tmp : std_logic_vector(15 downto 0);
 	signal mem_tmp : std_logic_vector(15 downto 0);
@@ -545,21 +517,15 @@ architecture rtl of fpga is
 	signal adc_cfg_data : std_logic_vector (7 downto 0);
 	signal adc_cfg_data_d : std_logic_vector (7 downto 0);
 	signal adc_spi_data : std_logic_vector (23 downto 0);
-	signal sclk_counter : integer range 0 to 15;     -- DAC sclk divider
 	signal adc_sclk_counter : integer range 0 to 7; -- ADC sclk divider
 	signal adc_spi_bit_count : integer range 0 to 15:=15;
 	signal adc_configured_flag : STD_LOGIC;
-	signal configure_dac : STD_LOGIC;
 	signal adc_cs_i : STD_LOGIC := '1';
 	signal adc_sclk_i : STD_LOGIC;
 	signal adc_sdin_i : STD_LOGIC;
 	signal adcA_spi_busy : std_logic;
-	signal adcB_spi_busy : std_logic;
 
-	-- DPOT SPI interface
-	signal dpot_spi_busy : std_logic;
-	signal dpot_spi_write_trig : std_logic;
-	signal dpot_spi_WiperCode : std_logic_vector(15 downto 0);
+
 
 
 	-- analog switching
@@ -571,7 +537,6 @@ architecture rtl of fpga is
 	signal ch2_k_i : STD_LOGIC;
 
 	-- delay counters and flags
-	signal dasync_wait_cnt : integer range 0 to 15;
 	signal auto_trigger : std_logic;
 	signal auto_trigger_d : std_logic;
 	signal auto_trigger_cnt : integer range 0 to 400000;
@@ -766,10 +731,6 @@ architecture rtl of fpga is
 --	attribute mark_debug of DataOutValid : signal is true;
 --	attribute mark_debug of DataOut : signal is true;
 --	attribute mark_debug of DataOutEnable : signal is true;
---	attribute mark_debug of dac_cs_i : signal is true;
---	attribute mark_debug of dac_sclk_i : signal is true;
---	attribute mark_debug of dac_sdin_i : signal is true;
---	attribute mark_debug of ConfigureVdac : signal is true;
 --	attribute mark_debug of gl_reset : signal is true;
 --	attribute mark_debug of init_calib_complete : signal is true;
 --	attribute mark_debug of cfg_we : signal is true;
@@ -784,23 +745,12 @@ architecture rtl of fpga is
 --	attribute mark_debug of getnewframe_dd : signal is true;
 --	attribute mark_debug of getnewframe_d : signal is true;
 --	attribute mark_debug of newFrameRequestRevcd : signal is true;
-
---	attribute mark_debug of dina_awg1  : signal is true;
---	attribute mark_debug of dina_awg2  : signal is true;
---	attribute mark_debug of addra_awg1 : signal is true;
---	attribute mark_debug of addra_awg2 : signal is true;
---	attribute mark_debug of wea_awg1   : signal is true;
 --	attribute mark_debug of BufferSel  : signal is true;
 --	attribute mark_debug of faddr_i    : signal is true;
 --	attribute mark_debug of accumulate_addra : signal is true;
 --	attribute mark_debug of slrd_rdy_cnt         : signal is true;
 --	attribute mark_debug of slrd_cnt   : signal is true;
 
---	attribute mark_debug of dpot_spi_WiperCode   : signal is true;
---	attribute mark_debug of dpot_spi_write_trig  : signal is true;
---	attribute mark_debug of dpot_sck : signal is true;
---	attribute mark_debug of dpot_cs  : signal is true;
---	attribute mark_debug of dpot_si  : signal is true;
 
 --	attribute mark_debug of slwr_assert_cnt: signal is true;
 --	attribute mark_debug of cnt_dw_stop: signal is true;
@@ -1009,10 +959,6 @@ begin
 	clk_fx3 <= not(ifclk);
 	slcs <= '0';
 
-	dpot_cs <= '1';
-	dpot_sck <= '0';
-	dpot_si <= '0';
-
 	LED(1) <= LED_i(1) OR NOT(init_calib_complete_d);
 	LED(2) <= LED_i(2) OR NOT(init_calib_complete_d);
 	LED(3) <= LED_i(3) OR NOT(init_calib_complete_d);
@@ -1024,11 +970,6 @@ begin
 	adc_sclk <= adc_sclk_i;
 	adc_sdin <= adc_sdin_i; -- 1 -> 0 transiotion resets clock
 	adcA_cs <= adc_cs_i;
-	adcB_cs <= adc_cs_i;
-
-	dasclk <= dac_sclk_i; --data is sampled on rising edge of sclk
-	dasdin <= dac_sdin_i;
-	dasync <= dac_cs_i;
 
 	ch1_dc  <= ch1_dc_i;
 	ch2_dc  <= ch2_dc_i;
@@ -1137,7 +1078,6 @@ begin
 			--dataDd <= "00" & addra;
 
 			----------------
-			--genSignal_d <= signed(dac_data)-to_signed(2048,12);   --signed(dac_data_rising);
 			clearflags_d <= clearflags;
 			holdOff_d <= holdOff;
 
@@ -1645,14 +1585,10 @@ begin
 					-- check flaga for rising edge
 					if ( flaga_d = '1' ) then
 						if Timer_cnt = 50000 then
-							ConfigureVdac <= '0';   -- de-assert ADC & DAC SPI write
 							ConfigureADC <= '0';
 							MasterState <= B;	    -- goto Dispatcher
 							Timer_cnt <= 0;
 						elsif Timer_cnt = 40000 then
-							dac_cfg_reg <= "0110" & "000000000000"; -- enable +/-Va supply (UPO bit on MAX5501 DAC goes HIGH)
-							--dac_cfg_reg <= "0010" & "000000000000"; -- DISABLE +/-Va supply (for debug only)
-							ConfigureVdac <= '1';
 							adc_spi_data <= X"00C0" & X"00"; -- configure ADC to DISABLE TEST pattern
 							ConfigureADC <= '1';
 							MasterState <= A;
@@ -1671,23 +1607,17 @@ begin
 							adc_spi_data <= X"00C0" & X"44"; -- configure ADC to send TEST pattern (CHECKERBOARD)
 							ConfigureADC <= '1';
 							-- set POT:1 to tap value 152 (29763 Ohms)- the tap value should match digital[voltageCoeficient]
-							dpot_spi_WiperCode <= "00010000" & X"98";
-							dpot_spi_write_trig <= '1';
-							ConfigureVdac <= '0';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						else
 							read_calib_start <= '0';
 							ConfigureADC <= '0';        -- de-assert ADC write trigger
-							ConfigureVdac <= '0';       -- de-assert control DAC write trigger
-							dpot_spi_write_trig <= '0'; -- de-assert digital POT write trigger
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						end if;
 					else
 						Timer_cnt <= 0;
 						read_calib_start <= '0';
-						ConfigureVdac <= '0';
 						ConfigureADC <= '0';
 						MasterState <= A;
 					end if;
@@ -1699,7 +1629,6 @@ begin
 					slwr_i <= '1';
 					slrd_i <= '1';
 					pktend_i <= '1';
-					dpot_spi_write_trig <= '0';
 					-- if new scope configuration data is waiting in EP2 buffer
 					if ( flaga_d = '1') then -- EP2 not empty
 						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- place data bus in HI-Z state
@@ -1716,18 +1645,6 @@ begin
 						ReturnToFrameRequest <= '0'; -- re-set return state flag
 						Masterstate <= F; -- return to frame streaming
 						--if scope settings have changed
-					elsif DAC_pogramming_start = '1' then
-						-- update DAC config registers
-						dac_cfg_array(1) <= "1111" & VgainB;
-						dac_cfg_array(2) <= "1011" & VgainA;
-						-- Convert from Two's Complement to Offset Binary
-						dac_cfg_array(3) <= "0011" & std_logic_vector(NOT(OffsetA(11))& OffsetA(10 downto 0));
-						dac_cfg_array3_d <= "0011" & std_logic_vector(NOT(OffsetA(11))& OffsetA(10 downto 0));
-						dac_cfg_array3_2d <= dac_cfg_array3_d;
-						dac_cfg_array3_3d <= dac_cfg_array3_2d;
-						dac_cfg_array3_4d <= dac_cfg_array3_3d;
-						dac_cfg_array(4) <= "0111" & std_logic_vector(NOT(OffsetB(11))& OffsetB(10 downto 0));
-						Masterstate <= E;
 					--if ADC config has changed
 					elsif (adc_cfg_data_d /= adc_cfg_data) then
 						adc_spi_data <= adc_cfg_reg & adc_cfg_data;
@@ -1760,7 +1677,6 @@ begin
 						when 1 to 20 =>
 							if cfg_we_d = '1' AND cfg_data_in_d /= cfg_do_A then
 								ScopeConfigChanged <= '1';
-								DAC_pogramming_start <= '1';
 								--						LED_i(1) <= '1';
 							end if;
 						when others => null;
@@ -1817,14 +1733,12 @@ begin
 							cfg_data_cnt <= 0;
 							faddr_rdy_cnt_i <= 0;
 							faddr_rdy <= '0';
-							dpot_spi_write_trig <= '1';
 							Masterstate <= B;
 						else
 							reading_config_registers <= '1';
 							cfg_addrA_d <= cfg_addrA;
 							-- increment memory address pointer
 							cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
-							dpot_spi_write_trig <= '0';
 							Masterstate <= C;
 						end if;
 
@@ -1835,20 +1749,6 @@ begin
 								adc_cfg_reg_d <= adc_cfg_reg;
 								adc_cfg_data <= cfg_do_A(7 downto 0);
 								adc_cfg_data_d <= adc_cfg_data;
-							when 2 =>
-								VgainA <= cfg_do_A(27 downto 16);
-								VgainB <= cfg_do_A(11 downto 0);
-							when 3 =>
-								OffsetA <= cfg_do_A(27 downto 16);
-								OffsetA_d <= OffsetA;
-								OffsetA_2d <= OffsetA_d;
-								OffsetA_3d <= OffsetA_2d;
-								OffsetA_4d <= OffsetA_3d;
-								OffsetA_5d <= OffsetA_4d;
-								OffsetA_6d <= OffsetA_5d;
-								OffsetA_7d <= OffsetA_6d;
-								OffsetB <= cfg_do_A(11 downto 0);
-								OffsetB_d <= OffsetB;
 							when 4 =>
 								ch1_dc_i <= cfg_do_A(21);
 								ch2_dc_i <= cfg_do_A(20);
@@ -1858,8 +1758,6 @@ begin
 								ch2_k_i <= cfg_do_A(16);
 								s_trigger_mode <= cfg_do_A(1 downto 0);
 								s_trigger_rearm <= cfg_do_A(2);
-							when 24 =>
-								dpot_spi_WiperCode <= "00000000" & cfg_do_A (7 downto 0); -- write data to POT:0
 							when others => null;
 						end case;
 					end if;
@@ -1867,7 +1765,7 @@ begin
 
 				when D =>			          -- "CONFIGURE ADC"
 				-- reset ADC register write command
-					if ConfigureADC = '1' OR adcA_spi_busy = '1' OR adcB_spi_busy = '1' then
+					if ConfigureADC = '1' OR adcA_spi_busy = '1' then
 						adc_spi_data <= adc_cfg_reg & adc_cfg_data;
 						ConfigureADC <= '0';
 						Masterstate <= D;
@@ -1876,70 +1774,6 @@ begin
 						Masterstate <= B;
 					end if;
 					DebugMState <= 3;
-
-				when E =>						-- "CONFIGURE ANALOG INPUTS (Gain/Offset)
-
-					--===========================================================
-					-- Update DAC outputs (analog channel Offser/Gain control)
-					--===========================================================
-
-					if DAC_programming_finished = '1' then
-						if cnt_dac_out_stable = 16383 then
-							DAC_programming_finished <= '0'; --reset programming flag
-							cnt_dac_out_stable <= 0;
-							Masterstate <= B;
-						else
-							DAC_programming_finished <= '1';
-							cnt_dac_out_stable <= cnt_dac_out_stable + 1;
-							Masterstate <= E;
-						end if;
-					else
-						Masterstate <= E;
-						case DAC_state (2 downto 0) is
-
-							when DAC_A => -- "IDLE"
-
-								if DAC_pogramming_start = '1' and dac_spi_busy = '0' then
-									DAC_pogramming_start <= '0';
-									DAC_state <= DAC_B; -- start programming
-								else
-									DAC_state <= DAC_A; -- WAIT
-								end if;
-
-							when DAC_B => -- "LOAD DAC REGISTER AND START PROGRAMMING"
-
-								dac_cfg_reg <= dac_cfg_array(dac_array_count);
-								if dac_spi_busy = '0' then
-									ConfigureVdac <= '1'; --s DAC programming
-									DAC_state <= DAC_C;   --goto WAIT
-								else
-									ConfigureVdac <= '0';
-									DAC_state <= DAC_B;
-								end if;
-
-							when DAC_C => -- "WAIT UNTIL PROGRAMMING FINISHED"
-								ConfigureVdac <= '0';
-								if dac_spi_busy = '1' OR ConfigureVdac = '1' then
-									-- wait if SPI interface is busy
-									DAC_state <= DAC_C;
-								else
-									if ( dac_array_count = 4 ) then
-										DAC_programming_finished <= '1';
-										dac_array_count <= 1;
-										DAC_state <= DAC_A;
-									else
-										DAC_state <= DAC_B;
-										-- select next DAC register and goto LOAD
-										dac_array_count <= dac_array_count + 1;
-									end if;
-								end if;
-
-							when others =>
-								DAC_state <= DAC_A;
-						end case;
-					end if;
-
-					DebugMState <= 4;
 
 				when F =>						-- "WAIT FOR NEW FRAME READY"
 					clearflags <= '0';
