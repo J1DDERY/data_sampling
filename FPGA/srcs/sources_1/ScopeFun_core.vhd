@@ -770,10 +770,7 @@ architecture rtl of fpga is
 begin
 
 	ADC_interface: adc_if
-		generic map (
-			ADC_BITS => 14,
-			CH2_SWAP_D2D3 => false
-		)
+		generic map (ADC_BITS => 14)
 		port map (
 			i_clk_p => clk_adc_p,
 			i_clk_n => clk_adc_n,
