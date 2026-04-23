@@ -15,39 +15,28 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 
-#adc clock is 250 Mhz, waveform is inverted (p/n clock pins are swapped on pcb)
+# ADC 采样时钟为 250 MHz。由于板上把差分时钟正负端接反，
+# 这里用 180 度相位的波形定义来匹配实际采样边沿。
 create_clock -period 4.000 -name clk_adc_p -waveform {2.000 4.000} [get_ports clk_adc_p]
+# 允许该时钟走专用时钟骨干网络。
 set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets clk_adc_p]
-# jitter value specified as nanoseconds
+# 输入时钟抖动，单位是 ns。
 set_input_jitter clk_adc_p 0.012
 
-#ADC interface data fifo
-#set_protperty IODELAY_GROUP IODELAY_ADC_IF [get_cells ADC_interface/*]
-
-#disable CDC registers timing check
-#set_max_delay -datapath_only -from [get_cells ADC_interface/data_fifo_16x20b/enb_reg*] -to [get_cells ADC_interface/data_fifo_16x20b/enb_d_reg*] 2.000
-#set_max_delay -datapath_only -from [get_cells ADC_interface/data_fifo_16x20b/*/RAMC_D1] -to [get_cells {ADC_interface/data_fifo_16x20b/do_reg[*]}] 1.500
-#calib_done to ADC interface fifo enable
-set_max_delay -datapath_only -from [get_pins calib_done_reg/C] -to [get_pins ADC_interface/data_fifo_16x20b/we_d_reg/D] 2.000
-#calib_start to ADC interface calib start
+# calib_done 到 ADC 接口旧 FIFO 使能路径已移除（adc_if 中已无 data_fifo_16x20b 实例）。
+# 读取校准启动脉冲到 ADC 接口内部寄存器。
 set_max_delay -datapath_only -from [get_pins read_calib_start_reg/C] -to [get_pins ADC_interface/read_calib_start_reg/D] 2.000
+# 校准源选择信号到 ADC 接口内部寄存器。
 set_max_delay -datapath_only -from [get_pins read_calib_source_reg/C] -to [get_pins ADC_interface/read_calib_source_reg/D] 2.000
 
-#global reset to DDR3 sample write buffer reset
-#set_false_path -from [get_pins gl_reset_reg/C] -to [get_pins RAM_DDR3_inst/write_buff/reset_reg/D]
-#set_false_path -from [get_pins gl_reset_reg/C] -to [get_pins RAM_DDR3_inst/write_buff/rst_d_reg/D]
-#set_false_path -from [get_pins gl_reset_reg/C] -to [get_pins RAM_DDR3_inst/ram/ui_reset_d_reg/D]
-#set_false_path -from [get_pins gl_reset_reg/C] -to [get_pins RAM_DDR3_inst/read_buff/rst_d_reg/D]
-
+# clearflags 是异步清状态信号，不按普通时序路径分析。
 set_false_path -from [get_pins clearflags*/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/reset_reg/D]
 set_false_path -from [get_pins clearflags*/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/rst_d_reg/D]
-#set_false_path -from [get_pins clearflags_d/C] -to [get_pins RAM_DDR3_inst/ram/ui_reset_d_reg/D]
-#set_false_path -from [get_pins clearflags_d/C] -to [get_pins RAM_DDR3_inst/RAM_READ_FIFO/rst_d_reg/D]
 
-#ignore timing error for distributed RAM (reads are performed after writes)
+# 分布式 RAM 采用先写后读的使用方式，读路径允许适度放宽。
 set_max_delay -datapath_only -from [get_pins config_RAM/RAM_reg_0_63_*/DP/CLK] -to [get_pins {config_RAM/do2_reg[*]/D}] 2.000
 
-#clk_adc to clk_fx3 CDC
+# clk_adc 域到 clk_fx3 域的控制/状态同步路径。
 set_max_delay -datapath_only -from [get_cells {timebase_d_reg[*]}] -to [get_cells {timebase_dd_reg[*]}] 2.000
 set_max_delay -datapath_only -from [get_pins triggered_reg/C] -to [get_pins triggered_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins {framesize_d_reg[*]/C}] -to [get_pins {framesize_dd_reg[*]/D}] 2.000
@@ -56,9 +45,7 @@ set_max_delay -datapath_only -from [get_pins {RAM_DDR3_inst/PreTrigSavingCnt_reg
 set_max_delay -datapath_only -from [get_pins clearflags*/C] -to [get_pins RAM_DDR3_inst/rst_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins {encoding_format_d_reg[*]/C}] -to [get_pins {encoding_format_dd_reg[*]/D}] 2.000
 
-# (removed) Digital pattern generator CDC
-
-#clk_fx3 to clk_adc CDC
+# clk_fx3 域到 clk_adc 域的控制/状态同步路径。
 set_max_delay -datapath_only -from [get_cells {an_trig_delay_reg[*]}] -to [get_cells {an_trig_delay_d_reg[*]}] 2.000
 set_max_delay -datapath_only -from [get_pins clearflags_reg/C] -to [get_pins clearflags_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins requestFrame_reg/C] -to [get_pins requestFrame_d_reg/D] 2.000
@@ -68,45 +55,16 @@ set_max_delay -datapath_only -from [get_pins {pre_trigger_d_reg[*]/C}] -to [get_
 set_max_delay -datapath_only -from [get_pins ScopeConfigChanged_reg/C] -to [get_pins ScopeConfigChanged_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins reading_config_registers_reg/C] -to [get_pins reading_config_registers_d_reg/D] 2.000
 
-# (removed) sig_out_enable/buffersel CDC
-
-
-#DDR3 controller
-# write FIFO reset
-# clk_adc -> clk_fx3
+# DDR3 控制器：写 FIFO 复位、满标志和控制路径。
 set_max_delay -datapath_only -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst1/bl.fifo_36_inst_bl_1.fifo_36_bl_1/WRCLK] -to [get_pins RAM_DDR3_inst/fwr_AlmostFull_d_reg/D] 2.000
 set_false_path -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/rst_i_reg/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst1/bl.fifo_36_inst_bl_1.fifo_36_bl_1/RST]
 set_false_path -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/rst_i_reg/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst2/bl.fifo_36_inst_bl_1.fifo_36_bl_1/RST]
 set_false_path -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/reset_reg/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst1/bl.fifo_36_inst_bl_1.fifo_36_bl_1/RDEN]
 set_false_path -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/reset_reg/C] -to [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst2/bl.fifo_36_inst_bl_1.fifo_36_bl_1/RDEN]
 
-# signals start moving samples from WRITE FIFO into DDR3 RAM
-set_max_delay -from [get_pins RAM_DDR3_inst/RAM_WRITE_FIFO/FIFO_DUALCLOCK_MACRO_inst1/bl.fifo_36_inst_bl_1.fifo_36_bl_1/WRCLK] -to [get_pins RAM_DDR3_inst/fwr_AlmostFull_d_reg/D] 2.000
-
-# ADC clock interface is a Source-synchronous DDR interface (min/max times taken from KAD5510P data-sheet)
-# clk-to-data delay wrt rising edge : min -260 ps, max 120 ps
-# clk-to-data delay wrt falling edge: min -160 ps, max 230 ps
-# note: clock is taken from CH1 ADC and clock pins are swapped on pcb
-# there is a 180 degree phase shift between ADC1 and ADC2 sampling clock
-set_input_delay -clock [get_clocks clk_adc_p] -clock_fall -min -add_delay -0.260 [get_ports {dataA_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -clock_fall -max -add_delay 0.120 [get_ports {dataA_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -min -add_delay -0.160 [get_ports {dataA_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -max -add_delay 0.230 [get_ports {dataA_p[*]}]
-# above contraints for dataA inputs are for static timing analasys only
-# dynamic calibration is used to find the center of a data eye
-# so we can disable timing analysis for dataA inputs with the following line
-set_false_path -from [get_ports {dataA_p[*]}] -to [get_pins {ADC_interface/data_ddr_to_se[*].data1_ddr_to_se/D}]
-# report_timing -from [get_ports {dataA_p[*]}] -to [get_pins {ADC_interface/data_ddr_to_se[*].data1_ddr_to_se/D}] -delay_type min_max -max_paths 10 -sort_by group -input_pins -routable_nets -name timing_1
-# use static timing analysis for dataB ports (we use fixed IDELAY value for dataB inputs)
-set_input_delay -clock [get_clocks clk_adc_p] -clock_fall -min -add_delay 1.840 [get_ports {dataB_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -clock_fall -max -add_delay 2.230 [get_ports {dataB_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -min -add_delay 1.740 [get_ports {dataB_p[*]}]
-set_input_delay -clock [get_clocks clk_adc_p] -max -add_delay 2.120 [get_ports {dataB_p[*]}]
-set_false_path -from [get_ports {dataB_p[*]}] -to [get_pins {ADC_interface/data_ddr_to_se[*].data2_ddr_to_se/D}]
-
-#set_input_delay -clock [get_clocks clk_fx3] -add_delay 1.100 [get_ports {fdata[*]}]
-#set_input_delay -clock [get_clocks clk_adc_dclk] -add_delay 1.100 [get_ports {dataB[*]}]
+# 旧版 dataA_p/dataB_p 外部输入延迟约束已移除。
+# 当前顶层端口已改为 data_p/data_n，ADC 采样窗口由 adc_if 内部 IDELAY/IDDR 校准处理。
 
 
-#ignore timing for async signals
+# 仅放宽调试状态信号的跨域同步路径。
 set_max_delay -datapath_only -from [get_pins {DebugADCState_reg[*]/C}] -to [get_pins {DebugADCState_d_reg[*]/D}] 4.000

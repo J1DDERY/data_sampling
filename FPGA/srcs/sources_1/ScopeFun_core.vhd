@@ -16,7 +16,7 @@
 ----------------------------------------------------------------------------------
 
 --
--- Scopefun firmware: FGPA core
+-- Scopefun固件：FPGA核心
 --
 
 library IEEE;
@@ -31,42 +31,40 @@ use UNISIM.VComponents.all;
 entity fpga is
 
 	Port (
-		-- FX3 interface
-		fdata         : inout STD_LOGIC_VECTOR(31 downto 0);	-- FIFO data lines.
-		faddr         : out STD_LOGIC_VECTOR(1 downto 0);		-- FIFO select lines
-		slcs          : out STD_LOGIC;                          -- Slave select control line
-		slwr          : out STD_LOGIC;                          -- Write control line (asserted_low)
-		slrd_sloe     : out STD_LOGIC;                          -- Read control line (SLOE & SLRD are tied together)
-		LED           : out STD_LOGIC_VECTOR(3 downto 1);       -- LED indicators
-		flaga         : in STD_LOGIC;                           -- EP2 - OUT Empty flag (all flags acive low)
-		flagb         : in STD_LOGIC;                           -- EP4 - OUT Empty flag
-		pktend        : out STD_LOGIC;                          -- Commit short packet (asserted_low)
-		flagd         : in STD_LOGIC;                           -- EP6 - IN Full Flag
-		clk_fx3       : out STD_LOGIC;                          -- FX3 GPIF Clock
-		-- ADC interface
-		clk_adc_p     : in STD_LOGIC;           -- ADC clock LVDS p
+		-- FX3接口
+		fdata         : inout STD_LOGIC_VECTOR(31 downto 0);	-- FIFO数据总线
+		faddr         : out STD_LOGIC_VECTOR(1 downto 0);		-- FIFO端点选择线
+		slcs          : out STD_LOGIC;                          -- 从设备片选控制
+		slwr          : out STD_LOGIC;                          -- 写控制（低有效）
+		slrd_sloe     : out STD_LOGIC;                          -- 读控制（SLOE与SLRD并联）
+		LED           : out STD_LOGIC_VECTOR(3 downto 1);       -- LED指示灯
+		flaga         : in STD_LOGIC;                           -- EP2输出空标志（标志低有效）
+		flagb         : in STD_LOGIC;                           -- EP4输出空标志
+		pktend        : out STD_LOGIC;                          -- 提交短包（低有效）
+		flagd         : in STD_LOGIC;                           -- EP6输入满标志
+		clk_fx3       : out STD_LOGIC;                          -- FX3 GPIF时钟
+		-- ADC接口
+		clk_adc_p     : in STD_LOGIC;           -- ADC差分时钟正端
 		clk_adc_n     : in STD_LOGIC;
-		data_p       : in std_logic_vector(13 downto 0);  -- ADC CHA data (LVDS DDR)
-		data_n       : in std_logic_vector(13 downto 0);  -- ADC CHA data
-		adc_sclk      : out STD_LOGIC;        -- ADC serial-interface clock
-		adc_sdin      : out STD_LOGIC;        -- ADC serial-interface data
-		adcA_cs		  : out STD_LOGIC;        -- ADC serial-interface cs# (single dual-channel ADC)
-		-- DIGITAL channels inteface signals
+		data_p       : in std_logic_vector(13 downto 0);  -- ADC通道A数据（LVDS DDR）
+		data_n       : in std_logic_vector(13 downto 0);  -- ADC通道A反相信号
+		adc_sclk      : out STD_LOGIC;        -- ADC串行接口时钟
+		adc_sdin      : out STD_LOGIC;        -- ADC串行接口数据
+		adcA_cs		  : out STD_LOGIC;        -- ADC串行接口片选（单颗双通道ADC）
 
-
-		-- Analog Trigger for CH-A ETS
-		an_trig_p     : in STD_LOGIC;  -- analog/ets trigger
+		-- CH-A ETS模拟触发
+		an_trig_p     : in STD_LOGIC;  -- 模拟/ETS触发输入
 		an_trig_n     : in STD_LOGIC;  --
-		an_trig_level : out STD_LOGIC; -- analog/ets trigger level (PWM generated)
-		-- Analog switching
-		ch1_dc	      : out STD_LOGIC;    -- DC/AC switch
+		an_trig_level : out STD_LOGIC; -- 模拟/ETS触发电平（PWM生成）
+		-- 模拟前端切换
+		ch1_dc	      : out STD_LOGIC;    -- DC/AC开关
 		ch2_dc	      : out STD_LOGIC;
-		ch1_gnd       : out STD_LOGIC;    -- GND switch
+		ch1_gnd       : out STD_LOGIC;    -- GND开关
 		ch2_gnd       : out STD_LOGIC;
-		ch1_k         : out STD_LOGIC;    -- attenuator switch
+		ch1_k         : out STD_LOGIC;    -- 衰减器开关
 		ch2_k         : out STD_LOGIC;
-		cc_ab         : out STD_LOGIC;    -- connect ch1 to both ADC inputs (for ADC interleaving mode)
-		-- DDR3
+		cc_ab         : out STD_LOGIC;    -- 将CH1连接到双ADC输入（交织模式）
+		-- DDR3接口
 		ddr3_dq      : inout std_logic_vector(15 downto 0);
 		ddr3_dqs_p   : inout std_logic_vector(1 downto 0);
 		ddr3_dqs_n   : inout std_logic_vector(1 downto 0);
@@ -86,22 +84,22 @@ end fpga;
 
 architecture rtl of fpga is
 
-	--define constants
+	-- 常量定义
 
-	--max number of oscilloscope configuration registers
-	CONSTANT CONFIG_DATA_SIZE  : integer  := 32;    -- number of 32-bit Words for scope config
-	CONSTANT CONFIG2_DATA_SIZE : integer  := 32;    -- number of 16-bit Words for scope config2 registers
-	CONSTANT FRAME_HEADER_SIZE : integer := 256;  -- number of 32-bit Words for frame header
+	-- 示波器配置寄存器最大数量
+	CONSTANT CONFIG_DATA_SIZE  : integer  := 32;    -- scope配置区的32位字数量
+	CONSTANT CONFIG2_DATA_SIZE : integer  := 32;    -- scope配置2区的16位字数量
+	CONSTANT FRAME_HEADER_SIZE : integer := 256;    -- 帧头32位字数量
 	CONSTANT DDR3_MAX_SAMPLES : integer := 2**27; -- 2^27 = 128M samples
-	--USB buffers
-	CONSTANT FX3_DMA_BUFFER_SIZE : INTEGER := 1024;  -- FX3 DMA BUFER SIZE (number of bytes)
+	-- USB缓冲区参数
+	CONSTANT FX3_DMA_BUFFER_SIZE : INTEGER := 1024;  -- FX3 DMA缓冲区大小（字节）
 
-	CONSTANT bH : INTEGER := 14;  -- sfixed high index
-	CONSTANT bL : INTEGER := -17; -- sfixed low index
+	CONSTANT bH : INTEGER := 14;  -- sfixed高位索引
+	CONSTANT bL : INTEGER := -17; -- sfixed低位索引
 
 	component adc_if is
 		generic (
-			ADC_BITS : integer := 10
+			ADC_BITS : integer := 14
 		);
 		Port (
 			i_clk_p : in STD_LOGIC;
@@ -115,21 +113,22 @@ architecture rtl of fpga is
 			i_data_n : in STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);
 			o_clk : out STD_LOGIC;
 			o_data_1 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);
-			o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0));
+			o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0)
+		);
 	end component;
 
 	component RAM_DDR3 is
 		port (
-			-- TOP level signals
-			sys_clk_i : in std_logic; -- System clock 250 Mhz
-			clk_ref_i : in std_logic; -- Reference clock 200 Mhz
-			ui_clk : out std_logic; -- Output clock for user logic (100 Mhz)
+			-- 顶层接口信号
+			sys_clk_i : in std_logic; -- 系统时钟250MHz
+			clk_ref_i : in std_logic; -- 参考时钟200MHz
+			ui_clk : out std_logic; -- 用户逻辑输出时钟100MHz
 			rst : in STD_LOGIC;
 			FrameSize : in std_logic_vector(26 downto 0);
 			DataIn : in STD_LOGIC_VECTOR (31 downto 0);
-			PreTrigSaving : in std_logic;  -- assrted (de-asserted) at start (end) of pre-trigger
-			PreTrigWriteEn : in std_logic; -- pre-trigger data write enable
-			PreTrigLen : in std_logic_vector(26 downto 0); -- number of pre-trigger samples
+			PreTrigSaving : in std_logic;  -- 预触发开始/结束标志
+			PreTrigWriteEn : in std_logic; -- 预触发数据写使能
+			PreTrigLen : in std_logic_vector(26 downto 0); -- 预触发样本数量
 			DataWriteEn : in STD_LOGIC;
 			FrameSaveEnd : in STD_LOGIC;
 			DataOut : out STD_LOGIC_VECTOR (31 downto 0);
@@ -139,12 +138,12 @@ architecture rtl of fpga is
 			ram_rdy : out std_logic;
 			init_calib_complete : out STD_LOGIC;
 			device_temp : out std_logic_vector(11 downto 0);
-			-- DDR3 PHY
-			-- Inouts
+			-- DDR3 PHY接口
+			-- 双向端口
 			ddr3_dq      : inout std_logic_vector(15 downto 0);
 			ddr3_dqs_p   : inout std_logic_vector(1 downto 0);
 			ddr3_dqs_n   : inout std_logic_vector(1 downto 0);
-			-- Outputs
+			-- 输出端口
 			ddr3_addr    : out   std_logic_vector(14 downto 0);
 			ddr3_ba      : out   std_logic_vector(2 downto 0);
 			ddr3_ras_n   : out   std_logic;
@@ -285,45 +284,46 @@ architecture rtl of fpga is
 	signal clk_adc_n_delayed : std_logic;
 
 	signal clk_ref_i : std_logic;
+	signal clk_gen : std_logic;
 	signal pll_locked : std_logic;
 	signal pll_reset : std_logic := '0';
 	signal assert_pll_counter : integer range 0 to 65535;
 
-	-- DDR capture outputs from ADC interface:
-	-- adc_data_rise = data captured on DCO rising edge,
-	-- adc_data_fall = data captured on DCO falling edge.
+	-- ADC接口DDR采样输出：
+	-- adc_data_rise = DCO上升沿采样数据
+	-- adc_data_fall = DCO下降沿采样数据
 	signal adc_data_rise : std_logic_vector(13 downto 0);
 	signal adc_data_fall : std_logic_vector(13 downto 0);
-	-- Backward-compatible aliases used by existing logic/debug.
+	-- 为兼容旧逻辑/调试而保留的别名信号。
 	signal dataA : std_logic_vector(13 downto 0);
 	signal dataB : std_logic_vector(13 downto 0);
 
 	signal ifclk : std_logic;
 	signal fdata_d: std_logic_VECTOR(15 downto 0);
 	--
-	signal cfg_addrA: std_logic_VECTOR(5 downto 0);	     -- memory addr written to / read out on the SPO
-	signal cfg_addrA_d: std_logic_VECTOR(5 downto 0);	 -- memory addr written to / read out on the SPO
-	signal cfg_data_in: std_logic_VECTOR(31 downto 0);	 -- memory location read out on the DPO
-	signal cfg_data_in_d: std_logic_VECTOR(31 downto 0); -- memory location read out on the DPO (delayed 1 clk)
+	signal cfg_addrA: std_logic_VECTOR(5 downto 0);	     -- SPO口写入/读出地址
+	signal cfg_addrA_d: std_logic_VECTOR(5 downto 0);	 -- SPO口写入/读出地址延迟
+	signal cfg_data_in: std_logic_VECTOR(31 downto 0);	 -- DPO口读出的配置字
+	signal cfg_data_in_d: std_logic_VECTOR(31 downto 0); -- DPO口配置字（延迟1拍）
 	signal cfg_addrB: std_logic_VECTOR(5 downto 0);
 	signal cfg_addrB_d: std_logic_VECTOR(5 downto 0);
 	signal cfg_we: std_logic;
 	signal cfg_we_d: std_logic;
-	signal cfg_do_A: std_logic_VECTOR(31 downto 0); -- port A data out (clk)
-	signal cfg_do_B: std_logic_VECTOR(31 downto 0); -- port B data out (adc_clk)
+	signal cfg_do_A: std_logic_VECTOR(31 downto 0); -- A口输出数据（ifclk域）
+	signal cfg_do_B: std_logic_VECTOR(31 downto 0); -- B口输出数据（adc时钟域）
 	signal cfg_data_cnt: integer range 0 to (CONFIG_DATA_SIZE-1) := 0;
 	--
 	signal cfg2_addrA: std_logic_VECTOR(4 downto 0);
 	signal cfg2_addrA_d: std_logic_VECTOR(4 downto 0);
-	signal cfg2_data_in: std_logic_VECTOR(15 downto 0);	 -- memory location read out on the DPO
-	signal cfg2_data_in_tmp: std_logic_VECTOR(15 downto 0);	 -- memory location read out on the DPO
-	signal cfg2_data_in_d: std_logic_VECTOR(15 downto 0); -- memory location read out on the DPO (delayed 1 clk)
+	signal cfg2_data_in: std_logic_VECTOR(15 downto 0);	 -- DPO口读出的配置2字
+	signal cfg2_data_in_tmp: std_logic_VECTOR(15 downto 0);	 -- 配置2临时寄存
+	signal cfg2_data_in_d: std_logic_VECTOR(15 downto 0); -- DPO口配置2字（延迟1拍）
 	signal cfg2_addrB: std_logic_VECTOR(4 downto 0);
 	signal cfg2_addrB_d: std_logic_VECTOR(4 downto 0);
 	signal cfg2_we: std_logic;
 	signal cfg2_we_d: std_logic;
-	signal cfg2_do_A: std_logic_VECTOR(15 downto 0); -- port A data out (clk)
-	signal cfg2_do_B: std_logic_VECTOR(15 downto 0); -- port B data out (adc_clk)
+	signal cfg2_do_A: std_logic_VECTOR(15 downto 0); -- 配置2 A口输出（ifclk域）
+	signal cfg2_do_B: std_logic_VECTOR(15 downto 0); -- 配置2 B口输出（adc时钟域）
 	signal genConfigRead: boolean := False;
 	--
 	signal GeneratorCustomDataMap: std_logic_VECTOR(15 downto 0);
@@ -347,25 +347,25 @@ architecture rtl of fpga is
 	signal slwr_i      : STD_LOGIC:='1';
 	signal sloe_i 		 : STD_LOGIC:='1';
 	signal LED_i    : STD_LOGIC_VECTOR(3 downto 1):="000";
-	signal MasterState : STD_LOGIC_VECTOR(3 downto 0):="0000";	 -- Counter to sequence the fifo signals.
-	signal GetSampleState : STD_LOGIC_VECTOR(2 downto 0):="000"; -- Counter to sequence ADC samples save.
-	signal ReturnToStreamingState : STD_LOGIC := '0';	 -- MasterState return flag
-	signal ReturnToFrameRequest : STD_LOGIC := '0';	 -- MasterState return flag
+	signal MasterState : STD_LOGIC_VECTOR(3 downto 0):="0000";	 -- 主状态机：FIFO时序控制
+	signal GetSampleState : STD_LOGIC_VECTOR(2 downto 0):="000"; -- 采样状态机：ADC保存流程
+	signal ReturnToStreamingState : STD_LOGIC := '0';	 -- 返回流发送状态标志
+	signal ReturnToFrameRequest : STD_LOGIC := '0';	 -- 返回等帧请求状态标志
 	signal flagd_rdy_cnt : integer range 0 to 31;
 
-	-- OSCILOSCOPE RAM POINTERS --
-	signal frame_start_pointer : STD_LOGIC_VECTOR (26 downto 0);	-- START OF FRAME (LOCATION OF FIRST SAMPLE)
+	-- 示波器RAM指针 --
+	signal frame_start_pointer : STD_LOGIC_VECTOR (26 downto 0);	-- 帧起始地址（首样本位置）
 	signal frame_start_pointer_d : STD_LOGIC_VECTOR (26 downto 0);
 	signal frame_start_pointer_dd : STD_LOGIC_VECTOR (26 downto 0);
-	signal packet_start_pointer : STD_LOGIC_VECTOR (1 downto 0); 	-- START OF FRAME sent to FX3
-	signal framesize    : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); -- Number of samples
+	signal packet_start_pointer : STD_LOGIC_VECTOR (1 downto 0); 	-- 已发送到FX3的帧起始指针
+	signal framesize    : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); -- 样本点数量
 	signal framesize_d  : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); 
 	signal framesize_dd : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); 
-	signal framesize_enc : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); -- Size of encoded samples (32-bit wide counter)
-	signal pre_trigger : UNSIGNED (26 downto 0);		   -- PreTrigger size
+	signal framesize_enc : STD_LOGIC_VECTOR (26 downto 0) := std_logic_vector(to_unsigned(10000,27)); -- 编码后样本长度（32位字计数）
+	signal pre_trigger : UNSIGNED (26 downto 0);		   -- 预触发长度
 	signal pre_trigger_d : UNSIGNED (26 downto 0);
-	signal pre_trigger_cnt : UNSIGNED (26 downto 0);	-- Sample save counter for preTrigger
-	signal post_trigger : UNSIGNED (26 downto 0);		-- PostTrigger size
+	signal pre_trigger_cnt : UNSIGNED (26 downto 0);	-- 预触发样本保存计数
+	signal post_trigger : UNSIGNED (26 downto 0);		-- 后触发长度
 	signal saved_sample_cnt : integer range 0 to 2**27-1;
 	signal saved_sample_cnt_d :integer range 0 to 2**27-1;
 	--signal saved_sample_cnt_dd : UNSIGNED (13 downto 0);
@@ -377,30 +377,30 @@ architecture rtl of fpga is
 	signal frame_pos_d : UNSIGNED (26 downto 0);
 	signal send_sample_cnt : integer range 0 to DDR3_MAX_SAMPLES-1 := 0;
 	signal send_frame_cnt : integer range 0 to 4095;
-	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE := 0; --header word counter
-	signal dword_cnt_i : integer range 0 to FX3_DMA_BUFFER_SIZE/4 := 0; --data word counter
+	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE := 0; -- 帧头字计数器
+	signal dword_cnt_i : integer range 0 to FX3_DMA_BUFFER_SIZE/4 := 0; -- 数据字计数器
 	signal sent_word_cnt : integer range 0 to 255 := 0;
-	signal faddr_rdy_cnt_i : integer range 0 to 3 := 0; --data word counter
+	signal faddr_rdy_cnt_i : integer range 0 to 3 := 0; -- FADDR切换就绪计数器
 	signal slrd_rdy_cnt : integer range 0 to 7 := 0;
 	signal slrd_cnt : integer range 0 to FX3_DMA_BUFFER_SIZE-1 := 0;
 
-	-- flags --
-	signal slwr_assert : STD_LOGIC := '1'; -- initally, FX3 buffer is empty
+	-- 标志位 --
+	signal slwr_assert : STD_LOGIC := '1'; -- 初始时FX3缓冲可写
 	signal get_new_frame_flag : STD_LOGIC;
-	signal get_new_frame_flag_d : STD_LOGIC; -- delayed get_new_frame_flag signal (for edge synchronization)
-	signal get_new_frame_flag_dd : STD_LOGIC;		-- 2 clk delayed get_new_frame_flag signal (for edge synchronization)
-	signal get_new_frame_flag_ddd : STD_LOGIC;	-- 3 clk
+	signal get_new_frame_flag_d : STD_LOGIC; -- get_new_frame_flag延迟1拍（边沿同步）
+	signal get_new_frame_flag_dd : STD_LOGIC;		-- get_new_frame_flag延迟2拍（边沿同步）
+	signal get_new_frame_flag_ddd : STD_LOGIC;	-- get_new_frame_flag延迟3拍
 	signal new_frame_ready_flag : STD_LOGIC;
 	signal new_frame_ready_flag_d : STD_LOGIC;
 	signal cordic_complete_flag : STD_LOGIC;
-	signal gl_reset : std_logic := '0';  -- global reset (Minimum Reset pulse width for idelayctrl = 60 ns)
-	-- Reset to ready for IDELAYCTRL = 3.67 us
+	signal gl_reset : std_logic := '0';  -- 全局复位（IDELAYCTRL最小脉宽60ns）
+	-- IDELAYCTRL从复位到就绪约3.67us
 	--signal gl_reset_i : std_logic := '1';
 
 	signal ConfigureADC : std_logic :='0';
 	signal faddr_rdy : std_logic;
 
-	-- frame save/send sync flags
+	-- 帧保存/发送同步标志
 	signal getnewframe : std_logic;
 	signal getnewframe_d : std_logic;
 	signal getnewframe_dd : std_logic;
@@ -429,203 +429,203 @@ architecture rtl of fpga is
 	signal reading_config_registers_d : std_logic := '0';
 	signal reading_config_registers_dd : std_logic := '0';
 	
-	CONSTANT A: STD_LOGIC_VECTOR (3 DownTo 0) := "0000";
-	CONSTANT B: STD_LOGIC_VECTOR (3 DownTo 0) := "0001";
-	CONSTANT C: STD_LOGIC_VECTOR (3 DownTo 0) := "0010";
-	CONSTANT D: STD_LOGIC_VECTOR (3 DownTo 0) := "0011";
-	CONSTANT E: STD_LOGIC_VECTOR (3 DownTo 0) := "0100";
-	CONSTANT F: STD_LOGIC_VECTOR (3 DownTo 0) := "0101";
-	CONSTANT G: STD_LOGIC_VECTOR (3 DownTo 0) := "0110";
-	CONSTANT H: STD_LOGIC_VECTOR (3 DownTo 0) := "0111";
-	CONSTANT I: STD_LOGIC_VECTOR (3 DownTo 0) := "1000";
+	CONSTANT A: STD_LOGIC_VECTOR (3 DownTo 0) := "0000"; -- 主状态机状态A：空闲/上电初始化
+	CONSTANT B: STD_LOGIC_VECTOR (3 DownTo 0) := "0001"; -- 主状态机状态B：分发器
+	CONSTANT C: STD_LOGIC_VECTOR (3 DownTo 0) := "0010"; -- 主状态机状态C：读取配置
+	CONSTANT D: STD_LOGIC_VECTOR (3 DownTo 0) := "0011"; -- 主状态机状态D：配置ADC
+	CONSTANT E: STD_LOGIC_VECTOR (3 DownTo 0) := "0100"; -- 主状态机状态E：保留/未使用
+	CONSTANT F: STD_LOGIC_VECTOR (3 DownTo 0) := "0101"; -- 主状态机状态F：等待新帧
+	CONSTANT G: STD_LOGIC_VECTOR (3 DownTo 0) := "0110"; -- 主状态机状态G：数据流发送
+	CONSTANT H: STD_LOGIC_VECTOR (3 DownTo 0) := "0111"; -- 主状态机状态H：预留
+	CONSTANT I: STD_LOGIC_VECTOR (3 DownTo 0) := "1000"; -- 主状态机状态I：预留
 
-	CONSTANT ADC_A: STD_LOGIC_VECTOR (2 DownTo 0) := "000";
-	CONSTANT ADC_B: STD_LOGIC_VECTOR (2 DownTo 0) := "001";
-	CONSTANT ADC_C: STD_LOGIC_VECTOR (2 DownTo 0) := "010";
-	CONSTANT ADC_D: STD_LOGIC_VECTOR (2 DownTo 0) := "011";
-	CONSTANT ADC_E: STD_LOGIC_VECTOR (2 DownTo 0) := "100";
-	CONSTANT ADC_F: STD_LOGIC_VECTOR (2 DownTo 0) := "101";
+	CONSTANT ADC_A: STD_LOGIC_VECTOR (2 DownTo 0) := "000"; -- 采样状态A：空闲
+	CONSTANT ADC_B: STD_LOGIC_VECTOR (2 DownTo 0) := "001"; -- 采样状态B：预触发采集
+	CONSTANT ADC_C: STD_LOGIC_VECTOR (2 DownTo 0) := "010"; -- 采样状态C：等待触发
+	CONSTANT ADC_D: STD_LOGIC_VECTOR (2 DownTo 0) := "011"; -- 采样状态D：触发确认
+	CONSTANT ADC_E: STD_LOGIC_VECTOR (2 DownTo 0) := "100"; -- 采样状态E：后触发采集
+	CONSTANT ADC_F: STD_LOGIC_VECTOR (2 DownTo 0) := "101"; -- 采样状态F：Holdoff等待
 
 
-	-- ADC CLK sample save divider signals
+	-- ADC采样时钟分频与跨域同步信号
 	--signal clk_adc_dclk_DIVIDED : STD_LOGIC;
-	signal timebase : std_logic_vector (4 downto 0);
-	signal timebase_d : std_logic_vector (4 downto 0);
-	signal timebase_dd : std_logic_vector (4 downto 0);
-	signal timebase_ddd : std_logic_vector (4 downto 0);
+	signal timebase : std_logic_vector (4 downto 0);      -- 原始时基配置
+	signal timebase_d : std_logic_vector (4 downto 0);    -- 时基一级寄存
+	signal timebase_dd : std_logic_vector (4 downto 0);   -- 时基二级同步
+	signal timebase_ddd : std_logic_vector (4 downto 0);  -- 时基三级同步
 
 
-	-- Digital custom pattern buffer
-	signal wea_dig : STD_LOGIC;
-	signal addra_dig     : STD_LOGIC_VECTOR (14 downto 0);
-	signal dina_dig      : STD_LOGIC_VECTOR (11 downto 0);
-	signal dina_dig_tmp  : STD_LOGIC_VECTOR (11 downto 0);
-	-- DELAY registers
-	signal dataAd	: SIGNED (13 downto 0);
-	signal dataAdd	: SIGNED (13 downto 0);
-	signal dataBd	: SIGNED (13 downto 0);
-	signal dataBdd	: SIGNED (13 downto 0);
-	signal dora_i : std_logic;
-	signal dorb_i : std_logic;
-	signal trig_signal 	: SIGNED (13 downto 0);
-	signal trig_signal_d : SIGNED (13 downto 0);
-	signal triggered_led : std_logic;
-	signal triggered_led_d : std_logic;
+	-- 数字自定义图样缓冲（当前逻辑分析功能已移除，保留信号）
+	signal wea_dig : STD_LOGIC;                               -- 数字图样RAM写使能
+	signal addra_dig     : STD_LOGIC_VECTOR (14 downto 0);    -- 数字图样RAM写地址
+	signal dina_dig      : STD_LOGIC_VECTOR (11 downto 0);    -- 数字图样RAM写数据
+	signal dina_dig_tmp  : STD_LOGIC_VECTOR (11 downto 0);    -- 数字图样RAM写数据临时寄存
+	-- 延迟寄存器
+	signal dataAd	: SIGNED (13 downto 0);                    -- CH1当前采样（参与触发/编码）
+	signal dataAdd	: SIGNED (13 downto 0);                   -- CH1延迟一级（预留）
+	signal dataBd	: SIGNED (13 downto 0);                    -- CH2当前采样（参与触发/编码）
+	signal dataBdd	: SIGNED (13 downto 0);                   -- CH2延迟一级（预留）
+	signal dora_i : std_logic;                                -- 数字输出A预留信号
+	signal dorb_i : std_logic;                                -- 数字输出B预留信号
+	signal trig_signal 	: SIGNED (13 downto 0);              -- 当前用于触发比较的样本
+	signal trig_signal_d : SIGNED (13 downto 0);              -- 上一拍触发样本（边沿判定）
+	signal triggered_led : std_logic;                         -- 触发状态LED原始信号
+	signal triggered_led_d : std_logic;                       -- 触发状态LED延迟信号
 
-	signal an_trig_d : std_logic;
-	signal an_trig_dd : std_logic;
-	signal an_trig_ddd : std_logic;
-	signal an_trig_dddd : std_logic;
+	signal an_trig_d : std_logic;                             -- 模拟触发同步一级
+	signal an_trig_dd : std_logic;                            -- 模拟触发同步二级
+	signal an_trig_ddd : std_logic;                           -- 模拟触发同步三级
+	signal an_trig_dddd : std_logic;                          -- 模拟触发同步四级
 
-	signal clearflags : STD_LOGIC:='0';
-	signal clearflags_d : STD_LOGIC :='0';
-	signal frameSaveRst: STD_LOGIC:='0';
+	signal clearflags : STD_LOGIC:='0';                       -- 全局清零标志（跨模块复位）
+	signal clearflags_d : STD_LOGIC :='0';                    -- clearflags延迟同步
+	signal frameSaveRst: STD_LOGIC:='0';                      -- 帧保存复位（预留）
 
 	-- RAM allocation for oscilloscope configuration
 	--type memory_array is array(1 to 64) of STD_LOGIC_VECTOR (15 downto 0);
 	--signal mem : memory_array:=((others=> (others=>'0')));
-	signal trig_level : SIGNED (13 downto 0);
-	signal trig_level_d : SIGNED (13 downto 0);
-	signal trig_level_dd : SIGNED (13 downto 0);
-	signal trig_level_r_dd : SIGNED (13 downto 0);
-	signal trig_level_f_dd : SIGNED (13 downto 0);
-	signal trig_hysteresis : SIGNED (13 downto 0);
-	signal trig_hysteresis_d : SIGNED (13 downto 0);
-	signal trigger_source : STD_LOGIC_VECTOR (2 downto 0);
-	signal trigger_source_d : STD_LOGIC_VECTOR (2 downto 0);
-	signal trigger_slope : STD_LOGIC_VECTOR (1 downto 0);
-	signal trigger_slope_d : STD_LOGIC_VECTOR (1 downto 0);
-	signal trigger_mode : STD_LOGIC_VECTOR (1 downto 0);
-	signal trigger_mode_d : STD_LOGIC_VECTOR (1 downto 0);
-	signal trigger_mode_dd : STD_LOGIC_VECTOR (1 downto 0);
-	signal s_trigger_mode : STD_LOGIC_VECTOR (1 downto 0);
-	signal s_trigger_rearm : std_logic;
-	signal s_trigger_rearm_completed : std_logic;
-	signal holdOff : UNSIGNED (31 downto 0);
-	signal holdOff_d : UNSIGNED (31 downto 0);
+	signal trig_level : SIGNED (13 downto 0);                 -- 触发电平
+	signal trig_level_d : SIGNED (13 downto 0);               -- 触发电平一级延迟
+	signal trig_level_dd : SIGNED (13 downto 0);              -- 触发电平二级延迟
+	signal trig_level_r_dd : SIGNED (13 downto 0);            -- 上升沿判定门限（含回差）
+	signal trig_level_f_dd : SIGNED (13 downto 0);            -- 下降沿判定门限（含回差）
+	signal trig_hysteresis : SIGNED (13 downto 0);            -- 触发回差
+	signal trig_hysteresis_d : SIGNED (13 downto 0);          -- 回差延迟
+	signal trigger_source : STD_LOGIC_VECTOR (2 downto 0);    -- 触发源选择
+	signal trigger_source_d : STD_LOGIC_VECTOR (2 downto 0);  -- 触发源延迟
+	signal trigger_slope : STD_LOGIC_VECTOR (1 downto 0);     -- 触发斜率选择
+	signal trigger_slope_d : STD_LOGIC_VECTOR (1 downto 0);   -- 触发斜率延迟
+	signal trigger_mode : STD_LOGIC_VECTOR (1 downto 0);      -- 触发模式（自动/普通/单次/立即）
+	signal trigger_mode_d : STD_LOGIC_VECTOR (1 downto 0);    -- 触发模式延迟
+	signal trigger_mode_dd : STD_LOGIC_VECTOR (1 downto 0);   -- 触发模式二级延迟
+	signal s_trigger_mode : STD_LOGIC_VECTOR (1 downto 0);    -- 单次触发模式缓存
+	signal s_trigger_rearm : std_logic;                       -- 单次触发重新布防命令
+	signal s_trigger_rearm_completed : std_logic;             -- 单次触发布防完成标志（预留）
+	signal holdOff : UNSIGNED (31 downto 0);                  -- 触发后Holdoff计数值
+	signal holdOff_d : UNSIGNED (31 downto 0);                -- Holdoff延迟寄存
 	signal t_start : std_logic; -- holdoff input: start timer
 	signal o_end : std_logic;   -- holdoff output: timer ended
-	signal analogTrigTresh : std_logic_vector(9 downto 0);
-	signal fdata_tmp : std_logic_vector(15 downto 0);
-	signal mem_tmp : std_logic_vector(15 downto 0);
-	signal mem_tmp_d : std_logic_vector(15 downto 0);
+	signal analogTrigTresh : std_logic_vector(9 downto 0);    -- 外部模拟触发DAC/PWM门限
+	signal fdata_tmp : std_logic_vector(15 downto 0);         -- FX3数据临时寄存
+	signal mem_tmp : std_logic_vector(15 downto 0);           -- 内存临时寄存
+	signal mem_tmp_d : std_logic_vector(15 downto 0);         -- 内存临时寄存延迟
 
 
-	-- ADC SPI interface counters and registers
-	signal adc_cfg_reg : std_logic_vector (15 downto 0);
-	signal adc_cfg_reg_d : std_logic_vector (15 downto 0);
-	signal adc_cfg_data : std_logic_vector (7 downto 0);
-	signal adc_cfg_data_d : std_logic_vector (7 downto 0);
-	signal adc_spi_data : std_logic_vector (23 downto 0);
-	signal adc_sclk_counter : integer range 0 to 7; -- ADC sclk divider
-	signal adc_spi_bit_count : integer range 0 to 15:=15;
-	signal adc_configured_flag : STD_LOGIC;
-	signal adc_cs_i : STD_LOGIC := '1';
-	signal adc_sclk_i : STD_LOGIC;
-	signal adc_sdin_i : STD_LOGIC;
-	signal adcA_spi_busy : std_logic;
+	-- ADC SPI接口寄存器与控制信号
+	signal adc_cfg_reg : std_logic_vector (15 downto 0);      -- ADC寄存器地址字段
+	signal adc_cfg_reg_d : std_logic_vector (15 downto 0);    -- ADC寄存器地址延迟
+	signal adc_cfg_data : std_logic_vector (7 downto 0);      -- ADC寄存器写入数据
+	signal adc_cfg_data_d : std_logic_vector (7 downto 0);    -- ADC写入数据延迟
+	signal adc_spi_data : std_logic_vector (23 downto 0);     -- SPI发送帧（地址+数据）
+	signal adc_sclk_counter : integer range 0 to 7;           -- ADC SPI时钟分频计数
+	signal adc_spi_bit_count : integer range 0 to 15:=15;     -- ADC SPI位计数（预留）
+	signal adc_configured_flag : STD_LOGIC;                   -- ADC配置完成标志（预留）
+	signal adc_cs_i : STD_LOGIC := '1';                       -- ADC片选内部信号
+	signal adc_sclk_i : STD_LOGIC;                            -- ADC SPI时钟内部信号
+	signal adc_sdin_i : STD_LOGIC;                            -- ADC SPI数据内部信号
+	signal adcA_spi_busy : std_logic;                         -- ADC SPI忙标志
 
 
 
 
-	-- analog switching
-	signal ch1_dc_i  : STD_LOGIC;
-	signal ch2_dc_i  : STD_LOGIC;
-	signal ch1_gnd_i : STD_LOGIC;
-	signal ch2_gnd_i : STD_LOGIC;
-	signal ch1_k_i : STD_LOGIC;
-	signal ch2_k_i : STD_LOGIC;
+	-- 模拟前端切换控制
+	signal ch1_dc_i  : STD_LOGIC;                             -- CH1 DC/AC切换
+	signal ch2_dc_i  : STD_LOGIC;                             -- CH2 DC/AC切换
+	signal ch1_gnd_i : STD_LOGIC;                             -- CH1接地切换
+	signal ch2_gnd_i : STD_LOGIC;                             -- CH2接地切换
+	signal ch1_k_i : STD_LOGIC;                               -- CH1衰减档位切换
+	signal ch2_k_i : STD_LOGIC;                               -- CH2衰减档位切换
 
-	-- delay counters and flags
-	signal auto_trigger : std_logic;
-	signal auto_trigger_d : std_logic;
-	signal auto_trigger_cnt : integer range 0 to 400000;
-	signal auto_trigger_maxcnt : integer range 0 to 400000;
-	signal adc_clk_divide_cnt : integer range 0 to 99999999;
-	signal adc_clk_divide_maxcnt : integer range 0 to 199999999;
+	-- 触发超时/分频相关计数器与标志
+	signal auto_trigger : std_logic;                          -- 自动触发到期标志
+	signal auto_trigger_d : std_logic;                        -- 自动触发到期延迟标志
+	signal auto_trigger_cnt : integer range 0 to 400000;      -- 自动触发计数器
+	signal auto_trigger_maxcnt : integer range 0 to 400000;   -- 自动触发阈值
+	signal adc_clk_divide_cnt : integer range 0 to 99999999;  -- ADC分频计数器（预留）
+	signal adc_clk_divide_maxcnt : integer range 0 to 199999999; -- ADC分频阈值（预留）
 	--signal Timer_cnt : integer range 0 to 4095 := 0;
-	signal Timer_cnt : integer range 0 to (2**26)-1 := 0;
-	signal startup_timer_cnt : integer range 0 to 250000 := 0;
-	signal clk_div_cnt : integer range 0 to 100*(10**6);
-	signal clk_div_cnt_2 : integer range 0 to 250*(10**6);
-	signal cnt_rd_last : std_logic := '0';
-	signal cnt_dw_stop : integer range 0 to 7 := 0;
-	signal cnt_BufferSel_rdy : integer range 0 to 31 := 0;
+	signal Timer_cnt : integer range 0 to (2**26)-1 := 0;     -- 上电序列计时器
+	signal startup_timer_cnt : integer range 0 to 250000 := 0;-- 全局复位窗口计时器
+	signal clk_div_cnt : integer range 0 to 100*(10**6);      -- 通用分频计数器（预留）
+	signal clk_div_cnt_2 : integer range 0 to 250*(10**6);    -- 通用分频计数器2（预留）
+	signal cnt_rd_last : std_logic := '0';                    -- 读取末尾标志（预留）
+	signal cnt_dw_stop : integer range 0 to 7 := 0;           -- 停止发送确认计数
+	signal cnt_BufferSel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
 
 	--LUT delay line signals
 	signal lut_delay_rst : std_logic;
 	signal lut_reg_out : std_logic_vector(31 downto 0);
 	signal lut_reg_out_d : std_logic_vector(31 downto 0);
 	signal lut_reg_out_dd : std_logic;
-	signal an_trig_delay : std_logic_vector(5 downto 0);
-	signal an_trig_delay_d : std_logic_vector(5 downto 0);
-	signal an_trig_delay_dd : unsigned(5 downto 0);
-	signal an_trig_delay_max : unsigned(5 downto 0);
-	signal an_trig_delay_min : unsigned(5 downto 0) :="000001";
-	signal lut_reg_out_tmp0 : std_logic_vector(15 downto 0);
-	signal lut_reg_out_tmp1 : std_logic_vector(15 downto 0);
-	signal lut_reg_out_tmp0_d : std_logic_vector(15 downto 0);
-	signal lut_reg_out_tmp1_d : std_logic_vector(15 downto 0);
-	signal lut_reg_out_tmp0_dd : std_logic_vector(15 downto 0);
-	signal lut_reg_out_tmp1_dd : std_logic_vector(15 downto 0);
+	signal an_trig_delay : std_logic_vector(5 downto 0);      -- ETS触发延迟码
+	signal an_trig_delay_d : std_logic_vector(5 downto 0);    -- ETS触发延迟码一级同步
+	signal an_trig_delay_dd : unsigned(5 downto 0);           -- ETS触发延迟码二级同步
+	signal an_trig_delay_max : unsigned(5 downto 0);          -- 统计到的最大延迟
+	signal an_trig_delay_min : unsigned(5 downto 0) :="000001"; -- 统计到的最小非零延迟
+	signal lut_reg_out_tmp0 : std_logic_vector(15 downto 0);  -- LUT延迟抽头低16位缓存
+	signal lut_reg_out_tmp1 : std_logic_vector(15 downto 0);  -- LUT延迟抽头高16位缓存
+	signal lut_reg_out_tmp0_d : std_logic_vector(15 downto 0);-- LUT低16位一级延迟
+	signal lut_reg_out_tmp1_d : std_logic_vector(15 downto 0);-- LUT高16位一级延迟
+	signal lut_reg_out_tmp0_dd : std_logic_vector(15 downto 0); -- LUT低16位二级延迟
+	signal lut_reg_out_tmp1_dd : std_logic_vector(15 downto 0); -- LUT高16位二级延迟
 
-	--ETS
-	signal ets_on : std_logic;
-	signal ets_on_d : std_logic;
-	signal ets_test  : std_logic;
-	--ADC interleaving
-	signal adc_interleaving : std_logic;
-	signal adc_interleaving_d : std_logic;
+	-- ETS相关
+	signal ets_on : std_logic;                                 -- ETS模式使能
+	signal ets_on_d : std_logic;                               -- ETS模式使能延迟
+	signal ets_test  : std_logic;                              -- ETS测试模式（预留）
+	-- ADC交织相关
+	signal adc_interleaving : std_logic;                       -- ADC交织模式开关
+	signal adc_interleaving_d : std_logic;                     -- ADC交织模式延迟
 
-	--Debug Signals
-	signal DebugMState : integer range 0 to 7;
-	signal DebugADCState : integer range 0 to 7;
-	signal DebugADCState_d : integer range 0 to 7;
-	signal PreTrigSaving : std_logic := '0';
-	signal DDR3DataIn : std_logic_vector(31 downto 0);
-	signal DataInTest : unsigned (31 downto 0);
-	signal DataWriteEn : std_logic;
-	signal DataWriteEn_d : std_logic;
-	signal PreTrigWriteEn : std_logic;
-	signal PreTrigWriteEn_d : std_logic;
-	signal PreTrigLen : std_logic_vector (26 downto 0);
-	signal DataOut : std_logic_vector(31 downto 0);
-	signal DataOutEnable : std_logic;
-	signal DataOutEnable_cnt : integer range 0 to 15;
-	signal DataOutValid : std_logic;
-	signal init_calib_complete : std_logic;
-	signal init_calib_complete_d : std_logic;
-	signal calib_done : std_logic;
-	signal read_calib_start : std_logic :='0';
+	-- 调试与DDR3数据通路信号
+	signal DebugMState : integer range 0 to 7;                 -- 主状态机调试编码
+	signal DebugADCState : integer range 0 to 7;               -- 采样状态机调试编码
+	signal DebugADCState_d : integer range 0 to 7;             -- 采样状态调试延迟
+	signal PreTrigSaving : std_logic := '0';                   -- DDR3预触发写入模式标志
+	signal DDR3DataIn : std_logic_vector(31 downto 0);         -- 写入DDR3的数据字
+	signal DataInTest : unsigned (31 downto 0);                -- DDR3测试计数数据（调试）
+	signal DataWriteEn : std_logic;                            -- DDR3后触发写使能
+	signal DataWriteEn_d : std_logic;                          -- DDR3后触发写使能延迟
+	signal PreTrigWriteEn : std_logic;                         -- DDR3预触发写使能
+	signal PreTrigWriteEn_d : std_logic;                       -- DDR3预触发写使能延迟
+	signal PreTrigLen : std_logic_vector (26 downto 0);        -- 预触发长度（给DDR3控制器）
+	signal DataOut : std_logic_vector(31 downto 0);            -- DDR3读出数据字
+	signal DataOutEnable : std_logic;                          -- DDR3读出使能
+	signal DataOutEnable_cnt : integer range 0 to 15;          -- DDR3读使能计数（预留）
+	signal DataOutValid : std_logic;                           -- DDR3读出有效
+	signal init_calib_complete : std_logic;                    -- DDR3初始化/校准完成
+	signal init_calib_complete_d : std_logic;                  -- DDR3校准完成延迟
+	signal calib_done : std_logic;                             -- 系统校准完成标志
+	signal read_calib_start : std_logic :='0';                 -- 启动ADC接口IDELAY校准
 	signal read_calib_source : std_logic := '0';  -- '0' calibrate CH1, '1' calibrate CH2
 	signal device_temp : std_logic_vector(11 downto 0);
 	signal device_temp_d : std_logic_vector(11 downto 0);
 	signal device_temp_dd : std_logic_vector(11 downto 0);
 	signal ram_rdy : std_logic;
 
-	--adc post-processing
-	signal mavg_enA: std_logic;
-	signal mavg_enA_d: std_logic;
-	signal mavg_datavalidA : std_logic;
-	signal mavg_dataA : std_logic_vector(13 downto 0);
-	signal mavg_enB: std_logic;
-	signal mavg_enB_d: std_logic;
-	signal mavg_datavalidB : std_logic;
-	signal mavg_dataB : std_logic_vector(13 downto 0);
+	-- ADC后处理（移动平均）
+	signal mavg_enA: std_logic;                                -- CH1移动平均使能
+	signal mavg_enA_d: std_logic;                              -- CH1移动平均使能延迟
+	signal mavg_datavalidA : std_logic;                        -- CH1平均数据有效
+	signal mavg_dataA : std_logic_vector(13 downto 0);         -- CH1平均后数据
+	signal mavg_enB: std_logic;                                -- CH2移动平均使能
+	signal mavg_enB_d: std_logic;                              -- CH2移动平均使能延迟
+	signal mavg_datavalidB : std_logic;                        -- CH2平均数据有效
+	signal mavg_dataB : std_logic_vector(13 downto 0);         -- CH2平均后数据
 
-	signal pktend_i: std_logic:= '1'; -- '1' when pktend is not asserted
-	signal encoding_format: std_logic_vector(3 downto 0);
-	signal encoding_format_d: std_logic_vector(3 downto 0);
-	signal encoding_format_dd: std_logic_vector(3 downto 0);
-	signal encoding_format_ddd: std_logic_vector(3 downto 0);
-	signal encoder_data_valid: std_logic;
+	signal pktend_i: std_logic:= '1'; -- FX3的PKTEND内部控制（'1'表示未拉低）
+	signal encoding_format: std_logic_vector(3 downto 0);      -- 采样编码格式
+	signal encoding_format_d: std_logic_vector(3 downto 0);    -- 编码格式一级同步
+	signal encoding_format_dd: std_logic_vector(3 downto 0);   -- 编码格式二级同步
+	signal encoding_format_ddd: std_logic_vector(3 downto 0);  -- 编码格式三级同步
+	signal encoder_data_valid: std_logic;                      -- 编码输出有效
 	
-	-- attribute strings
+	-- 属性类型声明
 	attribute KEEP: boolean;
 	attribute ASYNC_REG: boolean;
 	attribute mark_debug: boolean;
 
-	-- assign KEEP attributes to help debugging
+	-- 配置KEEP属性，避免综合优化掉关键调试节点
 	attribute KEEP of an_trig_d: signal is true;
 	attribute KEEP of DebugMState: signal is true;
 	attribute KEEP of DebugADCState: signal is true;
@@ -636,7 +636,7 @@ architecture rtl of fpga is
 	attribute KEEP of cnt_dw_stop: signal is true;
 	attribute KEEP of dword_cnt_i: signal is true;
 	
-	-- CDC registers (clock domain crossing signals)
+	-- CDC寄存器（跨时钟域同步信号）
 	attribute KEEP of send_sample_cnt: signal is true;
 	attribute KEEP of timebase: signal is true;
 	attribute KEEP of timebase_d: signal is true;
@@ -769,48 +769,50 @@ architecture rtl of fpga is
 	
 begin
 
+	-- ADC front-end: captures DDR samples and exposes rise/fall edge sample streams.
 	ADC_interface: adc_if
 		generic map (ADC_BITS => 14)
 		port map (
-			i_clk_p => clk_adc_p,
-			i_clk_n => clk_adc_n,
-			i_clk_ref => clk_ref_i,
-			i_reset_n => pll_locked,
-			i_en_fifo => calib_done,
-			i_read_calib_start => read_calib_start,
-			i_read_calib_source => read_calib_source,
-			i_data_p => data_p,
-			i_data_n => data_n,
-			o_clk => clk_adc_dclk,
-			o_data_1 => adc_data_rise,
-			o_data_2 => adc_data_fall
+			i_clk_p => clk_adc_p,                  -- Differential ADC data clock (+)
+			i_clk_n => clk_adc_n,                  -- Differential ADC data clock (-)
+			i_clk_ref => clk_ref_i,                -- IDELAY/MMCM reference clock
+			i_reset_n => pll_locked,               -- Keep ADC IF in reset until PLL is locked
+			i_en_fifo => calib_done,               -- 仅在校准完成后开启数据通路
+			i_read_calib_start => read_calib_start,-- 触发ADC输入延迟校准脉冲
+			i_read_calib_source => read_calib_source, -- 选择CH1/CH2校准源
+			i_data_p => data_p,                    -- ADC LVDS数据总线正端
+			i_data_n => data_n,                    -- ADC LVDS数据总线负端
+			o_clk => clk_adc_dclk,                 -- 恢复后的ADC采样时钟
+			o_data_1 => adc_data_rise,             -- 上升沿采样数据
+			o_data_2 => adc_data_fall              -- 下降沿采样数据
 		);
 
-	-- Keep legacy signal names wired to explicit edge-based names.
+	-- 保留旧版信号命名，映射到显式上/下沿数据流。
 	dataA <= adc_data_rise;
 	dataB <= adc_data_fall;
 
+	-- DDR3控制器封装：负责写入采样帧并回读发送。
 	RAM_DDR3_inst: RAM_DDR3
 		port map (
-			-- TOP level signals
-			sys_clk_i => clk_adc_dclk,
-			clk_ref_i => clk_ref_i,
-			ui_clk => ifclk,
-			rst => clearflags,
-			FrameSize => framesize_dd,
-			DataIn => DDR3DataIn,
-			PreTrigSaving => PreTrigSaving,
-			PreTrigWriteEn => PreTrigWriteEn_d AND encoder_data_valid,
-			PreTrigLen => std_logic_vector(pre_trigger_d),
-			DataWriteEn => DataWriteEn_d AND encoder_data_valid,
-			FrameSaveEnd => t_start,
-			DataOut => DataOut,
-			DataOutEnable => DataOutEnable,
-			DataOutValid => DataOutValid,
-			ReadingFrame => ReadingFrame,
-			ram_rdy => ram_rdy,
-			init_calib_complete => init_calib_complete,
-			device_temp => device_temp,
+			-- 顶层接口信号
+			sys_clk_i => clk_adc_dclk,                          -- 采样写入时钟域
+			clk_ref_i => clk_ref_i,                             -- MIG参考时钟
+			ui_clk => ifclk,                                    -- 读出/控制时钟域
+			rst => clearflags,                                  -- 帧流水软复位
+			FrameSize => framesize_dd,                          -- 需要保存的帧长度
+			DataIn => DDR3DataIn,                               -- 编码后写入数据
+			PreTrigSaving => PreTrigSaving,                     -- 预触发环形写模式
+			PreTrigWriteEn => PreTrigWriteEn_d AND encoder_data_valid, -- 预触发写使能（含有效门控）
+			PreTrigLen => std_logic_vector(pre_trigger_d),      -- 预触发长度
+			DataWriteEn => DataWriteEn_d AND encoder_data_valid,-- 后触发写使能（含有效门控）
+			FrameSaveEnd => t_start,                            -- 帧保存结束脉冲
+			DataOut => DataOut,                                 -- DDR3读出数据
+			DataOutEnable => DataOutEnable,                     -- DDR3读使能请求
+			DataOutValid => DataOutValid,                       -- DDR3读数据有效
+			ReadingFrame => ReadingFrame,                       -- 读帧过程活动标志
+			ram_rdy => ram_rdy,                                 -- DDR3子系统就绪
+			init_calib_complete => init_calib_complete,         -- DDR3初始化/校准完成
+			device_temp => device_temp,                         -- 芯片温度读数
 			ddr3_dq      => ddr3_dq,
 			ddr3_dqs_p   => ddr3_dqs_p,
 			ddr3_dqs_n   => ddr3_dqs_n,
@@ -839,16 +841,17 @@ begin
 
 	config_RAM: SDP_RAM_64x32b
 		port map (
-			addr1 => cfg_addrA, -- memory location written to and memory location read out on the SPO
+			addr1 => cfg_addrA, -- A口地址：写入地址/同步读地址
 			di1   => cfg_data_in,
-			addr2 => cfg_addrB, -- memory location read out on the DPO
+			addr2 => cfg_addrB, -- B口地址：异步读地址
 			clk1  => ifclk,
 			we    => cfg_we,
 			clk2  => clk_adc_dclk,
-			do1   => cfg_do_A, -- port A data out (clk)
-			do2   => cfg_do_B  -- port B data out (adc_clk)
+			do1   => cfg_do_A, -- A口读数据（ifclk域）
+			do2   => cfg_do_B  -- B口读数据（adc时钟域）
 		);
 
+	-- ETS模拟触发路径的延迟抽样模块。
 	lut_delay_inst: lut_delay
 		port map (
 			clk => clk_adc_dclk,
@@ -859,6 +862,7 @@ begin
 			tap_reg_out => lut_reg_out
 		);
 
+	-- 单颗双通道ADC的SPI写接口。
 	ADC_CH1_spi_interface: spi
 		generic map (SPI_LENGTH => 24)
 		port map (
@@ -876,13 +880,14 @@ begin
 		);
 
 
+	-- Holdoff定时器：限制相邻两次触发之间的最小间隔。
 	Holdoff_timer: timer
 		PORT MAP(
 			clk => clk_adc_dclk,
-			t_reset => clearflags_d,	--input: reset timer
-			t_start => t_start,			--input: start timer
-			holdoff => std_logic_vector(holdOff_d),   --input: select duration
-			o_end => o_end					--output: asserted when timer has finshed
+			t_reset => clearflags_d,	-- 输入：复位定时器
+			t_start => t_start,			-- 输入：启动计时
+			holdoff => std_logic_vector(holdOff_d),   -- 输入：计时长度
+			o_end => o_end					-- 输出：计时完成置位
 		);
 
 	trigger_led_blink: blink
@@ -893,6 +898,7 @@ begin
 			led_out => LED_i(3)
 		);
 
+	-- 时基控制的采样使能脉冲发生器。
 	Inst_clk_divider_wCE: clk_divider_wCE
 		PORT MAP(
 			clk => clk_adc_dclk,
@@ -947,37 +953,37 @@ begin
 		port map (
 			clk => clk_adc_dclk,
 			wr_en => '1',
-			encoding_format => "1111",  -- 14-bit CH1/CH2 pass-through
+			encoding_format => "1111",  -- 14位CH1/CH2直通打包
 			data_in => std_logic_vector(dataAd) & std_logic_vector(dataBd) & (3 downto 0 => '0'),
 			data_out => DDR3DataIn,
 			data_valid => encoder_data_valid
 		);
 
-	clk_fx3 <= not(ifclk);
-	slcs <= '0';
+	clk_fx3 <= not(ifclk);            -- FX3接口时钟使用反相信号
+	slcs <= '0';                      -- GPIF片选常使能
 
-	LED(1) <= LED_i(1) OR NOT(init_calib_complete_d);
-	LED(2) <= LED_i(2) OR NOT(init_calib_complete_d);
-	LED(3) <= LED_i(3) OR NOT(init_calib_complete_d);
-	slrd_sloe  <= slrd_i;
-	slwr  <= slwr_i;
-	faddr <= faddr_i;
+	LED(1) <= LED_i(1) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
+	LED(2) <= LED_i(2) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
+	LED(3) <= LED_i(3) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
+	slrd_sloe  <= slrd_i;                              -- FX3读控制（与SLOE共用）
+	slwr  <= slwr_i;                                   -- FX3写选通信号
+	faddr <= faddr_i;                                  -- FX3端点地址选择
 	--sloe  <= sloe_i;
 
-	adc_sclk <= adc_sclk_i;
-	adc_sdin <= adc_sdin_i; -- 1 -> 0 transiotion resets clock
-	adcA_cs <= adc_cs_i;
+	adc_sclk <= adc_sclk_i; -- ADC SPI串行时钟
+	adc_sdin <= adc_sdin_i; -- ADC SPI串行数据
+	adcA_cs <= adc_cs_i;    -- ADC SPI片选（低有效）
 
-	ch1_dc  <= ch1_dc_i;
-	ch2_dc  <= ch2_dc_i;
-	ch1_gnd <= ch1_gnd_i;
-	ch2_gnd <= ch2_gnd_i;
-	ch1_k <= ch1_k_i;
-	ch2_k <= ch2_k_i;
+	ch1_dc  <= ch1_dc_i;   -- CH1直流/交流继电器控制
+	ch2_dc  <= ch2_dc_i;   -- CH2直流/交流继电器控制
+	ch1_gnd <= ch1_gnd_i;  -- CH1接地耦合控制
+	ch2_gnd <= ch2_gnd_i;  -- CH2接地耦合控制
+	ch1_k <= ch1_k_i;      -- CH1衰减继电器控制
+	ch2_k <= ch2_k_i;      -- CH2衰减继电器控制
 
-	cc_ab  <= NOT(adc_interleaving_d);
+	cc_ab  <= NOT(adc_interleaving_d); -- 非交织模式下将CH1连接到双ADC输入
 	--pktend <= '1';
-	pktend <= pktend_i;
+	pktend <= pktend_i;                -- 通过PKTEND显式提交短包
 
 	--DDR3DataIn <= std_logic_vector(dataAd) & std_logic_vector(dataBd) & dataDd(11 downto 0);
 	--DDR3DataIn <= std_logic_vector(to_unsigned(saved_sample_cnt_d,32)); --* debug!
@@ -991,83 +997,83 @@ begin
 
 		if (rising_edge(clk_adc_dclk)) then
 
-			-- assert global reset after 8us and hold it for 8us
+			-- 上电后按时间窗产生全局复位脉冲
 			if startup_timer_cnt = 4000 then
 				gl_reset <= '0';
 			elsif startup_timer_cnt < 2000 then
-				gl_reset <= '0';
+				gl_reset <= '0';               -- 启动窗口前半段保持低电平
 				startup_timer_cnt <= startup_timer_cnt + 1;
 			else
-				gl_reset <= '1';
+				gl_reset <= '1';               -- 启动窗口后半段拉高复位
 				startup_timer_cnt <= startup_timer_cnt + 1;
 			end if;
 
-			-- digital channels / logic analyzer removed
-			-- Read DDR edge samples and optionally enable averaging.
-			if mavg_enA_d = '1' then
+			-- 数字通道/逻辑分析功能已移除
+			-- 读取DDR上下沿采样，并按配置决定是否启用均值滤波。
+			if mavg_enA_d = '1' then         -- CH1可选移动平均路径
 				dataAd <= signed(mavg_dataA);
 			else
 				dataAd <= signed(adc_data_rise);
 			end if;
-			if mavg_enB_d = '1' then
+			if mavg_enB_d = '1' then         -- CH2可选移动平均路径
 				dataBd <= signed(mavg_dataB);
 			else
 				dataBd <= signed(adc_data_fall);
 			end if;
 
-			--external analog trigger
+			-- 外部模拟触发输入同步
 			an_trig_dd <= an_trig_d;
 			an_trig_ddd <= an_trig_dd;
 
-			-- ext. analog trigger_level
-			-- offset signal range for pwm input (0.9V common mode voltage)
-			-- 3,3 Volt / 2048 bit = 3.223e-3 Volt/bit
-			-- 0.9 VOlt / 3.223e-3 Volt/bit = 279 bit
-			if signed(trig_level) < to_signed(-279,trig_level'length) then
+			-- 外部模拟触发门限换算
+			-- PWM输入有0.9V共模偏置，需要将触发电平做偏移映射
+			-- 3.3V / 16383 = 3.223e-3 V/bit
+			-- 0.9V / 3.223e-3 V/bit ≈ 1116 bit
+			if signed(trig_level) < to_signed(-1116,trig_level'length) then
 				AnalogTrigTresh <= std_logic_vector(to_signed(0,10));
 			else
-				AnalogTrigTresh <= std_logic_vector(resize(signed(trig_level)+to_signed(279,trig_level'length),AnalogTrigTresh'length));
+				AnalogTrigTresh <= std_logic_vector(resize(signed(trig_level)+to_signed(1116,trig_level'length),AnalogTrigTresh'length));
 			end if;
 			
-			reading_config_registers_d <= reading_config_registers;
-			reading_config_registers_dd <= reading_config_registers_d;
+			reading_config_registers_d <= reading_config_registers;   -- CDC第一级
+			reading_config_registers_dd <= reading_config_registers_d;-- CDC第二级
 			if reading_config_registers_dd = '1' then
 				if cfg_addrB = std_logic_vector(to_unsigned(CONFIG_DATA_SIZE-1,6)) then
-					cfg_addrB <= std_logic_vector(to_unsigned(1,6));
+					cfg_addrB <= std_logic_vector(to_unsigned(1,6)); -- 跳过0号字（保留）
 				else
-					cfg_addrB <= std_logic_vector(unsigned(cfg_addrB) + 1);
+					cfg_addrB <= std_logic_vector(unsigned(cfg_addrB) + 1); -- 顺序扫描配置
 				end if;
 			else
-				cfg_addrB <= std_logic_vector(to_unsigned(0, cfg_addrB'length));
+				cfg_addrB <= std_logic_vector(to_unsigned(0, cfg_addrB'length)); -- 空闲时地址归零
 			end if;
 			
 			cfg_addrB_d <= cfg_addrB;
-			--reading config data
-			case to_integer(unsigned(cfg_addrB_d) + 1) is
+			-- 读取配置RAM中的当前字，并按寄存器索引拆解到内部控制信号
+			case to_integer(unsigned(cfg_addrB_d) + 1) is -- 按寄存器索引解码配置
 
 				when 4 =>
-					ets_on <= cfg_do_B(23);
-					adc_interleaving <= cfg_do_B(22);
-					trigger_mode <= cfg_do_B(1 downto 0);
+					ets_on <= cfg_do_B(23);                -- bit23: ETS模式使能
+					adc_interleaving <= cfg_do_B(22);      -- bit22: ADC交织采样使能
+					trigger_mode <= cfg_do_B(1 downto 0);  -- bit[1:0]: 触发模式（自动/普通/单次/立即）
 				when 5 =>
-					trigger_source <= cfg_do_B(18 downto 16);
-					trigger_slope <= cfg_do_B(1 downto 0);
+					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
+					trigger_slope <= cfg_do_B(1 downto 0);    -- bit[1:0]: 触发斜率（上升/下降/双边）
 				when 6 =>
-					trig_level <= resize(signed(cfg_do_B(25 downto 16)), trig_level'length);
-					trig_hysteresis <= resize(signed(cfg_do_B(9 downto 0)), trig_hysteresis'length);
+					trig_level <= resize(signed(cfg_do_B(25 downto 16)), trig_level'length);      -- bit[25:16]: 触发电平
+					trig_hysteresis <= resize(signed(cfg_do_B(9 downto 0)), trig_hysteresis'length); -- bit[9:0]: 触发回差
 				when 7 =>
-					timebase <= cfg_do_B(4 downto 0);
+					timebase <= cfg_do_B(4 downto 0); -- bit[4:0]: 时基分档（决定采样CE间隔）
 				when 8 =>
-					holdOff <= unsigned(cfg_do_B);
+					holdOff <= unsigned(cfg_do_B); -- bit[31:0]: Holdoff计数值
 				when 9 =>
-					framesize <= std_logic_vector(unsigned(cfg_do_B(26 downto 0))-1);
+					framesize <= std_logic_vector(unsigned(cfg_do_B(26 downto 0))-1); -- bit[26:0]: 帧长（内部按N-1计数）
 				when 27 =>
-					mavg_enA <= cfg_do_B(9);
-					mavg_enB <= cfg_do_B(8);
+					mavg_enA <= cfg_do_B(9); -- bit9: CH1移动平均使能
+					mavg_enB <= cfg_do_B(8); -- bit8: CH2移动平均使能
 				when 28 =>
-					pre_trigger(26 downto 2) <= unsigned(cfg_do_B(26 downto 2));
+					pre_trigger(26 downto 2) <= unsigned(cfg_do_B(26 downto 2)); -- bit[26:2]: 预触发长度（低2位固定为0）
 				when 30 =>
-					encoding_format <= cfg_do_B(19 downto 16);
+					encoding_format <= cfg_do_B(19 downto 16); -- bit[19:16]: 样本编码格式
 				when others => null;
 			end case;
 
@@ -1075,64 +1081,64 @@ begin
 			--dataDd <= "00" & addra;
 
 			----------------
-			clearflags_d <= clearflags;
-			holdOff_d <= holdOff;
+			clearflags_d <= clearflags; -- 复位控制打一拍，供本时钟域稳定使用
+			holdOff_d <= holdOff;       -- Holdoff配置打一拍，避免组合抖动
 
-			-- detect requestFrame rising edge (new frame request)
-			-- new frame can start saving
-			requestFrame_d <= requestFrame;
-			requestFrame_dd <= requestFrame_d;
+			-- 检测requestFrame上升沿（新帧请求）
+			-- 检测到后允许启动新一帧保存
+			requestFrame_d <= requestFrame;    -- 边沿检测第一级
+			requestFrame_dd <= requestFrame_d; -- 边沿检测第二级
 			if requestFrame_dd = '0' AND requestFrame_d = '1' then
-				getNewFrame <= '1';		--> START SAVING new frame (ADC process is monitoring this flag)
+				getNewFrame <= '1';		-- 置位新帧采集请求（ADC采样状态机会消费该脉冲）
 			end if;
 
-			trigger_mode_d <= trigger_mode;
-			trigger_source_d <= trigger_source;
-			trigger_slope_d <= trigger_slope;
-			trig_level_d <= trig_level;
-			trig_level_dd <= trig_level_d;
-			trig_hysteresis_d <= trig_hysteresis;
+			trigger_mode_d <= trigger_mode;         -- 触发模式同步一级
+			trigger_source_d <= trigger_source;     -- 触发源同步一级
+			trigger_slope_d <= trigger_slope;       -- 触发斜率同步一级
+			trig_level_d <= trig_level;             -- 触发电平同步一级
+			trig_level_dd <= trig_level_d;          -- 触发电平同步二级
+			trig_hysteresis_d <= trig_hysteresis;   -- 触发回差同步一级
 
-			trig_level_r_dd <= trig_level_d + trig_hysteresis_d;
-			trig_level_f_dd <= trig_level_d - trig_hysteresis_d;
+			trig_level_r_dd <= trig_level_d + trig_hysteresis_d; -- 上升沿判定门限（电平+回差）
+			trig_level_f_dd <= trig_level_d - trig_hysteresis_d; -- 下降沿判定门限（电平-回差）
 			
 
-			DataWriteEn_d <= DataWriteEn; --AND encoder_data_valid;
-			PreTrigWriteEn_d <= PreTrigWriteEn; -- AND encoder_data_valid;
+			DataWriteEn_d <= DataWriteEn;         -- DDR写使能打一拍
+			PreTrigWriteEn_d <= PreTrigWriteEn;   -- 预触发写使能打一拍
 
-			ScopeConfigChanged_d <= ScopeConfigChanged;
-			ScopeConfigChanged_dd <= ScopeConfigChanged_d;
+			ScopeConfigChanged_d <= ScopeConfigChanged;   -- 配置变更标志同步一级
+			ScopeConfigChanged_dd <= ScopeConfigChanged_d;-- 配置变更标志同步二级
 					
 			--=======================================================--
 			--         Save ADC samples to buffer                    --
 			--=======================================================--
 
-			if ( sampling_CE = '0' ) then -- clock enable for sample save state machine
+			if ( sampling_CE = '0' ) then -- 采样状态机时钟使能门控
 
 				DataWriteEn <= '0';
 				PreTrigWriteEn <= '0';
 
 			else
 
-				-- select signal for trigger source
-				trig_signal_d <= trig_signal; -- monitor current and next value for trigger
+				-- 选择触发源并保存前一拍用于边沿判断
+				trig_signal_d <= trig_signal; -- 延迟一拍供斜率/边沿判断
 
-				-- Trigger source selection on DDR edge streams.
-				case trigger_source_d is
-					when "000" => trig_signal <= dataAd; -- DCO rising-edge stream
-					when "001" => trig_signal <= dataBd; -- DCO falling-edge stream
+				-- 在DDR上下沿数据流中选择触发源
+				case trigger_source_d is       -- 选择当前有效触发流
+					when "000" => trig_signal <= dataAd; -- DCO上升沿数据流
+					when "001" => trig_signal <= dataBd; -- DCO下降沿数据流
 					when others => trig_signal <= dataAd;
 				end case;
 
-				case GetSampleState(2 downto 0) is
+				case GetSampleState(2 downto 0) is -- ADC采样状态机
 
-					when ADC_A =>		-- "IDLE STATE"
+					when ADC_A =>		-- 空闲态：等待新帧请求并初始化计数
 
 						--=======================================--
-						-- Set timebase and auto trigger timeout --
+						-- 设置时基与自动触发超时 --
 						--=======================================--
 
-						timebase_d <= timebase; -- select sampling frequency for next frame
+						timebase_d <= timebase; -- 为下一帧选择采样速率
 
 						case to_integer(unsigned(timebase_d (4 downto 0))) is
 
@@ -1196,14 +1202,14 @@ begin
 						roll <= '0';
 						triggered_led <= '0';
 
-						if ( getNewFrame = '1' AND clearflags_d = '0' and ram_rdy = '1' ) then
+						if ( getNewFrame = '1' AND clearflags_d = '0' and ram_rdy = '1' ) then -- 启动新一帧采集
 							PreTrigSaving <= '1';
 							PreTrigWriteEn <= '1';
-							framesize_d <= framesize;          -- save current frame size
-							pre_trigger_d <= pre_trigger;      -- size of pre-trigger
+							framesize_d <= framesize;          -- 锁存当前帧长度
+							pre_trigger_d <= pre_trigger;      -- 锁存预触发长度
 							adc_interleaving_d <= adc_interleaving;
 							encoding_format_d <= encoding_format;
-							GetSampleState <= ADC_B;   -- goto "PRE-TRIGGER"
+							GetSampleState <= ADC_B;   -- 进入“预触发采集”
 
 						else
 							GetSampleState <= ADC_A;
@@ -1213,7 +1219,7 @@ begin
 						end if;
 						DebugADCState <= 0;
 
-					when ADC_B =>		-- "START SAVE SAMPLES TO FRAME BUFFER: CAPTURE PRE-TRIGGER"
+					when ADC_B =>		-- 预触发态：填充预触发环形缓冲
 
 						PreTrigSaving <= '1';
 						PreTrigWriteEn <= '1';
@@ -1232,14 +1238,14 @@ begin
 							-- if immediate trigger (roll mode)
 							if trigger_mode_d = "11" and pre_trigger_d = 0 then
 								GetSampleState <= ADC_C;
-								triggered_led <= '1'; -- signal IS TRIGGERED indicator
-								-- if not immediate trigger, goto "WAIT FOR TRIGGER ARMED"
+								triggered_led <= '1'; -- 触发指示：已触发
+								-- 若非立即触发，则进入“等待触发布防”
 							else
 								triggered_led <= '0';
 								--saved_sample_cnt <= to_integer(unsigned(pre_trigger_d));
 								GetSampleState <= ADC_C;
 							end if;
-						-- else, keep saving pre-trigger data
+						-- 否则继续保存预触发数据
 						else
 							pre_trigger_cnt <= pre_trigger_cnt + 1;
 							GetSampleState <= ADC_B;
@@ -1247,7 +1253,7 @@ begin
 
 						DebugADCState <= 1;
 
-					when ADC_C =>		-- "WAIT FOR TRIGGER ARMED"
+					when ADC_C =>		-- 触发布防态：持续监测触发条件
 
 						PreTrigSaving <= '1';
 						PreTrigWriteEn <= '1';
@@ -1261,12 +1267,12 @@ begin
 						if ( clearflags_d = '1') then
 							GetSampleState <= ADC_A;
 
-						-- define transition to POST-TRIGGER samples capture:
-						-- immediate trigger
+						-- 定义转入“后触发采样”的条件
+						-- 立即触发
 						elsif trigger_mode_d = "11" then
 							GetSampleState <= ADC_E;
 
-						-- Analog trigger (ETS = ON and 1 -> 0 transition of analog trigger)
+						-- 模拟触发（ETS开启且模拟触发信号发生1->0）
 						elsif ets_on_d = '1' AND an_trig_ddd = '0' AND an_trig_dd = '1' then
 							lut_reg_out_tmp1 <= lut_reg_out(31 downto 16);
 							lut_reg_out_tmp0 <= lut_reg_out(15 downto 0);
@@ -1337,30 +1343,30 @@ begin
 									an_trig_delay <= std_logic_vector(to_unsigned(0,6));
 								when others => Null;
 							end case;
-							triggered_led <= '1'; -- signal IS TRIGGERED indicator
+							triggered_led <= '1'; -- 触发指示：已触发
 							GetSampleState <= ADC_E;
 
-						-- Mode: Normal OR Auto OR Single (Not Immediate) AND Source: CH1, CH2
-						-- Slope "rising"
+						-- 触发模式：普通/自动/单次（非立即），触发源CH1或CH2
+						-- 上升沿触发
 						elsif ets_on_d = '0' AND trigger_source_d < "010" --AND trigger_mode_d /= "11"
  								AND (trigger_slope_d = "00" AND trig_signal < trig_level_d AND trig_signal_d >= trig_level_d) then
-							triggered_led <= '0'; -- signal IS NOT TRIGGERED indicator
+							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
-						-- Slope "falling"
+						-- 下降沿触发
 						elsif ets_on_d = '0' AND trigger_source_d < "010"
  								AND (trigger_slope_d = "01" AND trig_signal >= trig_level_d AND trig_signal_d < trig_level_d) then
-							triggered_led <= '0'; -- signal IS NOT TRIGGERED indicator
+							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
-						-- Slope "both"
+						-- 双边沿触发
 						elsif ets_on_d = '0' AND trigger_source_d < "010"
  								AND (trigger_slope_d = "10" AND ((trig_signal <  trig_level_d AND trig_signal_d >= trig_level_d)
  								OR   (trig_signal >= trig_level_d AND trig_signal_d < trig_level_d ))) then
-							triggered_led <= '0'; -- signal IS NOT TRIGGERED indicator
+							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
 
-						-- IF AUTO:
+						-- 自动模式超时触发：
 						elsif	trigger_mode_d = "00" AND auto_trigger = '1' then
-							triggered_led <= '0'; -- signal IS NOT TRIGGERED indicator
+							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_E;
 
 						else
@@ -1370,7 +1376,7 @@ begin
 						DebugADCState <= 2;
 
 
-					when ADC_D =>		-- "CONTINUE SAVE SAMPLES TO FRAME BUFFER: WAIT FOR TRIGGER FIRE"
+					when ADC_D =>		-- 触发确认态：带回差的触发确认
 
 						PreTrigSaving <= '1';
 						PreTrigWriteEn <= '1';
@@ -1385,29 +1391,29 @@ begin
 						if ( clearflags_d = '1' ) then
 							GetSampleState <= ADC_A;
 
-						-- define transition to POST-TRIGGER samples capture
+						-- 定义转入后触发采样的条件
 
-						-- immediate trigger
+						-- 立即触发
 						elsif trigger_mode_d = "11" then
 							GetSampleState <= ADC_E;
 
-						-- AUTO
+						-- 自动触发
 						elsif	( trigger_mode_d = "00" AND auto_trigger_d = '1') then
 							triggered_led <= '0';
 							GetSampleState <= ADC_E;
 
-						-- Mode: Normal OR Auto OR Single (Not Immediate) AND Source: CH1, CH2
-						-- Slope "rising"
+						-- 模式：普通/自动/单次（非立即），源：CH1/CH2
+						-- 上升沿
 						elsif  trigger_source_d < "010" AND trigger_slope_d = "00"
 								AND trig_signal_d >= trig_level_r_dd then
 							triggered_led <= '1';
 							GetSampleState <= ADC_E;
-						--Slope "falling"
+						-- 下降沿
 						elsif  trigger_source_d < "010" AND trigger_slope_d = "01"
  								AND trig_signal_d < trig_level_f_dd then
 							triggered_led <= '1';
 							GetSampleState <= ADC_E;
-						--Slope "both"
+						-- 双边沿
 						elsif  trigger_source_d < "010" AND trigger_slope_d = "10"
  								AND ( abs(trig_signal_d) >= trig_level_r_dd ) then
 							triggered_led <= '1';
@@ -1419,20 +1425,20 @@ begin
 						end if;
 						DebugADCState <= 3;
 
-					when ADC_E =>		-- "CONTINUE AND END SAVE SAMPLES TO FRAME BUFFER: POST-TRIGGER"
+					when ADC_E =>		-- 后触发态：采满帧后结束
 
 						PreTrigSaving <= '0';
 						PreTrigWriteEn <= '0';
 
 						if ( clearflags_d = '1' ) then
-							t_start <= '0'; --reset holdoff timer start bit
-							DataWriteEn <= '0';    --enable signal for DDR write
+							t_start <= '0'; -- 清除Holdoff启动位
+							DataWriteEn <= '0';    -- 关闭DDR写使能
 							triggered <= '0';
 							cnt_rst_triggered <= 0;
 							GetSampleState <= ADC_A;
-						-- if frame is full
+						-- 若当前帧已写满
 						elsif ( saved_sample_cnt_d = unsigned(framesize_d) ) then
-							-- start holdoff timer & reset trigger indicator
+							-- 启动Holdoff并清除触发指示
 							t_start <= '1';
 							triggered <= '0';
 							cnt_rst_triggered <= 0;
@@ -1441,7 +1447,7 @@ begin
 							GetSampleState <= ADC_F;
 						else
 							t_start <= '0';
-							-- DDR test data
+							-- DDR写入测试数据路径
 							DataWriteEn <= '1';
 							triggered <= '1';
 							GetSampleState <= ADC_E;
@@ -1450,15 +1456,15 @@ begin
 						saved_sample_cnt_d <= saved_sample_cnt;
 						DebugADCState <= 4;
 
-					when ADC_F =>
+					when ADC_F =>		-- Holdoff态：下一帧前强制等待
 
 						PreTrigSaving <= '0';
 						PreTrigWriteEn <= '0';
-						t_start <= '0'; --reset holdoff timer start bit
+						t_start <= '0'; -- 清除Holdoff启动位
 						if ( clearflags_d = '1' OR o_end = '1') then
 							GetSampleState <= ADC_A;
 						else
-							--wait for holdoff timer
+							-- 等待Holdoff计时完成
 							GetSampleState <= ADC_F;
 						end if;
 						DebugADCState <= 5;
@@ -1469,9 +1475,9 @@ begin
 
 				end case;
 
-			end if; --//sampling_ce
+			end if; -- 采样使能分支结束
 
-		end if; --//rising_edge
+		end if; -- ADC时钟上升沿处理结束
 
 	end process;
 
@@ -1483,11 +1489,11 @@ begin
 
 		if (rising_edge(ifclk)) then
 
-			device_temp_d <= device_temp;
-			device_temp_dd <= device_temp_d;
+			device_temp_d <= device_temp;     -- 温度信号流水第1级
+			device_temp_dd <= device_temp_d;  -- 温度信号流水第2级
 
-			getnewframe_d <= getnewframe;
-			getnewframe_dd <= getnewframe_d;
+			getnewframe_d <= getnewframe;     -- 来自ADC域的CDC第1级
+			getnewframe_dd <= getnewframe_d;  -- 来自ADC域的CDC第2级
 			if getnewframe_dd = '0' and getnewframe_d = '1' then
 				newFrameRequestRevcd <= '1';
 			end if;
@@ -1499,8 +1505,8 @@ begin
 				calib_done <= '0';
 			end if;
 
-			-- procedure to reset PLL in case it looses lock
-			if calib_done = '1' then
+			-- 若PLL失锁，执行自动复位拉起流程
+			if calib_done = '1' then          -- 仅在校准通路有效后监控PLL
 				if pll_locked = '0' then
 					if assert_pll_counter = 0 then
 						pll_reset <= '1';
@@ -1517,12 +1523,12 @@ begin
 				assert_pll_counter <= 0;
 			end if;
 
-			flaga_d <= flaga;
-			flagb_d <= flagb;
-			flagb_dd <= flagb_d;
-			flagb_ddd <= flagb_dd;
-			flagd_d <= flagd;
-			flagd_dd <= flagd_d;
+			flaga_d <= flaga;     -- EP2标志同步第1级
+			flagb_d <= flagb;     -- EP4标志同步第1级
+			flagb_dd <= flagb_d;  -- EP4标志同步第2级
+			flagb_ddd <= flagb_dd;-- EP4标志同步第3级
+			flagd_d <= flagd;     -- EP6标志同步第1级
+			flagd_dd <= flagd_d;  -- EP6标志同步第2级
 
 			DebugADCState_d <= DebugADCState;
 
@@ -1545,70 +1551,70 @@ begin
 			--		digital_Direction_dd <= digital_Direction_d;
 
 			--========================================--
-			-- Generate frame save/send flags         --
+			-- 生成帧保存/发送同步标志                 --
 			--========================================--
 
-			-- monitor triggered rising flag (so we can start sending samples to PC)
-			-- give some delay (_dddd), so that frame_ready_to_send is properly read
-			triggered_d <= triggered;
-			triggered_dd <= triggered_d;
-			triggered_ddd <= triggered_dd;
-			triggered_dddd <= triggered_ddd;
-			-- if frame saving has started, assert frame_ready_to_send flag
+			-- 监测triggered上升沿，用于启动向PC发送
+			-- 通过四级延迟保证frame_ready_to_send稳定判定
+			triggered_d <= triggered;       -- 触发脉冲延迟第1级
+			triggered_dd <= triggered_d;    -- 触发脉冲延迟第2级
+			triggered_ddd <= triggered_dd;  -- 触发脉冲延迟第3级
+			triggered_dddd <= triggered_ddd;-- 触发脉冲延迟第4级
+			-- 帧保存启动后置位frame_ready_to_send
 			if ( triggered_dddd = '0' AND triggered_ddd = '1' ) then
 				frame_ready_to_send <= '1';
 			end if;
 
-			-- READ ASYNC SIGNALS
+			-- 采集跨域异步信号
 			frame_start_pointer_d <= frame_start_pointer;
 			frame_start_pointer_dd <= frame_start_pointer_d;
 
-			triggered_led_d <= triggered_led; -- indicator that signal is triggered
+			triggered_led_d <= triggered_led; -- 触发LED状态同步
 			roll_d <= roll;
 
 			--===========================================================
-			-- Transfer samples from buffer to FX3
+			-- 将采样数据从缓存传输到FX3
 			--===========================================================
 
-			case MasterState(3 downto 0) is
+			case MasterState(3 downto 0) is   -- FX3/USB事务主状态机
 
-				when A =>           			-- "IDLE STATE"
+				when A =>           			-- 空闲态：上电序列、ADC配置与校准触发
 					faddr_i <= "00";
 					slrd_i  <= '1';
 					slwr_i  <= '1';
-					-- wait for IDELAYCTRL ready
-					-- IDELAYCTRL start-up Time = 3.67us
-					-- from Artix_7_Data_Sheet, Table  25: Input/Output Delay Switching Characteristics
-					-- check flaga for rising edge
+					-- 等待IDELAYCTRL就绪
+					-- IDELAYCTRL启动时间约3.67us
+					-- 参考Artix-7数据手册表25
+					-- 通过flaga检测接口可用
 					if ( flaga_d = '1' ) then
 						if Timer_cnt = 50000 then
 							ConfigureADC <= '0';
-							MasterState <= B;	    -- goto Dispatcher
+							MasterState <= B;	    -- 转到分发器状态
 							Timer_cnt <= 0;
 						elsif Timer_cnt = 40000 then
-							adc_spi_data <= X"00C0" & X"00"; -- configure ADC to DISABLE TEST pattern
+							adc_spi_data <= X"00C0" & X"00"; -- 配置ADC关闭测试图样
 							ConfigureADC <= '1';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						elsif Timer_cnt = 30000 or Timer_cnt = 30001 then
-							read_calib_start <= '1';    -- start IDELAY calibration for ADC interface
-							read_calib_source <= '1';   -- select CH2 for IDELAY calibration
+							read_calib_start <= '1';    -- 启动ADC接口IDELAY校准
+							read_calib_source <= '1';   -- 选择CH2进行校准
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						elsif Timer_cnt = 20000 or Timer_cnt = 20001 then
-							read_calib_start <= '1';    -- start IDELAY calibration for ADC interface
-							read_calib_source <= '0';   -- select CH1 for IDELAY calibration
+							read_calib_start <= '1';    -- 启动ADC接口IDELAY校准
+							read_calib_source <= '0';   -- 选择CH1进行校准
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						elsif Timer_cnt = 2000 then
-							adc_spi_data <= X"00C0" & X"44"; -- configure ADC to send TEST pattern (CHECKERBOARD)
+							adc_spi_data <= X"00C0" & X"44"; -- 配置ADC输出测试图样（棋盘格）
 							ConfigureADC <= '1';
 							-- set POT:1 to tap value 152 (29763 Ohms)- the tap value should match digital[voltageCoeficient]
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						else
 							read_calib_start <= '0';
-							ConfigureADC <= '0';        -- de-assert ADC write trigger
+							ConfigureADC <= '0';        -- 释放ADC写触发
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						end if;
@@ -1618,29 +1624,29 @@ begin
 						ConfigureADC <= '0';
 						MasterState <= A;
 					end if;
-					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- place data bus in HI-Z state
-					clearflags <= '1'; -- send reset to ADC sample saving process
+					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
+					clearflags <= '1'; -- 向ADC采样状态机发送复位
 					DebugMState <= 0;
 
-				when B =>						-- "READ from FIFO state" / dispatcher
+				when B =>						-- 分发态：配置读取/ADC配置/帧流程切换
 					slwr_i <= '1';
 					slrd_i <= '1';
 					pktend_i <= '1';
-					-- if new scope configuration data is waiting in EP2 buffer
-					if ( flaga_d = '1') then -- EP2 not empty
-						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- place data bus in HI-Z state
-						faddr_i <= "11"; -- select EP2 fifo buffer
-						-- initialize Config RAM address pointer
+					-- 若EP2中有新的示波器配置数据
+					if ( flaga_d = '1') then -- EP2非空
+						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
+						faddr_i <= "11"; -- 选择EP2 FIFO
+						-- 初始化配置RAM地址指针
 						cfg_addrA <= std_logic_vector(to_unsigned(0,6));
-						MasterState <= C;  -- goto "GET SCOPE CONFIG"
-					-- if new config was received during sending, then return back
+						MasterState <= C;  -- 进入“读取配置”状态
+					-- 若发送过程中收到新配置，则回到发送状态
 					elsif ReturnToStreamingState = '1' then
-						ReturnToStreamingState <= '0'; -- re-set return state flag
-						Masterstate <= G; -- return to frame streaming
-						-- if new config was received during frame request, then return back
+						ReturnToStreamingState <= '0'; -- 清除返回标志
+						Masterstate <= G; -- 返回数据流发送状态
+						-- 若等待帧期间收到新配置，则回到等待帧状态
 					elsif ReturnToFrameRequest = '1' then
-						ReturnToFrameRequest <= '0'; -- re-set return state flag
-						Masterstate <= F; -- return to frame streaming
+						ReturnToFrameRequest <= '0'; -- 清除返回标志
+						Masterstate <= F; -- 返回等待帧状态
 						--if scope settings have changed
 					--if ADC config has changed
 					elsif (adc_cfg_data_d /= adc_cfg_data) then
@@ -1650,7 +1656,7 @@ begin
 						--				ConfigureADC <= '1';     debug!
 						Masterstate <= D;
 					else
-						-- if scope config has changed OR single trigger was re-armed
+						-- 若配置变化或单次触发重布防
 						if scopeConfigChanged = '1' then
 							-- reset scopeConfigChanged flag
 							scopeConfigChanged <= '0';
@@ -1663,7 +1669,7 @@ begin
 					end if;
 					DebugMState <= 1;
 
-				when C =>						-- "GET SCOPE CONFIG"
+				when C =>						-- CONFIG-READ: pull EP2 words and mirror to config RAM
 					faddr_i <= "11"; -- selected FIFO endpoint is EP2 (config)
 					slwr_i  <= '1';
 					-- verify if any changes were made to configuration
@@ -1695,17 +1701,17 @@ begin
 							faddr_rdy_cnt_i <= faddr_rdy_cnt_i + 1;
 						end if;
 						Masterstate <= C;
-					-- if FX3 is ready for reading and EP2 is not empty
+					-- 若FX3已进入可读且EP2非空
 					elsif ( flaga_d = '1' and cfg_we = '1') then
-						-- slrd has 2 cycle latency
+						-- SLRD存在2拍延迟
 						if cfg_data_cnt < CONFIG_DATA_SIZE - 4 then
 							slrd_i  <= '0';
 						else
 							slrd_i  <= '1';
 						end if;
-						-- read oscilloscope configuration and save to RAM
+						-- 读取示波器配置并写入RAM
 						cfg_data_in <= fdata;
-						-- increment RAM address pointer
+						-- RAM地址指针递增
 						if cfg_data_cnt = CONFIG_DATA_SIZE - 1 then
 							cfg_we <= '0';
 							cfg_data_cnt <= 0;
@@ -1716,14 +1722,14 @@ begin
 							cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
 						end if;
 						cfg_addrA_d <= cfg_addrA;
-						-- stay in this state util EP2 is not empty
+						-- EP2未空时保持在本状态
 						Masterstate <= C;
 					else
-						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- place data bus in HI-Z state
+						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
 						slrd_i  <= '1';
 						cfg_we <= '0';
 						if to_integer(unsigned(cfg_addrA)) = CONFIG_DATA_SIZE - 1 then
-							-- return to dispatcher state if memory read is finished
+							-- RAM配置读取结束后返回分发状态
 							reading_config_registers <= '0';
 							cfg_addrA_d <= "000000";
 							cfg_addrA <= "000000";
@@ -1734,66 +1740,66 @@ begin
 						else
 							reading_config_registers <= '1';
 							cfg_addrA_d <= cfg_addrA;
-							-- increment memory address pointer
+							-- 内存地址指针递增
 							cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
 							Masterstate <= C;
 						end if;
 
-						--copy scope config to memory
+						-- 将配置字映射到内部控制寄存器
 						case to_integer(unsigned(cfg_addrA_d) + 1) is
 							when 1 =>
-								adc_cfg_reg <= cfg_do_A(31 downto 16);
+								adc_cfg_reg <= cfg_do_A(31 downto 16); -- ADC寄存器地址
 								adc_cfg_reg_d <= adc_cfg_reg;
-								adc_cfg_data <= cfg_do_A(7 downto 0);
+								adc_cfg_data <= cfg_do_A(7 downto 0);   -- ADC寄存器数据
 								adc_cfg_data_d <= adc_cfg_data;
 							when 4 =>
-								ch1_dc_i <= cfg_do_A(21);
-								ch2_dc_i <= cfg_do_A(20);
-								ch1_gnd_i <= NOT(cfg_do_A(19));
-								ch2_gnd_i <= NOT(cfg_do_A(18));
-								ch1_k_i <= cfg_do_A(17);
-								ch2_k_i <= cfg_do_A(16);
-								s_trigger_mode <= cfg_do_A(1 downto 0);
-								s_trigger_rearm <= cfg_do_A(2);
+								ch1_dc_i <= cfg_do_A(21);              -- CH1 DC/AC
+								ch2_dc_i <= cfg_do_A(20);              -- CH2 DC/AC
+								ch1_gnd_i <= NOT(cfg_do_A(19));        -- CH1 GND开关
+								ch2_gnd_i <= NOT(cfg_do_A(18));        -- CH2 GND开关
+								ch1_k_i <= cfg_do_A(17);               -- CH1衰减档位
+								ch2_k_i <= cfg_do_A(16);               -- CH2衰减档位
+								s_trigger_mode <= cfg_do_A(1 downto 0); -- 单次触发模式
+								s_trigger_rearm <= cfg_do_A(2);        -- 单次触发重布防
 							when others => null;
 						end case;
 					end if;
 					DebugMState <= 2;
 
-				when D =>			          -- "CONFIGURE ADC"
-				-- reset ADC register write command
+				when D =>			          -- ADC-SPI状态：通过SPI写ADC寄存器
+				-- 处理ADC寄存器写命令
 					if ConfigureADC = '1' OR adcA_spi_busy = '1' then
 						adc_spi_data <= adc_cfg_reg & adc_cfg_data;
 						ConfigureADC <= '0';
 						Masterstate <= D;
 					else
-						-- return to dispatcher state
+						-- 写完成后返回分发状态
 						Masterstate <= B;
 					end if;
 					DebugMState <= 3;
 
-				when F =>						-- "WAIT FOR NEW FRAME READY"
-					clearflags <= '0';
-					ReadingFrame <= '0';
+				when F =>						-- 等帧状态：发起采集请求并等待帧就绪
+					clearflags <= '0';   -- 释放采样侧复位
+					ReadingFrame <= '0'; -- 关闭读帧使能
 					--			requestFrame <= '0';
-					-- start sending to FX3 when frame was triggered
+					-- 帧触发完成后开始向FX3发送
 					if ( frame_ready_to_send = '1' ) then
-						newFrameRequestRevcd <= '0';
-						framesize_dd <= framesize_d;          -- get current frame size
-						encoding_format_dd <= encoding_format_d; -- get current frame encoding option
-						frame_ready_to_send <= '0';
-						Masterstate <= G;					-- continue to STREAMING
-						-- wait until frame is ready to send
+						newFrameRequestRevcd <= '0';               -- 清除新帧请求已收标志
+						framesize_dd <= framesize_d;               -- 锁存当前帧长度
+						encoding_format_dd <= encoding_format_d;   -- 锁存当前编码格式
+						frame_ready_to_send <= '0';                -- 清除帧就绪标志
+						Masterstate <= G;					-- 进入流式发送状态
+						-- 否则继续等待帧就绪
 					elsif ( flaga_d = '1') then
-						Masterstate <= B;	-- we have to read new config immediately if it was received
+						Masterstate <= B;	-- 收到新配置时立即转去读取
 					else
 						if newFrameRequestRevcd = '0' then
 							if cnt_restart_framesave = 15 then
-								-- if single trigger is requested but armed, then don't request new frame
+								-- 单次触发且未重布防时，不重复请求新帧
 								if s_trigger_mode = "10" AND s_trigger_rearm = '0' then
 									cnt_restart_framesave <= 15;
 									requestFrame <= '0';
-								-- request new frame
+								-- 允许请求新帧
 								else
 									s_trigger_rearm <= '0';
 									cnt_restart_framesave <= 0;
@@ -1805,7 +1811,7 @@ begin
 							end if;
 							Masterstate <= F;
 						else
-							-- wait in this state until frame is ready to send
+							-- 维持本状态直至帧可发送
 							requestFrame <= '0';
 							cnt_restart_framesave <= 0;
 							Masterstate <= F;
@@ -1813,43 +1819,43 @@ begin
 					end if;
 					DebugMState <= 5;
 
-				when G =>            		-- "STREAMING SAMPLE DATA"
+				when G =>            		-- 发送状态：将帧头与采样数据发往FX3 EP6
 				--sloe_i <= '1';
 					slrd_i <= '1';
-					faddr_i <= "00";  -- 00 -- select EP6
-					ReadingFrame <= '1';
+					faddr_i <= "00";  -- 选择EP6端点
+					ReadingFrame <= '1'; -- 打开DDR3读帧流程
 					if (flaga_d = '1') AND DataOutValid = '0' AND (dword_cnt_i = 0) then
-						-- disable reading samples from RAM
+						-- RAM无有效数据时先关闭读取
 						DataOutEnable <= '0';
 						slwr_i <= '1';
-						-- wait for 7 clk cycles to confirm there is no data waiting to be read from RAM
+						-- 等待7拍确认RAM侧确实无待发数据
 						if cnt_dw_stop = 7 then
 							cnt_dw_stop <= 0;
-							if unsigned(timebase_ddd) >= 12 then -- check if this is really needed???
+							if unsigned(timebase_ddd) >= 12 then -- 慢时基下标记慢速发送
 								SendingFrameSlow <= '1';
 							end if;
 							MasterState <= B;
-							ReturnToStreamingState <= '1'; -- set return state flag
+							ReturnToStreamingState <= '1'; -- 设置返回流发送标志
 						else
 							cnt_dw_stop <= cnt_dw_stop + 1;
 							MasterState <= G;
 						end if;
 
-					-- send data to FX3 if EP6 is ready
+					-- EP6可写时向FX3发送数据
 					elsif slwr_assert = '1' AND (
-							-- if sending header
+							-- 正在发送帧头
 						    ( hword_cnt_i < FRAME_HEADER_SIZE ) OR
- 							-- if data available from RAM
+							-- RAM有可用数据
 						    ( DataOutValid = '1' ) OR
- 							-- if sending padding after frame end
+							-- 帧尾后补齐填充字
 						    ( send_sample_cnt = to_integer(unsigned(framesize_dd)) AND dword_cnt_i < FX3_DMA_BUFFER_SIZE/4 ) OR
- 							-- or if capturing slow timebase and scope config has changed
+							-- 慢时基采集中配置变化时也继续发空字
 						    ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) )
  						then
-						-- then start writing data to FX3
+						-- 满足条件后启动写FX3
 						slwr_i <= '0';
-						cnt_dw_stop <= 0; -- reset flaga/flagb interrupt timer
-						-- write samples in bursts of FX3_DMA_BUFFER_SIZE
+						cnt_dw_stop <= 0; -- 复位停止等待计数
+						-- 按FX3_DMA_BUFFER_SIZE突发发送
 						if slwr_assert_cnt = (FX3_DMA_BUFFER_SIZE/4)-1 then
 							slwr_assert <= '0';
 							flagd_rdy_cnt <= 0;
@@ -1857,13 +1863,13 @@ begin
 						else
 							slwr_assert_cnt <= slwr_assert_cnt + 1;
 						end if;
-						-- Send HEADER first : HEADER size is 256 DWords = 1024 Bytes
+						-- 先发送帧头：256个DWord（1024字节）
 						if hword_cnt_i < FRAME_HEADER_SIZE then
 							DataOutEnable <= '0';
-							--start sending frame HEADER
+							-- 开始发送帧头
 							hword_cnt_i <= hword_cnt_i + 1;
 							case hword_cnt_i is
-								--read back scope config
+								-- 回填配置与元数据
 								when 0  =>
 									fdata <= X"DDDDDDDD";
 									send_frame_cnt <= send_frame_cnt + 1;
@@ -1888,7 +1894,7 @@ begin
 										cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
 									end if;
 									if    hword_cnt_i = (63 + 9) then
-									 	--number of samples in frame
+										-- 当前帧样本数
 										fdata(31 downto 27) <= "00000";
 										fdata(26 downto 0) <= std_logic_vector(unsigned(framesize_dd)+1);
 									elsif hword_cnt_i = (63 + 30) then
@@ -1899,10 +1905,9 @@ begin
 										fdata <= cfg_do_A;
 									end if;
 								when FRAME_HEADER_SIZE-1 =>
-									fdata  <= x"00000000"; -- TODO: CRC
+									fdata  <= x"00000000"; -- 预留CRC字段
 									pktend_i <= '0';
-									-- set number of 32-bit data words for current frame
-									-- this in terms defines send_sample_cnt max.
+									-- 计算当前帧对应的32位字数量上限
 									case encoding_format_dd (3 downto 0) is 
 										when "1010" | "1001" | "0110" | "0101" =>
 											framesize_dd <= '0' & framesize_dd(26 downto 1);
@@ -1913,39 +1918,39 @@ begin
 									fdata <= X"0000FFFF";
 							end case;
 						else
-							-- control reading data from RAM with DataOutEnable
-							-- count how many 32-bit data words were sent to FX3 fifo
+							-- 通过DataOutEnable控制DDR3读出
+							-- 统计已发送到FX3 FIFO的32位字数
 							if dword_cnt_i = (FX3_DMA_BUFFER_SIZE/4)-1 then
 								dword_cnt_i <= 0;
 								DataOutEnable <= '0';
 							else
 								dword_cnt_i <= dword_cnt_i + 1;
-								-- data from RAM will still be valid 4 clk cycles after DataOutEnable is deasserted
-								-- so DataOutEnable must be deasserted 4 clk cycles before FX3 fifo is full
+								-- DataOutEnable拉低后RAM数据仍会持续有效4拍
+								-- 因此需在FIFO写满前4拍关闭DataOutEnable
 								if dword_cnt_i < (FX3_DMA_BUFFER_SIZE/4)-5 then
 									DataOutEnable <= '1';
 								else
 									DataOutEnable <= '0';
 								end if;
 							end if;
-							-- start sending frame DATA
+							-- 开始发送帧数据载荷
 							if ( send_sample_cnt = to_integer(unsigned(framesize_dd)) ) then
-								SendingFrameSlow <= '0';	-- reset flags
+								SendingFrameSlow <= '0';	-- 清除慢速发送标志
 								if dword_cnt_i = (FX3_DMA_BUFFER_SIZE/4)-1 then
-									hword_cnt_i <= 0; -- RESET Header couter
+									hword_cnt_i <= 0; -- 复位帧头计数器
 									send_sample_cnt <= 0;
 									pktend_i <= '0';
-									MasterState <= B; -- continue to dispatcher
+									MasterState <= B; -- 返回分发状态
 								else
 									if DataOutValid = '1' then
 										fdata <= DataOut;
 									else
-										-- insert padding bytes to fill FX3 DMA BUFFER
-										-- we have to do this, if we don't want to use PKTEND#
+										-- 插入填充字节直至凑满DMA缓冲区
+										-- 不依赖PKTEND时必须这样补齐
 										fdata <= x"00000000";
 									end if;
 									pktend_i <= '1';
-									Masterstate <= G; -- CONTINUE WITH PADDING
+									Masterstate <= G; -- 继续发送填充
 								end if;
 							else
 								if ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) then
@@ -1958,17 +1963,17 @@ begin
 								end if;
 								pktend_i <= '1';
 								send_sample_cnt <= send_sample_cnt + 1;
-								Masterstate <= G; -- CONTINUE STREAMING SAMPLE DATA
+								Masterstate <= G; -- 继续流式发送样本数据
 							end if;
 						end if;
-					-- FX3 can accept data and samples still need to be sent and header was already sent
+					-- FX3可接收且样本未发完且帧头已发送完成
 					elsif slwr_assert = '1' and (send_sample_cnt < to_integer(unsigned(framesize_dd))) and hword_cnt_i = FRAME_HEADER_SIZE then
 						DataOutEnable <= '1';
 						pktend_i <= '1';
 						slwr_i  <= '1';
 						Masterstate <= G;
 					else
-						-- check if FIFO is empty after 7 clk clyles
+						-- 延时7拍后再次确认FIFO可写状态
 						if flagd_rdy_cnt = 7 then
 							if flagd_dd = '1' then
 								slwr_assert <= '1';
@@ -1985,7 +1990,7 @@ begin
 					end if;
 					DebugMState <= 6;
 
-				when others =>					-- if in undefined state, move to IDLE
+				when others =>					-- 异常状态：回到空闲态
 					faddr_i <= "00";
 					slwr_i  <= '1';
 					MasterState <= A;

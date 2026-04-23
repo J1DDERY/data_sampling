@@ -30,7 +30,7 @@ use UNISIM.VComponents.all;
 
 entity adc_if is
     generic (
-        ADC_BITS : integer := 10
+        ADC_BITS : integer := 14
     );
     Port ( 
         i_clk_p : in STD_LOGIC; -- ADC差分时钟正
@@ -81,8 +81,8 @@ constant CAL_CHK_B : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_B
 CONSTANT TEST_MODE : boolean := False; -- TEST_MODE为True时输出递增测试数据，否则输出实际ADC数据
 
 CONSTANT ADC_CLK_DELAY  : integer := 0;  -- delay tap setting (0-31)
-CONSTANT ADC_DATA1_DELAY : integer := 23; -- Average Tap Delay at 200 MHz = 78 ps (78 * 31 = 2.5 ns max-delay)
-CONSTANT ADC_DATA2_DELAY : integer := 2;
+CONSTANT ADC_DATA_DELAY : integer := 23; -- Average Tap Delay at 200 MHz = 78 ps (78 * 31 = 2.5 ns max-delay)
+
 
 CONSTANT dly_calib_idle: std_logic_vector(1 downto 0) := "00"; -- 校准状态机：空闲
 CONSTANT dly_calib_run: std_logic_vector(1 downto 0) := "01";  -- 校准状态机：运行
@@ -234,47 +234,46 @@ o_data_2 <= tmp_data_2_d;
         
 o_clk <= o_clk_i;
 
---delay data input 
--- 数据输入延迟单元阵列，对每一位数据可独立延迟，便于校准
+-- 数据输入延迟阵列：对每一位数据分别加可编程延迟，便于把采样点移到数据眼中心。
 data_delay: for i in 0 to ADC_LANES-1 generate
     IDELAYE2_data: IDELAYE2
     generic map (
         CINVCTRL_SEL => "FALSE",
-        DELAY_SRC => "IDATAIN",
-        HIGH_PERFORMANCE_MODE => "FALSE",
-        IDELAY_TYPE => "VAR_LOAD",        -- VAR_LOAD
-        IDELAY_VALUE => ADC_DATA1_DELAY,  -- fixed delay setting is ignored in VAL_LOAD mode 
+        DELAY_SRC => "IDATAIN",                 -- 延迟源来自输入端口
+        HIGH_PERFORMANCE_MODE => "FALSE",       -- 低功耗模式
+        IDELAY_TYPE => "VAR_LOAD",              -- 可动态装载 tap 值
+        IDELAY_VALUE => ADC_DATA_DELAY,          -- 初始 tap 值；VAR_LOAD 下会被后续装载值覆盖
         PIPE_SEL => "FALSE",
-        REFCLK_FREQUENCY => 200.0,
-        SIGNAL_PATTERN => "DATA"
+        REFCLK_FREQUENCY => 200.0,               -- IDELAYCTRL 参考时钟 200 MHz
+        SIGNAL_PATTERN => "DATA"                -- 这是数据信号，不是时钟
     )
     port map (
         --   CNTVALUEOUT => CNTVALUEOUT,
         DATAOUT => i_data_delayed(i),
-        C => clk_iddr,
+        C => clk_iddr,                            -- 用采样时钟域控制 tap 装载
         CE => '0',
         CINVCTRL => '0',
-        CNTVALUEIN => std_logic_vector(to_unsigned(cnt_tap_value,5)), -- delay value
+        CNTVALUEIN => std_logic_vector(to_unsigned(cnt_tap_value,5)), -- 当前 tap 值
         DATAIN => '0',
-        IDATAIN => i_data_buff(i),
+        IDATAIN => i_data_buff(i),                -- 来自 IBUFDS 的单端数据
         INC => '0',
-        LD => load_cnt_tap_value,   -- Loads delay value CNTVALUEIN
+        LD => load_cnt_tap_value,                 -- 置位后装载 CNTVALUEIN
         LDPIPEEN => '0',
         REGRST => '0'
     );
 end generate;
 
+-- DDR 采样器：把延迟后的输入数据在时钟正沿/负沿各采一次。
 data_ddr_to_se: for i in 0 to ADC_LANES-1 generate
    data_ddr_to_se_i: IDDR 
    generic map (
-    DDR_CLK_EDGE => "SAME_EDGE_PIPELINED", -- "OPPOSITE_EDGE", "SAME_EDGE" 
-                                       -- or "SAME_EDGE_PIPELINED" 
-      INIT_Q1 => '0',   -- Initial value of Q1
-      INIT_Q2 => '0',   -- Initial value of Q2
-      SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+    DDR_CLK_EDGE => "SAME_EDGE_PIPELINED",  -- Q1/Q2 都在同一边沿输出，便于后级使用
+      INIT_Q1 => '0',   -- Q1 初始值
+      INIT_Q2 => '0',   -- Q2 初始值
+      SRTYPE => "SYNC") -- 同步复位方式
    port map (
-      Q1 => o_data_Q1(i),  -- output for positive edge of clock 
-      Q2 => o_data_Q2(i),  -- output for negative edge of clock
+      Q1 => o_data_Q1(i),  -- 正沿采样数据
+      Q2 => o_data_Q2(i),  -- 负沿采样数据
       C => clk_iddr,
       CE => '1',
       D => i_data_delayed(i),
@@ -284,13 +283,13 @@ data_ddr_to_se: for i in 0 to ADC_LANES-1 generate
 
 end generate;
 
+-- IDELAY 控制器：为所有 IDELAY 单元提供参考时钟和校准状态。
 IDELAYCTRL_inst: IDELAYCTRL
    port map (
-      RDY => idelay_rdy,    -- 1-bit output: Ready output
-      REFCLK => i_clk_ref,    -- 1-bit input: Reference clock input
-      RST => idelay_reset     -- 1-bit input: Active high reset input
+      RDY => idelay_rdy,     -- 就绪后，延迟单元才可靠
+      REFCLK => i_clk_ref,   -- 参考时钟
+      RST => idelay_reset    -- 高有效复位
    );
-
 
 -- read samples from ADC
 -- note that clock LVDS signal is inverted on pcb
@@ -425,5 +424,6 @@ begin
         end if; --rising_edge(clk_iddr)
     end if; --idelay_rdy = '1' 
 end process;
-end Behavioral;
+
 -- 行为体结束
+end Behavioral;

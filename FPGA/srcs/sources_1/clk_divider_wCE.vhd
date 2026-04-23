@@ -20,25 +20,27 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
+-- 如果后续要实例化 Xilinx 原语，再取消下面两行注释。
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+-- 时钟分频使能模块：根据 timebase 生成不同节拍的 out_CE。
 entity clk_divider_wCE is
-    Port ( clk : in  STD_LOGIC;
-           reset : in  STD_LOGIC;
-           timebase : in  STD_LOGIC_VECTOR (4 downto 0);
-           out_CE : out  STD_LOGIC);
+    Port (
+           clk : in  STD_LOGIC;                         -- 输入时钟
+           reset : in  STD_LOGIC;                       -- 复位，高有效
+           timebase : in  STD_LOGIC_VECTOR (4 downto 0);-- 时基选择
+           out_CE : out  STD_LOGIC);                    -- 输出时钟使能
 end clk_divider_wCE;
 
 architecture Behavioral of clk_divider_wCE is
 
-signal counter : integer range 0 to 99999999;
-signal counter_maxcnt : integer range 0 to 199999999;
+signal counter : integer range 0 to 99999999;      -- 当前计数值
+signal counter_maxcnt : integer range 0 to 199999999; -- 当前时基对应的计数上限
 
 begin
 
+-- 使能生成进程：在 clk 上升沿更新计数器和 out_CE。
 generate_clk_enable: process(clk)
 
 begin
@@ -47,18 +49,19 @@ begin
 	
 		if reset = '1' then
 
-			counter <= 0;  --immediately reset counter
-			out_CE <= '1'; --force clk enable TRUE
+			counter <= 0;  -- 复位后立即清零计数器
+			out_CE <= '1'; -- 复位时强制输出使能为有效
 		
 		elsif counter = counter_maxcnt then
 			
-			counter <= 0;
-			out_CE <= '1';
+			counter <= 0;   -- 到达上限后重新开始计数
+			out_CE <= '1';  -- 在这个拍输出一个使能脉冲
 			
+			-- 根据 timebase 选择下一次脉冲间隔。
 			case to_integer(unsigned(timebase (4 downto 0))) is
 			
 				when 0 | 1 | 31 =>
-					counter_maxcnt <= 0;	       -- 4 ns sampling period
+					counter_maxcnt <= 0;	       -- 4 ns 采样周期
 				when 2 =>
 					counter_maxcnt <= 1;	       -- 8 ns
 				when 3 =>
@@ -92,20 +95,20 @@ begin
 				when 17 =>
 					counter_maxcnt <= 199999;       -- 800 us
 				when 18 =>
-					counter_maxcnt <= 499999;       -- 2 ms		
+					counter_maxcnt <= 499999;       -- 2 ms			
 				when 19 =>
-					counter_maxcnt <= 999999;       -- 4 ms				
+					counter_maxcnt <= 999999;       -- 4 ms					
 				when 20 =>
 					counter_maxcnt <= 1999999;      -- 8 ms			
 				when 21 =>
 					counter_maxcnt <= 4999999;      -- 20 ms			
 				when others =>
-					null;
+					null;                           -- 其他值不改变当前上限
 				
 			end case;
 		
 		else
-			-- else: keep counting
+			-- 未到达上限时继续计数，out_CE 保持无效。
 			counter <= counter + 1;
 			out_CE <= '0';
 			
