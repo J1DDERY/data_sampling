@@ -205,7 +205,7 @@
 				(justify right)
 			)
 		)
-		(pin "CH1-" output
+		(pin "CH1-" input
 			(at 132.08 30.48 0)
 			(uuid "ec0657e8-e40f-4baa-a868-b5f4a3eee4a2")
 			(effects

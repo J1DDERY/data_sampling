@@ -293,7 +293,7 @@ IDELAYCTRL_inst: IDELAYCTRL
 
 -- read samples from ADC
 -- note that clock LVDS signal is inverted on pcb
--- and ADC channels are interleaved
+-- rising/falling edge samples are captured and exported separately
 
 sample_incoming_data_rising: process(clk_iddr)
     -- 主采样进程：

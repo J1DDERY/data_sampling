@@ -63,7 +63,6 @@ entity fpga is
 		ch2_gnd       : out STD_LOGIC;
 		ch1_k         : out STD_LOGIC;    -- 衰减器开关
 		ch2_k         : out STD_LOGIC;
-		cc_ab         : out STD_LOGIC;    -- 将CH1连接到双ADC输入（交织模式）
 		-- DDR3接口
 		ddr3_dq      : inout std_logic_vector(15 downto 0);
 		ddr3_dqs_p   : inout std_logic_vector(1 downto 0);
@@ -573,9 +572,7 @@ architecture rtl of fpga is
 	signal ets_on : std_logic;                                 -- ETS模式使能
 	signal ets_on_d : std_logic;                               -- ETS模式使能延迟
 	signal ets_test  : std_logic;                              -- ETS测试模式（预留）
-	-- ADC交织相关
-	signal adc_interleaving : std_logic;                       -- ADC交织模式开关
-	signal adc_interleaving_d : std_logic;                     -- ADC交织模式延迟
+
 
 	-- 调试与DDR3数据通路信号
 	signal DebugMState : integer range 0 to 7;                 -- 主状态机调试编码
@@ -980,8 +977,6 @@ begin
 	ch2_gnd <= ch2_gnd_i;  -- CH2接地耦合控制
 	ch1_k <= ch1_k_i;      -- CH1衰减继电器控制
 	ch2_k <= ch2_k_i;      -- CH2衰减继电器控制
-
-	cc_ab  <= NOT(adc_interleaving_d); -- 非交织模式下将CH1连接到双ADC输入
 	--pktend <= '1';
 	pktend <= pktend_i;                -- 通过PKTEND显式提交短包
 
@@ -1053,7 +1048,7 @@ begin
 
 				when 4 =>
 					ets_on <= cfg_do_B(23);                -- bit23: ETS模式使能
-					adc_interleaving <= cfg_do_B(22);      -- bit22: ADC交织采样使能
+					
 					trigger_mode <= cfg_do_B(1 downto 0);  -- bit[1:0]: 触发模式（自动/普通/单次/立即）
 				when 5 =>
 					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
@@ -1207,7 +1202,6 @@ begin
 							PreTrigWriteEn <= '1';
 							framesize_d <= framesize;          -- 锁存当前帧长度
 							pre_trigger_d <= pre_trigger;      -- 锁存预触发长度
-							adc_interleaving_d <= adc_interleaving;
 							encoding_format_d <= encoding_format;
 							GetSampleState <= ADC_B;   -- 进入“预触发采集”
 
@@ -1364,7 +1358,7 @@ begin
 							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
 
-						-- 自动模式超时触发：
+												-- 自动模式超时触发：
 						elsif	trigger_mode_d = "00" AND auto_trigger = '1' then
 							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_E;

@@ -110,7 +110,6 @@
 			(dielectric_constraints no)
 		)
 		(pad_to_mask_clearance 0)
-		(solder_mask_min_width 0.1)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting
 			(front yes)
@@ -61047,7 +61046,7 @@
 		(descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0805")
 		(property "Reference" "C212"
-			(at -0.1 -3.5 0)
+			(at -1.5 -1 0)
 			(layer "B.SilkS")
 			(uuid "827f5d81-2f09-4334-8c17-458e4c64e41a")
 			(effects
@@ -61480,7 +61479,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "C215"
-			(at -0.1 -3.5 0)
+			(at 0.2 -2.1 90)
 			(layer "B.SilkS")
 			(uuid "d45342a2-e049-4e78-b62f-92d010aeab9b")
 			(effects
@@ -62225,7 +62224,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "C221"
-			(at 1.43 -0.6 180)
+			(at 0.2 3.2 180)
 			(layer "B.SilkS")
 			(uuid "6ca92479-50ba-4a46-b216-1bc40d65838e")
 			(effects
@@ -65207,7 +65206,7 @@
 		(descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0805")
 		(property "Reference" "C100"
-			(at 0.22 -2.62 0)
+			(at 0.76 -2.57 0)
 			(layer "B.SilkS")
 			(uuid "5fbe46a4-4c34-45d7-ab5e-403cdd935f0b")
 			(effects
@@ -65358,7 +65357,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "R107"
-			(at -1.54 0 0)
+			(at -2.34 0.2 0)
 			(layer "B.SilkS")
 			(uuid "0b32d373-4ecc-4f1f-8606-b8433adbd928")
 			(effects
@@ -65506,7 +65505,7 @@
 		(uuid "00000000-0000-0000-0000-0000588aa77f")
 		(at 78.94 140.25 90)
 		(property "Reference" "C119"
-			(at 1.4 4 0)
+			(at 2.15 0.16 0)
 			(layer "B.SilkS")
 			(uuid "c09bd04d-d7e1-43be-ba77-c12a1a22f1d7")
 			(effects
@@ -65637,7 +65636,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "C112"
-			(at -1.47 1.23 0)
+			(at -2.27 -1.67 0)
 			(layer "B.SilkS")
 			(uuid "e8dbe2d2-ecc1-4108-983c-f91f9c9c2e54")
 			(effects
@@ -66072,7 +66071,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "R110"
-			(at -1.1 2.3 0)
+			(at -1.75 3.44 90)
 			(layer "B.SilkS")
 			(uuid "647bf4ad-9571-46ad-ba58-1543c013891c")
 			(effects
@@ -66222,7 +66221,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "R104"
-			(at 1.73 0.32 0)
+			(at 1.25 1.84 90)
 			(layer "B.SilkS")
 			(uuid "17cd5dca-683a-4016-b5e6-4a1fbb8c0e5c")
 			(effects
@@ -66372,7 +66371,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "R111"
-			(at 0.19 1.55 0)
+			(at 1.75 -3.44 90)
 			(layer "B.SilkS")
 			(uuid "1205088e-c05c-4a60-bc14-12b13622cd66")
 			(effects
@@ -66824,7 +66823,7 @@
 		(descr "Resistor SMD 0603, reflow soldering, Vishay (see dcrcw.pdf)")
 		(tags "resistor 0603")
 		(property "Reference" "C116"
-			(at -0.2 3.6 0)
+			(at -1.55 3.44 90)
 			(layer "B.SilkS")
 			(uuid "cf28d21b-65c7-4a49-9428-d1c747c4a4c2")
 			(effects
@@ -67867,7 +67866,7 @@
 		(descr "MURATA Inductor")
 		(tags "MURATA Inductor")
 		(property "Reference" "L2"
-			(at -0.025 3.625 0)
+			(at -3.13 1.51 0)
 			(layer "B.SilkS")
 			(uuid "3f4cb90a-0e77-4102-9b68-108df848adfe")
 			(effects
@@ -83103,6 +83102,22 @@
 		(uuid "fbc96620-5281-47b6-86aa-316711fd4d10")
 	)
 	(segment
+		(start 47.397721 66.64149)
+		(end 47.387221 66.65199)
+		(width 0.15)
+		(layer "B.Cu")
+		(net "Net-(Q2-G1)")
+		(uuid "396011a3-c499-4207-9103-ed16515fd00a")
+	)
+	(segment
+		(start 59.85 72.45)
+		(end 54.04149 66.64149)
+		(width 0.15)
+		(layer "B.Cu")
+		(net "Net-(Q2-G1)")
+		(uuid "47898f91-1410-4b1d-8def-115c59cda490")
+	)
+	(segment
 		(start 44.49149 66.64149)
 		(end 44.375 66.525)
 		(width 0.127)
@@ -83111,28 +83126,44 @@
 		(uuid "49249451-91f3-4e76-839a-e884142cf74a")
 	)
 	(segment
-		(start 53.161311 66.64149)
-		(end 44.49149 66.64149)
-		(width 0.127)
-		(layer "B.Cu")
-		(net "Net-(Q2-G1)")
-		(uuid "86b2657d-cd85-4f77-ac7f-6d7be6f00acf")
-	)
-	(segment
 		(start 59.85 82.55)
-		(end 59.85 73.330179)
-		(width 0.127)
+		(end 59.85 72.45)
+		(width 0.15)
 		(layer "B.Cu")
 		(net "Net-(Q2-G1)")
-		(uuid "96629cd3-cf8d-4b4b-a2ac-8cd32efb41dd")
+		(uuid "634e4020-6349-4917-943a-b5f6fa5b0bf4")
 	)
 	(segment
-		(start 59.85 73.330179)
-		(end 53.161311 66.64149)
-		(width 0.127)
+		(start 47.002279 66.64149)
+		(end 44.49149 66.64149)
+		(width 0.15)
 		(layer "B.Cu")
 		(net "Net-(Q2-G1)")
-		(uuid "e4cb7b79-d59c-43ca-b6a0-59eb44666b9d")
+		(uuid "7674a559-84b5-42ca-bb1d-2185656a74f6")
+	)
+	(segment
+		(start 47.012779 66.65199)
+		(end 47.002279 66.64149)
+		(width 0.15)
+		(layer "B.Cu")
+		(net "Net-(Q2-G1)")
+		(uuid "82ed3fa3-c06f-4fd4-9ff6-93c319f50591")
+	)
+	(segment
+		(start 47.387221 66.65199)
+		(end 47.012779 66.65199)
+		(width 0.15)
+		(layer "B.Cu")
+		(net "Net-(Q2-G1)")
+		(uuid "b59e3c65-102e-46bc-a14c-475ea22418b6")
+	)
+	(segment
+		(start 54.04149 66.64149)
+		(end 47.397721 66.64149)
+		(width 0.15)
+		(layer "B.Cu")
+		(net "Net-(Q2-G1)")
+		(uuid "fa5842d5-4e4f-49b9-9998-72662d9b4eeb")
 	)
 	(segment
 		(start 44.275 68.225)

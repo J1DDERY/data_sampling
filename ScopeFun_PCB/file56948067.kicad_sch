@@ -6360,7 +6360,7 @@
 	)
 	(text "INVERTED\nPOLARITY CLK"
 		(exclude_from_sim no)
-		(at 31.75 86.36 0)
+		(at 32.258 87.122 0)
 		(effects
 			(font
 				(size 1.27 1.27)
