@@ -46,7 +46,6 @@ set_max_delay -datapath_only -from [get_pins clearflags*/C] -to [get_pins RAM_DD
 set_max_delay -datapath_only -from [get_pins {encoding_format_d_reg[*]/C}] -to [get_pins {encoding_format_dd_reg[*]/D}] 2.000
 
 # clk_fx3 域到 clk_adc 域的控制/状态同步路径。
-set_max_delay -datapath_only -from [get_cells {an_trig_delay_reg[*]}] -to [get_cells {an_trig_delay_d_reg[*]}] 2.000
 set_max_delay -datapath_only -from [get_pins clearflags_reg/C] -to [get_pins clearflags_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins requestFrame_reg/C] -to [get_pins requestFrame_d_reg/D] 2.000
 set_max_delay -datapath_only -from [get_pins RAM_DDR3_inst/PreTrigSavingCntRecvd_reg/C] -to [get_pins RAM_DDR3_inst/PreTrigSavingCntRecvd_d_reg/D] 2.000

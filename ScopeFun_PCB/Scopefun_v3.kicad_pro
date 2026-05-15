@@ -2918,6 +2918,14 @@
       "version": 1
     },
     "net_format_name": "Pcbnew",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": ""
+    },
     "page_layout_descr_file": "Scopefun_v2.kicad_wks",
     "plot_directory": "",
     "reuse_designators": true,

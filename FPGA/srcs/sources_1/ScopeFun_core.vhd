@@ -52,10 +52,6 @@ entity fpga is
 		adc_sdin      : out STD_LOGIC;        -- ADC串行接口数据
 		adcA_cs		  : out STD_LOGIC;        -- ADC串行接口片选（单颗双通道ADC）
 
-		-- CH-A ETS模拟触发
-		an_trig_p     : in STD_LOGIC;  -- 模拟/ETS触发输入
-		an_trig_n     : in STD_LOGIC;  --
-		an_trig_level : out STD_LOGIC; -- 模拟/ETS触发电平（PWM生成）
 		-- 模拟前端切换
 		ch1_dc	      : out STD_LOGIC;    -- DC/AC开关
 		ch2_dc	      : out STD_LOGIC;
@@ -180,17 +176,6 @@ architecture rtl of fpga is
 			do2   : out STD_LOGIC_VECTOR (15 downto 0));
 	end component;
 
-
-	component lut_delay is
-		Port (
-			clk : in  STD_LOGIC;
-			rst : in STD_LOGIC;
-			an_trig_p : in  STD_LOGIC;
-			an_trig_n : in  STD_LOGIC;
-			an_trig_d : out STD_LOGIC;
-			tap_reg_out : out  STD_LOGIC_VECTOR (31 downto 0)
-		);
-	end component;
 
 	component spi is
 		generic (
@@ -542,27 +527,9 @@ architecture rtl of fpga is
 	signal cnt_dw_stop : integer range 0 to 7 := 0;           -- 停止发送确认计数
 	signal cnt_BufferSel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
 
-	--LUT delay line signals
-	signal lut_delay_rst : std_logic;
-	signal lut_reg_out : std_logic_vector(31 downto 0);
-	signal lut_reg_out_d : std_logic_vector(31 downto 0);
-	signal lut_reg_out_dd : std_logic;
-	signal an_trig_delay : std_logic_vector(5 downto 0);      -- ETS触发延迟码
-	signal an_trig_delay_d : std_logic_vector(5 downto 0);    -- ETS触发延迟码一级同步
-	signal an_trig_delay_dd : unsigned(5 downto 0);           -- ETS触发延迟码二级同步
-	signal an_trig_delay_max : unsigned(5 downto 0);          -- 统计到的最大延迟
-	signal an_trig_delay_min : unsigned(5 downto 0) :="000001"; -- 统计到的最小非零延迟
-	signal lut_reg_out_tmp0 : std_logic_vector(15 downto 0);  -- LUT延迟抽头低16位缓存
-	signal lut_reg_out_tmp1 : std_logic_vector(15 downto 0);  -- LUT延迟抽头高16位缓存
-	signal lut_reg_out_tmp0_d : std_logic_vector(15 downto 0);-- LUT低16位一级延迟
-	signal lut_reg_out_tmp1_d : std_logic_vector(15 downto 0);-- LUT高16位一级延迟
-	signal lut_reg_out_tmp0_dd : std_logic_vector(15 downto 0); -- LUT低16位二级延迟
-	signal lut_reg_out_tmp1_dd : std_logic_vector(15 downto 0); -- LUT高16位二级延迟
-
-	-- ETS相关
-	signal ets_on : std_logic;                                 -- ETS模式使能
-	signal ets_on_d : std_logic;                               -- ETS模式使能延迟
-	signal ets_test  : std_logic;                              -- ETS测试模式（预留）
+	-- ETS相关（已移除功能实现，仅保留配置占位）
+	signal ets_on : std_logic := '0';                          -- ETS模式使能（已禁用）
+	signal ets_on_d : std_logic := '0';                        -- ETS模式使能延迟（已禁用）
 
 	-- 调试与DDR3数据通路信号
 	signal DebugMState : integer range 0 to 7;                 -- 主状态机调试编码
@@ -642,10 +609,6 @@ architecture rtl of fpga is
 	attribute KEEP of saving_progress_dd: signal is true;
 	attribute ASYNC_REG of saving_progress_d: signal is true;
 	attribute ASYNC_REG of saving_progress_dd: signal is true;
-	attribute KEEP of an_trig_delay_d: signal is true;
-	attribute KEEP of an_trig_delay_dd: signal is true;
-	attribute ASYNC_REG of an_trig_delay_d: signal is true;
-	attribute ASYNC_REG of an_trig_delay_dd: signal is true;
 	attribute KEEP of clearflags: signal is true;
 	attribute KEEP of clearflags_d: signal is true;
 	attribute ASYNC_REG of clearflags_d: signal is true;
@@ -836,17 +799,6 @@ begin
 			clk2  => clk_adc_dclk,
 			do1   => cfg_do_A, -- A口读数据（ifclk域）
 			do2   => cfg_do_B  -- B口读数据（adc时钟域）
-		);
-
-	-- ETS模拟触发路径的延迟抽样模块。
-	lut_delay_inst: lut_delay
-		port map (
-			clk => clk_adc_dclk,
-			rst => lut_delay_rst,
-			an_trig_p => an_trig_p,
-			an_trig_n => an_trig_n,
-			an_trig_d => an_trig_d,
-			tap_reg_out => lut_reg_out
 		);
 
 	-- 单颗双通道ADC的SPI主机接口
@@ -1051,8 +1003,6 @@ begin
 			case to_integer(unsigned(cfg_addrB_d) + 1) is -- 按寄存器索引解码配置
 
 				when 4 =>
-					ets_on <= cfg_do_B(23);                -- bit23: ETS模式使能
-					
 					trigger_mode <= cfg_do_B(1 downto 0);  -- bit[1:0]: 触发模式（自动/普通/单次/立即）
 				when 5 =>
 					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
@@ -1272,75 +1222,6 @@ begin
 
 						-- 模拟触发（ETS开启且模拟触发信号发生1->0）
 						elsif ets_on_d = '1' AND an_trig_ddd = '0' AND an_trig_dd = '1' then
-							lut_reg_out_tmp1 <= lut_reg_out(31 downto 16);
-							lut_reg_out_tmp0 <= lut_reg_out(15 downto 0);
-							case lut_reg_out(31 downto 0) is
-								when "01111111111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(31,6));
-								when "00111111111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(30,6));
-								when "00011111111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(29,6));
-								when "00001111111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(28,6));
-								when "00000111111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(27,6));
-								when "00000011111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(26,6));
-								when "00000001111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(25,6));
-								when "00000000111111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(24,6));
-								when "00000000011111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(23,6));
-								when "00000000001111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(22,6));
-								when "00000000000111111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(21,6));
-								when "00000000000011111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(20,6));
-								when "00000000000001111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(19,6));
-								when "00000000000000111111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(18,6));
-								when "00000000000000011111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(17,6));
-								when "00000000000000001111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(16,6));
-								when "00000000000000000111111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(15,6));
-								when "00000000000000000011111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(14,6));
-								when "00000000000000000001111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(13,6));
-								when "00000000000000000000111111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(12,6));
-								when "00000000000000000000011111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(11,6));
-								when "00000000000000000000001111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(10,6));
-								when "00000000000000000000000111111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(9,6));
-								when "00000000000000000000000011111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(8,6));
-								when "00000000000000000000000001111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(7,6));
-								when "00000000000000000000000000111111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(6,6));
-								when "00000000000000000000000000011111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(5,6));
-								when "00000000000000000000000000001111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(4,6));
-								when "00000000000000000000000000000111" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(3,6));
-								when "00000000000000000000000000000011" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(2,6));
-								when "00000000000000000000000000000001" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(1,6));
-								when "00000000000000000000000000000000" =>
-									an_trig_delay <= std_logic_vector(to_unsigned(0,6));
-								when others => Null;
-							end case;
 							triggered_led <= '1'; -- 触发指示：已触发
 							GetSampleState <= ADC_E;
 
@@ -1530,20 +1411,8 @@ begin
 
 			DebugADCState_d <= DebugADCState;
 
-			lut_reg_out_tmp1_d <= lut_reg_out_tmp1;
-			lut_reg_out_tmp0_d <= lut_reg_out_tmp0;
-
 			timebase_dd <= timebase_d;
 			timebase_ddd <= timebase_dd;
-
-			an_trig_delay_d <= an_trig_delay;
-			an_trig_delay_dd <= unsigned(an_trig_delay_d);
-
-			if an_trig_delay_dd >= an_trig_delay_max then
-				an_trig_delay_max <= an_trig_delay_dd;
-			elsif an_trig_delay_dd /= 0 and (an_trig_delay_dd <= an_trig_delay_min) then
-				an_trig_delay_min <= an_trig_delay_dd;
-			end if;
 
 			--      digital_Direction_d <= digital_Direction;
 			--		digital_Direction_dd <= digital_Direction_d;
@@ -1882,13 +1751,13 @@ begin
 									fdata <= X"0000" & X"0" & device_temp_dd;
 								--fdata <= X"00000" & device_temp_dd;
 								when 2 =>
-									fdata <= X"0000" & X"00" & "00" & std_logic_vector(an_trig_delay_dd);
+									fdata <= X"00000000";
 								--fdata <= X"00000" &  std_logic_vector(to_unsigned(send_frame_cnt,12));
 								when 3 =>
 									fdata <= X"00000000";
 									--fdata <= X"01" & X"02" & X"03" & X"04";
 								when 4 =>
-									fdata <= X"0000" & X"00" & "00" & std_logic_vector(an_trig_delay_max);
+									fdata <= X"00000000";
 								when 63 =>
 									cfg_addrA <= std_logic_vector(to_unsigned(1,6));
 									fdata <= X"0000FFFF";
