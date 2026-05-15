@@ -453,12 +453,6 @@ architecture rtl of fpga is
 	signal timebase_dd : std_logic_vector (4 downto 0);   -- 时基二级同步
 	signal timebase_ddd : std_logic_vector (4 downto 0);  -- 时基三级同步
 
-
-	-- 数字自定义图样缓冲（当前逻辑分析功能已移除，保留信号）
-	signal wea_dig : STD_LOGIC;                               -- 数字图样RAM写使能
-	signal addra_dig     : STD_LOGIC_VECTOR (14 downto 0);    -- 数字图样RAM写地址
-	signal dina_dig      : STD_LOGIC_VECTOR (11 downto 0);    -- 数字图样RAM写数据
-	signal dina_dig_tmp  : STD_LOGIC_VECTOR (11 downto 0);    -- 数字图样RAM写数据临时寄存
 	-- 延迟寄存器
 	signal dataAd	: SIGNED (13 downto 0);                    -- CH1当前采样（参与触发/编码）
 	signal dataAdd	: SIGNED (13 downto 0);                   -- CH1延迟一级（预留）
@@ -524,9 +518,6 @@ architecture rtl of fpga is
 	signal adc_sdin_i : STD_LOGIC;                            -- ADC SPI数据内部信号
 	signal adcA_spi_busy : std_logic;                         -- ADC SPI忙标志
 
-
-
-
 	-- 模拟前端切换控制
 	signal ch1_dc_i  : STD_LOGIC;                             -- CH1 DC/AC切换
 	signal ch2_dc_i  : STD_LOGIC;                             -- CH2 DC/AC切换
@@ -572,7 +563,6 @@ architecture rtl of fpga is
 	signal ets_on : std_logic;                                 -- ETS模式使能
 	signal ets_on_d : std_logic;                               -- ETS模式使能延迟
 	signal ets_test  : std_logic;                              -- ETS测试模式（预留）
-
 
 	-- 调试与DDR3数据通路信号
 	signal DebugMState : integer range 0 to 7;                 -- 主状态机调试编码
@@ -859,20 +849,34 @@ begin
 			tap_reg_out => lut_reg_out
 		);
 
-	-- 单颗双通道ADC的SPI写接口。
+	-- 单颗双通道ADC的SPI主机接口
+	-- 用于通过3线SPI(CS#/SCLK/SDIO)对AD9643寄存器进行编程
+	-- 发送格式：24bit帧 = 16bit寄存器地址 + 8bit数据，MSB优先
 	ADC_CH1_spi_interface: spi
+		-- 核心参数：SPI发送帧长固定为24bit（符合AD9643要求）
 		generic map (SPI_LENGTH => 24)
 		port map (
+			-- 主时钟：ifclk = 100MHz（DDR3读时钟域）
 			clk => ifclk,
+			-- 暂未使用的复位信号
 			rst => '0',
+			-- 时钟分频系数：0x1D(31) -> SCK周期 = 2*(31+1)*10ns = 640ns
+			-- 对应SCK频率 ~1.5MHz，远低于AD9643最大10MHz限制，确保时序裕度
 			--clk_divide =>	"01110",
-			clk_divide =>	"11101",
+			clk_divide =>	"11101",  -- 分频因子31
+			-- 待发送数据：adc_spi_data[23:16]=寄存器地址，adc_spi_data[7:0]=写入数据
 			spi_data =>	adc_spi_data,
+			-- 写触发脉冲：当ConfigureADC从'0'->1时启动一次24bit发送事务
 			spi_write_trig =>	ConfigureADC,
-			sck_idle_value => '0',
+			-- SCK空闲电平=0（CPOL=0），满足AD9643 SPI协议CPOL=0要求
+			sck_idle_value => '0',  -- SCK idle low
+			-- 忙状态指示：SPI正在发送时busy=1，发送完成后busy=0
 			spi_busy => adcA_spi_busy,
+			-- 片选输出（低有效）：CS#=0时ADC处于选中状态接收命令
 			cs => adc_cs_i,
+			-- 串行时钟输出：驱动ADC的SCLK引脚
 			sck => adc_sclk_i,
+			-- 串行数据输出：驱动ADC的SDIO/SI引脚（主->从单向发送）
 			si => adc_sdin_i
 		);
 
@@ -1613,12 +1617,19 @@ begin
 							Timer_cnt <= Timer_cnt + 1;
 						end if;
 					else
+						-- FX3接口尚未就绪（flaga_d='0'），保持初始化状态
+						-- 复位计时器
 						Timer_cnt <= 0;
+						-- 禁用IDELAY校准
 						read_calib_start <= '0';
+						-- 不发起SPI写命令
 						ConfigureADC <= '0';
+						-- 停留在初始化状态A
 						MasterState <= A;
 					end if;
+					-- FX3数据总线置为高阻状态（未驱动）
 					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
+					-- 对采样侧状态机发出全局复位脉冲，强制停止采样、清除标志
 					clearflags <= '1'; -- 向ADC采样状态机发送复位
 					DebugMState <= 0;
 
