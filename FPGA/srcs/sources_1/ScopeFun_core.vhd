@@ -527,9 +527,7 @@ architecture rtl of fpga is
 	signal cnt_dw_stop : integer range 0 to 7 := 0;           -- 停止发送确认计数
 	signal cnt_BufferSel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
 
-	-- ETS相关（已移除功能实现，仅保留配置占位）
-	signal ets_on : std_logic := '0';                          -- ETS模式使能（已禁用）
-	signal ets_on_d : std_logic := '0';                        -- ETS模式使能延迟（已禁用）
+
 
 	-- 调试与DDR3数据通路信号
 	signal DebugMState : integer range 0 to 7;                 -- 主状态机调试编码
@@ -852,12 +850,14 @@ begin
 		);
 
 	-- 时基控制的采样使能脉冲发生器。
+	-- 时基分频器：根据 timebase 产生采样使能脉冲 sampling_CE。
+	-- 输入时钟使用 ADC 恢复时钟 clk_adc_dclk，复位由 clearflags_d 控制。
 	Inst_clk_divider_wCE: clk_divider_wCE
 		PORT MAP(
-			clk => clk_adc_dclk,
-			reset => clearflags_d,
-			timebase => timebase_d,
-			out_CE => sampling_CE
+			clk => clk_adc_dclk,     -- 采样时钟输入
+			reset => clearflags_d,    -- 复位信号：清除分频器内部状态
+			timebase => timebase_d,   -- 时基档位配置
+			out_CE => sampling_CE     -- 输出采样使能脉冲
 		);
 
 	clk_wiz_0_pll : clk_wiz_0
@@ -1008,8 +1008,11 @@ begin
 					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
 					trigger_slope <= cfg_do_B(1 downto 0);    -- bit[1:0]: 触发斜率（上升/下降/双边）
 				when 6 =>
-					trig_level <= resize(signed(cfg_do_B(25 downto 16)), trig_level'length);      -- bit[25:16]: 触发电平
-					trig_hysteresis <= resize(signed(cfg_do_B(9 downto 0)), trig_hysteresis'length); -- bit[9:0]: 触发回差
+					trig_level <= shift_left(resize(signed(cfg_do_B(25 downto 16)), trig_level'length), 4);      -- bit[25:16]: 10位触发电平，左移4位=14位等效值
+					trig_hysteresis <= shift_left(resize(signed(cfg_do_B(9 downto 0)), trig_hysteresis'length), 4); -- bit[9:0]: 10位触发回差，左移4位=14位等效值
+					-- 直接输入14bit版本（如上位机协议已改为14位时可启用）
+					--trig_level <= signed(cfg_do_B(27 downto 14));        -- bit[27:14]: 14位触发电平
+					--trig_hysteresis <= signed(cfg_do_B(13 downto 0));    -- bit[13:0]: 14位触发回差
 				when 7 =>
 					timebase <= cfg_do_B(4 downto 0); -- bit[4:0]: 时基分档（决定采样CE间隔）
 				when 8 =>
@@ -1137,7 +1140,6 @@ begin
 								null;
 						end case;
 
-						ets_on_d <= ets_on;
 						mavg_enA_d <= mavg_enA;
 						mavg_enB_d <= mavg_enB;
 
@@ -1220,24 +1222,19 @@ begin
 						elsif trigger_mode_d = "11" then
 							GetSampleState <= ADC_E;
 
-						-- 模拟触发（ETS开启且模拟触发信号发生1->0）
-						elsif ets_on_d = '1' AND an_trig_ddd = '0' AND an_trig_dd = '1' then
-							triggered_led <= '1'; -- 触发指示：已触发
-							GetSampleState <= ADC_E;
-
 						-- 触发模式：普通/自动/单次（非立即），触发源CH1或CH2
 						-- 上升沿触发
-						elsif ets_on_d = '0' AND trigger_source_d < "010" --AND trigger_mode_d /= "11"
+						elsif trigger_source_d < "010" --AND trigger_mode_d /= "11"
  								AND (trigger_slope_d = "00" AND trig_signal < trig_level_d AND trig_signal_d >= trig_level_d) then
 							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
 						-- 下降沿触发
-						elsif ets_on_d = '0' AND trigger_source_d < "010"
+						elsif trigger_source_d < "010"
  								AND (trigger_slope_d = "01" AND trig_signal >= trig_level_d AND trig_signal_d < trig_level_d) then
 							triggered_led <= '0'; -- 触发指示：未触发
 							GetSampleState <= ADC_D;
 						-- 双边沿触发
-						elsif ets_on_d = '0' AND trigger_source_d < "010"
+						elsif trigger_source_d < "010"
  								AND (trigger_slope_d = "10" AND ((trig_signal <  trig_level_d AND trig_signal_d >= trig_level_d)
  								OR   (trig_signal >= trig_level_d AND trig_signal_d < trig_level_d ))) then
 							triggered_led <= '0'; -- 触发指示：未触发

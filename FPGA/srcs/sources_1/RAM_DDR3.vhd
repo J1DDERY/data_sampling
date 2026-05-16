@@ -19,6 +19,16 @@
 -- Scopefun firmware: DDR3 RAM top level
 --
 
+-- 模块说明（中文注释版）:
+-- 本文件为 DDR3 RAM 顶层封装，用于管理数据写入与读取的缓存逻辑。
+-- 功能要点：
+--  - 提供写入缓存（将 32-bit 数据打包扩展为 128-bit 写入 DDR）的写 FIFO
+--  - 提供读取缓存（从 DDR 读出的 128-bit 数据拆分为 32-bit）的读 FIFO
+--  - 管理预触发(pre-trigger)保存逻辑：在触发前保存若干样点，并在触发后保存完整帧
+--  - 与下层 ddr3_simple_ui 交互（ui_clk 域），实现帧边界与读写握手
+--  - 包含跨时钟域的 CDC（clock domain crossing）保护与 Vivado 的 KEEP/ASYNC_REG 属性
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -29,42 +39,42 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity RAM_DDR3 is
-Port (
-    -- TOP level signals
-    sys_clk_i : in std_logic;   -- System clock 250 Mhz
-    clk_ref_i : in std_logic;   -- Reference clock 200 Mhz
-    ui_clk : out std_logic; -- Output clock for user logic (100 Mhz)
-    rst : in STD_LOGIC; 
-    FrameSize : in std_logic_vector(26 downto 0);
-    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
-    PreTrigSaving : in std_logic;  -- asserted while saving pre-trigger 
-    PreTrigWriteEn : in STD_LOGIC; -- pre-trigger write enable
-    PreTrigLen : in std_logic_vector(26 downto 0); -- number of pre-trigger samples
-    DataWriteEn : in STD_LOGIC;
-    FrameSaveEnd : in STD_LOGIC;
-    DataOut : out STD_LOGIC_VECTOR (31 downto 0);
-    DataOutEnable : in std_logic;
-    DataOutValid : out STD_LOGIC;
-    ReadingFrame : in std_logic;
-    ram_rdy : out std_logic;
-    init_calib_complete : out STD_LOGIC;
-    device_temp : out std_logic_vector(11 downto 0);
-    -- DDR3 PHY
+    Port (
+    -- TOP level signals（端口逐项中文说明）
+    sys_clk_i : in std_logic;   -- 系统时钟，通常为 250 MHz，用于写侧与外部采样域
+    clk_ref_i : in std_logic;   -- 参考时钟，通常为 200 MHz，供 DDR3 PHY 带时钟管脚约束
+    ui_clk : out std_logic;     -- 下层 DDR 接口产生的用户时钟（供用户逻辑，约 100 MHz）
+    rst : in STD_LOGIC;         -- 全局复位（高电平有效）
+    FrameSize : in std_logic_vector(26 downto 0); -- 单帧样点数（样点数以 32-bit 为单位的计数）
+    DataIn : in STD_LOGIC_VECTOR (31 downto 0);  -- 输入数据总线（写入 FIFO 的 32-bit 数据）
+    PreTrigSaving : in std_logic;  -- 预触发保存使能，表示当前处于 pre-trigger 保存状态
+    PreTrigWriteEn : in STD_LOGIC; -- 预触发写使能：当写入预触发样点时置位
+    PreTrigLen : in std_logic_vector(26 downto 0); -- 需要保存的预触发样点数量
+    DataWriteEn : in STD_LOGIC;   -- 写数据使能（写入主 FIFO）
+    FrameSaveEnd : in STD_LOGIC;  -- 帧保存结束指示（上升沿表示帧保存完成）
+    DataOut : out STD_LOGIC_VECTOR (31 downto 0); -- 读取输出数据（送到外设，如 FX3）
+    DataOutEnable : in std_logic; -- 读取使能（外部请求数据输出时置位）
+    DataOutValid : out STD_LOGIC; -- 数据输出有效指示，表示 DataOut 上的数据可用
+    ReadingFrame : in std_logic;  -- 正在读取帧标志（外部指示当前处于读取模式）
+    ram_rdy : out std_logic;      -- RAM 准备好接受下一帧写入的信号
+    init_calib_complete : out STD_LOGIC; -- DDR 初始化与校准完成指示
+    device_temp : out std_logic_vector(11 downto 0); -- DDR PHY 报告的温度值
+    -- DDR3 PHY 以下端口直接与物理引脚/PHY 连接
     -- Inouts
-    ddr3_dq      : inout std_logic_vector(15 downto 0);
-    ddr3_dqs_p   : inout std_logic_vector(1 downto 0);
-    ddr3_dqs_n   : inout std_logic_vector(1 downto 0);
-    -- Outputs 
-    ddr3_addr    : out   std_logic_vector(14 downto 0);
-    ddr3_ba      : out   std_logic_vector(2 downto 0);
-    ddr3_ras_n   : out   std_logic;
-    ddr3_cas_n   : out   std_logic;
-    ddr3_we_n    : out   std_logic;
-    ddr3_reset_n : out   std_logic;
-    ddr3_ck_p    : out   std_logic_vector(0 downto 0);
-    ddr3_ck_n    : out   std_logic_vector(0 downto 0);
-    ddr3_cke     : out   std_logic_vector(0 downto 0);
-    ddr3_odt     : out   std_logic_vector(0 downto 0) 
+    ddr3_dq      : inout std_logic_vector(15 downto 0); -- 数据总线 DQ (16 bit)
+    ddr3_dqs_p   : inout std_logic_vector(1 downto 0);  -- DQS 正端
+    ddr3_dqs_n   : inout std_logic_vector(1 downto 0);  -- DQS 负端
+    -- Outputs (控制信号)
+    ddr3_addr    : out   std_logic_vector(14 downto 0); -- 地址
+    ddr3_ba      : out   std_logic_vector(2 downto 0);  -- bank 地址
+    ddr3_ras_n   : out   std_logic; -- 行命令
+    ddr3_cas_n   : out   std_logic; -- 列命令
+    ddr3_we_n    : out   std_logic; -- 写使能
+    ddr3_reset_n : out   std_logic; -- 复位（低有效）
+    ddr3_ck_p    : out   std_logic_vector(0 downto 0); -- 时钟对（正）
+    ddr3_ck_n    : out   std_logic_vector(0 downto 0); -- 时钟对（负）
+    ddr3_cke     : out   std_logic_vector(0 downto 0); -- 时钟使能
+    ddr3_odt     : out   std_logic_vector(0 downto 0)  -- on-die termination
     );
 end RAM_DDR3;
 
@@ -230,6 +240,10 @@ architecture Behavioral of RAM_DDR3 is
     signal DebugRAMState : integer range 0 to 3;
 
     signal PreTrigSavingCnt : integer range 0 to DDR3_MAX_SAMPLES-1 := 0;
+    -- 跨域接收的预触发计数寄存器（从 sys_clk 域传入到 ui_clk 域）
+    -- `PreTrigSavingCnt_d` / `_dd`：ui_clk 域的中间缓存（std_logic_vector 形式）
+    -- `PreTrigSavingCntMod`：PreTrigSavingCnt mod 4，用于确定首地址内样点偏移
+    -- `PreTrigSavingCntRecvd`：标志，表示已在 ui_clk 域接收到完整计数
     signal PreTrigSavingCnt_d : std_logic_vector (26 downto 0);
     signal PreTrigSavingCnt_dd : std_logic_vector (26 downto 0);   
     signal PreTrigSavingCntMod : integer range 0 to 3;
@@ -265,6 +279,9 @@ attribute KEEP of PreTrigSavingCntRecvd_d: signal is true;
 attribute ASYNC_REG of PreTrigSavingCntRecvd_d: signal is true;
 attribute KEEP of PreTrigSavingCntRecvd_dd: signal is true;
 attribute ASYNC_REG of PreTrigSavingCntRecvd_dd: signal is true;
+
+-- 注意：上面使用了 KEEP / ASYNC_REG 属性以帮助在综合和布局布线时
+-- 保留跨时钟域同步寄存器并提示综合工具该信号用于异步边沿同步。
 
 attribute KEEP of fwr_AlmostFull_d: signal is true;
 attribute KEEP of fwr_AlmostFull_dd: signal is true;
@@ -336,6 +353,9 @@ RAM_WRITE_FIFO: fifo_32_to_128 PORT MAP (
 	AlmostFull   => fwr_AlmostFull
 	);
 
+-- 说明：写 FIFO 的 `ReadEn` 在 ui_clk 域由 `fwr_ReadEn` 控制，
+-- 当 DDR 接口准备好读取 128-bit 数据时会断言该信号以抓取一字数据写入 DDR。
+
 RAM_READ_FIFO: fifo_gen_0
   PORT MAP (
     clk          => ui_clk_i,
@@ -351,6 +371,9 @@ RAM_READ_FIFO: fifo_gen_0
     valid        => frd_DataOutValid,
     prog_full    => frd_AlmostFull
   );
+
+-- 说明：读 FIFO 的 `wr_en` 由 ddr3_simple_ui 侧驱动（当读到 128-bit 数据时），
+-- `rd_en` 由本模块在 ui_clk 域控制，根据上层读取请求与 FIFO 状态决定何时释放 32-bit 数据。
 		
 RAM: ddr3_simple_ui PORT MAP (
 	-- DDR3 simple user interface
