@@ -336,6 +336,7 @@ begin
                 tmp_data_2 <= std_logic_vector(to_signed(cnt_test,ADC_BITS));
             end if;
             tmp_data_1_d <= tmp_data_1;        -- 一级流水线
+            tmp_data_2_d <= tmp_data_2;        -- 二级通道流水线
         end if;
     end if;
 end process;
@@ -411,11 +412,19 @@ begin
                         -- 采样阶段：采集2级延迟数据，检验相邻采样是否匹配checkerboard码
                         tmp_data_1_dd <= tmp_data_1_d;
                         tmp_data_2_dd <= tmp_data_2_d;
-                        -- 检验相邻周期是否为交替的checkerboard(AAA→555 或 555→AAA)
-                        if tmp_data_1_dd = CAL_CHK_A and tmp_data_1_d = CAL_CHK_B then
-                            cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
-                        elsif tmp_data_1_dd = CAL_CHK_B and tmp_data_1_d = CAL_CHK_A then
-                            cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
+                        -- read_calib_source='0' 校准 Q1/CH1，'1' 校准 Q2/CH2
+                        if read_calib_source = '0' then
+                            if tmp_data_1_dd = CAL_CHK_A and tmp_data_1_d = CAL_CHK_B then
+                                cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
+                            elsif tmp_data_1_dd = CAL_CHK_B and tmp_data_1_d = CAL_CHK_A then
+                                cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
+                            end if;
+                        else
+                            if tmp_data_2_dd = CAL_CHK_A and tmp_data_2_d = CAL_CHK_B then
+                                cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
+                            elsif tmp_data_2_dd = CAL_CHK_B and tmp_data_2_d = CAL_CHK_A then
+                                cnt_read_ok <= cnt_read_ok + 1;    -- 模式匹配
+                            end if;
                         end if;
                         cnt_read_data <= cnt_read_data + 1;
                         dlyCalibState <= dly_calib_run;

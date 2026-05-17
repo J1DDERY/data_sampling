@@ -490,11 +490,11 @@ architecture rtl of fpga is
 
 
 	-- ADC SPI接口寄存器与控制信号
-	signal adc_cfg_reg : std_logic_vector (15 downto 0);      -- ADC寄存器地址字段
-	signal adc_cfg_reg_d : std_logic_vector (15 downto 0);    -- ADC寄存器地址延迟
-	signal adc_cfg_data : std_logic_vector (7 downto 0);      -- ADC寄存器写入数据
-	signal adc_cfg_data_d : std_logic_vector (7 downto 0);    -- ADC写入数据延迟
-	signal adc_spi_data : std_logic_vector (23 downto 0);     -- SPI发送帧（地址+数据）
+	signal adc_cfg_reg : std_logic_vector (7 downto 0);       -- AD9643寄存器地址字段（8bit）
+	signal adc_cfg_reg_d : std_logic_vector (7 downto 0);     -- AD9643寄存器地址延迟
+	signal adc_cfg_data : std_logic_vector (7 downto 0);      -- AD9643寄存器写入数据
+	signal adc_cfg_data_d : std_logic_vector (7 downto 0);    -- AD9643写入数据延迟
+	signal adc_spi_data : std_logic_vector (15 downto 0);     -- SPI发送帧（8bit地址+8bit数据）
 	signal adc_sclk_counter : integer range 0 to 7;           -- ADC SPI时钟分频计数
 	signal adc_spi_bit_count : integer range 0 to 15:=15;     -- ADC SPI位计数（预留）
 	signal adc_configured_flag : STD_LOGIC;                   -- ADC配置完成标志（预留）
@@ -502,6 +502,19 @@ architecture rtl of fpga is
 	signal adc_sclk_i : STD_LOGIC;                            -- ADC SPI时钟内部信号
 	signal adc_sdin_i : STD_LOGIC;                            -- ADC SPI数据内部信号
 	signal adcA_spi_busy : std_logic;                         -- ADC SPI忙标志
+
+	-- AD9643上电初始化/测试图样控制字：地址字节 + 数据字节
+	-- 说明：0x0D 是测试模式寄存器（shadowed register）。写入后必须再写 0xFF01 触发 transfer 才会生效。
+	-- 控制字对照：
+	--   0x0D44 = 写 0x0D 寄存器，数据 0x44（alternating checkerboard）
+	--   0x0D00 = 写 0x0D 寄存器，数据 0x00（test off / normal data）
+	--   0xFF01 = transfer command（提交 shadowed 寄存器更新）
+	CONSTANT AD9643_SPI_TEST_MODE_ADDR    : std_logic_vector(7 downto 0) := X"0D"; -- 测试模式寄存器地址
+	CONSTANT AD9643_SPI_TEST_PATTERN_ON_D : std_logic_vector(7 downto 0) := X"44"; -- 启用测试图样（交替棋盘）
+	CONSTANT AD9643_SPI_NORMAL_SAMPLE_D   : std_logic_vector(7 downto 0) := X"00"; -- 关闭测试图样/正常采样
+	CONSTANT AD9643_SPI_TEST_PATTERN_ON   : std_logic_vector(15 downto 0) := AD9643_SPI_TEST_MODE_ADDR & AD9643_SPI_TEST_PATTERN_ON_D;
+	CONSTANT AD9643_SPI_TEST_PATTERN_OFF  : std_logic_vector(15 downto 0) := AD9643_SPI_TEST_MODE_ADDR & AD9643_SPI_NORMAL_SAMPLE_D;
+	CONSTANT AD9643_SPI_TRANSFER_COMMAND  : std_logic_vector(15 downto 0) := X"FF01"; -- 转移命令：地址 0xFF + 数据 0x01（触发所有 shadowed 寄存器同时更新）
 
 	-- 模拟前端切换控制
 	signal ch1_dc_i  : STD_LOGIC;                             -- CH1 DC/AC切换
@@ -801,10 +814,10 @@ begin
 
 	-- 单颗双通道ADC的SPI主机接口
 	-- 用于通过3线SPI(CS#/SCLK/SDIO)对AD9643寄存器进行编程
-	-- 发送格式：24bit帧 = 16bit寄存器地址 + 8bit数据，MSB优先
+	-- 发送格式：16bit帧 = 8bit寄存器地址 + 8bit数据，MSB优先
 	ADC_CH1_spi_interface: spi
-		-- 核心参数：SPI发送帧长固定为24bit（符合AD9643要求）
-		generic map (SPI_LENGTH => 24)
+		-- 核心参数：SPI发送帧长固定为16bit（符合AD9643要求）
+		generic map (SPI_LENGTH => 16)
 		port map (
 			-- 主时钟：ifclk = 100MHz（DDR3读时钟域）
 			clk => ifclk,
@@ -814,9 +827,9 @@ begin
 			-- 对应SCK频率 ~1.5MHz，远低于AD9643最大10MHz限制，确保时序裕度
 			--clk_divide =>	"01110",
 			clk_divide =>	"11101",  -- 分频因子31
-			-- 待发送数据：adc_spi_data[23:16]=寄存器地址，adc_spi_data[7:0]=写入数据
+			-- 待发送数据：adc_spi_data[15:8]=寄存器地址，adc_spi_data[7:0]=写入数据
 			spi_data =>	adc_spi_data,
-			-- 写触发脉冲：当ConfigureADC从'0'->1时启动一次24bit发送事务
+			-- 写触发脉冲：当ConfigureADC从'0'->1时启动一次16bit发送事务
 			spi_write_trig =>	ConfigureADC,
 			-- SCK空闲电平=0（CPOL=0），满足AD9643 SPI协议CPOL=0要求
 			sck_idle_value => '0',  -- SCK idle low
@@ -1455,8 +1468,21 @@ begin
 							ConfigureADC <= '0';
 							MasterState <= B;	    -- 转到分发器状态
 							Timer_cnt <= 0;
+						elsif Timer_cnt = 40100 then
+							-- 发送转移命令，触发 0x0D 寄存器更新（从测试模式返回到正常采样）
+							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
+							ConfigureADC <= '1';
+							MasterState <= A;
+							Timer_cnt <= Timer_cnt + 1;
 						elsif Timer_cnt = 40000 then
-							adc_spi_data <= X"00C0" & X"00"; -- 配置ADC关闭测试图样
+							-- 先写入 0x0D00 到 shadow 寄存器（关闭测试图样）
+							adc_spi_data <= AD9643_SPI_TEST_PATTERN_OFF;
+							ConfigureADC <= '1';
+							MasterState <= A;
+							Timer_cnt <= Timer_cnt + 1;
+						elsif Timer_cnt = 30100 or Timer_cnt = 30101 then
+							-- 发送转移命令，完成 IDELAY 校准配置（CH2）
+							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
 							ConfigureADC <= '1';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
@@ -1465,15 +1491,27 @@ begin
 							read_calib_source <= '1';   -- 选择CH2进行校准
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
+						elsif Timer_cnt = 20100 or Timer_cnt = 20101 then
+							-- 发送转移命令，完成 IDELAY 校准配置（CH1）
+							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
+							ConfigureADC <= '1';
+							MasterState <= A;
+							Timer_cnt <= Timer_cnt + 1;
 						elsif Timer_cnt = 20000 or Timer_cnt = 20001 then
 							read_calib_start <= '1';    -- 启动ADC接口IDELAY校准
 							read_calib_source <= '0';   -- 选择CH1进行校准
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 2000 then
-							adc_spi_data <= X"00C0" & X"44"; -- 配置ADC输出测试图样（棋盘格）
+						elsif Timer_cnt = 2100 then
+							-- 发送转移命令，触发 0x0D 寄存器更新（启用测试模式棋盘格）
+							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
 							ConfigureADC <= '1';
-							-- set POT:1 to tap value 152 (29763 Ohms)- the tap value should match digital[voltageCoeficient]
+							MasterState <= A;
+							Timer_cnt <= Timer_cnt + 1;
+						elsif Timer_cnt = 2000 then
+							-- 先写入 0x0D44 到 shadow 寄存器（启用测试图样棋盘格）
+							adc_spi_data <= AD9643_SPI_TEST_PATTERN_ON;
+							ConfigureADC <= '1';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
 						else
@@ -1619,7 +1657,7 @@ begin
 						-- 将配置字映射到内部控制寄存器
 						case to_integer(unsigned(cfg_addrA_d) + 1) is
 							when 1 =>
-								adc_cfg_reg <= cfg_do_A(31 downto 16); -- ADC寄存器地址
+								adc_cfg_reg <= cfg_do_A(23 downto 16); -- ADC寄存器地址（取原16位字段的低8位，符合AD9643 8-bit地址）
 								adc_cfg_reg_d <= adc_cfg_reg;
 								adc_cfg_data <= cfg_do_A(7 downto 0);   -- ADC寄存器数据
 								adc_cfg_data_d <= adc_cfg_data;
