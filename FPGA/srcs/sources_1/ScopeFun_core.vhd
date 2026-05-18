@@ -445,8 +445,8 @@ architecture rtl of fpga is
 	signal dataBdd	: SIGNED (13 downto 0);                   -- CH2延迟一级（预留）
 	signal dora_i : std_logic;                                -- 数字输出A预留信号
 	signal dorb_i : std_logic;                                -- 数字输出B预留信号
-	signal trig_signal 	: SIGNED (13 downto 0);              -- 当前用于触发比较的样本
-	signal trig_signal_d : SIGNED (13 downto 0);              -- 上一拍触发样本（边沿判定）
+	signal trig_signal 	: SIGNED (9 downto 0);               -- 当前用于触发比较的样本（10bit）
+	signal trig_signal_d : SIGNED (9 downto 0);               -- 上一拍触发样本（边沿判定，10bit）
 	signal triggered_led : std_logic;                         -- 触发状态LED原始信号
 	signal triggered_led_d : std_logic;                       -- 触发状态LED延迟信号
 
@@ -462,13 +462,13 @@ architecture rtl of fpga is
 	-- RAM allocation for oscilloscope configuration
 	--type memory_array is array(1 to 64) of STD_LOGIC_VECTOR (15 downto 0);
 	--signal mem : memory_array:=((others=> (others=>'0')));
-	signal trig_level : SIGNED (13 downto 0);                 -- 触发电平
-	signal trig_level_d : SIGNED (13 downto 0);               -- 触发电平一级延迟
-	signal trig_level_dd : SIGNED (13 downto 0);              -- 触发电平二级延迟
-	signal trig_level_r_dd : SIGNED (13 downto 0);            -- 上升沿判定门限（含回差）
-	signal trig_level_f_dd : SIGNED (13 downto 0);            -- 下降沿判定门限（含回差）
-	signal trig_hysteresis : SIGNED (13 downto 0);            -- 触发回差
-	signal trig_hysteresis_d : SIGNED (13 downto 0);          -- 回差延迟
+	signal trig_level : SIGNED (9 downto 0);                  -- 触发电平（10bit）
+	signal trig_level_d : SIGNED (9 downto 0);                -- 触发电平一级延迟（10bit）
+	signal trig_level_dd : SIGNED (9 downto 0);               -- 触发电平二级延迟（10bit）
+	signal trig_level_r_dd : SIGNED (9 downto 0);             -- 上升沿判定门限（含回差，10bit）
+	signal trig_level_f_dd : SIGNED (9 downto 0);             -- 下降沿判定门限（含回差，10bit）
+	signal trig_hysteresis : SIGNED (9 downto 0);             -- 触发回差（10bit）
+	signal trig_hysteresis_d : SIGNED (9 downto 0);           -- 回差延迟（10bit）
 	signal trigger_source : STD_LOGIC_VECTOR (2 downto 0);    -- 触发源选择
 	signal trigger_source_d : STD_LOGIC_VECTOR (2 downto 0);  -- 触发源延迟
 	signal trigger_slope : STD_LOGIC_VECTOR (1 downto 0);     -- 触发斜率选择
@@ -989,14 +989,14 @@ begin
 			an_trig_dd <= an_trig_d;
 			an_trig_ddd <= an_trig_dd;
 
-			-- 外部模拟触发门限换算
+			-- 外部模拟触发门限换算（10bit版本）
 			-- PWM输入有0.9V共模偏置，需要将触发电平做偏移映射
-			-- 3.3V / 16383 = 3.223e-3 V/bit
-			-- 0.9V / 3.223e-3 V/bit ≈ 1116 bit
-			if signed(trig_level) < to_signed(-1116,trig_level'length) then
+			-- 3.3V / 1023 = 3.224e-3 V/bit
+			-- 0.9V / 3.224e-3 V/bit ≈ 279 bit (10bit等效)
+			if signed(trig_level) < to_signed(-279,trig_level'length) then
 				AnalogTrigTresh <= std_logic_vector(to_signed(0,10));
 			else
-				AnalogTrigTresh <= std_logic_vector(resize(signed(trig_level)+to_signed(1116,trig_level'length),AnalogTrigTresh'length));
+				AnalogTrigTresh <= std_logic_vector(resize(signed(trig_level)+to_signed(279,trig_level'length),AnalogTrigTresh'length));
 			end if;
 			
 			reading_config_registers_d <= reading_config_registers;   -- CDC第一级
@@ -1021,11 +1021,8 @@ begin
 					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
 					trigger_slope <= cfg_do_B(1 downto 0);    -- bit[1:0]: 触发斜率（上升/下降/双边）
 				when 6 =>
-					trig_level <= shift_left(resize(signed(cfg_do_B(25 downto 16)), trig_level'length), 4);      -- bit[25:16]: 10位触发电平，左移4位=14位等效值
-					trig_hysteresis <= shift_left(resize(signed(cfg_do_B(9 downto 0)), trig_hysteresis'length), 4); -- bit[9:0]: 10位触发回差，左移4位=14位等效值
-					-- 直接输入14bit版本（如上位机协议已改为14位时可启用）
-					--trig_level <= signed(cfg_do_B(27 downto 14));        -- bit[27:14]: 14位触发电平
-					--trig_hysteresis <= signed(cfg_do_B(13 downto 0));    -- bit[13:0]: 14位触发回差
+					trig_level <= signed(cfg_do_B(25 downto 16));      -- bit[25:16]: 10位触发电平（10bit版本，直通赋值）
+					trig_hysteresis <= signed(cfg_do_B(9 downto 0));   -- bit[9:0]: 10位触发回差（10bit版本，直通赋值）
 				when 7 =>
 					timebase <= cfg_do_B(4 downto 0); -- bit[4:0]: 时基分档（决定采样CE间隔）
 				when 8 =>
@@ -1088,11 +1085,11 @@ begin
 				-- 选择触发源并保存前一拍用于边沿判断
 				trig_signal_d <= trig_signal; -- 延迟一拍供斜率/边沿判断
 
-				-- 在DDR上下沿数据流中选择触发源
+				-- 在DDR上下沿数据流中选择触发源（取高10bit）
 				case trigger_source_d is       -- 选择当前有效触发流
-					when "000" => trig_signal <= dataAd; -- DCO上升沿数据流
-					when "001" => trig_signal <= dataBd; -- DCO下降沿数据流
-					when others => trig_signal <= dataAd;
+					when "000" => trig_signal <= signed(dataAd(13 downto 4)); -- DCO上升沿数据流，取高10bit
+					when "001" => trig_signal <= signed(dataBd(13 downto 4)); -- DCO下降沿数据流，取高10bit
+					when others => trig_signal <= signed(dataAd(13 downto 4));
 				end case;
 
 				case GetSampleState(2 downto 0) is -- ADC采样状态机
