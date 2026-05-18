@@ -16,9 +16,12 @@
 ###############################################################################
 
 # PadFunction: IO_L12P_T1_MRCC_14
+# clk_adc_p 固定在 P-side pad（N14），避免 IBUFDS DRC 错误。
+# PCB 上 DCO+ 实际连到 P14（N-side pad），由 XDC 反相波形 + RTL NOT 补偿。
 set_property IOSTANDARD LVDS_25 [get_ports clk_adc_p]
 
 # PadFunction: IO_L12N_T1_MRCC_14
+# clk_adc_n 固定在 N-side pad（P14），避免 IBUFDS DRC 错误。
 set_property IOSTANDARD LVDS_25 [get_ports clk_adc_n]
 set_property PACKAGE_PIN N14 [get_ports clk_adc_p]
 set_property PACKAGE_PIN P14 [get_ports clk_adc_n]
@@ -40,28 +43,34 @@ set_property IOSTANDARD LVDS_25 [get_ports {data_p[2]}]
 set_property IOSTANDARD LVDS_25 [get_ports {data_p[1]}]
 set_property IOSTANDARD LVDS_25 [get_ports {data_p[0]}]
 
+# data[0]: PCB 反接 → 保持 P→P 映射（IBUFDS DRC 要求），RTL 中加 NOT 补偿
 set_property PACKAGE_PIN P10 [get_ports {data_p[0]}]
 set_property PACKAGE_PIN P11 [get_ports {data_n[0]}]
 set_property PACKAGE_PIN R13 [get_ports {data_p[1]}]
 set_property PACKAGE_PIN T13 [get_ports {data_n[1]}]
 set_property PACKAGE_PIN K15 [get_ports {data_p[2]}]
 set_property PACKAGE_PIN K16 [get_ports {data_n[2]}]
+# data[3]: PCB 反接 → 保持 P→P 映射，RTL 中加 NOT 补偿
 set_property PACKAGE_PIN L14 [get_ports {data_p[3]}]
 set_property PACKAGE_PIN M14 [get_ports {data_n[3]}]
+# data[4]: PCB 反接 → 保持 P→P 映射，RTL 中加 NOT 补偿
 set_property PACKAGE_PIN K13 [get_ports {data_p[4]}]
 set_property PACKAGE_PIN L13 [get_ports {data_n[4]}]
 set_property PACKAGE_PIN R15 [get_ports {data_p[5]}]
 set_property PACKAGE_PIN R16 [get_ports {data_n[5]}]
+# data[6]: PCB 反接 → 保持 P→P 映射，RTL 中加 NOT 补偿
 set_property PACKAGE_PIN T14 [get_ports {data_p[6]}]
 set_property PACKAGE_PIN T15 [get_ports {data_n[6]}]
 set_property PACKAGE_PIN P15 [get_ports {data_p[7]}]
 set_property PACKAGE_PIN P16 [get_ports {data_n[7]}]
 set_property PACKAGE_PIN R10 [get_ports {data_p[8]}]
 set_property PACKAGE_PIN R11 [get_ports {data_n[8]}]
+# data[9]: PCB 反接 → 保持 P→P 映射，RTL 中加 NOT 补偿
 set_property PACKAGE_PIN M16 [get_ports {data_p[9]}]
 set_property PACKAGE_PIN N16 [get_ports {data_n[9]}]
 set_property PACKAGE_PIN N9 [get_ports {data_p[10]}]
 set_property PACKAGE_PIN P9 [get_ports {data_n[10]}]
+# data[11]: PCB 反接 → 保持 P→P 映射，RTL 中加 NOT 补偿
 set_property PACKAGE_PIN M6 [get_ports {data_p[11]}]
 set_property PACKAGE_PIN N6 [get_ports {data_n[11]}]
 set_property PACKAGE_PIN R5 [get_ports {data_p[12]}]

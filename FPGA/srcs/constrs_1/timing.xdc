@@ -15,13 +15,34 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 
-# ADC 采样时钟为 250 MHz。由于板上把差分时钟正负端接反，
-# 这里用 180 度相位的波形定义来匹配实际采样边沿。
+# ====================================================================
+# 1. Primary Clock — 仅此一个，定义在顶层物理端口上
+# ====================================================================
+# ADC 采样时钟为 250 MHz。
+# 注：PCB 上 LVDS 差分对正负端接反（DCO+ 在 N-pad、DCO- 在 P-pad），
+# IBUFDS 硅片硬连线为 O = P-pad - N-pad，输出始终反相。
+# 此处用 180° 相位的 waveform 匹配 IBUFDS 输出的反相时钟。
 create_clock -period 4.000 -name clk_adc_p -waveform {2.000 4.000} [get_ports clk_adc_p]
 # 允许该时钟走专用时钟骨干网络。
 set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets clk_adc_p]
 # 输入时钟抖动，单位是 ns。
 set_input_jitter clk_adc_p 0.012
+
+# ====================================================================
+# 2. PLL输出时钟 — 由Vivado自动推导
+#    clk_wiz_0 PLL 输出 (clk_ref_i, clk_gen) 由 Vivado 自动追踪推导。
+#    adc_if 内的 NOT(i_clk_buff) 将 IBUFDS 反相输出修正为正常极性，
+#    因此 clk_adc_dclk 波形正常。
+# ====================================================================
+
+# ====================================================================
+# 3. Asynchronous Clock Groups
+#    ADC采样域 (clk_adc_p) 与 MIG/DDR3 域 (ui_clk) 经不同 PLL,
+#    无确定性相位关系，通过异步 FIFO + 同步器跨域。
+# ====================================================================
+set_clock_groups -asynchronous \
+    -group [get_clocks -include_generated_clocks clk_adc_p] \
+    -group [get_clocks -of_objects [get_pins RAM_DDR3_inst/RAM/u_mig_ddr3/ui_clk]]
 
 # calib_done 到 ADC 接口旧 FIFO 使能路径已移除（adc_if 中已无 data_fifo_16x20b 实例）。
 # 读取校准启动脉冲到 ADC 接口内部寄存器。

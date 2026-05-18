@@ -198,7 +198,7 @@ IDELAYE2_clk_in_delay: IDELAYE2
         CINVCTRL => '0',
         CNTVALUEIN => "00000",
         DATAIN => '0',
-        IDATAIN => NOT(i_clk_buff),    -- INVERT clock signal (p/n pins are swapped on pcb)
+        IDATAIN => NOT(i_clk_buff),    -- LVDS接收器输出反相（PCB正负端接反，IBUFDS硅片硬连线导致）
         INC => '0',
         LD => '0',
         LDPIPEEN => '0',
@@ -253,7 +253,7 @@ data_delay: for i in 0 to ADC_LANES-1 generate
         CINVCTRL => '0',
         CNTVALUEIN => std_logic_vector(to_unsigned(cnt_tap_value,5)), -- 新tap值(校准状态机赋值)
         DATAIN => '0',
-        IDATAIN => i_data_buff(i),              -- 延迟输入：来自IBUFDS的单端数据
+        IDATAIN => i_data_buff(i),              -- 延迟输入：直接来自IBUFDS单端输出
         INC => '0',
         LD => load_cnt_tap_value,               -- 装载脉冲：高时将CNTVALUEIN装入延迟链
         LDPIPEEN => '0',

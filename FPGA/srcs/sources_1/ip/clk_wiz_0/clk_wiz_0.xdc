@@ -50,8 +50,10 @@
 # commented constraints can be used in the top level xdc 
 #----------------------------------------------------------------
 # Connect to input port when clock capable pin is selected for input
-create_clock -period 4.000 [get_ports clk_in1]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.040
+# Primary clock is defined in top-level timing.xdc on [get_ports clk_adc_p].
+# DO NOT redefine clock here — let Vivado auto-derive generated clocks from the PLL.
+# create_clock -period 4.000 [get_ports clk_in1]
+# set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.040
 
 
 set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]
