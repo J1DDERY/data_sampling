@@ -26,6 +26,9 @@ set_property IOSTANDARD LVDS_25 [get_ports clk_adc_n]
 set_property PACKAGE_PIN N14 [get_ports clk_adc_p]
 set_property PACKAGE_PIN P14 [get_ports clk_adc_n]
 
+set_property IOSTANDARD LVCMOS33 [get_ports dasync]
+set_property IOSTANDARD LVCMOS33 [get_ports dasdin]
+set_property IOSTANDARD LVCMOS33 [get_ports dasclk]
 # place ports
 
 set_property IOSTANDARD LVDS_25 [get_ports {data_p[13]}]
@@ -131,6 +134,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports flagb]
 set_property IOSTANDARD LVCMOS18 [get_ports flagd]
 set_property IOSTANDARD LVCMOS18 [get_ports ch1_gnd]
 set_property IOSTANDARD LVCMOS18 [get_ports ch2_gnd]
+
 set_property IOSTANDARD LVCMOS18 [get_ports slrd_sloe]
 set_property IOSTANDARD LVCMOS18 [get_ports slwr]
 set_property IOSTANDARD LVCMOS18 [get_ports slcs]
@@ -146,6 +150,9 @@ set_property PACKAGE_PIN R12 [get_ports ch1_dc]
 set_property PACKAGE_PIN M12 [get_ports ch1_gnd]
 set_property PACKAGE_PIN N13 [get_ports ch2_gnd]
 
+set_property PACKAGE_PIN N4 [get_ports dasync]
+set_property PACKAGE_PIN N3 [get_ports dasdin]
+set_property PACKAGE_PIN M4 [get_ports dasclk]
 
 set_property PACKAGE_PIN M15 [get_ports ch2_k]
 set_property PACKAGE_PIN P13 [get_ports ch1_k]

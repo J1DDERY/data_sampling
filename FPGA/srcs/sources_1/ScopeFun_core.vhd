@@ -51,6 +51,10 @@ entity fpga is
 		adc_sclk      : out STD_LOGIC;        -- ADC串行接口时钟
 		adc_sdin      : out STD_LOGIC;        -- ADC串行接口数据
 		adcA_cs		  : out STD_LOGIC;        -- ADC串行接口片选（单颗双通道ADC）
+		-- DAC接口
+		dasync        : out STD_LOGIC;        -- 控制DAC更新信号
+		dasclk        : out STD_LOGIC;        -- 控制DAC串行时钟
+		dasdin        : out STD_LOGIC;        -- 控制DAC串行数据
 
 		-- 模拟前端切换
 		ch1_dc	      : out STD_LOGIC;    -- DC/AC开关
@@ -417,7 +421,7 @@ architecture rtl of fpga is
 	CONSTANT B: STD_LOGIC_VECTOR (3 DownTo 0) := "0001"; -- 主状态机状态B：分发器
 	CONSTANT C: STD_LOGIC_VECTOR (3 DownTo 0) := "0010"; -- 主状态机状态C：读取配置
 	CONSTANT D: STD_LOGIC_VECTOR (3 DownTo 0) := "0011"; -- 主状态机状态D：配置ADC
-	CONSTANT E: STD_LOGIC_VECTOR (3 DownTo 0) := "0100"; -- 主状态机状态E：保留/未使用
+	CONSTANT E: STD_LOGIC_VECTOR (3 DownTo 0) := "0100"; -- 主状态机状态E：配置控制DAC
 	CONSTANT F: STD_LOGIC_VECTOR (3 DownTo 0) := "0101"; -- 主状态机状态F：等待新帧
 	CONSTANT G: STD_LOGIC_VECTOR (3 DownTo 0) := "0110"; -- 主状态机状态G：数据流发送
 	CONSTANT H: STD_LOGIC_VECTOR (3 DownTo 0) := "0111"; -- 主状态机状态H：预留
@@ -502,6 +506,25 @@ architecture rtl of fpga is
 	signal adc_sclk_i : STD_LOGIC;                            -- ADC SPI时钟内部信号
 	signal adc_sdin_i : STD_LOGIC;                            -- ADC SPI数据内部信号
 	signal adcA_spi_busy : std_logic;                         -- ADC SPI忙标志
+
+	-- 控制DAC SPI接口寄存器与控制信号
+	type spi_array is array(1 to 4) of STD_LOGIC_VECTOR (15 downto 0);
+	signal dac_cfg_array : spi_array := ((others => (others => '0')));
+	signal dac_cfg_reg : std_logic_vector (15 downto 0);      -- 控制DAC待发送控制字
+	signal dac_array_count : integer range 1 to 4 := 1;       -- 控制DAC寄存器序号
+	signal dac_cs_i : STD_LOGIC := '1';                       -- 控制DAC片选内部信号
+	signal dac_sclk_i : STD_LOGIC;                            -- 控制DAC SPI时钟内部信号
+	signal dac_sdin_i : STD_LOGIC;                            -- 控制DAC SPI数据内部信号
+	signal dac_spi_busy : std_logic;                          -- 控制DAC SPI忙标志
+	signal ConfigureVdac : std_logic := '0';                  -- 控制DAC写触发脉冲
+	signal DAC_pogramming_start : std_logic := '0';           -- 控制DAC配置启动标志
+	signal DAC_programming_finished : std_logic := '0';       -- 控制DAC配置完成标志
+	signal DAC_state : STD_LOGIC_VECTOR(2 downto 0) := "000"; -- 控制DAC状态机
+	signal VgainA : std_logic_vector(11 downto 0) := (others => '0');
+	signal VgainB : std_logic_vector(11 downto 0) := (others => '0');
+	signal OffsetA : std_logic_vector(11 downto 0) := (others => '0');
+	signal OffsetB : std_logic_vector(11 downto 0) := (others => '0');
+	signal cnt_dac_out_stable : integer range 0 to 16383 := 0;
 
 	-- AD9643上电初始化/测试图样控制字：地址字节 + 数据字节
 	-- 说明：0x0D 是测试模式寄存器（shadowed register）。写入后必须再写 0xFF01 触发 transfer 才会生效。
@@ -843,6 +866,21 @@ begin
 			si => adc_sdin_i
 		);
 
+	VDAC_spi_interface: spi
+		generic map (SPI_LENGTH => 16)
+		port map (
+			clk => ifclk,
+			rst => '0',
+			clk_divide => "11101",
+			spi_data => dac_cfg_reg,
+			spi_write_trig => ConfigureVdac,
+			sck_idle_value => '1',
+			spi_busy => dac_spi_busy,
+			cs => dac_cs_i,
+			sck => dac_sclk_i,
+			si => dac_sdin_i
+		);
+
 
 	-- Holdoff定时器：限制相邻两次触发之间的最小间隔。
 	Holdoff_timer: timer
@@ -939,6 +977,9 @@ begin
 	adc_sclk <= adc_sclk_i; -- ADC SPI串行时钟
 	adc_sdin <= adc_sdin_i; -- ADC SPI串行数据
 	adcA_cs <= adc_cs_i;    -- ADC SPI片选（低有效）
+	dasclk <= dac_sclk_i;   -- 控制DAC串行时钟
+	dasdin <= dac_sdin_i;   -- 控制DAC串行数据
+	dasync <= dac_cs_i;     -- 控制DAC更新/片选信号
 
 	ch1_dc  <= ch1_dc_i;   -- CH1直流/交流继电器控制
 	ch2_dc  <= ch2_dc_i;   -- CH2直流/交流继电器控制
@@ -1465,15 +1506,17 @@ begin
 							ConfigureADC <= '0';
 							MasterState <= B;	    -- 转到分发器状态
 							Timer_cnt <= 0;
-						elsif Timer_cnt = 40100 then
-							-- 发送转移命令，触发 0x0D 寄存器更新（从测试模式返回到正常采样）
-							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
+						elsif Timer_cnt = 40000 then
+							-- 先初始化控制DAC，再关闭ADC测试图样
+							dac_cfg_reg <= "0110" & "000000000000"; -- enable +/-Va supply (UPO bit on MAX5501 DAC goes HIGH)
+							ConfigureVdac <= '1';
+							adc_spi_data <= AD9643_SPI_TEST_PATTERN_OFF; -- 关闭ADC测试图样
 							ConfigureADC <= '1';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 40000 then
-							-- 先写入 0x0D00 到 shadow 寄存器（关闭测试图样）
-							adc_spi_data <= AD9643_SPI_TEST_PATTERN_OFF;
+						elsif Timer_cnt = 40100 then
+							-- 发送转移命令，触发 0x0D 寄存器更新（从测试模式返回到正常采样）
+							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
 							ConfigureADC <= '1';
 							MasterState <= A;
 							Timer_cnt <= Timer_cnt + 1;
@@ -1553,6 +1596,17 @@ begin
 					elsif ReturnToFrameRequest = '1' then
 						ReturnToFrameRequest <= '0'; -- 清除返回标志
 						Masterstate <= F; -- 返回等待帧状态
+					elsif DAC_pogramming_start = '1' then
+						-- 更新控制DAC配置寄存器
+						dac_cfg_array(1) <= "1111" & VgainB;
+						dac_cfg_array(2) <= "1011" & VgainA;
+						-- Convert from Two's Complement to Offset Binary
+						dac_cfg_array(3) <= "0011" & std_logic_vector(NOT(OffsetA(11)) & OffsetA(10 downto 0));
+						dac_cfg_array(4) <= "0111" & std_logic_vector(NOT(OffsetB(11)) & OffsetB(10 downto 0));
+						DAC_state <= "000";
+						dac_array_count <= 1;
+						DAC_pogramming_start <= '0';
+						Masterstate <= E;
 						--if scope settings have changed
 					--if ADC config has changed
 					elsif (adc_cfg_data_d /= adc_cfg_data) then
@@ -1586,6 +1640,9 @@ begin
 						when 1 to 20 =>
 							if cfg_we_d = '1' AND cfg_data_in_d /= cfg_do_A then
 								ScopeConfigChanged <= '1';
+								if to_integer(unsigned(cfg_addrA_d)+1) = 2 or to_integer(unsigned(cfg_addrA_d)+1) = 3 then
+									DAC_pogramming_start <= '1';
+								end if;
 								--						LED_i(1) <= '1';
 							end if;
 						when others => null;
@@ -1658,6 +1715,12 @@ begin
 								adc_cfg_reg_d <= adc_cfg_reg;
 								adc_cfg_data <= cfg_do_A(7 downto 0);   -- ADC寄存器数据
 								adc_cfg_data_d <= adc_cfg_data;
+							when 2 =>
+								VgainA <= cfg_do_A(27 downto 16);
+								VgainB <= cfg_do_A(11 downto 0);
+							when 3 =>
+								OffsetA <= cfg_do_A(27 downto 16);
+								OffsetB <= cfg_do_A(11 downto 0);
 							when 4 =>
 								ch1_dc_i <= cfg_do_A(21);              -- CH1 DC/AC
 								ch2_dc_i <= cfg_do_A(20);              -- CH2 DC/AC
@@ -1683,6 +1746,51 @@ begin
 						Masterstate <= B;
 					end if;
 					DebugMState <= 3;
+
+				when E =>			-- 控制DAC状态：通过SPI顺序写入增益/偏置
+					case DAC_state is
+						when "000" =>
+							if DAC_pogramming_start = '0' and dac_spi_busy = '0' then
+								DAC_state <= "001";
+							else
+								DAC_state <= "000";
+							end if;
+						when "001" =>
+							dac_cfg_reg <= dac_cfg_array(dac_array_count);
+							if dac_spi_busy = '0' then
+								ConfigureVdac <= '1';
+								DAC_state <= "010";
+							else
+								ConfigureVdac <= '0';
+								DAC_state <= "001";
+							end if;
+						when "010" =>
+							ConfigureVdac <= '0';
+							if dac_spi_busy = '1' or ConfigureVdac = '1' then
+								DAC_state <= "010";
+							else
+								if dac_array_count = 4 then
+									DAC_programming_finished <= '1';
+									dac_array_count <= 1;
+									cnt_dac_out_stable <= 0;
+									DAC_state <= "011";
+								else
+									dac_array_count <= dac_array_count + 1;
+									DAC_state <= "001";
+								end if;
+							end if;
+						when "011" =>
+							if cnt_dac_out_stable = 16383 then
+								DAC_programming_finished <= '0';
+								DAC_state <= "000";
+							else
+								cnt_dac_out_stable <= cnt_dac_out_stable + 1;
+								DAC_state <= "011";
+							end if;
+						when others =>
+							DAC_state <= "000";
+					end case;
+					DebugMState <= 4;
 
 				when F =>						-- 等帧状态：发起采集请求并等待帧就绪
 					clearflags <= '0';   -- 释放采样侧复位
