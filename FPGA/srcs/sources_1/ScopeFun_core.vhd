@@ -96,6 +96,10 @@ architecture rtl of fpga is
 	CONSTANT bH : INTEGER := 14;  -- sfixed高位索引
 	CONSTANT bL : INTEGER := -17; -- sfixed低位索引
 
+	-- TEST_FRAME_MODE: direct EP6 test, no ADC needed
+	CONSTANT TEST_FRAME_MODE  : boolean  := True;
+	CONSTANT TEST_FRAME_WORDS : integer := 256;
+
 	component adc_if is
 		generic (
 			ADC_BITS : integer := 14
@@ -561,7 +565,7 @@ architecture rtl of fpga is
 	signal clk_div_cnt_2 : integer range 0 to 250*(10**6);    -- 通用分频计数器2（预留）
 	signal cnt_rd_last : std_logic := '0';                    -- 读取末尾标志（预留）
 	signal cnt_dw_stop : integer range 0 to 7 := 0;           -- 停止发送确认计数
-	signal cnt_BufferSel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
+	signal cnt_buffer_sel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
 
 
 
@@ -602,6 +606,10 @@ architecture rtl of fpga is
 	signal mavg_dataB : std_logic_vector(13 downto 0);         -- CH2平均后数据
 
 	signal pktend_i: std_logic:= '1'; -- FX3的PKTEND内部控制（'1'表示未拉低）
+
+
+	-- test frame mode counter
+	signal test_frame_cnt : unsigned(26 downto 0) := (others => '0');
 	signal encoding_format: std_logic_vector(3 downto 0);      -- 采样编码格式
 	signal encoding_format_d: std_logic_vector(3 downto 0);    -- 编码格式一级同步
 	signal encoding_format_dd: std_logic_vector(3 downto 0);   -- 编码格式二级同步
@@ -688,67 +696,60 @@ architecture rtl of fpga is
 	attribute KEEP of reading_config_registers_dd: signal is true;
 	attribute ASYNC_REG of reading_config_registers_dd: signal is true;
 
-	--attribute KEEP of digitalOutputPatternLoopCnt_d: signal is true;
-	--attribute ASYNC_REG of digitalOutputPatternLoopCnt_d: signal is true;
-	--attribute KEEP of digitalOutputPatternLoopCnt_dd: signal is true;
-	--attribute ASYNC_REG of digitalOutputPatternLoopCnt_dd: signal is true;
-
 	--attribute KEEP of : signal is true;
 	--attribute ASYNC_REG of : signal is true;
 	--attribute KEEP of : signal is true;
 	--attribute ASYNC_REG of : signal is true;
 
---	attribute mark_debug of DebugMState : signal is true;
---	attribute mark_debug of DebugADCState_d : signal is true;
---	attribute mark_debug of slwr_i : signal is true;
---	attribute mark_debug of slrd_i : signal is true;
---	attribute mark_debug of flaga_d : signal is true;
---	attribute mark_debug of flagb_d : signal is true;
---	attribute mark_debug of flagd_d : signal is true;
---	attribute mark_debug of adc_cs_i : signal is true;
---	attribute mark_debug of adc_sclk_i : signal is true;
---	attribute mark_debug of adc_sdin_i : signal is true;
---	attribute mark_debug of ConfigureADC : signal is true;
---	attribute mark_debug of Timer_cnt : signal is true;
---	attribute mark_debug of dataA : signal is true;
---	attribute mark_debug of dataB : signal is true;
---	attribute mark_debug of DataOutValid : signal is true;
---	attribute mark_debug of DataOut : signal is true;
---	attribute mark_debug of DataOutEnable : signal is true;
---	attribute mark_debug of gl_reset : signal is true;
---	attribute mark_debug of init_calib_complete : signal is true;
---	attribute mark_debug of cfg_we : signal is true;
---	attribute mark_debug of cfg_addrA : signal is true;
---	attribute mark_debug of cfg_do_A : signal is true;
---	attribute mark_debug of cfg_data_in_d : signal is true;
---	attribute mark_debug of slwr_assert : signal is true;
---	attribute mark_debug of saved_sample_cnt : signal is true;
---	attribute mark_debug of send_sample_cnt : signal is true;
---	attribute mark_debug of DataWriteEn : signal is true;
---	attribute mark_debug of trigger_mode_dd : signal is true;
---	attribute mark_debug of getnewframe_dd : signal is true;
---	attribute mark_debug of getnewframe_d : signal is true;
---	attribute mark_debug of newFrameRequestRevcd : signal is true;
---	attribute mark_debug of BufferSel  : signal is true;
---	attribute mark_debug of faddr_i    : signal is true;
---	attribute mark_debug of accumulate_addra : signal is true;
---	attribute mark_debug of slrd_rdy_cnt         : signal is true;
---	attribute mark_debug of slrd_cnt   : signal is true;
+	--attribute mark_debug of DebugMState : signal is true;
+	--attribute mark_debug of DebugADCState_d : signal is true;
+	--attribute mark_debug of slwr_i : signal is true;
+	--attribute mark_debug of slrd_i : signal is true;
+	--attribute mark_debug of flaga_d : signal is true;
+	--attribute mark_debug of flagb_d : signal is true;
+	--attribute mark_debug of flagd_d : signal is true;
+	--attribute mark_debug of adc_cs_i : signal is true;
+	--attribute mark_debug of adc_sclk_i : signal is true;
+	--attribute mark_debug of adc_sdin_i : signal is true;
+	--attribute mark_debug of ConfigureADC : signal is true;
+	--attribute mark_debug of Timer_cnt : signal is true;
+	--attribute mark_debug of dataA : signal is true;
+	--attribute mark_debug of dataB : signal is true;
+	--attribute mark_debug of DataOutValid : signal is true;
+	--attribute mark_debug of DataOut : signal is true;
+	--attribute mark_debug of DataOutEnable : signal is true;
+	--attribute mark_debug of gl_reset : signal is true;
+	--attribute mark_debug of init_calib_complete : signal is true;
+	--attribute mark_debug of cfg_we : signal is true;
+	--attribute mark_debug of cfg_addrA : signal is true;
+	--attribute mark_debug of cfg_do_A : signal is true;
+	--attribute mark_debug of cfg_data_in_d : signal is true;
+	--attribute mark_debug of slwr_assert : signal is true;
+	--attribute mark_debug of saved_sample_cnt : signal is true;
+	--attribute mark_debug of send_sample_cnt : signal is true;
+	--attribute mark_debug of DataWriteEn : signal is true;
+	--attribute mark_debug of trigger_mode_dd : signal is true;
+	--attribute mark_debug of getnewframe_dd : signal is true;
+	--attribute mark_debug of getnewframe_d : signal is true;
+	--attribute mark_debug of newFrameRequestRevcd : signal is true;
+	--attribute mark_debug of BufferSel  : signal is true;
+	--attribute mark_debug of faddr_i    : signal is true;
+	--attribute mark_debug of accumulate_addra : signal is true;
+	--attribute mark_debug of slrd_rdy_cnt         : signal is true;
+	--attribute mark_debug of slrd_cnt   : signal is true;
+	--attribute mark_debug of slwr_assert_cnt: signal is true;
+	--attribute mark_debug of cnt_dw_stop: signal is true;
+	--attribute mark_debug of dword_cnt_i: signal is true;
 
+	--attribute mark_debug of cfg2_addrA: signal is true;
+	--attribute mark_debug of cfg2_data_in: signal is true;
+	--attribute mark_debug of cfg2_we: signal is true;
+	--attribute mark_debug of cfg2_do_A: signal is true;
+	--attribute mark_debug of cfg2_addrA_d: signal is true;
 
---	attribute mark_debug of slwr_assert_cnt: signal is true;
---	attribute mark_debug of cnt_dw_stop: signal is true;
---	attribute mark_debug of dword_cnt_i: signal is true;
-
---	attribute mark_debug of cfg2_addrA: signal is true;
---	attribute mark_debug of cfg2_data_in: signal is true;
---	attribute mark_debug of cfg2_we: signal is true;
---	attribute mark_debug of cfg2_do_A: signal is true;
---	attribute mark_debug of cfg2_addrA_d: signal is true;
-
---	attribute mark_debug of pktend_i: signal is true;
---	attribute mark_debug of cfg_addrB: signal is true;
---	attribute mark_debug of reading_config_registers_dd: signal is true;
+	--attribute mark_debug of pktend_i: signal is true;
+	--attribute mark_debug of cfg_addrB: signal is true;
+	--attribute mark_debug of reading_config_registers_dd: signal is true;
 
 	
 begin
@@ -792,7 +793,7 @@ begin
 			FrameSaveEnd => t_start,                            -- 帧保存结束脉冲
 			DataOut => DataOut,                                 -- DDR3读出数据
 			DataOutEnable => DataOutEnable,                     -- DDR3读使能请求
-			DataOutValid => DataOutValid,                       -- DDR3读数据有效
+			DataOutValid => DataOutValid,                       -- DDR3读出有效
 			ReadingFrame => ReadingFrame,                       -- 读帧过程活动标志
 			ram_rdy => ram_rdy,                                 -- DDR3子系统就绪
 			init_calib_complete => init_calib_complete,         -- DDR3初始化/校准完成
@@ -1502,7 +1503,7 @@ begin
 					-- 参考Artix-7数据手册表25
 					-- 通过flaga检测接口可用
 					if ( flaga_d = '1' ) then
-						if Timer_cnt = 50000 then
+						if Timer_cnt = 500 then
 							ConfigureADC <= '0';
 							MasterState <= B;	    -- 转到分发器状态
 							Timer_cnt <= 0;
@@ -1578,6 +1579,27 @@ begin
 					DebugMState <= 0;
 
 				when B =>						-- 分发态：配置读取/ADC配置/帧流程切换
+				if TEST_FRAME_MODE and flaga_d = '1' then
+				    faddr_i <= "00";
+				    hword_cnt_i <= 1;
+				    slwr_assert_cnt <= 1;
+				    test_frame_cnt <= (others => '0');
+				    Masterstate <= G;
+				end if;
+				if TEST_FRAME_MODE and flaga_d = '1' then
+				    faddr_i <= "00";
+				    hword_cnt_i <= 1;
+				    slwr_assert_cnt <= 1;
+				    test_frame_cnt <= (others => '0');
+				    Masterstate <= G;
+				end if;
+				if TEST_FRAME_MODE and flaga_d = '1' then
+				    faddr_i <= "00";
+				    hword_cnt_i <= 1;
+				    slwr_assert_cnt <= 1;
+				    test_frame_cnt <= (others => '0');
+				    Masterstate <= G;
+				end if;
 					slwr_i <= '1';
 					slrd_i <= '1';
 					pktend_i <= '1';
@@ -1966,8 +1988,7 @@ begin
 									pktend_i <= '1';
 									Masterstate <= G; -- 继续发送填充
 								end if;
-							else
-								if ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) then
+							elsif TEST_FRAME_MODE then							    fdata <= std_logic_vector(test_frame_cnt) & "00000";							    test_frame_cnt <= test_frame_cnt + 1;							    pktend_i <= '1';							    DataOutEnable <= '0';							    send_sample_cnt <= send_sample_cnt + 1;							    Masterstate <= G;							else								if ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) then
 									fdata <= x"00000000";
 									clearflags <= '1';
 								else

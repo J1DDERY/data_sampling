@@ -77,7 +77,7 @@ end function;
 constant CAL_CHK_A : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, true);  -- 测试码A：奇数位为1
 constant CAL_CHK_B : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, false); -- 测试码B：偶数位为1
 
-CONSTANT TEST_MODE : boolean := False;    -- False=正常模式输出ADC数据，True=测试模式递增计数
+CONSTANT TEST_MODE : boolean := TRUE;    -- False=正常模式输出ADC数据，True=测试模式递增计数
 
 CONSTANT ADC_CLK_DELAY  : integer := 0;   -- 时钟延迟tap值(0-31)，此值可被动态延迟覆盖
 CONSTANT ADC_DATA_DELAY : integer := 23;  -- 数据初始延迟tap(0-31)，200MHz=78ps/tap，23tap≈1.8ns
