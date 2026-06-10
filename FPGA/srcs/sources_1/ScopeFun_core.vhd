@@ -289,8 +289,14 @@ architecture rtl of fpga is
 	-- 为兼容旧逻辑/调试而保留的别名信号。
 	signal dataA : std_logic_vector(13 downto 0);
 	signal dataB : std_logic_vector(13 downto 0);
+	-- ADC数据跨时钟域到ifclk（用于测试帧直通）
+	signal adc_rise_ifclk   : std_logic_vector(13 downto 0) := (others => '0');
+	signal adc_rise_ifclk_d : std_logic_vector(13 downto 0) := (others => '0');
 
 	signal ifclk : std_logic;
+	signal ui_clk_raw : std_logic;        -- MIG原始ui_clk(~125MHz)
+	signal ifclk_tgl : std_logic := '0';  -- ÷2分频后(~62.5MHz)
+	signal ifclk_bufg : std_logic;       -- 全局时钟缓冲后
 	signal fdata_d: std_logic_VECTOR(15 downto 0);
 	--
 	signal cfg_addrA: std_logic_VECTOR(5 downto 0);	     -- SPO口写入/读出地址
@@ -369,7 +375,7 @@ architecture rtl of fpga is
 	signal frame_pos_d : UNSIGNED (26 downto 0);
 	signal send_sample_cnt : integer range 0 to DDR3_MAX_SAMPLES-1 := 0;
 	signal send_frame_cnt : integer range 0 to 4095;
-	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE := 0; -- 帧头字计数器
+	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE + 1024 := 0; -- 帧头+测试数据字计数器
 	signal dword_cnt_i : integer range 0 to FX3_DMA_BUFFER_SIZE/4 := 0; -- 数据字计数器
 	signal sent_word_cnt : integer range 0 to 255 := 0;
 	signal faddr_rdy_cnt_i : integer range 0 to 3 := 0; -- FADDR切换就绪计数器
@@ -560,7 +566,10 @@ architecture rtl of fpga is
 	signal adc_clk_divide_maxcnt : integer range 0 to 199999999; -- ADC分频阈值（预留）
 	--signal Timer_cnt : integer range 0 to 4095 := 0;
 	signal Timer_cnt : integer range 0 to (2**26)-1 := 0;     -- 上电序列计时器
+	signal adc_init_step : integer range 0 to 7 := 0;          -- AD9643 SPI初始化步骤
 	signal startup_timer_cnt : integer range 0 to 250000 := 0;-- 全局复位窗口计时器
+	signal debug_cnt : unsigned(27 downto 0) := (others => '0'); -- 250MHz计数器
+	signal ifclk_div : unsigned(27 downto 0) := (others => '0'); -- ifclk计数器
 	signal clk_div_cnt : integer range 0 to 100*(10**6);      -- 通用分频计数器（预留）
 	signal clk_div_cnt_2 : integer range 0 to 250*(10**6);    -- 通用分频计数器2（预留）
 	signal cnt_rd_last : std_logic := '0';                    -- 读取末尾标志（预留）
@@ -782,7 +791,7 @@ begin
 			-- 顶层接口信号
 			sys_clk_i => clk_adc_dclk,                          -- 采样写入时钟域
 			clk_ref_i => clk_ref_i,                             -- MIG参考时钟
-			ui_clk => ifclk,                                    -- 读出/控制时钟域
+			ui_clk => ui_clk_raw,                               -- MIG原始输出(~125MHz)
 			rst => clearflags,                                  -- 帧流水软复位
 			FrameSize => framesize_dd,                          -- 需要保存的帧长度
 			DataIn => DDR3DataIn,                               -- 编码后写入数据
@@ -964,12 +973,13 @@ begin
 			data_valid => encoder_data_valid
 		);
 
-	clk_fx3 <= not(ifclk);            -- FX3接口时钟使用反相信号
+	clk_fx3 <= not(ifclk);            -- FX3 GPIF时钟（反相提供半周期建立时间）
 	slcs <= '0';                      -- GPIF片选常使能
 
-	LED(1) <= LED_i(1) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
-	LED(2) <= LED_i(2) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
-	LED(3) <= LED_i(3) OR NOT(init_calib_complete_d); -- 校准未完成时强制点亮LED
+	-- 验证帧头发送：LED1=slwr写脉冲 LED2=magic字发送中 LED3=流发送中
+	LED(1) <= not slwr_i;        -- slwr低时亮=正在写FX3
+	LED(2) <= '1' when hword_cnt_i = 0 else '0';  -- 正在发送magic字(0xDDDDDDDD)
+	LED(3) <= '1' when MasterState(3 downto 0) = G else '0';  -- 在G态亮
 	slrd_sloe  <= slrd_i;                              -- FX3读控制（与SLOE共用）
 	slwr  <= slwr_i;                                   -- FX3写选通信号
 	faddr <= faddr_i;                                  -- FX3端点地址选择
@@ -997,22 +1007,26 @@ begin
 	--            & std_logic_vector(DataInTest (9 downto 0))
 	--            & std_logic_vector(DataInTest(11 downto 0));
 
+	-- ui_clk(125MHz) ÷2 → BUFG → ifclk(62.5MHz) 适配FX3 GPIF
+	ifclk_div2: process(ui_clk_raw)
+	begin
+		if rising_edge(ui_clk_raw) then
+			ifclk_tgl <= not ifclk_tgl;
+		end if;
+	end process;
+	-- 全局时钟缓冲确保低skew
+	ifclk_bufg_inst: BUFG port map (I => ifclk_tgl, O => ifclk);
+
 	ADC_interface_rising: process(clk_adc_dclk)
 
 	begin
 
 		if (rising_edge(clk_adc_dclk)) then
 
-			-- 上电后按时间窗产生全局复位脉冲
-			if startup_timer_cnt = 4000 then
-				gl_reset <= '0';
-			elsif startup_timer_cnt < 2000 then
-				gl_reset <= '0';               -- 启动窗口前半段保持低电平
-				startup_timer_cnt <= startup_timer_cnt + 1;
-			else
-				gl_reset <= '1';               -- 启动窗口后半段拉高复位
-				startup_timer_cnt <= startup_timer_cnt + 1;
-			end if;
+			debug_cnt <= debug_cnt + 1;       -- 250MHz参考计数器
+
+			-- 上电复位已由外部复位管脚处理，此处不再生成内部复位脉冲
+			-- startup_timer_cnt原用于产生gl_reset，因gl_reset未被下游使用已移除
 
 			-- 数字通道/逻辑分析功能已移除
 			-- 读取DDR上下沿采样，并按配置决定是否启用均值滤波。
@@ -1417,8 +1431,14 @@ begin
 
 		if (rising_edge(ifclk)) then
 
+			ifclk_div <= ifclk_div + 1;       -- ifclk频率计数器
+
 			device_temp_d <= device_temp;     -- 温度信号流水第1级
 			device_temp_dd <= device_temp_d;  -- 温度信号流水第2级
+
+			-- ADC数据CDC：250MHz→62.5MHz（降采样4x，仅用于测试验证）
+			adc_rise_ifclk   <= adc_data_rise;
+			adc_rise_ifclk_d <= adc_rise_ifclk;
 
 			getnewframe_d <= getnewframe;     -- 来自ADC域的CDC第1级
 			getnewframe_dd <= getnewframe_d;  -- 来自ADC域的CDC第2级
@@ -1494,112 +1514,52 @@ begin
 
 			case MasterState(3 downto 0) is   -- FX3/USB事务主状态机
 
-				when A =>           			-- 空闲态：上电序列、ADC配置与校准触发
+				when A =>           			-- 空闲态：ADC SPI初始化 → 延时 → 发测试帧
 					faddr_i <= "00";
 					slrd_i  <= '1';
 					slwr_i  <= '1';
-					-- 等待IDELAYCTRL就绪
-					-- IDELAYCTRL启动时间约3.67us
-					-- 参考Artix-7数据手册表25
-					-- 通过flaga检测接口可用
-					if ( flaga_d = '1' ) then
-						if Timer_cnt = 500 then
-							ConfigureADC <= '0';
-							MasterState <= B;	    -- 转到分发器状态
-							Timer_cnt <= 0;
-						elsif Timer_cnt = 40000 then
-							-- 先初始化控制DAC，再关闭ADC测试图样
-							dac_cfg_reg <= "0110" & "000000000000"; -- enable +/-Va supply (UPO bit on MAX5501 DAC goes HIGH)
-							ConfigureVdac <= '1';
-							adc_spi_data <= AD9643_SPI_TEST_PATTERN_OFF; -- 关闭ADC测试图样
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 40100 then
-							-- 发送转移命令，触发 0x0D 寄存器更新（从测试模式返回到正常采样）
-							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 30100 or Timer_cnt = 30101 then
-							-- 发送转移命令，完成 IDELAY 校准配置（CH2）
-							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 30000 or Timer_cnt = 30001 then
-							read_calib_start <= '1';    -- 启动ADC接口IDELAY校准
-							read_calib_source <= '1';   -- 选择CH2进行校准
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 20100 or Timer_cnt = 20101 then
-							-- 发送转移命令，完成 IDELAY 校准配置（CH1）
-							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 20000 or Timer_cnt = 20001 then
-							read_calib_start <= '1';    -- 启动ADC接口IDELAY校准
-							read_calib_source <= '0';   -- 选择CH1进行校准
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 2100 then
-							-- 发送转移命令，触发 0x0D 寄存器更新（启用测试模式棋盘格）
-							adc_spi_data <= AD9643_SPI_TRANSFER_COMMAND;
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
-						elsif Timer_cnt = 2000 then
-							-- 先写入 0x0D44 到 shadow 寄存器（启用测试图样棋盘格）
-							adc_spi_data <= AD9643_SPI_TEST_PATTERN_ON;
-							ConfigureADC <= '1';
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
+					pktend_i <= '1';
+					clearflags <= '1';
+					
+					-- AD9643上电初始化序列(step 0-4)
+					if adc_init_step < 4 then
+						if adcA_spi_busy = '0' and ConfigureADC = '0' then
+							case adc_init_step is
+								when 0 => adc_spi_data <= X"0000";  -- 0x00: 上电/正常模式
+								when 1 => adc_spi_data <= X"0800";  -- 0x08: 双补码/14bit/DDR
+								when 2 => adc_spi_data <= X"0D00";  -- 0x0D: 关闭测试图样/正常采样
+								when 3 => adc_spi_data <= X"FF01";  -- 0xFF: 提交生效
+								when others => null;
+							end case;
+							ConfigureADC <= '1';                   -- 触发SPI发送
+						elsif adcA_spi_busy = '1' then
+							ConfigureADC <= '0';                   -- 等待SPI完成
 						else
-							read_calib_start <= '0';
-							ConfigureADC <= '0';        -- 释放ADC写触发
-							MasterState <= A;
-							Timer_cnt <= Timer_cnt + 1;
+							ConfigureADC <= '0';
+							adc_init_step <= adc_init_step + 1;    -- 下一步
 						end if;
-					else
-						-- FX3接口尚未就绪（flaga_d='0'），保持初始化状态
-						-- 复位计时器
-						Timer_cnt <= 0;
-						-- 禁用IDELAY校准
-						read_calib_start <= '0';
-						-- 不发起SPI写命令
-						ConfigureADC <= '0';
-						-- 停留在初始化状态A
 						MasterState <= A;
+					else
+						-- SPI初始化完成，等待~1s后进入测试
+						if Timer_cnt = 60000000 then
+							Timer_cnt <= 0;
+							MasterState <= B;
+						else
+							Timer_cnt <= Timer_cnt + 1;
+							MasterState <= A;
+						end if;
 					end if;
-					-- FX3数据总线置为高阻状态（未驱动）
-					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
-					-- 对采样侧状态机发出全局复位脉冲，强制停止采样、清除标志
-					clearflags <= '1'; -- 向ADC采样状态机发送复位
+					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 					DebugMState <= 0;
 
 				when B =>						-- 分发态：配置读取/ADC配置/帧流程切换
-				if TEST_FRAME_MODE and flaga_d = '1' then
+				if TEST_FRAME_MODE then
 				    faddr_i <= "00";
-				    hword_cnt_i <= 1;
+				    hword_cnt_i <= 0;          -- 从0开始，确保magic字(0xDDDDDDDD)被发送
 				    slwr_assert_cnt <= 1;
 				    test_frame_cnt <= (others => '0');
 				    Masterstate <= G;
-				end if;
-				if TEST_FRAME_MODE and flaga_d = '1' then
-				    faddr_i <= "00";
-				    hword_cnt_i <= 1;
-				    slwr_assert_cnt <= 1;
-				    test_frame_cnt <= (others => '0');
-				    Masterstate <= G;
-				end if;
-				if TEST_FRAME_MODE and flaga_d = '1' then
-				    faddr_i <= "00";
-				    hword_cnt_i <= 1;
-				    slwr_assert_cnt <= 1;
-				    test_frame_cnt <= (others => '0');
-				    Masterstate <= G;
-				end if;
+				else
 					slwr_i <= '1';
 					slrd_i <= '1';
 					pktend_i <= '1';
@@ -1650,6 +1610,7 @@ begin
 						Masterstate <= F; -- else, go to "GET NEW ADC FRAME FROM SAMPLE BUFFER"
 					end if;
 					DebugMState <= 1;
+				end if;
 
 				when C =>						-- CONFIG-READ: pull EP2 words and mirror to config RAM
 					faddr_i <= "11"; -- selected FIFO endpoint is EP2 (config)
@@ -1855,173 +1816,34 @@ begin
 					end if;
 					DebugMState <= 5;
 
-				when G =>            		-- 发送状态：将帧头与采样数据发往FX3 EP6
-				--sloe_i <= '1';
+				when G =>            		-- TEST_FRAME_MODE: 发一帧(ADC直通)→回A
 					slrd_i <= '1';
-					faddr_i <= "00";  -- 选择EP6端点
-					ReadingFrame <= '1'; -- 打开DDR3读帧流程
-					if (flaga_d = '1') AND DataOutValid = '0' AND (dword_cnt_i = 0) then
-						-- RAM无有效数据时先关闭读取
-						DataOutEnable <= '0';
-						slwr_i <= '1';
-						-- 等待7拍确认RAM侧确实无待发数据
-						if cnt_dw_stop = 7 then
-							cnt_dw_stop <= 0;
-							if unsigned(timebase_ddd) >= 12 then -- 慢时基下标记慢速发送
-								SendingFrameSlow <= '1';
-							end if;
-							MasterState <= B;
-							ReturnToStreamingState <= '1'; -- 设置返回流发送标志
-						else
-							cnt_dw_stop <= cnt_dw_stop + 1;
-							MasterState <= G;
+					faddr_i <= "00";
+					ReadingFrame <= '1';
+					slwr_i <= '0';
+					pktend_i <= '1';
+					
+					if hword_cnt_i < FRAME_HEADER_SIZE then
+						-- 帧头：256字
+						hword_cnt_i <= hword_cnt_i + 1;
+						case hword_cnt_i is
+							when 72 => fdata <= X"00000400";    -- sampleSizeL=1024
+							when others => fdata <= X"DDDDDDDD";
+						end case;
+						Masterstate <= G;
+					elsif hword_cnt_i < FRAME_HEADER_SIZE + 1024 then
+						-- 数据：ADC直通(14bit棋盘图样 → 32bit字)
+						hword_cnt_i <= hword_cnt_i + 1;
+						fdata <= X"0000" & "00" & adc_rise_ifclk_d;
+						if hword_cnt_i = FRAME_HEADER_SIZE + 1023 then
+							pktend_i <= '0';
 						end if;
-
-					-- EP6可写时向FX3发送数据
-					elsif slwr_assert = '1' AND (
-							-- 正在发送帧头
-						    ( hword_cnt_i < FRAME_HEADER_SIZE ) OR
-							-- RAM有可用数据
-						    ( DataOutValid = '1' ) OR
-							-- 帧尾后补齐填充字
-						    ( send_sample_cnt = to_integer(unsigned(framesize_dd)) AND dword_cnt_i < FX3_DMA_BUFFER_SIZE/4 ) OR
-							-- 慢时基采集中配置变化时也继续发空字
-						    ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) )
- 						then
-						-- 满足条件后启动写FX3
-						slwr_i <= '0';
-						cnt_dw_stop <= 0; -- 复位停止等待计数
-						-- 按FX3_DMA_BUFFER_SIZE突发发送
-						if slwr_assert_cnt = (FX3_DMA_BUFFER_SIZE/4)-1 then
-							slwr_assert <= '0';
-							flagd_rdy_cnt <= 0;
-							slwr_assert_cnt <= 0;
-						else
-							slwr_assert_cnt <= slwr_assert_cnt + 1;
-						end if;
-						-- 先发送帧头：256个DWord（1024字节）
-						if hword_cnt_i < FRAME_HEADER_SIZE then
-							DataOutEnable <= '0';
-							-- 开始发送帧头
-							hword_cnt_i <= hword_cnt_i + 1;
-							case hword_cnt_i is
-								-- 回填配置与元数据
-								when 0  =>
-									fdata <= X"DDDDDDDD";
-									send_frame_cnt <= send_frame_cnt + 1;
-								when 1 =>
-									fdata <= X"0000" & X"0" & device_temp_dd;
-								--fdata <= X"00000" & device_temp_dd;
-								when 2 =>
-									fdata <= X"00000000";
-								--fdata <= X"00000" &  std_logic_vector(to_unsigned(send_frame_cnt,12));
-								when 3 =>
-									fdata <= X"00000000";
-									--fdata <= X"01" & X"02" & X"03" & X"04";
-								when 4 =>
-									fdata <= X"00000000";
-								when 63 =>
-									cfg_addrA <= std_logic_vector(to_unsigned(1,6));
-									fdata <= X"0000FFFF";
-								when 64 to 64+(CONFIG_DATA_SIZE-1) =>
-									if to_integer(unsigned(cfg_addrA)) = CONFIG_DATA_SIZE-1 then
-										cfg_addrA <= std_logic_vector(to_unsigned(0,6));
-									else
-										cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
-									end if;
-									if    hword_cnt_i = (63 + 9) then
-										-- 当前帧样本数
-										fdata(31 downto 27) <= "00000";
-										fdata(26 downto 0) <= std_logic_vector(unsigned(framesize_dd)+1);
-									elsif hword_cnt_i = (63 + 30) then
-										fdata(31 downto 20) <= cfg_do_A(31 downto 20);
-										fdata(19 downto 16) <= encoding_format_dd;
-										fdata(15 downto 0)  <= cfg_do_A(15 downto 0);
-									else
-										fdata <= cfg_do_A;
-									end if;
-								when FRAME_HEADER_SIZE-1 =>
-									fdata  <= x"00000000"; -- 预留CRC字段
-									pktend_i <= '0';
-									-- 计算当前帧对应的32位字数量上限
-									case encoding_format_dd (3 downto 0) is 
-										when "1010" | "1001" | "0110" | "0101" =>
-											framesize_dd <= '0' & framesize_dd(26 downto 1);
-										when others => null;
-									end case;
-								when others =>
-									cfg_addrA <= std_logic_vector(to_unsigned(0,6));
-									fdata <= X"0000FFFF";
-							end case;
-						else
-							-- 通过DataOutEnable控制DDR3读出
-							-- 统计已发送到FX3 FIFO的32位字数
-							if dword_cnt_i = (FX3_DMA_BUFFER_SIZE/4)-1 then
-								dword_cnt_i <= 0;
-								DataOutEnable <= '0';
-							else
-								dword_cnt_i <= dword_cnt_i + 1;
-								-- DataOutEnable拉低后RAM数据仍会持续有效4拍
-								-- 因此需在FIFO写满前4拍关闭DataOutEnable
-								if dword_cnt_i < (FX3_DMA_BUFFER_SIZE/4)-5 then
-									DataOutEnable <= '1';
-								else
-									DataOutEnable <= '0';
-								end if;
-							end if;
-							-- 开始发送帧数据载荷
-							if ( send_sample_cnt = to_integer(unsigned(framesize_dd)) ) then
-								SendingFrameSlow <= '0';	-- 清除慢速发送标志
-								if dword_cnt_i = (FX3_DMA_BUFFER_SIZE/4)-1 then
-									hword_cnt_i <= 0; -- 复位帧头计数器
-									send_sample_cnt <= 0;
-									pktend_i <= '0';
-									MasterState <= B; -- 返回分发状态
-								else
-									if DataOutValid = '1' then
-										fdata <= DataOut;
-									else
-										-- 插入填充字节直至凑满DMA缓冲区
-										-- 不依赖PKTEND时必须这样补齐
-										fdata <= x"00000000";
-									end if;
-									pktend_i <= '1';
-									Masterstate <= G; -- 继续发送填充
-								end if;
-							elsif TEST_FRAME_MODE then							    fdata <= std_logic_vector(test_frame_cnt) & "00000";							    test_frame_cnt <= test_frame_cnt + 1;							    pktend_i <= '1';							    DataOutEnable <= '0';							    send_sample_cnt <= send_sample_cnt + 1;							    Masterstate <= G;							else								if ( SendingFrameSlow = '1' and ScopeConfigChanged = '1' ) then
-									fdata <= x"00000000";
-									clearflags <= '1';
-								else
-									fdata <= DataOut;
-									--fdata <= DataOut(31 downto 12) & "00" & DataOut(31 downto 22);
-									clearflags <= '0';
-								end if;
-								pktend_i <= '1';
-								send_sample_cnt <= send_sample_cnt + 1;
-								Masterstate <= G; -- 继续流式发送样本数据
-							end if;
-						end if;
-					-- FX3可接收且样本未发完且帧头已发送完成
-					elsif slwr_assert = '1' and (send_sample_cnt < to_integer(unsigned(framesize_dd))) and hword_cnt_i = FRAME_HEADER_SIZE then
-						DataOutEnable <= '1';
-						pktend_i <= '1';
-						slwr_i  <= '1';
 						Masterstate <= G;
 					else
-						-- 延时7拍后再次确认FIFO可写状态
-						if flagd_rdy_cnt = 7 then
-							if flagd_dd = '1' then
-								slwr_assert <= '1';
-							else
-								slwr_assert <= '0';
-							end if;
-						else
-							flagd_rdy_cnt <= flagd_rdy_cnt + 1;
-						end if;
-						pktend_i <= '1';
-						DataOutEnable <= '0';
-						slwr_i  <= '1';
-						Masterstate <= G;
+						-- 帧完：回空闲态
+						hword_cnt_i <= 0;
+						slwr_i <= '1';
+						Masterstate <= A;
 					end if;
 					DebugMState <= 6;
 
