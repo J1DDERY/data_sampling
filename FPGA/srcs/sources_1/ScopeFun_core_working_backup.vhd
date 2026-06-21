@@ -1,4 +1,5 @@
------------------------------------------------------------------------------------    Copyright (C) 2019-2023 Dejan Priversek
+----------------------------------------------------------------------------------
+--    Copyright (C) 2019-2023 Dejan Priversek
 --
 --    This program is free software: you can redistribute it and/or modify
 --    it under the terms of the GNU General Public License as published by
@@ -95,6 +96,9 @@ architecture rtl of fpga is
 	CONSTANT bH : INTEGER := 14;  -- sfixed高位索引
 	CONSTANT bL : INTEGER := -17; -- sfixed低位索引
 
+	-- TEST_FRAME_MODE: direct EP6 test, no ADC needed
+	CONSTANT TEST_FRAME_MODE  : boolean  := True;
+	CONSTANT TEST_FRAME_WORDS : integer := 256;
 
 	component adc_if is
 		generic (
@@ -112,10 +116,7 @@ architecture rtl of fpga is
 			i_data_n : in STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);
 			o_clk : out STD_LOGIC;
 			o_data_1 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);
-			o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);
-			o_calib_ok : out std_logic;
-			o_calib_tap : out std_logic_vector(5 downto 0);
-			o_idelay_rdy : out std_logic
+			o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0)
 		);
 	end component;
 
@@ -275,6 +276,7 @@ architecture rtl of fpga is
 	signal clk_adc_n_delayed : std_logic;
 
 	signal clk_ref_i : std_logic;
+	signal clk_gen : std_logic;
 	signal pll_locked : std_logic;
 	signal pll_reset : std_logic := '0';
 	signal assert_pll_counter : integer range 0 to 65535;
@@ -284,12 +286,6 @@ architecture rtl of fpga is
 	-- adc_data_fall = DCO下降沿采样数据
 	signal adc_data_rise : std_logic_vector(13 downto 0);
 	signal adc_data_fall : std_logic_vector(13 downto 0);
-	signal adc_calib_ok : std_logic;          -- IDELAY校准通过标志
-	signal adc_calib_tap : std_logic_vector(5 downto 0); -- 选中的最优tap
-	signal adc_idelay_rdy : std_logic;       -- IDELAYCTRL就绪
-	signal adc_idelay_rdy_d : std_logic;
-	signal adc_calib_ok_d : std_logic;
-	signal adc_calib_tap_d : std_logic_vector(5 downto 0);
 	-- 为兼容旧逻辑/调试而保留的别名信号。
 	signal dataA : std_logic_vector(13 downto 0);
 	signal dataB : std_logic_vector(13 downto 0);
@@ -298,8 +294,9 @@ architecture rtl of fpga is
 	signal adc_rise_ifclk_d : std_logic_vector(13 downto 0) := (others => '0');
 
 	signal ifclk : std_logic;
-	signal ui_clk_raw : std_logic;        -- MIG ui_clk
-	signal ifclk_tgl : std_logic := '0';  -- ÷2分频触发器(原版时钟方案)
+	signal ui_clk_raw : std_logic;        -- MIG原始ui_clk(~125MHz)
+	signal ifclk_tgl : std_logic := '0';  -- ÷2分频后(~62.5MHz)
+	signal ifclk_bufg : std_logic;       -- 全局时钟缓冲后
 	signal fdata_d: std_logic_VECTOR(15 downto 0);
 	--
 	signal cfg_addrA: std_logic_VECTOR(5 downto 0);	     -- SPO口写入/读出地址
@@ -333,7 +330,6 @@ architecture rtl of fpga is
 	signal x_cos : signed(11 downto 0);
 
 	signal flaga_d	 : STD_LOGIC;
-        signal flaga_d_prev : STD_LOGIC := '0';  -- flaga_d上一拍,用于边沿检测
 	signal flaga_id  : std_logic;
 	signal flaga_idd : std_logic;
 	signal flagb_d	 : STD_LOGIC;
@@ -379,7 +375,7 @@ architecture rtl of fpga is
 	signal frame_pos_d : UNSIGNED (26 downto 0);
 	signal send_sample_cnt : integer range 0 to DDR3_MAX_SAMPLES-1 := 0;
 	signal send_frame_cnt : integer range 0 to 4095;
-	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE + 200000 := 0; -- 帧头+数据总字计数器
+	signal hword_cnt_i : integer range 0 to FRAME_HEADER_SIZE + 1024 := 0; -- 帧头+测试数据字计数器
 	signal dword_cnt_i : integer range 0 to FX3_DMA_BUFFER_SIZE/4 := 0; -- 数据字计数器
 	signal sent_word_cnt : integer range 0 to 255 := 0;
 	signal faddr_rdy_cnt_i : integer range 0 to 3 := 0; -- FADDR切换就绪计数器
@@ -394,13 +390,12 @@ architecture rtl of fpga is
 	signal get_new_frame_flag_ddd : STD_LOGIC;	-- get_new_frame_flag延迟3拍
 	signal new_frame_ready_flag : STD_LOGIC;
 	signal new_frame_ready_flag_d : STD_LOGIC;
+	signal cordic_complete_flag : STD_LOGIC;
 	signal gl_reset : std_logic := '0';  -- 全局复位（IDELAYCTRL最小脉宽60ns）
 	-- IDELAYCTRL从复位到就绪约3.67us
 	--signal gl_reset_i : std_logic := '1';
 
 	signal ConfigureADC : std_logic :='0';
-signal adcA_spi_busy_d : std_logic := '0'; -- busy延迟,检测下降沿
-signal init_done : std_logic := '0';     -- 首次配置完成标志
 	signal faddr_rdy : std_logic;
 
 	-- 帧保存/发送同步标志
@@ -452,7 +447,7 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 
 	-- ADC采样时钟分频与跨域同步信号
 	--signal clk_adc_dclk_DIVIDED : STD_LOGIC;
-	signal timebase : std_logic_vector (4 downto 0) := "00000";      -- 原始时基配置
+	signal timebase : std_logic_vector (4 downto 0);      -- 原始时基配置
 	signal timebase_d : std_logic_vector (4 downto 0);    -- 时基一级寄存
 	signal timebase_dd : std_logic_vector (4 downto 0);   -- 时基二级同步
 	signal timebase_ddd : std_logic_vector (4 downto 0);  -- 时基三级同步
@@ -464,10 +459,15 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	signal dataBdd	: SIGNED (13 downto 0);                   -- CH2延迟一级（预留）
 	signal dora_i : std_logic;                                -- 数字输出A预留信号
 	signal dorb_i : std_logic;                                -- 数字输出B预留信号
-	signal trig_signal 	: SIGNED (13 downto 0);               -- 当前用于触发比较的样本（14bit）
-	signal trig_signal_d : SIGNED (13 downto 0);               -- 上一拍触发样本（边沿判定，14bit）
+	signal trig_signal 	: SIGNED (9 downto 0);               -- 当前用于触发比较的样本（10bit）
+	signal trig_signal_d : SIGNED (9 downto 0);               -- 上一拍触发样本（边沿判定，10bit）
 	signal triggered_led : std_logic;                         -- 触发状态LED原始信号
 	signal triggered_led_d : std_logic;                       -- 触发状态LED延迟信号
+
+	signal an_trig_d : std_logic;                             -- 模拟触发同步一级
+	signal an_trig_dd : std_logic;                            -- 模拟触发同步二级
+	signal an_trig_ddd : std_logic;                           -- 模拟触发同步三级
+	signal an_trig_dddd : std_logic;                          -- 模拟触发同步四级
 
 	signal clearflags : STD_LOGIC:='0';                       -- 全局清零标志（跨模块复位）
 	signal clearflags_d : STD_LOGIC :='0';                    -- clearflags延迟同步
@@ -476,24 +476,24 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	-- RAM allocation for oscilloscope configuration
 	--type memory_array is array(1 to 64) of STD_LOGIC_VECTOR (15 downto 0);
 	--signal mem : memory_array:=((others=> (others=>'0')));
-	signal trig_level : SIGNED (13 downto 0) := (others => '0');                  -- 触发电平（14bit）
-	signal trig_level_d : SIGNED (13 downto 0);                -- 触发电平一级延迟（14bit）
-	signal trig_level_dd : SIGNED (13 downto 0);               -- 触发电平二级延迟（14bit）
-	signal trig_level_r_dd : SIGNED (13 downto 0);             -- 上升沿判定门限（含回差，14bit）
-	signal trig_level_f_dd : SIGNED (13 downto 0);             -- 下降沿判定门限（含回差，14bit）
-	signal trig_hysteresis : SIGNED (13 downto 0) := (others => '0');             -- 触发回差（14bit）
-	signal trig_hysteresis_d : SIGNED (13 downto 0);           -- 回差延迟（14bit）
-	signal trigger_source : STD_LOGIC_VECTOR (2 downto 0) := "000"; -- 默认CH1
-	signal trigger_source_d : STD_LOGIC_VECTOR (2 downto 0) := "000";
-	signal trigger_slope : STD_LOGIC_VECTOR (1 downto 0) := "00";   -- 默认上升沿
-	signal trigger_slope_d : STD_LOGIC_VECTOR (1 downto 0) := "00";
-	signal trigger_mode : STD_LOGIC_VECTOR (1 downto 0) := "00"; -- 默认自动触发
-	signal trigger_mode_d : STD_LOGIC_VECTOR (1 downto 0) := "00";
-	signal trigger_mode_dd : STD_LOGIC_VECTOR (1 downto 0) := "00";
+	signal trig_level : SIGNED (9 downto 0);                  -- 触发电平（10bit）
+	signal trig_level_d : SIGNED (9 downto 0);                -- 触发电平一级延迟（10bit）
+	signal trig_level_dd : SIGNED (9 downto 0);               -- 触发电平二级延迟（10bit）
+	signal trig_level_r_dd : SIGNED (9 downto 0);             -- 上升沿判定门限（含回差，10bit）
+	signal trig_level_f_dd : SIGNED (9 downto 0);             -- 下降沿判定门限（含回差，10bit）
+	signal trig_hysteresis : SIGNED (9 downto 0);             -- 触发回差（10bit）
+	signal trig_hysteresis_d : SIGNED (9 downto 0);           -- 回差延迟（10bit）
+	signal trigger_source : STD_LOGIC_VECTOR (2 downto 0);    -- 触发源选择
+	signal trigger_source_d : STD_LOGIC_VECTOR (2 downto 0);  -- 触发源延迟
+	signal trigger_slope : STD_LOGIC_VECTOR (1 downto 0);     -- 触发斜率选择
+	signal trigger_slope_d : STD_LOGIC_VECTOR (1 downto 0);   -- 触发斜率延迟
+	signal trigger_mode : STD_LOGIC_VECTOR (1 downto 0);      -- 触发模式（自动/普通/单次/立即）
+	signal trigger_mode_d : STD_LOGIC_VECTOR (1 downto 0);    -- 触发模式延迟
+	signal trigger_mode_dd : STD_LOGIC_VECTOR (1 downto 0);   -- 触发模式二级延迟
 	signal s_trigger_mode : STD_LOGIC_VECTOR (1 downto 0);    -- 单次触发模式缓存
 	signal s_trigger_rearm : std_logic;                       -- 单次触发重新布防命令
 	signal s_trigger_rearm_completed : std_logic;             -- 单次触发布防完成标志（预留）
-	signal holdOff : UNSIGNED (31 downto 0) := (others => '0');                  -- 触发后Holdoff计数值
+	signal holdOff : UNSIGNED (31 downto 0);                  -- 触发后Holdoff计数值
 	signal holdOff_d : UNSIGNED (31 downto 0);                -- Holdoff延迟寄存
 	signal t_start : std_logic; -- holdoff input: start timer
 	signal o_end : std_logic;   -- holdoff output: timer ended
@@ -508,7 +508,7 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	signal adc_cfg_reg_d : std_logic_vector (7 downto 0);     -- AD9643寄存器地址延迟
 	signal adc_cfg_data : std_logic_vector (7 downto 0);      -- AD9643寄存器写入数据
 	signal adc_cfg_data_d : std_logic_vector (7 downto 0);    -- AD9643写入数据延迟
-	signal adc_spi_data : std_logic_vector (23 downto 0);     -- AN-877:16bit指令+8bit数据
+	signal adc_spi_data : std_logic_vector (15 downto 0);     -- SPI发送帧（8bit地址+8bit数据）
 	signal adc_sclk_counter : integer range 0 to 7;           -- ADC SPI时钟分频计数
 	signal adc_spi_bit_count : integer range 0 to 15:=15;     -- ADC SPI位计数（预留）
 	signal adc_configured_flag : STD_LOGIC;                   -- ADC配置完成标志（预留）
@@ -566,7 +566,7 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	signal adc_clk_divide_maxcnt : integer range 0 to 199999999; -- ADC分频阈值（预留）
 	--signal Timer_cnt : integer range 0 to 4095 := 0;
 	signal Timer_cnt : integer range 0 to (2**26)-1 := 0;     -- 上电序列计时器
-	signal adc_init_step : integer range 0 to 7 := 0;  -- 跳过SPI测试其他通路          -- AD9643 SPI初始化步骤
+	signal adc_init_step : integer range 0 to 7 := 0;          -- AD9643 SPI初始化步骤
 	signal startup_timer_cnt : integer range 0 to 250000 := 0;-- 全局复位窗口计时器
 	signal debug_cnt : unsigned(27 downto 0) := (others => '0'); -- 250MHz计数器
 	signal ifclk_div : unsigned(27 downto 0) := (others => '0'); -- ifclk计数器
@@ -575,8 +575,6 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	signal cnt_rd_last : std_logic := '0';                    -- 读取末尾标志（预留）
 	signal cnt_dw_stop : integer range 0 to 7 := 0;           -- 停止发送确认计数
 	signal cnt_buffer_sel_rdy : integer range 0 to 31 := 0;    -- Buffer切换就绪计数（预留）
-	signal cnt_frame_timeout : integer range 0 to 1000000000 := 0; -- 帧触发超时计数(10s@100MHz)
-        signal cnt_interframe : integer range 0 to 65535 := 0;  -- 帧间延迟(确保主机同步)
 
 
 
@@ -633,6 +631,7 @@ signal init_done : std_logic := '0';     -- 首次配置完成标志
 	attribute mark_debug: boolean;
 
 	-- 配置KEEP属性，避免综合优化掉关键调试节点
+	attribute KEEP of an_trig_d: signal is true;
 	attribute KEEP of DebugMState: signal is true;
 	attribute KEEP of DebugADCState: signal is true;
 	attribute KEEP of DebugADCState_d: signal is true;
@@ -779,10 +778,7 @@ begin
 			i_data_n => data_n,                    -- ADC LVDS数据总线负端
 			o_clk => clk_adc_dclk,                 -- 恢复后的ADC采样时钟
 			o_data_1 => adc_data_rise,             -- 上升沿采样数据
-			o_data_2 => adc_data_fall,             -- 下降沿采样数据
-			o_calib_ok => adc_calib_ok,          -- IDELAY校准通过
-			o_calib_tap => adc_calib_tap,        -- 选中的最优tap
-			o_idelay_rdy => adc_idelay_rdy       -- IDELAYCTRL就绪
+			o_data_2 => adc_data_fall              -- 下降沿采样数据
 		);
 
 	-- 保留旧版信号命名，映射到显式上/下沿数据流。
@@ -853,8 +849,8 @@ begin
 	-- 用于通过3线SPI(CS#/SCLK/SDIO)对AD9643寄存器进行编程
 	-- 发送格式：16bit帧 = 8bit寄存器地址 + 8bit数据，MSB优先
 	ADC_CH1_spi_interface: spi
-			-- AD9643: 16bit指令头+8bit数据=24bit帧
-		generic map (SPI_LENGTH => 24)
+		-- 核心参数：SPI发送帧长固定为16bit（符合AD9643要求）
+		generic map (SPI_LENGTH => 16)
 		port map (
 			-- 主时钟：ifclk = 100MHz（DDR3读时钟域）
 			clk => ifclk,
@@ -929,6 +925,7 @@ begin
 		port map (
 			-- Clock out ports
 			clk_out1 => clk_ref_i,
+			clk_out2 => clk_gen,
 			-- Status and control signals
 			reset => pll_reset,
 			locked => pll_locked,
@@ -980,9 +977,9 @@ begin
 	slcs <= '0';                      -- GPIF片选常使能
 
 	-- 验证帧头发送：LED1=slwr写脉冲 LED2=magic字发送中 LED3=流发送中
-		LED(1) <= '1' when MasterState = A else '0';  -- A态(空闲)
-		LED(2) <= '1' when MasterState = F else '0';  -- F态(等帧)
-		LED(3) <= '1' when MasterState = G else '0';  -- G态(发送)
+	LED(1) <= not slwr_i;        -- slwr低时亮=正在写FX3
+	LED(2) <= '1' when hword_cnt_i = 0 else '0';  -- 正在发送magic字(0xDDDDDDDD)
+	LED(3) <= '1' when MasterState(3 downto 0) = G else '0';  -- 在G态亮
 	slrd_sloe  <= slrd_i;                              -- FX3读控制（与SLOE共用）
 	slwr  <= slwr_i;                                   -- FX3写选通信号
 	faddr <= faddr_i;                                  -- FX3端点地址选择
@@ -1010,14 +1007,15 @@ begin
 	--            & std_logic_vector(DataInTest (9 downto 0))
 	--            & std_logic_vector(DataInTest(11 downto 0));
 
-		-- FX3 GPIF时钟: MIG ui_clk → ÷2触发 → BUFG → ifclk (原版方案)
-		ifclk_div2: process(ui_clk_raw)
-		begin
-			if rising_edge(ui_clk_raw) then
-				ifclk_tgl <= not ifclk_tgl;
-			end if;
-		end process;
-		ifclk_bufg_inst: BUFG port map (I => ifclk_tgl, O => ifclk);
+	-- ui_clk(125MHz) ÷2 → BUFG → ifclk(62.5MHz) 适配FX3 GPIF
+	ifclk_div2: process(ui_clk_raw)
+	begin
+		if rising_edge(ui_clk_raw) then
+			ifclk_tgl <= not ifclk_tgl;
+		end if;
+	end process;
+	-- 全局时钟缓冲确保低skew
+	ifclk_bufg_inst: BUFG port map (I => ifclk_tgl, O => ifclk);
 
 	ADC_interface_rising: process(clk_adc_dclk)
 
@@ -1025,18 +1023,12 @@ begin
 
 		if (rising_edge(clk_adc_dclk)) then
 
-			-- 上电后产生~8us全局复位脉冲(副本原有逻辑)
-			if startup_timer_cnt = 4000 then
-				gl_reset <= '0';           -- 定时结束,保持释放
-			elsif startup_timer_cnt < 2000 then
-				gl_reset <= '0';           -- 前8us保持低电平(复位有效)
-				startup_timer_cnt <= startup_timer_cnt + 1;
-			else
-				gl_reset <= '1';           -- 后8us拉高(释放复位)
-				startup_timer_cnt <= startup_timer_cnt + 1;
-			end if;
 			debug_cnt <= debug_cnt + 1;       -- 250MHz参考计数器
 
+			-- 上电复位已由外部复位管脚处理，此处不再生成内部复位脉冲
+			-- startup_timer_cnt原用于产生gl_reset，因gl_reset未被下游使用已移除
+
+			-- 数字通道/逻辑分析功能已移除
 			-- 读取DDR上下沿采样，并按配置决定是否启用均值滤波。
 			if mavg_enA_d = '1' then         -- CH1可选移动平均路径
 				dataAd <= signed(mavg_dataA);
@@ -1049,6 +1041,19 @@ begin
 				dataBd <= signed(adc_data_fall);
 			end if;
 
+			-- 外部模拟触发输入同步
+			an_trig_dd <= an_trig_d;
+			an_trig_ddd <= an_trig_dd;
+
+			-- 外部模拟触发门限换算（10bit版本）
+			-- PWM输入有0.9V共模偏置，需要将触发电平做偏移映射
+			-- 3.3V / 1023 = 3.224e-3 V/bit
+			-- 0.9V / 3.224e-3 V/bit ≈ 279 bit (10bit等效)
+			if signed(trig_level) < to_signed(-279,trig_level'length) then
+				AnalogTrigTresh <= std_logic_vector(to_signed(0,10));
+			else
+				AnalogTrigTresh <= std_logic_vector(resize(signed(trig_level)+to_signed(279,trig_level'length),AnalogTrigTresh'length));
+			end if;
 			
 			reading_config_registers_d <= reading_config_registers;   -- CDC第一级
 			reading_config_registers_dd <= reading_config_registers_d;-- CDC第二级
@@ -1067,13 +1072,13 @@ begin
 			case to_integer(unsigned(cfg_addrB_d) + 1) is -- 按寄存器索引解码配置
 
 				when 4 =>
-					trigger_mode <= cfg_do_B(1 downto 0);  -- bit[1:0]: 触发模式(与副本一致)
+					trigger_mode <= cfg_do_B(1 downto 0);  -- bit[1:0]: 触发模式（自动/普通/单次/立即）
 				when 5 =>
 					trigger_source <= cfg_do_B(18 downto 16); -- bit[18:16]: 触发源选择
 					trigger_slope <= cfg_do_B(1 downto 0);    -- bit[1:0]: 触发斜率（上升/下降/双边）
 				when 6 =>
-					trig_level <= signed(cfg_do_B(29 downto 16));      -- bit[29:16]: 14位触发电平
-					trig_hysteresis <= signed(cfg_do_B(13 downto 0)); -- bit[13:0]: 14位触发回差
+					trig_level <= signed(cfg_do_B(25 downto 16));      -- bit[25:16]: 10位触发电平（10bit版本，直通赋值）
+					trig_hysteresis <= signed(cfg_do_B(9 downto 0));   -- bit[9:0]: 10位触发回差（10bit版本，直通赋值）
 				when 7 =>
 					timebase <= cfg_do_B(4 downto 0); -- bit[4:0]: 时基分档（决定采样CE间隔）
 				when 8 =>
@@ -1138,9 +1143,9 @@ begin
 
 				-- 在DDR上下沿数据流中选择触发源（取高10bit）
 				case trigger_source_d is       -- 选择当前有效触发流
-					when "000" => trig_signal <= signed(dataAd);  -- CH1 14bit全宽
-					when "001" => trig_signal <= signed(dataBd);  -- CH2 14bit全宽
-					when others => trig_signal <= signed(dataAd);  -- 14bit全宽
+					when "000" => trig_signal <= signed(dataAd(13 downto 4)); -- DCO上升沿数据流，取高10bit
+					when "001" => trig_signal <= signed(dataBd(13 downto 4)); -- DCO下降沿数据流，取高10bit
+					when others => trig_signal <= signed(dataAd(13 downto 4));
 				end case;
 
 				case GetSampleState(2 downto 0) is -- ADC采样状态机
@@ -1214,21 +1219,13 @@ begin
 						roll <= '0';
 						triggered_led <= '0';
 
-						if ( getNewFrame = '1' AND clearflags_d = '0' and ram_rdy = '1' ) then -- 启动新帧
-							getNewFrame <= '0';           -- 立即消耗脉冲(跨状态使用)
+						if ( getNewFrame = '1' AND clearflags_d = '0' and ram_rdy = '1' ) then -- 启动新一帧采集
+							PreTrigSaving <= '1';
+							PreTrigWriteEn <= '1';
 							framesize_d <= framesize;          -- 锁存当前帧长度
 							pre_trigger_d <= pre_trigger;      -- 锁存预触发长度
 							encoding_format_d <= encoding_format;
-							if pre_trigger = 0 then
-								PreTrigSaving <= '0';
-								PreTrigWriteEn <= '0';
-								saved_sample_cnt <= 0;
-								GetSampleState <= ADC_E;  -- DEBUG:无条件触发,跳过ADC_C
-							else
-								PreTrigSaving <= '0';
-								PreTrigWriteEn <= '0';
-								GetSampleState <= ADC_E;  -- DEBUG:跳过预触发
-							end if;
+							GetSampleState <= ADC_B;   -- 进入“预触发采集”
 
 						else
 							GetSampleState <= ADC_A;
@@ -1274,19 +1271,14 @@ begin
 
 					when ADC_C =>		-- 触发布防态：持续监测触发条件
 
-						if pre_trigger_d = 0 then
-							PreTrigSaving <= '0';  -- 无预触发：跳过预触发写
-							PreTrigWriteEn <= '0';
+						PreTrigSaving <= '1';
+						PreTrigWriteEn <= '1';
+						triggered <= '0';
+						if auto_trigger_cnt = auto_trigger_maxcnt then
+							auto_trigger <= '1';
 						else
-							PreTrigSaving <= '1';
-							PreTrigWriteEn <= '1';
+							auto_trigger_cnt <= auto_trigger_cnt + 1;
 						end if;
-					triggered <= '0';
-					if auto_trigger_cnt = auto_trigger_maxcnt then
-						auto_trigger <= '1';
-					else
-						auto_trigger_cnt <= auto_trigger_cnt + 1;
-					end if;
 
 						if ( clearflags_d = '1') then
 							GetSampleState <= ADC_A;
@@ -1485,9 +1477,6 @@ begin
 			flagb_ddd <= flagb_dd;-- EP4标志同步第3级
 			flagd_d <= flagd;     -- EP6标志同步第1级
 			flagd_dd <= flagd_d;  -- EP6标志同步第2级
-			adc_idelay_rdy_d <= adc_idelay_rdy;   -- IDELAY CDC
-			adc_calib_ok_d <= adc_calib_ok;       -- 校准OK CDC
-			adc_calib_tap_d <= adc_calib_tap;     -- 最优tap CDC
 
 			DebugADCState_d <= DebugADCState;
 
@@ -1525,84 +1514,34 @@ begin
 
 			case MasterState(3 downto 0) is   -- FX3/USB事务主状态机
 
-				when A =>           -- SPI初始化(IDELAY校准) + 500ms超时兜底
+				when A =>           			-- 空闲态：ADC SPI初始化 → 延时 → 发测试帧
 					faddr_i <= "00";
 					slrd_i  <= '1';
 					slwr_i  <= '1';
 					pktend_i <= '1';
 					clearflags <= '1';
-					if flaga_d = '1' and flaga_d_prev = '0' then
-						Timer_cnt <= 0;  -- flaga上升沿复位SPI时序
-					end if;
-					flaga_d_prev <= flaga_d;
-					if ( flaga_d = '1' ) then
-						flaga_d_prev <= '1';
-						if flaga_d_prev = '0' then
-							Timer_cnt <= 0;  -- flaga上升沿,复位时序从0开始
-						end if;
-						if Timer_cnt = 50000 then
-							ConfigureADC <= '0';
-							ConfigureVdac <= '0';
-							Timer_cnt <= 0;
-							MasterState <= B;
-						-- Timer 45000~49999: 关闭ADC测试图样(恢复正常采样)
-						elsif Timer_cnt >= 40000 then
-							if Timer_cnt = 45000 then
-								adc_spi_data <= "000" & "00000" & AD9643_SPI_TEST_MODE_ADDR & AD9643_SPI_NORMAL_SAMPLE_D;
-								ConfigureADC <= '1';
-							elsif Timer_cnt = 46500 then
-								adc_spi_data <= "000" & "00000" & X"FF" & X"01";
-								ConfigureADC <= '1';
-							else
-								ConfigureADC <= '0';
-							end if;
-							Timer_cnt <= Timer_cnt + 1;
-							MasterState <= A;
-						-- Timer 30000~30001: 校准CH2(下降沿数据)
-						elsif Timer_cnt >= 30000 then
-							if Timer_cnt = 30000 or Timer_cnt = 30001 then
-								read_calib_start <= '1';
-								read_calib_source <= '1';
-							else
-								read_calib_start <= '0';
-							end if;
-							Timer_cnt <= Timer_cnt + 1;
-							MasterState <= A;
-						-- Timer 20000~20001: 校准CH1(上升沿数据)
-						elsif Timer_cnt >= 20000 then
-							if Timer_cnt = 20000 or Timer_cnt = 20001 then
-								read_calib_start <= '1';
-								read_calib_source <= '0';
-							else
-								read_calib_start <= '0';
-							end if;
-							Timer_cnt <= Timer_cnt + 1;
-							MasterState <= A;
-						-- Timer 2000~3999: 启用ADC测试图样 + transfer命令
-						elsif Timer_cnt >= 2000 then
-							if Timer_cnt = 2000 then
-								adc_spi_data <= "000" & "00000" & AD9643_SPI_TEST_MODE_ADDR & AD9643_SPI_TEST_PATTERN_ON_D;
-								ConfigureADC <= '1';
-							elsif Timer_cnt = 3500 then
-								adc_spi_data <= "000" & "00000" & X"FF" & X"01";
-								ConfigureADC <= '1';
-							else
-								ConfigureADC <= '0';
-							end if;
-							Timer_cnt <= Timer_cnt + 1;
-							MasterState <= A;
+					
+					-- AD9643上电初始化序列(step 0-4)
+					if adc_init_step < 4 then
+						if adcA_spi_busy = '0' and ConfigureADC = '0' then
+							case adc_init_step is
+								when 0 => adc_spi_data <= X"0000";  -- 0x00: 上电/正常模式
+								when 1 => adc_spi_data <= X"0800";  -- 0x08: 双补码/14bit/DDR
+								when 2 => adc_spi_data <= X"0D00";  -- 0x0D: 关闭测试图样/正常采样
+								when 3 => adc_spi_data <= X"FF01";  -- 0xFF: 提交生效
+								when others => null;
+							end case;
+							ConfigureADC <= '1';                   -- 触发SPI发送
+						elsif adcA_spi_busy = '1' then
+							ConfigureADC <= '0';                   -- 等待SPI完成
 						else
 							ConfigureADC <= '0';
-							Timer_cnt <= Timer_cnt + 1;
-							MasterState <= A;
+							adc_init_step <= adc_init_step + 1;    -- 下一步
 						end if;
-					elsif ( flagb_d = '1' ) then
-						ConfigureADC <= '0';
-						ConfigureVdac <= '0';
-						read_calib_start <= '0';
-						MasterState <= B;
+						MasterState <= A;
 					else
-						if Timer_cnt = 50000000 then
+						-- SPI初始化完成，等待~1s后进入测试
+						if Timer_cnt = 60000000 then
 							Timer_cnt <= 0;
 							MasterState <= B;
 						else
@@ -1613,8 +1552,14 @@ begin
 					fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 					DebugMState <= 0;
 
-
 				when B =>						-- 分发态：配置读取/ADC配置/帧流程切换
+				if TEST_FRAME_MODE then
+				    faddr_i <= "00";
+				    hword_cnt_i <= 0;          -- 从0开始，确保magic字(0xDDDDDDDD)被发送
+				    slwr_assert_cnt <= 1;
+				    test_frame_cnt <= (others => '0');
+				    Masterstate <= G;
+				else
 					slwr_i <= '1';
 					slrd_i <= '1';
 					pktend_i <= '1';
@@ -1647,7 +1592,7 @@ begin
 						--if scope settings have changed
 					--if ADC config has changed
 					elsif (adc_cfg_data_d /= adc_cfg_data) then
-						adc_spi_data <= "000" & "00000" & adc_cfg_reg & adc_cfg_data; -- 24bit AN-877
+						adc_spi_data <= adc_cfg_reg & adc_cfg_data;
 						adc_cfg_reg_d <= adc_cfg_reg;
 						adc_cfg_data_d <= adc_cfg_data;
 						--				ConfigureADC <= '1';     debug!
@@ -1665,6 +1610,7 @@ begin
 						Masterstate <= F; -- else, go to "GET NEW ADC FRAME FROM SAMPLE BUFFER"
 					end if;
 					DebugMState <= 1;
+				end if;
 
 				when C =>						-- CONFIG-READ: pull EP2 words and mirror to config RAM
 					faddr_i <= "11"; -- selected FIFO endpoint is EP2 (config)
@@ -1674,7 +1620,7 @@ begin
 					cfg_data_in_d <= cfg_data_in;
 					cfg_we_d <= cfg_we;
 					case to_integer(unsigned(cfg_addrA_d)+1) is
-							when 1 to 20 =>
+						when 1 to 20 =>
 							if cfg_we_d = '1' AND cfg_data_in_d /= cfg_do_A then
 								ScopeConfigChanged <= '1';
 								if to_integer(unsigned(cfg_addrA_d)+1) = 2 or to_integer(unsigned(cfg_addrA_d)+1) = 3 then
@@ -1703,7 +1649,6 @@ begin
 						Masterstate <= C;
 					-- 若FX3已进入可读且EP2非空
 					elsif ( flaga_d = '1' and cfg_we = '1') then
-						-- reading_config_registers <= '1'; -- DEBUG:暂禁用
 						-- SLRD存在2拍延迟
 						if cfg_data_cnt < CONFIG_DATA_SIZE - 4 then
 							slrd_i  <= '0';
@@ -1726,17 +1671,25 @@ begin
 						-- EP2未空时保持在本状态
 						Masterstate <= C;
 					else
-						-- EP2已空→回B(不管读了多少字)
-						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+						fdata <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"; -- 数据总线置高阻
 						slrd_i  <= '1';
 						cfg_we <= '0';
-						reading_config_registers <= '0';
-						cfg_addrA_d <= "000000";
-						cfg_addrA <= "000000";
-						cfg_data_cnt <= 0;
-						faddr_rdy_cnt_i <= 0;
-						faddr_rdy <= '0';
-						Masterstate <= B;
+						if to_integer(unsigned(cfg_addrA)) = CONFIG_DATA_SIZE - 1 then
+							-- RAM配置读取结束后返回分发状态
+							reading_config_registers <= '0';
+							cfg_addrA_d <= "000000";
+							cfg_addrA <= "000000";
+							cfg_data_cnt <= 0;
+							faddr_rdy_cnt_i <= 0;
+							faddr_rdy <= '0';
+							Masterstate <= B;
+						else
+							reading_config_registers <= '1';
+							cfg_addrA_d <= cfg_addrA;
+							-- 内存地址指针递增
+							cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
+							Masterstate <= C;
+						end if;
 
 						-- 将配置字映射到内部控制寄存器
 						case to_integer(unsigned(cfg_addrA_d) + 1) is
@@ -1768,7 +1721,7 @@ begin
 				when D =>			          -- ADC-SPI状态：通过SPI写ADC寄存器
 				-- 处理ADC寄存器写命令
 					if ConfigureADC = '1' OR adcA_spi_busy = '1' then
-						adc_spi_data <= "000" & "00000" & adc_cfg_reg & adc_cfg_data; -- 24bit AN-877
+						adc_spi_data <= adc_cfg_reg & adc_cfg_data;
 						ConfigureADC <= '0';
 						Masterstate <= D;
 					else
@@ -1821,37 +1774,29 @@ begin
 							DAC_state <= "000";
 					end case;
 					DebugMState <= 4;
-						cnt_interframe <= 0;
+
 				when F =>						-- 等帧状态：发起采集请求并等待帧就绪
-					if cnt_interframe < 50000 then
-						cnt_interframe <= cnt_interframe + 1;
-						Masterstate <= F;  -- 帧间延迟500us,等待主机读完上帧
-					else
-						cnt_interframe <= 0;
 					clearflags <= '0';   -- 释放采样侧复位
 					ReadingFrame <= '0'; -- 关闭读帧使能
+					--			requestFrame <= '0';
 					-- 帧触发完成后开始向FX3发送
 					if ( frame_ready_to_send = '1' ) then
 						newFrameRequestRevcd <= '0';               -- 清除新帧请求已收标志
 						framesize_dd <= framesize_d;               -- 锁存当前帧长度
 						encoding_format_dd <= encoding_format_d;   -- 锁存当前编码格式
 						frame_ready_to_send <= '0';                -- 清除帧就绪标志
-						slwr_assert <= '1';                        -- 确保写许可置位
-						slwr_assert_cnt <= 0;                      -- 复位写计数
-						hword_cnt_i <= 0;                          -- 复位帧头计数
-						send_sample_cnt <= 0;                      -- 复位样本计数
-						dword_cnt_i <= 0;                          -- 复位数据字计数
 						Masterstate <= G;					-- 进入流式发送状态
-					-- 若收到新配置,优先处理
-					elsif ( flaga_d = '1' or flagb_d = '1') then
-						Masterstate <= B;	-- 立即转去读取配置
-					-- 否则等待帧就绪
+						-- 否则继续等待帧就绪
+					elsif ( flaga_d = '1') then
+						Masterstate <= B;	-- 收到新配置时立即转去读取
 					else
 						if newFrameRequestRevcd = '0' then
 							if cnt_restart_framesave = 15 then
+								-- 单次触发且未重布防时，不重复请求新帧
 								if s_trigger_mode = "10" AND s_trigger_rearm = '0' then
 									cnt_restart_framesave <= 15;
 									requestFrame <= '0';
+								-- 允许请求新帧
 								else
 									s_trigger_rearm <= '0';
 									cnt_restart_framesave <= 0;
@@ -1861,94 +1806,51 @@ begin
 								cnt_restart_framesave <= cnt_restart_framesave + 1;
 								requestFrame <= '0';
 							end if;
-							if cnt_frame_timeout = 1000000000 then
-								cnt_frame_timeout <= 0;
-								Masterstate <= A;  -- 10秒超时→硬复位恢复
-							else
-								cnt_frame_timeout <= cnt_frame_timeout + 1;
-								Masterstate <= F;
-							end if;
+							Masterstate <= F;
 						else
+							-- 维持本状态直至帧可发送
 							requestFrame <= '0';
 							cnt_restart_framesave <= 0;
-							if cnt_frame_timeout = 1000000000 then
-								cnt_frame_timeout <= 0;
-								Masterstate <= A;  -- 10秒超时→硬复位恢复
-							else
-								cnt_frame_timeout <= cnt_frame_timeout + 1;
-								Masterstate <= F;
-							end if;
+							Masterstate <= F;
 						end if;
 					end if;
-					end if;  -- 帧间延迟end if
 					DebugMState <= 5;
 
-				when G =>            		-- 连续流发送(无流控,无burst暂停)
+				when G =>            		-- TEST_FRAME_MODE: 发一帧(ADC直通)→回A
 					slrd_i <= '1';
 					faddr_i <= "00";
 					ReadingFrame <= '1';
 					slwr_i <= '0';
-
+					pktend_i <= '1';
+					
 					if hword_cnt_i < FRAME_HEADER_SIZE then
-						DataOutEnable <= '0';
+						-- 帧头：256字
 						hword_cnt_i <= hword_cnt_i + 1;
 						case hword_cnt_i is
-							when 0  => fdata <= X"DDDDDDDD"; send_frame_cnt <= send_frame_cnt + 1;
-							when 1  => fdata <= X"0000" & X"0" & device_temp_dd;
-							when 2  => fdata <= X"0000" & "00"& pll_locked & init_calib_complete & calib_done & ram_rdy & frame_ready_to_send & newFrameRequestRevcd & reading_config_registers & "0000000";
-							when 3  => fdata <= X"0000" & std_logic_vector(to_unsigned(send_frame_cnt, 12)) & std_logic_vector(to_unsigned(DebugMState, 4));
-							when 4  => fdata <= X"0000" & X"0" & device_temp_dd;
-							when 5  => fdata <= "00" & GetSampleState & std_logic_vector(to_unsigned(DebugADCState,3)) & std_logic_vector(to_unsigned(adc_init_step,3)) & auto_trigger & triggered & "0000" & std_logic_vector(to_unsigned(saved_sample_cnt,15));
-							when 6  => fdata <= std_logic_vector(trig_level) & std_logic_vector(trig_hysteresis) & trigger_mode & trigger_source(1 downto 0);
-							when 7  => fdata <= std_logic_vector(to_unsigned(cnt_frame_timeout,18)) & std_logic_vector(to_unsigned(cnt_interframe,14));
-							when 8  => fdata <= adc_cfg_reg & adc_cfg_data & adcA_spi_busy & "000000000000000";
-							when 9  => fdata <= pll_locked & init_calib_complete & calib_done & ram_rdy & flagd_dd & flaga_d & frame_ready_to_send & newFrameRequestRevcd & reading_config_registers & "00000000000000000000000";
-							when 10 => fdata <= X"0000" & adc_idelay_rdy_d & adc_calib_ok_d & "0000" & adc_calib_tap_d & "0000";
-							when 63 => cfg_addrA <= std_logic_vector(to_unsigned(1,6)); fdata <= X"0000FFFF";
-							when 64 to 64+(CONFIG_DATA_SIZE-1) =>
-								if to_integer(unsigned(cfg_addrA)) = CONFIG_DATA_SIZE-1 then
-									cfg_addrA <= std_logic_vector(to_unsigned(0,6));
-								else
-									cfg_addrA <= std_logic_vector(unsigned(cfg_addrA) + 1);
-								end if;
-								if    hword_cnt_i = (63 + 9) then
-									fdata(31 downto 27) <= "00000";
-									fdata(26 downto 0) <= std_logic_vector(unsigned(framesize_dd)+1);
-								elsif hword_cnt_i = (63 + 30) then
-									fdata(31 downto 20) <= cfg_do_A(31 downto 20);
-									fdata(19 downto 16) <= encoding_format_dd;
-									fdata(15 downto 0)  <= cfg_do_A(15 downto 0);
-								else
-									fdata <= cfg_do_A;
-								end if;
-							when FRAME_HEADER_SIZE-1 => fdata <= x"00000000"; pktend_i <= '0';
-							when others => cfg_addrA <= std_logic_vector(to_unsigned(0,6)); fdata <= X"0000FFFF";
+							when 72 => fdata <= X"00000400";    -- sampleSizeL=1024
+							when others => fdata <= X"DDDDDDDD";
 						end case;
 						Masterstate <= G;
-					elsif hword_cnt_i < FRAME_HEADER_SIZE + to_integer(unsigned(framesize_dd)) then
-						DataOutEnable <= '1';
+					elsif hword_cnt_i < FRAME_HEADER_SIZE + 1024 then
+						-- 数据：ADC直通(14bit棋盘图样 → 32bit字)
 						hword_cnt_i <= hword_cnt_i + 1;
-						if DataOutValid = '1' then
-							fdata <= DataOut;
-						else
-							fdata <= x"00000000";
-						end if;
-						if hword_cnt_i = FRAME_HEADER_SIZE + to_integer(unsigned(framesize_dd)) - 1 then
+						fdata <= X"0000" & "00" & adc_rise_ifclk_d;
+						if hword_cnt_i = FRAME_HEADER_SIZE + 1023 then
 							pktend_i <= '0';
 						end if;
 						Masterstate <= G;
 					else
+						-- 帧完：回空闲态
 						hword_cnt_i <= 0;
-						DataOutEnable <= '0';
 						slwr_i <= '1';
-						Masterstate <= B;
+						Masterstate <= A;
 					end if;
 					DebugMState <= 6;
+
 				when others =>					-- 异常状态：回到空闲态
 					faddr_i <= "00";
 					slwr_i  <= '1';
-					Timer_cnt <= Timer_cnt + 1;
-						MasterState <= A;
+					MasterState <= A;
 
 			end case;
 		end if;
