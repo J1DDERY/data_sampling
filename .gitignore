@@ -109,4 +109,7 @@ Desktop.ini
 *.settings/
 software
 ScopeFun_PCB/.history
-ScopeFun_PCB/.history
+/FPGA/Artix-7
+/FPGA/Artix-7_new
+/FPGA/srcs/.claude
+/FPGA/srcs/sources_1/.claude

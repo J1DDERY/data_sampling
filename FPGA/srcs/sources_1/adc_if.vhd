@@ -43,7 +43,10 @@ entity adc_if is
         i_data_n : in STD_LOGIC_VECTOR (ADC_BITS-1 downto 0); -- ADC差分数据负端
         o_clk : out STD_LOGIC;                                -- 全局同步时钟输出
         o_data_1 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);-- 正沿采样数据输出
-        o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0) -- 负沿采样数据输出
+        o_data_2 : out STD_LOGIC_VECTOR (ADC_BITS-1 downto 0);-- 负沿采样数据输出
+        o_calib_ok : out std_logic;                             -- 校准通过(min_tap_set)
+        o_calib_tap : out std_logic_vector(5 downto 0);         -- 选中的最优tap
+        o_idelay_rdy : out std_logic                            -- IDELAYCTRL就绪
         );
 end adc_if;
 
@@ -74,10 +77,11 @@ begin
     return p;
 end function;
 
-constant CAL_CHK_A : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, true);  -- 测试码A：奇数位为1
-constant CAL_CHK_B : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, false); -- 测试码B：偶数位为1
+	constant POLARITY_MASK : std_logic_vector(ADC_BITS-1 downto 0) := "00101001011001";  -- bit0,3,4,6,9,11反相掩码
+	constant CAL_CHK_A : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, true) xor POLARITY_MASK;
+	constant CAL_CHK_B : std_logic_vector(ADC_BITS-1 downto 0) := checkerboard(ADC_BITS, false) xor POLARITY_MASK;
 
-CONSTANT TEST_MODE : boolean := TRUE;    -- False=正常模式输出ADC数据，True=测试模式递增计数
+CONSTANT TEST_MODE : boolean := FALSE;   -- False=正常模式输出ADC数据，True=测试模式递增计数
 
 CONSTANT ADC_CLK_DELAY  : integer := 0;   -- 时钟延迟tap值(0-31)，此值可被动态延迟覆盖
 CONSTANT ADC_DATA_DELAY : integer := 23;  -- 数据初始延迟tap(0-31)，200MHz=78ps/tap，23tap≈1.8ns
@@ -436,4 +440,8 @@ begin
     end if; --idelay_rdy = '1' 
 end process;
 
+	-- 校准结果输出
+	o_calib_ok <= min_tap_value_set;
+	o_calib_tap <= std_logic_vector(to_unsigned(selected_tap_value, 6));
+	o_idelay_rdy <= idelay_rdy;
 end Behavioral;
