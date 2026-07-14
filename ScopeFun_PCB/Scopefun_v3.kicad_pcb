@@ -21233,7 +21233,7 @@
 		(uuid "00000000-0000-0000-0000-0000586ac8e8")
 		(at 48.2 114.125 180)
 		(property "Reference" "D12"
-			(at -2.43 0.095 0)
+			(at -2.6 -0.45 0)
 			(layer "F.SilkS")
 			(uuid "1eecddc6-1462-4d31-94e0-a853e4d4d130")
 			(effects
@@ -21467,7 +21467,7 @@
 		(uuid "00000000-0000-0000-0000-0000586ac8fd")
 		(at 48.21 111.365 180)
 		(property "Reference" "D13"
-			(at 2.91 -0.7 0)
+			(at -2.64 -0.985 0)
 			(layer "F.SilkS")
 			(uuid "ba45d36b-f9bb-45df-9c34-e7ae31630e4b")
 			(effects
@@ -52266,7 +52266,7 @@
 		(uuid "6d2b5982-8fd8-475e-8fca-07fe24cb088d")
 		(at 32.32 110.945 180)
 		(property "Reference" "D2"
-			(at -1.86 -0.055 0)
+			(at 2.77 -0.03 0)
 			(layer "F.SilkS")
 			(uuid "96d8247d-ebc9-4dcb-934c-3de30f98def1")
 			(effects
@@ -53891,7 +53891,7 @@
 		(uuid "b43dc8f1-bec3-42d7-bd41-0c25bb8bd814")
 		(at 32.33 113.965 180)
 		(property "Reference" "D1"
-			(at -1.99 -0.275 0)
+			(at 2.73 -0.085 0)
 			(layer "F.SilkS")
 			(uuid "1d6f13a7-4bec-483c-8a64-d844a464047c")
 			(effects
